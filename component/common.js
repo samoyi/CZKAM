@@ -13,7 +13,7 @@ let vCommonHeight = new Vue({
         list: [],
     },
 });
-// 以下为之后将要从后台接收到的数据
+// 之后将要从后台接收到的数据
 vCommonHeight.list =  [
     ["关于我们", "ABOUT US"],
     ["崔振宽艺术", "CUIZHENKUAN ART"],
@@ -23,6 +23,8 @@ vCommonHeight.list =  [
     ["画廊·衍生品", "GALLERY·DERIVATIVES"],
     ["服务中心", "SERVICE CENTER5"]
 ];
+
+
 
 let vNoticeTab = new Vue({
     components: {
@@ -34,11 +36,12 @@ let vNoticeTab = new Vue({
     el: "#footer-tab",
     data: {
         tabs: [],
+        index: 0,
     },
     computed: {
         getTab(){
             if( this.tabs.length ){
-                return this.tabs[0];
+                return this.tabs[this.index];
             }
             else{
                 return [,,];
@@ -51,8 +54,13 @@ let vNoticeTab = new Vue({
         },
     }
 });
+// 之后将要从后台接收到的数据
 vNoticeTab.tabs = [
     ["公告标题1", "公告内容1", "2015"],
     ["公告标题2", "公告内容2", "2016"],
     ["公告标题3", "公告内容3", "2017"]
 ];
+// 轮播
+setInterval(function(){
+    vNoticeTab.index = (vNoticeTab.index+1) % 3;
+}, 1000);

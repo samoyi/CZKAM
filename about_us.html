@@ -46,21 +46,57 @@
 <body>
 
     <header id="common-header">
-        <img />
+        <img alt="左上角logo" />
         <ul>
             <common-header v-for="item in list" :title="item"></common-header>
         </ul>
     </header>
-
+    <section id="about_us-middle">
+        <div>
+            <div>
+                <h2>美术馆</h2>
+                <ul>
+                    <li>大事记</li>
+                    <li>开放时间</li>
+                    <li>地理交通</li>
+                    <li>联系我们</li>
+                </ul>
+            <div>
+            <div>
+                <h2>配套设施</h2>
+                <ul>
+                    <li>大事记</li>
+                    <li>开放时间</li>
+                    <li>地理交通</li>
+                    <li>联系我们</li>
+                </ul>
+            <div>
+        </div>
+        <div></div>
+    </section>
     <footer>
         <div>
             <div id="footer-tab">
                 <h2>公告 NOTICE</h2>
-                <!-- <footer-tab v-for="item in tabs" :tab="item"></footer-tab> -->
                 <footer-tab :tab="getTab"></footer-tab>
+                <span>more</span>
+            </div>
+            <div>
+                <h2>美术馆 ART GALLERY</h2>
+                <p><span>开放时间：</span>周二至周日 9:30--17:00（16:30停止入馆）<br />周一闭馆（节假日除外，特殊情况将在本网站通知）</p>
+                <p><span>地址：</span>西安市灞桥区灞桥生态湿地公园柳雪路996号</p>
+                <p><span>电话：</span>029-83626699</p>
             </div>
         </div>
-        <div></div>
+        <div>
+            <p>陕ICP备</p>
+            <div>
+                <a href="">会员</a>
+                <a href="">联系我们</a>
+                <a href="">下载专区</a>
+            </div>
+            <img alt="右下角logo" />
+        </div>
     </footer>
 
 </body>
