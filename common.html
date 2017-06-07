@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+        .edit{
+            display:block ;
+            width:80%;
+            height: 35px;
+            line-height: 35px;
+            margin: 30px auto;
+            box-sizing: border-box;
+            padding-left: 4px;
+            border-radius: 4px;
+            border:1px solid #ccc;
+            outline: 0;
+            box-shadow: 0 0 5px #ccc;
+        }
+        .unit{
+            position: relative;
+            padding: 10px 0;
+            border-bottom: 1px solid #efefef;
+         }
+         .unit:last-child{
+            border-bottom: 0;
+         }
+         .finish{
+           text-decoration: line-through;
+           color: #ccc;
+        }
+        .del{
+            background: red;
+            text-decoration: none;
+            position: absolute;
+            right:0;
+            font-size: 12px;
+            border: 0;
+            outline: 0;
+            padding: 2px 5px;
+            border-radius: 5px;
+            color: #fff;
+         }
+    </style>
+</head>
+<body>
+
+    <header id="common-header">
+        <img />
+        <ul>
+            <common-header v-for="item in list" :title="item"></common-header>
+        </ul>
+    </header>
+
+    <footer>
+        <div>
+            <div id="footer-tab">
+                <h2>公告 NOTICE</h2>
+                <!-- <footer-tab v-for="item in tabs" :tab="item"></footer-tab> -->
+                <footer-tab :tab="getTab"></footer-tab>
+            </div>
+        </div>
+        <div></div>
+    </footer>
+
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="component/common.js"></script>
+<script>
+console.log( vCommonHeight );
+console.log( vNoticeTab );
+</script>
+</html>
