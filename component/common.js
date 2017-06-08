@@ -22,23 +22,6 @@ let vCatalog = new Vue({
     data:{
         title: [],
         catas: [],
-        // title: ["关于我们", "ABOUT US"],
-        // catas: [
-        //     [
-        //         {title_c: "美术馆"},
-        //         {title_e: "ART GALLERY"},
-        //         {cata_c: ["简介", "大事记", "开放时间", "地理交通", "联系我们"]},
-        //         {cata_e: ["INTRODUCE", "MEMORABILIA", "OPENING HOURS", "TRAFFIC", "CONTACT US"]},
-        //         0
-        //     ],
-        //     [
-        //         {title_c: "配套设施"},
-        //         {title_e: "FACILITIES"},
-        //         {cata_c: ["艺术酒店", "咖啡厅", "多功能报告厅", "贵宾厅", "停车位"]},
-        //         {cata_e: ["HOTEL", "COFEE HOUSE", "AUDITORIUM", "VIP HALL", "PARKING SPACE"]},
-        //         1
-        //     ],
-        // ],
     },
     methods: {
         display(cataIndex, index){
@@ -99,3 +82,22 @@ vNoticeTab.tabs = [
 setInterval(function(){
     vNoticeTab.index = (vNoticeTab.index+1) % 3;
 }, 1000);
+
+
+
+// 文章列表类的模板
+/*
+ * 有一个标题或没有
+ * 有一个图片或没有
+ * 有一个摘要信息或没有
+ * 有一个备注（例如日期、作者）或没有
+ */
+let newList({
+    template: `
+        <ul>
+            <li>
+
+            </li>
+        </ul>
+    `;
+});

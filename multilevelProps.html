@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+<h1>多级组件props数据传递</h1>
+    <div id="app">
+        <parent-component :pd1="x">
+        </parent-component>
+    </div>
+
+</body>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script>
+"use strict";
+
+
+
+
+var Child = Vue.extend({
+    props: ["pd2"],
+    template: '<p>{{pd2}}</p>'
+})
+
+var Parent = {
+    data(){ // 如果这里不设置数据，child-component不会引用 y: "zzz" 这个数据，而是会报错
+        return {y: "yyy"};
+    },
+    props: ["pd1"],
+    template :'<section>{{pd1}}<child-component :pd2="y"></child-component></section>',
+    components: {
+        'child-component': Child
+    }
+}
+
+// 全局注册Parent组件
+Vue.component('parent-component', Parent)
+
+new Vue({
+    el: '#app',
+    data: {
+        x: "xxx",
+        y: "zzz", // child-component 无法引用这里的数据。 数据只能父子传递，不能爷孙传递。
+    }
+})
+
+
+// let vm = new Vue({
+//     el: '#app',
+//     data: {
+//         x: "xxx",
+//         y: "zzz"
+//     },
+//     components: {
+//         "parent-component": {
+//             data(){
+//                 return {y: "yyy"};
+//             },
+//             props: ["pd1"],
+//             components: {
+//                 "child-component": {
+//                     props: ["pd2"],
+//                     template: `<div :pd2="y">{{pd2}}</div>`
+//                     // template: `<div>666</div>`
+//                 },
+//             },
+//             template: `<section>{{pd1}}<child-component></child-component></section>`
+//         }
+//     }
+// });
+
+</script>
+</html>
