@@ -1,4 +1,20 @@
 
-#header{
-    
+@import "basic.scss";
+.common-middle{
+    .content{
+        >section{
+            >section{
+                display: none;
+            }
+            &:first-child{
+                display: block;
+                >section{
+                    display:none;
+                    &:first-child{
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
 }

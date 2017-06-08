@@ -1,0 +1,11 @@
+.articalImg {
+  width: 530px; }
+
+.common-middle .content > section > section {
+  display: none; }
+.common-middle .content > section:first-child {
+  display: block; }
+  .common-middle .content > section:first-child > section {
+    display: none; }
+    .common-middle .content > section:first-child > section:first-child {
+      display: block; }

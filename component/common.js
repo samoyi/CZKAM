@@ -1,29 +1,64 @@
 ;"use strict";
 
 
-let vCommonHeight = new Vue({
+let vCatalog = new Vue({
     components: {
-        "common-header": {
-            props: ["title"],
-            template: "<li>{{title[0]}}<br />{{title[1]}}</li>",
+        "cata": {
+            props: ["cata"],
+            template: `<div>
+                            <h3>{{cata[0].title_c}}<span>{{cata[1].title_e}}</span></h3>
+                            <ul>
+                                <li @click="clickCata(cata[4], index)" v-for='(item,index) in cata[2].cata_c'>{{item}}<span>{{cata[3].cata_e[index]}}</span></li>
+                            </ul>
+                        </div>`,
+            methods: {
+                clickCata(cataIndex, index){
+                    this.$emit( "display_content", cataIndex, index );
+                },
+            },
         },
     },
-    el: "#common-header",
-    data: {
-        list: [],
+    el: "#catalog",
+    data:{
+        title: [],
+        catas: [],
+        // title: ["关于我们", "ABOUT US"],
+        // catas: [
+        //     [
+        //         {title_c: "美术馆"},
+        //         {title_e: "ART GALLERY"},
+        //         {cata_c: ["简介", "大事记", "开放时间", "地理交通", "联系我们"]},
+        //         {cata_e: ["INTRODUCE", "MEMORABILIA", "OPENING HOURS", "TRAFFIC", "CONTACT US"]},
+        //         0
+        //     ],
+        //     [
+        //         {title_c: "配套设施"},
+        //         {title_e: "FACILITIES"},
+        //         {cata_c: ["艺术酒店", "咖啡厅", "多功能报告厅", "贵宾厅", "停车位"]},
+        //         {cata_e: ["HOTEL", "COFEE HOUSE", "AUDITORIUM", "VIP HALL", "PARKING SPACE"]},
+        //         1
+        //     ],
+        // ],
+    },
+    methods: {
+        display(cataIndex, index){
+            let catas = document.querySelectorAll(".common-middle .content>section"),
+                catas_len = catas.length;
+            for(let i=0; i<catas_len; i++){
+                let items = catas[i].children,
+                    items_len = items.length;
+                for(let j=0; j<items_len; j++ ){
+                    if( i===cataIndex && j===index ){
+                        items[j].style.display = "block";
+                    }
+                    else{
+                        items[j].style.display = "none";
+                    }
+                }
+            }
+        }
     },
 });
-// 之后将要从后台接收到的数据
-vCommonHeight.list =  [
-    ["关于我们", "ABOUT US"],
-    ["崔振宽艺术", "CUIZHENKUAN ART"],
-    ["展览", "EXHIBITION"],
-    ["公共教育", "PUBLIC EDUCATION"],
-    ["学术研究·馆藏", "RESERCH·COLLECTION"],
-    ["画廊·衍生品", "GALLERY·DERIVATIVES"],
-    ["服务中心", "SERVICE CENTER5"]
-];
-
 
 
 let vNoticeTab = new Vue({

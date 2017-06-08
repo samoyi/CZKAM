@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="css/common_page.css" type="text/css" rel="stylesheet">
+    <link href="css/about_us.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <header id="common-header">
+        <img alt="左上角logo" />
+        <ul>
+            <li>关于我们<span>ABOUT US</span></li>
+            <li>崔振宽艺术<span>CUIZHENKUAN ART</span></li>
+            <li>展览<span>EXHIBITION</span></li>
+            <li>公共教育<span>PUBLIC EDUCATION</span></li>
+            <li>学术研究·馆藏<span>RESERCH·COLLECTION</span></li>
+            <li>画廊·衍生品<span>GALLERY·DERIVATIVES</span></li>
+            <li>服务中心<span>SERVICE CENTER5</span></li>
+        </ul>
+    </header>
+    
+    <section id="reserch-collection-middle" class="common-middle">
+        <div  id="catalog" class="catalog">
+            <h2>{{title[0]}}<span>{{title[1]}}</span></h2>
+            <cata @display_content="display" v-for="cata in catas" :cata="cata"></cata>
+        </div>
+        <section class="content">
+            <section>
+                <section class="committee">
+                    <h2>学术委员会<span>COMMITTEE</span></h2>
+                </section>
+                <section class="activity">
+                    <h2>学术活动<span>ACTIVITY</span></h2>
+                </section>
+            </section>
+            <section>
+                <section class="historical_relics">
+                    <h2>历史文物<span>HISTORICAL RELICS</span></h2>
+                </section>
+                <section class="Chinese_painting">
+                    <h2>国画<span>CHINESE PAINTING</span></h2>
+                </section>
+                <section class="oli_painting">
+                    <h2>油画<span>OLI PAINTING</span></h2>
+                </section>
+                <section class="print">
+                    <h2>版画<span>PRINT</span></h2>
+                </section>
+                <section class="sculpture">
+                    <h2>雕塑<span>SCULPTURE</span></h2>
+                </section>
+                <section class="device">
+                    <h2>装置<span>DEVICE</span></h2>
+                </section>
+                <section class="photography">
+                    <h2>摄影<span>PHOTOGRAPHY</span></h2>
+                </section>
+                <section class="multimedia_image">
+                    <h2>多媒体影像<span>MULTIMEDIA IMAGE</span></h2>
+                </section>
+                <section class="other">
+                    <h2>其他<span>OTHER</span></h2>
+                </section>
+            </section>
+        </section>
+    </section>
+
+    <footer>
+        <div>
+            <div id="footer-tab">
+                <h2>公告 NOTICE</h2>
+                <footer-tab :tab="getTab"></footer-tab>
+                <span>more</span>
+            </div>
+            <div>
+                <h2>美术馆 ART GALLERY</h2>
+                <p><span>开放时间：</span>周二至周日 9:30--17:00（16:30停止入馆）<br />周一闭馆（节假日除外，特殊情况将在本网站通知）</p>
+                <p><span>地址：</span>西安市灞桥区灞桥生态湿地公园柳雪路996号</p>
+                <p><span>电话：</span>029-83626699</p>
+            </div>
+        </div>
+        <div>
+            <p>陕ICP备</p>
+            <div>
+                <a href="">会员</a>
+                <a href="">联系我们</a>
+                <a href="">下载专区</a>
+            </div>
+            <img alt="右下角logo" />
+        </div>
+    </footer>
+
+</body>
+<script src="js/vue.js"></script>
+<script src="component/common.js"></script>
+<script src="js\reserch-collection.js"></script>
+</html>
