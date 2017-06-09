@@ -11,3 +11,154 @@ vCatalog.catas = [
             0
         ]
     ];
+
+let vCatholic = new Vue({
+    el: ".catholic_activities",
+    data: {
+        list: [
+            ["公共教育呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+            ["公共教育呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+            ["公共教育呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+            ["公共教育呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+            ["公共教育呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+            ["公共教育呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+        ],
+        nPerPage: 8, // 每页显示10个
+        nPageIndex : 0, // 当前页码
+    },
+    computed: {
+        displayedItem(){
+            return this.list.slice(this.nPageIndex*this.nPerPage, (this.nPageIndex+1)*this.nPerPage);
+        },
+        pageNum(){
+            return Math.ceil((this.list.length)/this.nPerPage);
+        },
+    },
+    methods: {
+        switchpage(index){
+            this.nPageIndex = index;
+        }
+    },
+    components: {
+        "catholic-activity": {
+            props: ["liData"],
+            template: `<news-list>
+                    <h3 slot="title">{{liData[0]}}</h3>
+                    <img :src="liData[1]" slot="image" />
+                    <p slot="summary">{{liData[2]}}</p>
+                    <span slot="remark">{{liData[3]}}</span>
+                </news-list>`,
+        },
+        "list-pagination": {
+            props: ["pageIndex"],
+            template: `<li @click="clickPagination(pageIndex)">{{pageIndex+1}}</li>`,
+            methods: {
+                clickPagination(index){
+                    this.$emit("switchpagination", index);
+                },
+            },
+        },
+    },
+});
+
+let vCooperation = new Vue({
+    el: ".cooperation",
+    data: {
+        list: [
+            ["合作交流呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+            ["合作交流呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+            ["合作交流呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+            ["合作交流呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+            ["合作交流呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+            ["合作交流呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+        ],
+        nPerPage: 8, // 每页显示10个
+        nPageIndex : 0, // 当前页码
+    },
+    computed: {
+        displayedItem(){
+            return this.list.slice(this.nPageIndex*this.nPerPage, (this.nPageIndex+1)*this.nPerPage);
+        },
+        pageNum(){
+            return Math.ceil((this.list.length)/this.nPerPage);
+        },
+    },
+    methods: {
+        switchpage(index){
+            this.nPageIndex = index;
+        }
+    },
+    components: {
+        "cooperation-item": {
+            props: ["liData"],
+            template: `<news-list>
+                    <h3 slot="title">{{liData[0]}}</h3>
+                    <img :src="liData[1]" slot="image" />
+                    <p slot="summary">{{liData[2]}}</p>
+                    <span slot="remark">{{liData[3]}}</span>
+                </news-list>`,
+        },
+        "list-pagination": {
+            props: ["pageIndex"],
+            template: `<li @click="clickPagination(pageIndex)">{{pageIndex+1}}</li>`,
+            methods: {
+                clickPagination(index){
+                    this.$emit("switchpagination", index);
+                },
+            },
+        },
+    },
+});
+
+let vVolunteer = new Vue({
+    el: ".volunteer",
+    data: {
+        list: [
+            ["志愿者服务呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+            ["志愿者服务呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+            ["志愿者服务呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+            ["志愿者服务呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+            ["志愿者服务呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+            ["志愿者服务呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+            ["志愿者服务呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+            ["志愿者服务呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+            ["志愿者服务呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+            ["志愿者服务呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+        ],
+        nPerPage: 8, // 每页显示8个
+        nPageIndex : 0, // 当前页码
+    },
+    computed: {
+        displayedItem(){
+            return this.list.slice(this.nPageIndex*this.nPerPage, (this.nPageIndex+1)*this.nPerPage);
+        },
+        pageNum(){
+            return Math.ceil((this.list.length)/this.nPerPage);
+        },
+    },
+    methods: {
+        switchpage(index){
+            this.nPageIndex = index;
+        }
+    },
+    components: {
+        "volunteer-item": {
+            props: ["liData"],
+            template: `<news-list>
+                    <h3 slot="title">{{liData[0]}}</h3>
+                    <img :src="liData[1]" slot="image" />
+                    <p slot="summary">{{liData[2]}}</p>
+                    <span slot="remark">{{liData[3]}}</span>
+                </news-list>`,
+        },
+        "list-pagination": {
+            props: ["pageIndex"],
+            template: `<li @click="clickPagination(pageIndex)">{{pageIndex+1}}</li>`,
+            methods: {
+                clickPagination(index){
+                    this.$emit("switchpagination", index);
+                },
+            },
+        },
+    },
+});

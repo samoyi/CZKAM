@@ -18,3 +18,54 @@ vCatalog.catas = [
             1
         ]
     ];
+
+
+let vActivity = new Vue({
+    el: ".activity",
+    data: {
+        list: [
+            ["学术活动", "", "学术活动描述……", "2016年11月13日", 1],
+            ["学术活动", "", "学术活动描述……", "2016年11月13日", 2],
+            ["学术活动", "", "学术活动描述……", "2016年11月13日", 3],
+            ["学术活动", "", "学术活动描述……", "2016年11月13日", 4],
+            ["学术活动", "", "学术活动描述……", "2016年11月13日", 5],
+            ["学术活动", "", "学术活动描述……", "2016年11月13日", 6],
+        ],
+        nPerPage: 8, // 每页显示10个
+        nPageIndex : 0, // 当前页码
+    },
+    computed: {
+        displayedItem(){
+            return this.list.slice(this.nPageIndex*this.nPerPage, (this.nPageIndex+1)*this.nPerPage);
+        },
+        pageNum(){
+            return Math.ceil((this.list.length)/this.nPerPage);
+        },
+    },
+    methods: {
+        switchpage(index){
+            this.nPageIndex = index;
+        }
+    },
+    components: {
+        "activity-item": {
+            props: ["liData"],
+            template: `<news-list>
+                    <h3 slot="title">{{liData[0]}}</h3>
+                    <img :src="liData[1]" slot="image" alt="学术活动图片" />
+                    <p slot="summary">{{liData[2]}}</p>
+                    <span slot="remark">{{liData[3]}}</span>
+                    <a :link="liData[4]">more</a>
+                </news-list>`,
+        },
+        "list-pagination": {
+            props: ["pageIndex"],
+            template: `<li @click="clickPagination(pageIndex)">{{pageIndex+1}}</li>`,
+            methods: {
+                clickPagination(index){
+                    this.$emit("switchpagination", index);
+                },
+            },
+        },
+    },
+});

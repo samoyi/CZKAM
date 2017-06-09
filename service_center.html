@@ -29,12 +29,25 @@
             <section>
                 <section class="notice">
                     <h2>公告<span>NOTICE</span></h2>
+                    <ul>
+                        <notice-item v-for="item in displayedItem" :li-data="item"></notice-item>
+                    </ul>
+                    <ul v-if="list.length>10" class="pagination">
+                        <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
+                        <!-- TODO VUE定义类不能用连字符？ <list-pagination v-for="n in pageNum" :page-index="n"  :class="{current-li:1}"></list-pagination> -->
+                    </ul>
                 </section>
                 <section class="member">
                     <h2>会员<span>MEMBER</span></h2>
                 </section>
                 <section class="download">
                     <h2>下载专区<span>DOWNLOAD</span></h2>
+                    <ul>
+                        <notice-item v-for="item in displayedItem" :li-data="item"></notice-item>
+                    </ul>
+                    <ul v-if="list.length>10" class="pagination">
+                        <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
+                    </ul>
                 </section>
                 <section class="visit">
                     <h2>参观导览<span>VISIT</span></h2>

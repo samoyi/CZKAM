@@ -87,17 +87,19 @@ setInterval(function(){
 
 // 文章列表类的模板
 /*
- * 有一个标题或没有
- * 有一个图片或没有
- * 有一个摘要信息或没有
- * 有一个备注（例如日期、作者）或没有
+ * 有一个title或没有
+ * 有一个image或没有
+ * 有一个summary或没有
+ * 有一个remark（例如日期、作者）或没有
  */
-let newList({
-    template: `
-        <ul>
-            <li>
-
-            </li>
-        </ul>
-    `;
-});
+ Vue.component("news-list", {
+     template: `
+         <li>
+             <slot name="title"></slot>
+             <slot name="image"></slot>
+             <slot name="summary"></slot>
+             <slot name="remark"></slot>
+             <slot></slot>
+         </li>
+     `,
+ });

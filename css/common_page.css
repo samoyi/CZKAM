@@ -9,3 +9,7 @@
     display: none; }
     .common-middle .content > section:first-child > section:first-child {
       display: block; }
+.common-middle .content .pagination li {
+  border: 1px solid gray; }
+.common-middle .content .pagination .currentLi {
+  border: none; }

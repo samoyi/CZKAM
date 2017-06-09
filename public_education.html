@@ -28,12 +28,30 @@
             <section>
                 <section class="catholic_activities">
                     <h2>公教活动<span>CATHOLIC ACTIVITIES</span></h2>
+                    <ul>
+                        <catholic-activity v-for="item in displayedItem" :li-data="item"></catholic-activity>
+                    </ul>
+                    <ul v-if="list.length>nPerPage" class="pagination">
+                        <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
+                    </ul>
                 </section>
-                <section class="treatise">
-                    <h2>合作交流<span>cooperation</span></h2>
+                <section class="cooperation">
+                    <h2>合作交流<span>COOPERATION</span></h2>
+                    <ul>
+                        <cooperation-item v-for="item in displayedItem" :li-data="item"></cooperation-item>
+                    </ul>
+                    <ul v-if="list.length>nPerPage" class="pagination">
+                        <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
+                    </ul>
                 </section>
-                <section class="activity">
-                    <h2>志愿者服务<span>volunteer</span></h2>
+                <section class="volunteer">
+                    <h2>志愿者服务<span>VOLUNTEER</span></h2>
+                    <ul>
+                        <volunteer-item v-for="item in displayedItem" :li-data="item"></volunteer-item>
+                    </ul>
+                    <ul v-if="list.length>nPerPage" class="pagination">
+                        <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
+                    </ul>
                 </section>
             </section>
         </section>
