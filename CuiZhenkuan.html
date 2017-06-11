@@ -51,16 +51,28 @@
                 </section>
                 <section class="works">
                     <h2>作品<span>WORKS</span></h2>
+                    <ul>
+                        <work-item v-for="item in displayedItem" :work-data="item"></work-item>
+                    </ul>
+                    <ul v-if="list.length>nPerPage" class="pagination">
+                        <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
+                    </ul>
                 </section>
                 <section class="treatise">
                     <h2>艺术论著<span>TREATISE</span></h2>
+                    <ul>
+                        <treatise-item v-for="item in displayedItem" :li-data="item"></treatise-item>
+                    </ul>
+                    <ul v-if="list.length>nPerPage" class="pagination">
+                        <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
+                    </ul>
                 </section>
                 <section class="activity">
                     <h2>艺术活动<span>ACTIVITY</span></h2>
                     <ul>
                         <activity-item v-for="item in displayedItem" :li-data="item"></activity-item>
                     </ul>
-                    <ul v-if="list.length>10" class="pagination">
+                    <ul v-if="list.length>nPerPage" class="pagination">
                         <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
                     </ul>
                 </section>

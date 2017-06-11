@@ -35,7 +35,7 @@
                     <ul>
                         <activity-item v-for="item in displayedItem" :li-data="item"></activity-item>
                     </ul>
-                    <ul v-if="list.length>10" class="pagination">
+                    <ul v-if="list.length>nPerPage" class="pagination">
                         <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
                     </ul>
                 </section>

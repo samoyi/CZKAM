@@ -32,7 +32,7 @@
                     <ul>
                         <notice-item v-for="item in displayedItem" :li-data="item"></notice-item>
                     </ul>
-                    <ul v-if="list.length>10" class="pagination">
+                    <ul v-if="list.length>nPerPage" class="pagination">
                         <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
                         <!-- TODO VUE定义类不能用连字符？ <list-pagination v-for="n in pageNum" :page-index="n"  :class="{current-li:1}"></list-pagination> -->
                     </ul>
@@ -45,7 +45,7 @@
                     <ul>
                         <notice-item v-for="item in displayedItem" :li-data="item"></notice-item>
                     </ul>
-                    <ul v-if="list.length>10" class="pagination">
+                    <ul v-if="list.length>nPerPage" class="pagination">
                         <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
                     </ul>
                 </section>
