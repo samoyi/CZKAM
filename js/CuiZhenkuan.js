@@ -7,7 +7,7 @@ vCatalog.catas = [
             {title_c: ""},
             {title_e: ""},
             {cata_c: ["崔振宽简介", "艺术年表", "作品", "艺术论著", "艺术活动", "艺术影响"]},
-            {cata_e: ["INTRODUCE", "CHRONOLOGY", "WORKS", "TREATISE", "ACTIVITY", "IMAGE"]},
+            {cata_e: ["CUI ZHENKUAN", "ART CHRONOLOGY", "WORKS", "TREATISE", "ACTIVITY", "VIDEO"]},
             0
         ]
     ];
@@ -28,7 +28,7 @@ let vTreatise = new Vue({
             ["", "崔振宽", "2016年"],
             ["", "崔振宽", "2016年"],
         ],
-        nPerPage: 6, // 每页显示10个
+        nPerPage: 4, // 每页显示10个
         nPageIndex : 0, // 当前页码
     },
     computed: {
@@ -66,13 +66,15 @@ let vTreatise = new Vue({
 });
 
 
-let vWork = new Vue({
+let vWorks = new Vue({
     el: ".works",
     data: {
         list: [
             ["", "", "", "", ""],
         ],
         lists: {},
+        catas: ["jiaomo" , "shuimo", "xiaopin", "xiesheng"],
+        catas_c: ["焦墨", "水墨", "小品", "写生"],
         nPerPage: 6, // 每页显示10个
         nPageIndex : 0, // 当前页码
     },
@@ -90,19 +92,34 @@ let vWork = new Vue({
     methods: {
         switchpage(index){
             this.nPageIndex = index;
-        }
+        },
+        switchworks(index){
+            // console.log(this.list);
+            // console.log(cata_c.lists[index]);
+            this.list = this.lists[this.catas[index]];
+        },
     },
     components: {
-        "work-item": {
-            props: ["workData"],
+        "works-item": {
+            props: ["worksData"],
             template: `
-            <li>
-                <div><img :src="workData[0]" :alt="workData[1] />"</div>
-                <p>作品名称：{{workData[1]}}</p>
-                <p>尺寸：{{workData[2]}}</p>
-                <p>时间：{{workData[3]}}</p>
-                <p>作者：{{workData[4]}}</p>
-            </li>`,
+                <li>
+                    <div><img :src="worksData[0]" :alt="worksData[1] />"</div>
+                    <p>作品名称：{{worksData[1]}}</p>
+                    <p>尺寸：{{worksData[2]}}</p>
+                    <p>时间：{{worksData[3]}}</p>
+                    <p>作者：{{worksData[4]}}</p>
+                </li>`,
+        },
+        "works-cata": {
+            props: ["cata_c"],
+            template: `<li @click="clickCata(cata_c)">{{cata_c}}</li>`,
+            methods: {
+                clickCata(cata){
+                    console.log( this.$parent.catas_c.indexOf(cata) );
+                    this.$emit("switchcata", this.$parent.catas_c.indexOf(cata));
+                },
+            },
         },
         "list-pagination": {
             props: ["pageIndex"],
@@ -116,7 +133,7 @@ let vWork = new Vue({
     },
 });
 // 加载作品数据
-vWork.lists = {
+vWorks.lists = {
     "jiaomo": [
         ["", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
         ["", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
@@ -159,13 +176,6 @@ vWork.lists = {
         ["", "小品作品名称", "158cm x 362cm", "2016年", "崔振宽"],
         ["", "小品作品名称", "158cm x 362cm", "2016年", "崔振宽"],
         ["", "小品作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "小品作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "小品作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "小品作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "小品作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "小品作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "小品作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "小品作品名称", "158cm x 362cm", "2016年", "崔振宽"],
     ],
     "xiesheng": [
         ["", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
@@ -181,11 +191,11 @@ vWork.lists = {
         ["", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
     ],
 };
-vWork.list = vWork.lists.jiaomo;
+vWorks.list = vWorks.lists.jiaomo;
 
 
 
-let vActivity = new Vue({
+let vAcademicActivity = new Vue({
     el: ".activity",
     data: {
         list: [

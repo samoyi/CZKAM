@@ -27,11 +27,11 @@
         </div>
         <section class="content">
             <section>
-                <section class="committee">
-                    <h2>学术委员会<span>COMMITTEE</span></h2>
+                <section class="academic_committee">
+                    <h2>学术委员会<span>ACADEMIC COMMITTEE</span></h2>
                 </section>
-                <section class="activity">
-                    <h2>学术活动<span>ACTIVITY</span></h2>
+                <section class="academic_events">
+                    <h2>学术活动<span>ACADEMIC EVENTS</span></h2>
                     <ul>
                         <activity-item v-for="item in displayedItem" :li-data="item"></activity-item>
                     </ul>
@@ -41,8 +41,8 @@
                 </section>
             </section>
             <section>
-                <section class="historical_relics">
-                    <h2>历史文物<span>HISTORICAL RELICS</span></h2>
+                <section class="relics">
+                    <h2>历史文物<span>RELICS</span></h2>
                 </section>
                 <section class="Chinese_painting">
                     <h2>国画<span>CHINESE PAINTING</span></h2>
@@ -62,11 +62,11 @@
                 <section class="photography">
                     <h2>摄影<span>PHOTOGRAPHY</span></h2>
                 </section>
-                <section class="multimedia_image">
-                    <h2>多媒体影像<span>MULTIMEDIA IMAGE</span></h2>
+                <section class="multimedia">
+                    <h2>多媒体影像<span>MULTIMEDIA</span></h2>
                 </section>
-                <section class="other">
-                    <h2>其他<span>OTHER</span></h2>
+                <section class="others">
+                    <h2>其他<span>OTHERS</span></h2>
                 </section>
             </section>
         </section>
@@ -74,16 +74,13 @@
 
     <footer>
         <div>
-            <div id="footer-tab">
-                <h2>公告 NOTICE</h2>
-                <footer-tab :tab="getTab"></footer-tab>
+            <div id="bulletin-tab">
+                <h2>公告 BULLETIN</h2>
+                <bulletin-tab :tab="getTab"></BULLETIN-tab>
                 <span>more</span>
             </div>
-            <div>
-                <h2>美术馆 ART GALLERY</h2>
-                <p><span>开放时间：</span>周二至周日 9:30--17:00（16:30停止入馆）<br />周一闭馆（节假日除外，特殊情况将在本网站通知）</p>
-                <p><span>地址：</span>西安市灞桥区灞桥生态湿地公园柳雪路996号</p>
-                <p><span>电话：</span>029-83626699</p>
+            <div id="gallery_base_info">
+                <gallery-base-info></gallery-base-info>
             </div>
         </div>
         <div>

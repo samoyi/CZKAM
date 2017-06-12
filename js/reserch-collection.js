@@ -7,21 +7,21 @@ vCatalog.catas = [
             {title_c: "学术研究"},
             {title_e: "RESERCH"},
             {cata_c: ["学术委员会", "学术活动"]},
-            {cata_e: ["COMMITTEE", "ACTIVITY"]},
+            {cata_e: ["ACADEMIC COMMITTEE", "ACADEMIC EVENTS"]},
             0
         ],
         [
             {title_c: "馆藏"},
             {title_e: "COLLECTION"},
             {cata_c: ["历史文物", "国画", "油画", "版画", "雕塑", "装置", "摄影", "多媒体影像", "其他"]},
-            {cata_e: ["HISTORICAL RELICS", "CHINESE PAINTING", "OLI PAINTING", "PRINT", "SCULPTURE", "DEVICE", "PHOTOGRAPHY", "MULTIMEDIA IMAGE", "OTHER"]},
+            {cata_e: ["RELICS", "CHINESE PAINTING", "OLI PAINTING", "PRINT", "SCULPTURE", "DEVICE", "PHOTOGRAPHY", "MULTIMEDIA", "OTHERS"]},
             1
         ]
     ];
 
 
-let vActivity = new Vue({
-    el: ".activity",
+let vAcademicActivity = new Vue({
+    el: ".academic_events",
     data: {
         list: [
             ["学术活动", "", "学术活动描述……", "2016年11月13日", 1],

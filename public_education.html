@@ -16,7 +16,7 @@
             <li>公共教育<span>PUBLIC EDUCATION</span></li>
             <li>学术研究·馆藏<span>RESERCH·COLLECTION</span></li>
             <li>画廊·衍生品<span>GALLERY·DERIVATIVES</span></li>
-            <li>服务中心<span>SERVICE CENTER5</span></li>
+            <li>服务中心<span>SERVICE CENTER</span></li>
         </ul>
     </header>
     <section id="public_education-middle" class="common-middle">
@@ -26,28 +26,28 @@
         </div>
         <section class="content">
             <section>
-                <section class="catholic_activities">
-                    <h2>公教活动<span>CATHOLIC ACTIVITIES</span></h2>
+                <section class="activities">
+                    <h2>公教活动<span>ACTIVITIES</span></h2>
                     <ul>
-                        <catholic-activity v-for="item in displayedItem" :li-data="item"></catholic-activity>
+                        <public-activity v-for="item in displayedItem" :li-data="item"></public-activity>
                     </ul>
                     <ul v-if="list.length>nPerPage" class="pagination">
                         <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
                     </ul>
                 </section>
-                <section class="cooperation">
-                    <h2>合作交流<span>COOPERATION</span></h2>
+                <section class="exchanges">
+                    <h2>合作交流<span>EXCHANGES</span></h2>
                     <ul>
-                        <cooperation-item v-for="item in displayedItem" :li-data="item"></cooperation-item>
+                        <exchanges-item v-for="item in displayedItem" :li-data="item"></exchanges-item>
                     </ul>
                     <ul v-if="list.length>nPerPage" class="pagination">
                         <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
                     </ul>
                 </section>
-                <section class="volunteer">
-                    <h2>志愿者服务<span>VOLUNTEER</span></h2>
+                <section class="volunteering">
+                    <h2>志愿者服务<span>VOLUNTEERING</span></h2>
                     <ul>
-                        <volunteer-item v-for="item in displayedItem" :li-data="item"></volunteer-item>
+                        <volunteering-item v-for="item in displayedItem" :li-data="item"></volunteering-item>
                     </ul>
                     <ul v-if="list.length>nPerPage" class="pagination">
                         <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
@@ -59,16 +59,13 @@
 
     <footer>
         <div>
-            <div id="footer-tab">
-                <h2>公告 NOTICE</h2>
-                <footer-tab :tab="getTab"></footer-tab>
+            <div id="bulletin-tab">
+                <h2>公告 BULLETIN</h2>
+                <bulletin-tab :tab="getTab"></BULLETIN-tab>
                 <span>more</span>
             </div>
-            <div>
-                <h2>美术馆 ART GALLERY</h2>
-                <p><span>开放时间：</span>周二至周日 9:30--17:00（16:30停止入馆）<br />周一闭馆（节假日除外，特殊情况将在本网站通知）</p>
-                <p><span>地址：</span>西安市灞桥区灞桥生态湿地公园柳雪路996号</p>
-                <p><span>电话：</span>029-83626699</p>
+            <div id="gallery_base_info">
+                <gallery-base-info></gallery-base-info>
             </div>
         </div>
         <div>

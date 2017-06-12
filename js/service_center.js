@@ -7,7 +7,7 @@ vCatalog.catas = [
             {title_c: ""},
             {title_e: ""},
             {cata_c: ["公告", "会员", "下载专区", "参观导览", "意见留言"]},
-            {cata_e: ["NOTICE", "MEMBER", "DOWNLOAD", "VISIT", "MESSAGE"]},
+            {cata_e: ["bulletin", "MEMBER SHIP", "DOWNLOAD", "GUIDE", "COMMENTS"]},
             0
         ]
     ];
@@ -15,8 +15,8 @@ vCatalog.catas = [
 
 
 
-let vNotice = new Vue({
-    el: ".notice",
+let vBulletin = new Vue({
+    el: ".bulletin",
     data: {
         list: [
             ["公告呵呵呵1", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
@@ -72,7 +72,7 @@ let vNotice = new Vue({
         }
     },
     components: {
-        "notice-item": {
+        "bulletin-item": {
             props: ["liData"],
             template: `<news-list>
                     <h3 slot="title">{{liData[0]}}</h3>
@@ -124,7 +124,7 @@ let vDownload = new Vue({
         }
     },
     components: {
-        "notice-item": {
+        "bulletin-item": {
             props: ["liData"],
             template: `<news-list>
                     <h3 slot="title">{{liData[0]}}</h3>

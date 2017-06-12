@@ -19,37 +19,19 @@
             <li>服务中心<span>SERVICE CENTER5</span></li>
         </ul>
     </header>
-    <section id="exhibition-middle" class="common-middle">
-        <div  id="catalog" class="catalog">
-            <h2>{{title[0]}}<span>{{title[1]}}</span></h2>
-            <cata @display_content="display" v-for="cata in catas" :cata="cata"></cata>
+    <section id="content">
+        <div id="bulletin-tab">
+            <h2>公告 BULLETIN</h2>
+            <bulletin-tab :tab="getTab">
+                <img alt="首页公告图片" />
+            </BULLETIN-tab>
+            <span>more</span>
         </div>
-        <section class="content">
-            <section>
-                <section class="permanent exhibition">
-                    <h2>展览预告<span>UPCOMING EXHIBTION</span></h2>
-                </section>
-                <section class="permanent exhibition">
-                    <h2>常设展览<span>PERMANENT EXHIBTION</span></h2>
-                </section>
-                <section class="activity">
-                    <h2>在线展览<span>ON-LINE</span></h2>
-                </section>
-            </section>
-        </section>
+        <div id="gallery_base_info">
+            <gallery-base-info></gallery-base-info>
+        </div>
     </section>
-
     <footer>
-        <div>
-            <div id="bulletin-tab">
-                <h2>公告 BULLETIN</h2>
-                <bulletin-tab :tab="getTab"></BULLETIN-tab>
-                <span>more</span>
-            </div>
-            <div id="gallery_base_info">
-                <gallery-base-info></gallery-base-info>
-            </div>
-        </div>
         <div>
             <p>陕ICP备</p>
             <div>
@@ -60,9 +42,7 @@
             <img alt="右下角logo" />
         </div>
     </footer>
-
 </body>
 <script src="js/vue.js"></script>
 <script src="component/common.js"></script>
-<script src="js/exhibition.js"></script>
 </html>

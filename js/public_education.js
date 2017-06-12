@@ -7,13 +7,13 @@ vCatalog.catas = [
             {title_c: ""},
             {title_e: ""},
             {cata_c: ["公教活动", "合作交流", "志愿者服务"]},
-            {cata_e: ["CATHOLIC ACTIVITIES", "COOPERATION", "VOLUNTEER"]},
+            {cata_e: ["ACTIVITIES", "EXCHANGES", "VOLUNTEERING"]},
             0
         ]
     ];
 
-let vCatholic = new Vue({
-    el: ".catholic_activities",
+let vActivities = new Vue({
+    el: ".activities",
     data: {
         list: [
             ["公共教育呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
@@ -40,7 +40,7 @@ let vCatholic = new Vue({
         }
     },
     components: {
-        "catholic-activity": {
+        "public-activity": {
             props: ["liData"],
             template: `<news-list>
                     <h3 slot="title">{{liData[0]}}</h3>
@@ -61,8 +61,8 @@ let vCatholic = new Vue({
     },
 });
 
-let vCooperation = new Vue({
-    el: ".cooperation",
+let vExchanges = new Vue({
+    el: ".exchanges",
     data: {
         list: [
             ["合作交流呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
@@ -89,7 +89,7 @@ let vCooperation = new Vue({
         }
     },
     components: {
-        "cooperation-item": {
+        "exchanges-item": {
             props: ["liData"],
             template: `<news-list>
                     <h3 slot="title">{{liData[0]}}</h3>
@@ -110,8 +110,8 @@ let vCooperation = new Vue({
     },
 });
 
-let vVolunteer = new Vue({
-    el: ".volunteer",
+let vVolunteering = new Vue({
+    el: ".volunteering",
     data: {
         list: [
             ["志愿者服务呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
@@ -142,7 +142,7 @@ let vVolunteer = new Vue({
         }
     },
     components: {
-        "volunteer-item": {
+        "volunteering-item": {
             props: ["liData"],
             template: `<news-list>
                     <h3 slot="title">{{liData[0]}}</h3>

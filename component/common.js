@@ -1,57 +1,70 @@
 ;"use strict";
 
-
-let vCatalog = new Vue({
-    components: {
-        "cata": {
-            props: ["cata"],
-            template: `<div>
-                            <h3>{{cata[0].title_c}}<span>{{cata[1].title_e}}</span></h3>
-                            <ul>
-                                <li @click="clickCata(cata[4], index)" v-for='(item,index) in cata[2].cata_c'>{{item}}<span>{{cata[3].cata_e[index]}}</span></li>
-                            </ul>
-                        </div>`,
-            methods: {
-                clickCata(cataIndex, index){
-                    this.$emit( "display_content", cataIndex, index );
+let vCatalog = null;
+if( document.querySelector("#catalog") ){ // 首页没有
+    vCatalog = new Vue({
+        components: {
+            "cata": {
+                props: ["cata"],
+                template: `<div>
+                                <h3>{{cata[0].title_c}}<span>{{cata[1].title_e}}</span></h3>
+                                <ul>
+                                    <li @click="clickCata(cata[4], index)" v-for='(item,index) in cata[2].cata_c'>{{item}}<span>{{cata[3].cata_e[index]}}</span></li>
+                                </ul>
+                            </div>`,
+                methods: {
+                    clickCata(cataIndex, index){
+                        this.$emit( "display_content", cataIndex, index );
+                    },
                 },
             },
         },
-    },
-    el: "#catalog",
-    data:{
-        title: [],
-        catas: [],
-    },
-    methods: {
-        display(cataIndex, index){
-            let catas = document.querySelectorAll(".common-middle .content>section"),
-                catas_len = catas.length;
-            for(let i=0; i<catas_len; i++){
-                let items = catas[i].children,
-                    items_len = items.length;
-                for(let j=0; j<items_len; j++ ){
-                    if( i===cataIndex && j===index ){
-                        items[j].style.display = "block";
-                    }
-                    else{
-                        items[j].style.display = "none";
+        el: "#catalog",
+        data:{
+            title: [],
+            catas: [],
+        },
+        methods: {
+            display(cataIndex, index){
+                let catas = document.querySelectorAll(".common-middle .content>section"),
+                    catas_len = catas.length;
+                for(let i=0; i<catas_len; i++){
+                    let items = catas[i].children,
+                        items_len = items.length;
+                    for(let j=0; j<items_len; j++ ){
+                        if( i===cataIndex && j===index ){
+                            items[j].style.display = "block";
+                        }
+                        else{
+                            items[j].style.display = "none";
+                        }
                     }
                 }
+                location.hash = ((this.catas)[cataIndex][2].cata_c)[index];
             }
-        }
-    },
-});
+        },
+        updated(){
+            location.hash = ((this.catas)[0][2].cata_c)[0];
+        },
+    });
+}
 
 
-let vNoticeTab = new Vue({
+
+let vBulletinTab = new Vue({
     components: {
-        "footer-tab": {
+        "bulletin-tab": {
             props: ["tab"],
-            template: "<div><h3>{{tab[0]}}</h3><p>{{tab[1]}}</p><p>{{tab[2]}}</p></div>",
+            template: `
+                <div>
+                    <h3>{{tab[0]}}</h3>
+                    <p>{{tab[1]}}</p>
+                    <p>{{tab[2]}}</p>
+                    <slot></slot>
+                </div>`,
         },
     },
-    el: "#footer-tab",
+    el: "#bulletin-tab",
     data: {
         tabs: [],
         index: 0,
@@ -73,16 +86,34 @@ let vNoticeTab = new Vue({
     }
 });
 // 之后将要从后台接收到的数据
-vNoticeTab.tabs = [
+vBulletinTab.tabs = [
     ["公告标题1", "公告内容1", "2015"],
     ["公告标题2", "公告内容2", "2016"],
     ["公告标题3", "公告内容3", "2017"]
 ];
 // 轮播
 setInterval(function(){
-    vNoticeTab.index = (vNoticeTab.index+1) % 3;
+    vBulletinTab.index = (vBulletinTab.index+1) % 3;
 }, 1000);
 
+
+
+new Vue({
+    el: "#gallery_base_info",
+    components: {
+        "gallery-base-info": {
+            // FIXME 这里不得已而加了一个没有用处的根元素，在HTML多出了一个没用div节点
+            template: `
+                <div>
+                    <h2>美术馆 ART GALLERY</h2>
+                    <p><span>开放时间：</span>周二至周日 9:30--17:00（16:30停止入馆）<br />周一闭馆（节假日除外，特殊情况将在本网站通知）</p>
+                    <p><span>地址：</span>西安市灞桥区灞桥生态湿地公园柳雪路996号</p>
+                    <p><span>电话：</span>029-83626699</p>
+                </div>
+            `,
+        }
+    },
+});
 
 
 // 文章列表类的模板
