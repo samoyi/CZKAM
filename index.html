@@ -20,11 +20,24 @@
         </ul>
     </header>
     <section id="content">
+        <div id="carousel-tab">
+            <carousel-tab :tab="carouselGetTab"></carousel-tab>
+        </div>
+        <div id="exhibition-tab">
+            <h2>展览 EXHIBITION</h2>
+            <exhibition-tab :tab="exhibitionGetTab"></exhibition-tab>
+            <span>more</span>
+        </div>
+        <div id="public_education-tab">
+            <h2>公共教育 PUBLIC EDUCATION</h2>
+            <public_education-tab :tab="publicEducationGetTab"></public_education-tab>
+            <span>more</span>
+        </div>
         <div id="bulletin-tab">
             <h2>公告 BULLETIN</h2>
             <bulletin-tab :tab="getTab">
                 <img alt="首页公告图片" />
-            </BULLETIN-tab>
+            </bulletin-tab>
             <span>more</span>
         </div>
         <div id="gallery_base_info">
@@ -44,5 +57,6 @@
     </footer>
 </body>
 <script src="js/vue.js"></script>
-<script src="component/common.js"></script>
+<script src="component/common.component.js"></script>
+<script src="component/index.component.js"></script>
 </html>
