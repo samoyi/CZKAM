@@ -8,16 +8,19 @@
 </head>
 <body>
     <header id="common-header">
-        <img alt="左上角logo" />
-        <ul>
-            <li>关于我们<span>ABOUT US</span></li>
-            <li>崔振宽艺术<span>CUIZHENKUAN ART</span></li>
-            <li>展览<span>EXHIBITION</span></li>
-            <li>公共教育<span>PUBLIC EDUCATION</span></li>
-            <li>学术研究·馆藏<span>RESERCH·COLLECTION</span></li>
-            <li>画廊·衍生品<span>GALLERY·DERIVATIVES</span></li>
-            <li>服务中心<span>SERVICE CENTER5</span></li>
-        </ul>
+        <header-template></header-template>
+        <!-- <div>
+            <img alt="左上角logo" />
+            <ul class="menu">
+                <li>关于我们<span>ABOUT US</span></li>
+                <li>崔振宽艺术<span>CUIZHENKUAN ART</span></li>
+                <li>展览<span>EXHIBITION</span></li>
+                <li>公共教育<span>PUBLIC EDUCATION</span></li>
+                <li>学术研究·馆藏<span>RESERCH·COLLECTION</span></li>
+                <li>画廊·衍生品<span>GALLERY·DERIVATIVES</span></li>
+                <li>服务中心<span>SERVICE CENTER5</span></li>
+            </ul>
+        </div> -->
     </header>
 
     <section id="service_center-middle" class="common-middle">
@@ -57,28 +60,11 @@
                 </section>
             </section>
         </section>
+        <div style="clear:both;"></div>
     </section>
 
-    <footer>
-        <div>
-            <div id="bulletin-tab">
-                <h2>公告 BULLETIN</h2>
-                <bulletin-tab :tab="getTab"></bulletin-tab>
-                <span>more</span>
-            </div>
-            <div id="gallery_base_info">
-                <gallery-base-info></gallery-base-info>
-            </div>
-        </div>
-        <div>
-            <p>陕ICP备</p>
-            <div>
-                <a href="">会员</a>
-                <a href="">联系我们</a>
-                <a href="">下载专区</a>
-            </div>
-            <img alt="右下角logo" />
-        </div>
+    <footer id="common-footer">
+        <common-footer></common-footer>
     </footer>
 
 </body>

@@ -1,16 +1,48 @@
-$HEADER_WIDTH: 100%;
-$HEADER_CONTENT_WIDTH_1920: 1780px;
-$HEADER_CONTENT_WIDTH_1366: 1226px;
 
-$MIDDLE_WIDTH: 980px;
+//reset
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, hr, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video{margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline;}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display: block;}
+body {line-height: 1;}
+ol, ul {list-style: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after, q:before, q:after {content: ''; content: none; }
+table { border-collapse: collapse; border-spacing: 0; }
+/*v2.0 over*/
+
+
+
+// size
+$HEADER_WIDTH: 100%;
+$HEADER_HEIGHT: 163px;
+$HEADER_MENU_FONT_SIZE: 14px;
+$HEADER_CONTENT_WIDTH_1366: 1226px;
+$HEADER_CONTENT_WIDTH_1920: 1780px;
+
+$MIDDLE_WIDTH: 1226px;
 $MIDDLE_CATALOG_WIDTH: 182px;
 $MIDDLE_CONTENT_WIDTH: $MIDDLE_WIDTH - $MIDDLE_CATALOG_WIDTH;
+$ARTICLE_FONT_SIZE: 12px;
 $ARTICLE_IMAGE_WIDTH: 530px;
 
 $FOOTER_WIDTH_1920: 1780px;
 $FOOTER_WIDTH_1366: 1226px;
 $FOOTER_CONTENT_WIDTH: 1226px;
+$FOOTER_H2_FONT_SIZE: 14px;
+$FOOTER_FONT_SIZE: 12px;
 
-.articalImg{
-    width: 530px;
+
+// color
+$STANDARD_COLOR: #761301;
+$BASIC_BLACK: black;
+$BASIC_GRAY: #b3b3b3;
+
+
+// font
+body{
+    font-family: "Microsoft YaHei";
 }

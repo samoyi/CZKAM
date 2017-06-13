@@ -6,11 +6,31 @@ vCatalog.catas = [
         [
             {title_c: ""},
             {title_e: ""},
-            {cata_c: ["崔振宽简介", "艺术年表", "作品", "艺术论著", "艺术活动", "艺术影响"]},
+            {cata_c: ["崔振宽简介", "艺术年表", "作品", "艺术论著", "艺术活动", "艺术影像"]},
             {cata_e: ["CUI ZHENKUAN", "ART CHRONOLOGY", "WORKS", "TREATISE", "ACTIVITY", "VIDEO"]},
             0
         ]
     ];
+
+let vChronology = new Vue({
+    el: ".art_chronology",
+    components: {
+        "chronology-pic": {
+            props: ["src"],
+            template: `<img :src="src" alt="崔振宽艺术年表"/>`,
+        },
+    },
+    data: {
+        srcs: [
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/image/CuiZhenkuan/chronology/thumbnail/0.jpg",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/image/CuiZhenkuan/chronology/thumbnail/1.jpg",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/image/CuiZhenkuan/chronology/thumbnail/2.jpg",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/image/CuiZhenkuan/chronology/thumbnail/3.jpg",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/image/CuiZhenkuan/chronology/thumbnail/4.jpg",
+        ],
+    }
+});
+
 
 let vTreatise = new Vue({
     el: ".treatise",
@@ -247,4 +267,40 @@ let vAcademicActivity = new Vue({
             },
         },
     },
+});
+
+
+let vVideo = new Vue({
+    el: ".video",
+    components: {
+        "video-template": {
+            props: ["src", "title"],
+            template: `
+                <div>
+                    <video :src="src" width="270" height="180" controls="controls">
+                        你的浏览器版本过低
+                    </video>
+                    <h3>{{title}}</h3>
+                </div>
+                `,
+        },
+    },
+    data: {
+        srcs: [
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/resource/CuiZhenkuan/video/test.mp4",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/resource/CuiZhenkuan/video/test.mp4",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/resource/CuiZhenkuan/video/test.mp4",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/resource/CuiZhenkuan/video/test.mp4",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/resource/CuiZhenkuan/video/test.mp4",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/resource/CuiZhenkuan/video/test.mp4",
+        ],
+        titles: [
+            "构建美术馆在知识和当代艺术实践领域的专业性1",
+            "构建美术馆在知识和当代艺术实践领域的专业性2",
+            "构建美术馆在知识和当代艺术实践领域的专业性3",
+            "构建美术馆在知识和当代艺术实践领域的专业性4",
+            "构建美术馆在知识和当代艺术实践领域的专业性5",
+            "构建美术馆在知识和当代艺术实践领域的专业性6",
+        ],
+    }
 });

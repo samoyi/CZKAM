@@ -1,10 +1,108 @@
 
 @import "basic.scss";
+#common-header{
+    width: $HEADER_WIDTH; height: $HEADER_HEIGHT;
+    box-sizing: border-box;
+    border-bottom: 1px solid $BASIC_GRAY;
+    >div{
+        width: $HEADER_CONTENT_WIDTH_1366;
+        @media (min-width: 1920px){
+            width: $HEADER_CONTENT_WIDTH_1920;
+        }
+        height: 100%;
+        margin-left: auto; margin-right: auto;
+        #top_logo{
+            width: 232px; height: 46px;
+            position:relative; top:28px;
+            @media (min-width: 1920px){
+                width: 256px; height: 51px;
+                top:34px;
+            }
+        }
+        .menu{
+            li{
+                width: $HEADER_CONTENT_WIDTH_1366/7;
+                float: left;
+                position:relative; top:80px;
+                @media (min-width: 1920px){
+                    width: 150px;
+                    float: right;
+                    top:68px;
+                }
+                color: $BASIC_BLACK;
+                font-size: $HEADER_MENU_FONT_SIZE;
+                font-weight: bold;
+                span{
+                    color: $STANDARD_COLOR;
+                }
+            }
+        }
+    }
+}
 .common-middle{
+    width: $MIDDLE_WIDTH;
+    margin-left: auto; margin-right: auto;
+    padding-top: 65px; box-sizing: border-box;
+    #catalog{
+        width: $MIDDLE_CATALOG_WIDTH; float: left;
+        h2{
+            font-size: 18px;
+            font-weight: bold;
+            color: $STANDARD_COLOR;
+            span{
+                font-size: 12px;
+            }
+        }
+        >div{
+            color: $BASIC_BLACK;
+            margin-top: 22px;
+            h3{
+                font-size:14px;
+                span{
+                    font-size:12px;
+                    color: $BASIC_GRAY;
+                }
+            }
+            ul{
+                li{
+                    font-size:12px;
+                    box-sizing: border-box;
+                    padding-left: 1em;
+                    line-height: 16px;
+                    margin-top: 8px;
+                    span{
+                        font-size:10px;
+                        color: $BASIC_GRAY;
+                    }
+                }
+            }
+        }
+    }
     .content{
+        width: $MIDDLE_CONTENT_WIDTH; float: left;
+        line-height: 22px;
         >section{
             >section{
                 display: none;
+                font-size: $ARTICLE_FONT_SIZE;
+                color: $BASIC_BLACK;
+                h2{
+                    font-size: 16px;
+                    color: $BASIC_BLACK;
+                    span{
+                        font-size: 14px;
+                        color: $BASIC_GRAY;
+                    }
+                }
+                p{
+                    margin-top: 24px;
+                }
+                .articalImgP{
+                    text-align: center;
+                    .articalImg{
+                        width:$ARTICLE_IMAGE_WIDTH;
+                    }
+                }
             }
             &:first-child{
                 display: block;
@@ -26,4 +124,100 @@
             }
         }
     }
+}
+
+#common-footer{
+    width: $FOOTER_WIDTH_1366;
+    margin: 200px auto auto auto;
+    @media (min-width: 1920px){
+        width: $FOOTER_WIDTH_1920;
+    }
+    font-size: $FOOTER_FONT_SIZE;
+    >section{
+        .footer_up{
+            height: 230px; padding: 38px 0 38px 0;
+            box-sizing: border-box;
+            border-top: 1px solid $BASIC_GRAY;
+            border-bottom: 1px solid $BASIC_GRAY;
+            #bulletin-tab, #gallery_base_info{
+                float: left;
+                position: relative;
+                background-color: yellow;
+                h2{
+                    font-size: $FOOTER_H2_FONT_SIZE;
+                    font-weight: bold;
+                    color: $STANDARD_COLOR;
+                }
+                >div{
+                    font-size: 12px;
+                    p{
+                        color: $BASIC_GRAY;
+                    }
+                }
+                >span{
+                    font-weight: bold;
+                    color: $STANDARD_COLOR;
+                    font-size: 10px;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                }
+            }
+            #bulletin-tab{
+                width: 335px; height:158px;
+                >div{
+                    font-size: 12px;
+                    position: relative;
+                    top: 20px;
+                    h3{
+                        color: $BASIC_BLACK;
+                        margin-bottom: 12px;
+                    }
+                    .bulletin_content{
+                        line-height: 22px;
+                        margin-bottom: 24px;
+                    }
+                }
+            }
+            #gallery_base_info{
+                width: 365px; height:158px;
+                margin-left: 100px;
+                >div{
+                    p{
+                        line-height: 22px;
+                        margin-top: 16px;
+                        span{
+                            color: $BASIC_BLACK;
+                        }
+                    }
+                }
+            }
+            >img{
+                width: 95px; height:95px;
+                float: right; margin-right: 20px;
+            }
+        }
+        .footer_down{
+            position: relative;
+            $footer_down_height: 78px;
+            height: $footer_down_height;
+            >p, >div{
+                float: left;
+                line-height: $footer_down_height;
+            }
+            >div{
+                position: absolute;;
+                left: 780px;
+                line-height: $footer_down_height;
+            }
+            >img{
+                float: right;
+                $__height:30px;
+                width: 149px; height:$__height;
+                position: relative;
+                top: ($footer_down_height - $__height)/2;
+            }
+        }
+    }
+
 }

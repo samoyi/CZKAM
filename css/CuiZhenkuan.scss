@@ -1,0 +1,28 @@
+@import "basic.scss";
+.art_chronology{
+    >img{
+        width:100%;
+        margin-top: 24px;
+    }
+}
+
+.works{
+    .works_list{
+        >li{
+            >div{
+                width: 355px; height: 200px;
+                background-color: $BASIC_GRAY;
+            }
+        }
+    }
+}
+
+.video{
+    >div{
+        float: left;
+        margin-left: 92px;
+    }
+    div:nth-child(3n+2){
+        margin-left: 0;
+    }
+}
