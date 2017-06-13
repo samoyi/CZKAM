@@ -7,11 +7,37 @@
 }
 
 .works{
+    font-size: 12px;
+    .works_cata{
+        height: 22px;
+        margin-top: 16px;
+        li{
+            height: 22px;
+            float: left;
+            margin-right: 30px;
+            cursor: pointer;
+        }
+    }
     .works_list{
         >li{
-            >div{
+            margin-top: 24px;
+            .thumbnail{
+                float: left;
                 width: 355px; height: 200px;
-                background-color: $BASIC_GRAY;
+                background:{
+                    color: $BASIC_GRAY;
+                    repeat: no-repeat;
+                    size: contain;
+                    position: center;
+                }
+                cursor: pointer;
+            }
+            .info{
+                float: left;
+                margin-left: 34px;
+                span{
+                    color: $BASIC_GRAY;
+                }
             }
         }
     }

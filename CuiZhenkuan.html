@@ -17,7 +17,7 @@
         </div>
         <section class="content">
             <section>
-                <section class="cuizhenkuan">
+                <section class="article cuizhenkuan">
                     <h2>崔振宽简介  <span>CUI ZHENKUAN</span></h2>
                     <p>崔振宽，陕西长安人，1935年生于西安，1960年毕业于西安美术学院国画系，现为陕西省山水画研究会名誉主席、中国国家画院研究员、中国美术家协会会 员、陕西省美术家协会顾问、西安美术学院客座教授、陕西国画院画家、国家一级美术师。</p>
                     <p>Cui Zhenkuan, Shaanxi Changan people, born in Xi'an in 1935, 1960 graduated from the Chinese Painting Department of Xi'an Academy of Fine Arts, Shaanxi province is now the landscape painting Research Association honorary chairman, China researcher, member of National Academy of China Artists Association of Shaanxi Artists Association consultant, adjunct professor at the Xi'an Academy of Fine Arts, Shaanxi Academy of traditional Chinese painting painters, national artist.</p>
@@ -36,15 +36,17 @@
                 </section>
                 <section class="works">
                     <h2>作品  <span>WORKS</span></h2>
-                    <ul>
+                    <ul class="works_cata">
                         <works-cata v-for="item in catas_c" :cata_c="item" @switchcata="switchworks"></works-cata>
                     </ul>
                     <ul class="works_list">
                         <works-item v-for="item in displayedItem" :works-data="item"></works-item>
                     </ul>
-                    <ul v-if="list.length>nPerPage" class="pagination">
-                        <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
-                    </ul>
+                    <div class="pagination_wrapper"><!-- 为了让pagination水平居中，加了这一层 -->
+                        <ul v-if="list.length>nPerPage" class="pagination">
+                            <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
+                        </ul>
+                    </div>
                 </section>
                 <section class="treatise">
                     <h2>艺术论著  <span>TREATISE</span></h2>

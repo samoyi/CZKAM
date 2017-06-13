@@ -65,7 +65,8 @@ body {
       top: 80px;
       color: black;
       font-size: 14px;
-      font-weight: bold; }
+      font-weight: bold;
+      cursor: pointer; }
       @media (min-width: 1920px) {
         #common-header > div .menu li {
           width: 150px;
@@ -102,7 +103,8 @@ body {
         box-sizing: border-box;
         padding-left: 1em;
         line-height: 16px;
-        margin-top: 8px; }
+        margin-top: 8px;
+        cursor: pointer; }
         .common-middle #catalog > div ul li span {
           font-size: 10px;
           color: #b3b3b3; }
@@ -111,20 +113,21 @@ body {
     float: left;
     line-height: 22px; }
     .common-middle .content > section > section {
-      display: none;
+      display: none; }
+    .common-middle .content > section .article {
       font-size: 12px;
       color: black; }
-      .common-middle .content > section > section h2 {
+      .common-middle .content > section .article h2 {
         font-size: 16px;
         color: black; }
-        .common-middle .content > section > section h2 span {
+        .common-middle .content > section .article h2 span {
           font-size: 14px;
           color: #b3b3b3; }
-      .common-middle .content > section > section p {
+      .common-middle .content > section .article p {
         margin-top: 24px; }
-      .common-middle .content > section > section .articalImgP {
+      .common-middle .content > section .article .articalImgP {
         text-align: center; }
-        .common-middle .content > section > section .articalImgP .articalImg {
+        .common-middle .content > section .article .articalImgP .articalImg {
           width: 530px; }
     .common-middle .content > section:first-child {
       display: block; }
@@ -132,10 +135,24 @@ body {
         display: none; }
         .common-middle .content > section:first-child > section:first-child {
           display: block; }
-    .common-middle .content .pagination li {
-      border: 1px solid gray; }
-    .common-middle .content .pagination .currentLi {
-      border: none; }
+    .common-middle .content .pagination_wrapper {
+      text-align: center; }
+      .common-middle .content .pagination_wrapper .pagination {
+        margin-top: 90px;
+        display: inline-block; }
+        .common-middle .content .pagination_wrapper .pagination li {
+          border: 1px solid gray;
+          width: 34px;
+          line-height: 34px;
+          height: 34px;
+          box-sizing: border-box;
+          text-align: center;
+          border-radius: 5px;
+          cursor: pointer;
+          float: left;
+          margin-right: 10px; }
+        .common-middle .content .pagination_wrapper .pagination .currentLi {
+          border: none; }
 
 #common-footer {
   width: 1226px;

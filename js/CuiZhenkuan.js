@@ -22,11 +22,11 @@ let vChronology = new Vue({
     },
     data: {
         srcs: [
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/image/CuiZhenkuan/chronology/thumbnail/0.jpg",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/image/CuiZhenkuan/chronology/thumbnail/1.jpg",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/image/CuiZhenkuan/chronology/thumbnail/2.jpg",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/image/CuiZhenkuan/chronology/thumbnail/3.jpg",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/image/CuiZhenkuan/chronology/thumbnail/4.jpg",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/thumbnail/0.jpg",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/thumbnail/1.jpg",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/thumbnail/2.jpg",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/thumbnail/3.jpg",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/thumbnail/4.jpg",
         ],
     }
 });
@@ -114,8 +114,6 @@ let vWorks = new Vue({
             this.nPageIndex = index;
         },
         switchworks(index){
-            // console.log(this.list);
-            // console.log(cata_c.lists[index]);
             this.list = this.lists[this.catas[index]];
         },
     },
@@ -124,19 +122,28 @@ let vWorks = new Vue({
             props: ["worksData"],
             template: `
                 <li>
-                    <div><img :src="worksData[0]" :alt="worksData[1] />"</div>
-                    <p>作品名称：{{worksData[1]}}</p>
-                    <p>尺寸：{{worksData[2]}}</p>
-                    <p>时间：{{worksData[3]}}</p>
-                    <p>作者：{{worksData[4]}}</p>
+                    <div class="thumbnail" :style="getUrl(worksData[0])"></div>
+                    <div class="info">
+                        <p><span>作品名称：</span>{{worksData[1]}}</p>
+                        <p><span>尺寸：</span>{{worksData[2]}}</p>
+                        <p><span>时间：</span>{{worksData[3]}}</p>
+                        <p><span>作者：</span>{{worksData[4]}}</p>
+                    </div>
+                    <div style="clear:both;"></div>
                 </li>`,
+            methods: {
+                getUrl(url){
+                    return {
+                        backgroundImage: "url(" + url + ")",
+                    };
+                },
+            }
         },
         "works-cata": {
             props: ["cata_c"],
             template: `<li @click="clickCata(cata_c)">{{cata_c}}</li>`,
             methods: {
                 clickCata(cata){
-                    console.log( this.$parent.catas_c.indexOf(cata) );
                     this.$emit("switchcata", this.$parent.catas_c.indexOf(cata));
                 },
             },
@@ -155,60 +162,60 @@ let vWorks = new Vue({
 // 加载作品数据
 vWorks.lists = {
     "jiaomo": [
-        ["", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
     ],
     "shuimo": [
-        ["", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
     ],
     "xiaopin": [
-        ["", "小品作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "小品作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "小品作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "小品作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "小品作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "小品作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "小品作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "小品作品名称", "158cm x 362cm", "2016年", "崔振宽"],
     ],
     "xiesheng": [
-        ["", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
     ],
 };
 vWorks.list = vWorks.lists.jiaomo;
@@ -287,12 +294,12 @@ let vVideo = new Vue({
     },
     data: {
         srcs: [
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/resource/CuiZhenkuan/video/test.mp4",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/resource/CuiZhenkuan/video/test.mp4",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/resource/CuiZhenkuan/video/test.mp4",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/resource/CuiZhenkuan/video/test.mp4",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/resource/CuiZhenkuan/video/test.mp4",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/resource/CuiZhenkuan/video/test.mp4",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/test.mp4",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/test.mp4",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/test.mp4",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/test.mp4",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/test.mp4",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/test.mp4",
         ],
         titles: [
             "构建美术馆在知识和当代艺术实践领域的专业性1",

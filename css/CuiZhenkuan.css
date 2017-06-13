@@ -39,10 +39,32 @@ body {
   width: 100%;
   margin-top: 24px; }
 
-.works .works_list > li > div {
-  width: 355px;
-  height: 200px;
-  background-color: #b3b3b3; }
+.works {
+  font-size: 12px; }
+  .works .works_cata {
+    height: 22px;
+    margin-top: 16px; }
+    .works .works_cata li {
+      height: 22px;
+      float: left;
+      margin-right: 30px;
+      cursor: pointer; }
+  .works .works_list > li {
+    margin-top: 24px; }
+    .works .works_list > li .thumbnail {
+      float: left;
+      width: 355px;
+      height: 200px;
+      background-color: #b3b3b3;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      cursor: pointer; }
+    .works .works_list > li .info {
+      float: left;
+      margin-left: 34px; }
+      .works .works_list > li .info span {
+        color: #b3b3b3; }
 
 .video > div {
   float: left;
