@@ -31,6 +31,9 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+a {
+  text-decoration: none; }
+
 /*v2.0 over*/
 body {
   font-family: "Microsoft YaHei"; }
@@ -98,6 +101,8 @@ body {
         .common-middle #catalog > div h3 span {
           font-size: 12px;
           color: #b3b3b3; }
+      .common-middle #catalog > div ul .active_page {
+        color: #761301; }
       .common-middle #catalog > div ul li {
         font-size: 12px;
         box-sizing: border-box;
@@ -114,15 +119,15 @@ body {
     line-height: 22px; }
     .common-middle .content > section > section {
       display: none; }
+      .common-middle .content > section > section h2 {
+        font-size: 16px;
+        color: black; }
+        .common-middle .content > section > section h2 span {
+          font-size: 14px;
+          color: #b3b3b3; }
     .common-middle .content > section .article {
       font-size: 12px;
       color: black; }
-      .common-middle .content > section .article h2 {
-        font-size: 16px;
-        color: black; }
-        .common-middle .content > section .article h2 span {
-          font-size: 14px;
-          color: #b3b3b3; }
       .common-middle .content > section .article p {
         margin-top: 24px; }
       .common-middle .content > section .article .articalImgP {

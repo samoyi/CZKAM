@@ -63,7 +63,7 @@ let vBulletin = new Vue({
             return this.list.slice(this.nPageIndex*this.nPerPage, (this.nPageIndex+1)*this.nPerPage);
         },
         pageNum(){
-            return Math.ceil((this.list.length)/10);
+            return Math.ceil((this.list.length)/this.nPerPage);
         },
     },
     methods: {
@@ -115,7 +115,7 @@ let vDownload = new Vue({
             return this.list.slice(this.nPageIndex*this.nPerPage, (this.nPageIndex+1)*this.nPerPage);
         },
         pageNum(){
-            return Math.ceil((this.list.length)/10);
+            return Math.ceil((this.list.length)/this.nPerPage);
         },
     },
     methods: {

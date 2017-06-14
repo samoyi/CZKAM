@@ -4,40 +4,39 @@
     <meta charset="utf-8">
     <title></title>
     <link href="css/common_page.css" type="text/css" rel="stylesheet">
-    <link href="css/about_us.css" type="text/css" rel="stylesheet">
+    <link href="css/exhibition.css" type="text/css" rel="stylesheet">
 </head>
 <body>
     <header id="common-header">
         <header-template></header-template>
-        <!-- <div>
-            <img alt="左上角logo" />
-            <ul class="menu">
-                <li>关于我们<span>ABOUT US</span></li>
-                <li>崔振宽艺术<span>CUIZHENKUAN ART</span></li>
-                <li>展览<span>EXHIBITION</span></li>
-                <li>公共教育<span>PUBLIC EDUCATION</span></li>
-                <li>学术研究·馆藏<span>RESERCH·COLLECTION</span></li>
-                <li>画廊·衍生品<span>GALLERY·DERIVATIVES</span></li>
-                <li>服务中心<span>SERVICE CENTER5</span></li>
-            </ul>
-        </div> -->
     </header>
     <section id="exhibition-middle" class="common-middle">
         <div  id="catalog" class="catalog">
             <h2>{{title[0]}}<span>{{title[1]}}</span></h2>
-            <cata @display_content="display" v-for="cata in catas" :cata="cata"></cata>
+            <cata :current-title="currentTitle" @display_content="display" v-for="cata in catas" :cata="cata"></cata>
         </div>
         <section class="content">
             <section>
-                <section class="permanent exhibition">
+                <!-- <section class="permanent exhibition">
                     <h2>展览预告<span>UPCOMING EXHIBTION</span></h2>
+                </section> -->
+                <section class="permanent_exhibition">
+                    <h2>常设展览  <span>PERMANENT EXHIBTION</span></h2>
+                    <ul class="permanent_exhibition_cata">
+                        <exhibition-cata v-for="(item,index) in catas" :cata="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchexhibitions"></exhibition-cata>
+                    </ul>
+                    <ul class="permanent_exhibition_list">
+                        <exhibition-item v-for="item in displayedItem" :exhibition-data="item"></exhibition-item>
+                    </ul>
+                    <div class="pagination_wrapper"><!-- 为了让pagination水平居中，加了这一层 -->
+                        <ul v-if="list.length>nPerPage" class="pagination">
+                            <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
+                        </ul>
+                    </div>
                 </section>
-                <section class="permanent exhibition">
-                    <h2>常设展览<span>PERMANENT EXHIBTION</span></h2>
-                </section>
-                <section class="activity">
+                <!-- <section class="online">
                     <h2>在线展览<span>ON-LINE</span></h2>
-                </section>
+                </section> -->
             </section>
         </section>
         <div style="clear:both;"></div>

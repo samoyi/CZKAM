@@ -32,60 +32,6 @@ let vChronology = new Vue({
 });
 
 
-let vTreatise = new Vue({
-    el: ".treatise",
-    data: {
-        list: [
-            ["", "崔振宽", "2016年"],
-            ["", "崔振宽", "2016年"],
-            ["", "崔振宽", "2016年"],
-            ["", "崔振宽", "2016年"],
-            ["", "崔振宽", "2016年"],
-            ["", "崔振宽", "2016年"],
-            ["", "崔振宽", "2016年"],
-            ["", "崔振宽", "2016年"],
-            ["", "崔振宽", "2016年"],
-            ["", "崔振宽", "2016年"],
-            ["", "崔振宽", "2016年"],
-        ],
-        nPerPage: 4, // 每页显示10个
-        nPageIndex : 0, // 当前页码
-    },
-    computed: {
-        displayedItem(){
-            return this.list.slice(this.nPageIndex*this.nPerPage, (this.nPageIndex+1)*this.nPerPage);
-        },
-        pageNum(){
-            return Math.ceil((this.list.length)/10);
-        },
-    },
-    methods: {
-        switchpage(index){
-            this.nPageIndex = index;
-        }
-    },
-    components: {
-        "treatise-item": {
-            props: ["liData"],
-            template: `<news-list>
-                    <div slot="image"><img alt="作品图" :src="liData[0]" /></div>
-                    <p slot="summary">作者：{{liData[1]}}</p>
-                    <p slot="remark">时间：{{liData[2]}}</p>
-                </news-list>`,
-        },
-        "list-pagination": {
-            props: ["pageIndex"],
-            template: `<li @click="clickPagination(pageIndex)">{{pageIndex+1}}</li>`,
-            methods: {
-                clickPagination(index){
-                    this.$emit("switchpagination", index);
-                },
-            },
-        },
-    },
-});
-
-
 let vWorks = new Vue({
     el: ".works",
     data: {
@@ -95,6 +41,7 @@ let vWorks = new Vue({
         lists: {},
         catas: ["jiaomo" , "shuimo", "xiaopin", "xiesheng"],
         catas_c: ["焦墨", "水墨", "小品", "写生"],
+        nCataIndex: 0,
         nPerPage: 6, // 每页显示10个
         nPageIndex : 0, // 当前页码
     },
@@ -103,7 +50,7 @@ let vWorks = new Vue({
             return this.list.slice(this.nPageIndex*this.nPerPage, (this.nPageIndex+1)*this.nPerPage);
         },
         pageNum(){
-            return Math.ceil((this.list.length)/10);
+            return Math.ceil((this.list.length)/this.nPerPage);
         },
         firstWorks(){
             return this.lists.jiao;
@@ -115,6 +62,10 @@ let vWorks = new Vue({
         },
         switchworks(index){
             this.list = this.lists[this.catas[index]];
+            // 更新类别编号，将列表名称列表的当前项变成不同颜色
+            this.nCataIndex = index;
+            // 切换类别后，将页码变成第一个的，否则，例如，如果切换前页码是2，而一个类别只有一页没有第二页，则该类别将不会显示。
+            this.nPageIndex = 0;
         },
     },
     components: {
@@ -137,11 +88,11 @@ let vWorks = new Vue({
                         backgroundImage: "url(" + url + ")",
                     };
                 },
-            }
+            },
         },
         "works-cata": {
-            props: ["cata_c"],
-            template: `<li @click="clickCata(cata_c)">{{cata_c}}</li>`,
+            props: ["cata_c", "thisIndex", "cataIndex"],
+            template: `<li :class="{active_cata: thisIndex===cataIndex}" @click="clickCata(cata_c)">{{cata_c}}</li>`,
             methods: {
                 clickCata(cata){
                     this.$emit("switchcata", this.$parent.catas_c.indexOf(cata));
@@ -154,71 +105,75 @@ let vWorks = new Vue({
             methods: {
                 clickPagination(index){
                     this.$emit("switchpagination", index);
+                    setTimeout(function(){
+                        window.scrollTo( 0, 0 );
+                    }, 200);
                 },
             },
         },
     },
 });
-// 加载作品数据
-vWorks.lists = {
-    "jiaomo": [
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "焦墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-    ],
-    "shuimo": [
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "水墨作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-    ],
-    "xiaopin": [
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "小品作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "小品作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "小品作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "小品作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-    ],
-    "xiesheng": [
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "写生作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-    ],
-};
-vWorks.list = vWorks.lists.jiaomo;
+
+
+
+let vTreatise = new Vue({
+    el: ".treatise",
+    data: {
+        list: [
+            ["", "", ""]
+        ],
+        nPerPage: 4, // 每页显示10个
+        nPageIndex : 0, // 当前页码
+    },
+    computed: {
+        displayedItem(){
+            return this.list.slice(this.nPageIndex*this.nPerPage, (this.nPageIndex+1)*this.nPerPage);
+        },
+        pageNum(){
+            return Math.ceil((this.list.length)/this.nPerPage);
+        },
+    },
+    methods: {
+        switchpage(index){
+            this.nPageIndex = index;
+        }
+    },
+    components: {
+        "treatise-item": {
+            props: ["treatiseData"],
+            template: `
+                <li>
+                    <div class="cover" :style="getUrl(treatiseData[0])"></div>
+                    <div class="info">
+                        <p><span>作者：</span>{{treatiseData[1]}}</p>
+                        <p><span>时间：</span>{{treatiseData[2]}}</p>
+                    </div>
+                    <div style="clear:both;"></div>
+                </li>`,
+            methods: {
+                getUrl(url){
+                    return {
+                        backgroundImage: "url(" + url + ")",
+                    };
+                },
+            },
+        },
+        "list-pagination": {
+            props: ["pageIndex"],
+            template: `<li @click="clickPagination(pageIndex)">{{pageIndex+1}}</li>`,
+            methods: {
+                clickPagination(index){
+                    this.$emit("switchpagination", index);
+                    setTimeout(function(){
+                        window.scrollTo( 0, 0 );
+                    }, 200);
+                },
+            },
+        },
+    },
+});
+
+
 
 
 
@@ -246,7 +201,7 @@ let vAcademicActivity = new Vue({
             return this.list.slice(this.nPageIndex*this.nPerPage, (this.nPageIndex+1)*this.nPerPage);
         },
         pageNum(){
-            return Math.ceil((this.list.length)/10);
+            return Math.ceil((this.list.length)/this.nPerPage);
         },
     },
     methods: {
@@ -270,6 +225,9 @@ let vAcademicActivity = new Vue({
             methods: {
                 clickPagination(index){
                     this.$emit("switchpagination", index);
+                    setTimeout(function(){
+                        window.scrollTo( 0, 0 );
+                    }, 200);
                 },
             },
         },
@@ -284,7 +242,7 @@ let vVideo = new Vue({
             props: ["src", "title"],
             template: `
                 <div>
-                    <video :src="src" width="270" height="180" controls="controls">
+                    <video :src="src" width="270" height="260" controls="controls">
                         你的浏览器版本过低
                     </video>
                     <h3>{{title}}</h3>
@@ -293,21 +251,57 @@ let vVideo = new Vue({
         },
     },
     data: {
-        srcs: [
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/test.mp4",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/test.mp4",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/test.mp4",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/test.mp4",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/test.mp4",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/test.mp4",
-        ],
-        titles: [
-            "构建美术馆在知识和当代艺术实践领域的专业性1",
-            "构建美术馆在知识和当代艺术实践领域的专业性2",
-            "构建美术馆在知识和当代艺术实践领域的专业性3",
-            "构建美术馆在知识和当代艺术实践领域的专业性4",
-            "构建美术馆在知识和当代艺术实践领域的专业性5",
-            "构建美术馆在知识和当代艺术实践领域的专业性6",
-        ],
-    }
+        srcs: [],
+        titles: [],
+    },
 });
+
+
+
+
+
+
+// lazy loading
+window.onload = function(){
+
+    let oContent = document.querySelector(".content");
+
+    // 作品数据
+    {
+        let sURL = "ajax.php?item=cuizhenkuan_works",
+            fnSuccessCallback = function(res){
+                vWorks.lists = JSON.parse(res);
+                vWorks.list = vWorks.lists[vWorks.catas[0]];
+            },
+            fnFailCallback = function(status){
+                console.error("加载作品数据失败");
+            };
+        AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+    }
+    // 论著数据
+    {
+        let sURL = "ajax.php?item=cuizhenkuan_treatise",
+            fnSuccessCallback = function(res){
+                vTreatise.list = JSON.parse(res);
+            },
+            fnFailCallback = function(status){
+                console.error("加载著作数据失败");
+            };
+        AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+    }
+    // 艺术影像数据
+    {
+        let sURL = "ajax.php?item=cuizhenkuan_video",
+            fnSuccessCallback = function(res){
+                let oParsed = JSON.parse(res);
+                console.log(oParsed);
+                vVideo.srcs = oParsed.srcs;
+                vVideo.titles = oParsed.titles;
+            },
+            fnFailCallback = function(status){
+                console.error("加载艺术影像数据失败");
+            };
+        AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+    }
+
+};

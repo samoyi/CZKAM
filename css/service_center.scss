@@ -1,0 +1,30 @@
+@import "basic.scss";
+
+.member_ship{
+    color: $BASIC_GRAY;
+    font-size: 12px;
+    >p{
+        margin-top: 24px;
+    }
+    >ol, >ul{
+        margin-top: 50px;
+    }
+    >ul{
+        ol{
+            margin-top: 20px;
+        }
+    }
+    h3{
+        font-weight: bold;
+        margin-bottom: 14px;
+    }
+    h3, h4{
+        color: $BASIC_BLACK;
+    }
+    ol{
+        li{
+            list-style-type: decimal;
+            list-style-position:inside;
+        }
+    }
+}

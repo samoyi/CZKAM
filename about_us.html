@@ -14,7 +14,7 @@
     <section id="about_us-middle" class="common-middle">
         <div  id="catalog" class="catalog">
             <h2>{{title[0]}}<br /><span>{{title[1]}}</span></h2>
-            <cata @display_content="display" v-for="cata in catas" :cata="cata"></cata>
+            <cata :current-title="currentTitle" @display_content="display" v-for="cata in catas" :cata="cata"></cata>
         </div>
         <section class="content">
             <section class="art_gallery">
@@ -49,9 +49,9 @@
                         In 2015, the Cui Zhenkuan Museum opened
                     </p>
                     <p class="articalImgP">
-                        <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/about_us/art_gallery/events/0.jpg" class="articalImg" alt="文化项目专场签约仪式"/><br />
-                        <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/about_us/art_gallery/events/1.jpg" class="articalImg" alt="崔振宽美术馆奠基典礼"/><br />
-                        <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/about_us/art_gallery/events/2.jpg" class="articalImg" alt="崔振宽美术馆封顶仪式"/>
+                        <img class="articalImg" alt="文化项目专场签约仪式"/><br />
+                        <img class="articalImg" alt="崔振宽美术馆奠基典礼"/><br />
+                        <img class="articalImg" alt="崔振宽美术馆封顶仪式"/>
                     </p>
                 </section>
                 <section class="article opening_hours">
@@ -75,8 +75,8 @@
                     <p>艺术酒店紧邻美术馆主楼，建筑主体共2层，与美术馆浑然一体，富有现代、简约、厚重的艺术风格。酒店拥有精心设计的客房、套房，房间配套设施齐备。酒店充满着浓厚的文化气息和艺术氛围，致力于四星级标准，秉承艺术主题概念：“酒店即艺术，酒店可以欣赏艺术”。 我们将着力打造中国首座充满文化艺术气息的概念酒店，将服务作为艺术与酒店之间链接与融合的桥梁。不仅为到访嘉宾和艺术家提供舒适的下榻之所，也给旅游观光的游客提供休闲之外的艺术空间。</p>
                     <p>Relais Residenza DArte, next to the main building of the art museum, has 2 main buildings, and is integrated with the art gallery. It is rich in modern, simple and heavy artistic style. The hotel has well designed guest rooms and Suites, and the rooms are well equipped. The hotel is full of strong cultural atmosphere and artistic atmosphere. It is committed to the four star standard, adhering to the theme of Art: "hotel is art, and hotel can enjoy art."". We will strive to build China's first cultural and artistic concept hotel, the service as a link between art and hotel and integration of the bridge. Not only for guests and artists to provide a comfortable place to stay, but also to provide visitors with leisure outside of the art space.</p>
                     <p class="articalImgP">
-                        <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/about_us/facilities/art_hotel/0.jpg" class="articalImg" alt="艺术酒店1"/><br />
-                        <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/about_us/facilities/art_hotel/1.jpg" class="articalImg" alt="艺术酒店2"/>
+                        <img class="articalImg" alt="艺术酒店1"/><br />
+                        <img class="articalImg" alt="艺术酒店2"/>
                     </p>
                 </section>
                 <section class="article mo_coffee">
@@ -84,12 +84,12 @@
                     <p>白天，阳光从玻璃窗外照进屋里，印度红的窗帘留下道道阴影，与木质地板相映成趣。人在咖啡屋内沐浴着阳光，陶笛之声清悦明快，每每被陶醉。夜里，热闹和激 情充溢着咖啡馆，Jazz、印度、拉丁风情的天籁之声交合，人们于此相互交流和理解，或继续课堂的那一场辩论，这时也有浑水之鱼的情人轻柔的进行着他们的 乐章，相映成趣，那是一部交响曲。</p>
                     <p>During the day, the sun shines into the room from the window, India red curtains left behind him a shadow, side by side with the wooden floor. People in the coffee room bathed in sunlight, Ocarina sound, clear and cheerful, often intoxicated. At night, lively and full of passion mo_coffee, Jazz, India, Latin sound fertilisation28, people in the mutual communication and understanding, or to continue the debate in the classroom, then there are muddy water fish lovers gently with their movement, side by side, it is a symphony.</p>
                     <p class="articalImgP">
-                        <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/about_us/facilities/mo_coffee/0.jpg" class="articalImg" alt="咖啡厅1"/><br />
-                        <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/about_us/facilities/mo_coffee/1.jpg" class="articalImg" alt="咖啡厅2"/><br />
-                        <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/about_us/facilities/mo_coffee/2.jpg" class="articalImg" alt="咖啡厅3"/><br />
-                        <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/about_us/facilities/mo_coffee/3.jpg" class="articalImg" alt="咖啡厅4"/><br />
-                        <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/about_us/facilities/mo_coffee/4.jpg" class="articalImg" alt="咖啡厅5"/><br />
-                        <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/about_us/facilities/mo_coffee/5.jpg" class="articalImg" alt="咖啡厅6"/>
+                        <img class="articalImg" alt="咖啡厅1"/><br />
+                        <img class="articalImg" alt="咖啡厅2"/><br />
+                        <img class="articalImg" alt="咖啡厅3"/><br />
+                        <img class="articalImg" alt="咖啡厅4"/><br />
+                        <img class="articalImg" alt="咖啡厅5"/><br />
+                        <img class="articalImg" alt="咖啡厅6"/>
                     </p>
                 </section>
                 <section class="article multi-functional_auditorium">
@@ -108,29 +108,10 @@
 
     <footer id="common-footer">
         <common-footer></common-footer>
-        <!-- <div>
-            <div id="bulletin-tab">
-                <h2>公告 BULLETIN</h2>
-                <bulletin-tab :tab="getTab"></bulletin-tab>
-                <span>more</span>
-            </div>
-            <div id="gallery_base_info">
-                <gallery-base-info></gallery-base-info>
-            </div>
-        </div>
-        <div>
-            <p>陕ICP备</p>
-            <div>
-                <a href="">会员</a>
-                <a href="">联系我们</a>
-                <a href="">下载专区</a>
-            </div>
-            <img alt="右下角logo" />
-        </div> -->
     </footer>
 </body>
 <script src="js/vue.js"></script>
 <script src="component/common.component.js"></script>
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=2fb7288457fc020326f0ffe5c35f1d55"></script>
 <script src="js/about_us.js"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=2fb7288457fc020326f0ffe5c35f1d55"></script>
 </html>

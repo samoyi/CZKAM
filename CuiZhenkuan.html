@@ -13,7 +13,7 @@
     <section id="CuiZhenkuan-middle" class="common-middle">
         <div  id="catalog" class="catalog">
             <h2>{{title[0]}}<br /><span>{{title[1]}}</span></h2>
-            <cata @display_content="display" v-for="cata in catas" :cata="cata"></cata>
+            <cata :current-title="currentTitle" @display_content="display" v-for="cata in catas" :cata="cata"></cata>
         </div>
         <section class="content">
             <section>
@@ -37,7 +37,7 @@
                 <section class="works">
                     <h2>作品  <span>WORKS</span></h2>
                     <ul class="works_cata">
-                        <works-cata v-for="item in catas_c" :cata_c="item" @switchcata="switchworks"></works-cata>
+                        <works-cata v-for="(item,index) in catas_c" :cata_c="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchworks"></works-cata>
                     </ul>
                     <ul class="works_list">
                         <works-item v-for="item in displayedItem" :works-data="item"></works-item>
@@ -50,12 +50,14 @@
                 </section>
                 <section class="treatise">
                     <h2>艺术论著  <span>TREATISE</span></h2>
-                    <ul>
-                        <treatise-item v-for="item in displayedItem" :li-data="item"></treatise-item>
+                    <ul class="treatise_list">
+                        <treatise-item v-for="item in displayedItem" :treatise-data="item"></treatise-item>
                     </ul>
-                    <ul v-if="list.length>nPerPage" class="pagination">
-                        <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
-                    </ul>
+                    <div class="pagination_wrapper"><!-- 为了让pagination水平居中，加了这一层 -->
+                        <ul v-if="list.length>nPerPage" class="pagination">
+                            <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
+                        </ul>
+                    </div>
                 </section>
                 <section class="activity">
                     <h2>艺术活动  <span>ACTIVITY</span></h2>

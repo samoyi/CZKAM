@@ -6,9 +6,9 @@
     }
 }
 
-.works{
+.permanent_exhibition{
     font-size: 12px;
-    .works_cata{
+    .permanent_exhibition_cata{
         height: 22px;
         margin-top: 16px;
         .active_cata{
@@ -21,26 +21,40 @@
             cursor: pointer;
         }
     }
-    .works_list{
+    .permanent_exhibition_list{
         >li{
             margin-top: 24px;
-            .thumbnail{
+            .cover{
                 float: left;
                 width: 355px; height: 200px;
-                background:{
-                    color: $BASIC_GRAY;
-                    repeat: no-repeat;
-                    size: contain;
-                    position: center;
-                }
                 cursor: pointer;
             }
             .info{
+                width: 355px;
+                overflow: hidden;
                 float: left;
                 margin-left: 34px;
-                width: 355px; overflow: hidden;
-                span{
+                h3{
+                    font-size: 14px;
+                    font-weight: bold;
+                    span{
+                        color: $STANDARD_COLOR;
+                    }
+                }
+                p{
+                    font-size: 12px;
                     color: $BASIC_GRAY;
+                }
+                .date{
+                    font-weight: bold;
+                }
+                .summary{
+                    margin-top: 16px;
+                }
+                .more{
+                    color: $STANDARD_COLOR;
+                    font-size: 10px;
+                    display: inline-block; margin-top: 16px;
                 }
             }
         }

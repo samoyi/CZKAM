@@ -4,35 +4,23 @@
     <meta charset="utf-8">
     <title></title>
     <link href="css/common_page.css" type="text/css" rel="stylesheet">
-    <link href="css/about_us.css" type="text/css" rel="stylesheet">
+    <link href="css/gallery-derivatives.css" type="text/css" rel="stylesheet">
 </head>
 <body>
     <header id="common-header">
         <header-template></header-template>
-        <!-- <div>
-            <img alt="左上角logo" />
-            <ul class="menu">
-                <li>关于我们<span>ABOUT US</span></li>
-                <li>崔振宽艺术<span>CUIZHENKUAN ART</span></li>
-                <li>展览<span>EXHIBITION</span></li>
-                <li>公共教育<span>PUBLIC EDUCATION</span></li>
-                <li>学术研究·馆藏<span>RESERCH·COLLECTION</span></li>
-                <li>画廊·衍生品<span>GALLERY·DERIVATIVES</span></li>
-                <li>服务中心<span>SERVICE CENTER5</span></li>
-            </ul>
-        </div> -->
     </header>
 
     <section id="gallery-derivatives-middle" class="common-middle">
         <div  id="catalog" class="catalog">
             <h2>{{title[0]}}<span>{{title[1]}}</span></h2>
-            <cata @display_content="display" v-for="cata in catas" :cata="cata"></cata>
+            <cata :current-title="currentTitle" @display_content="display" v-for="cata in catas" :cata="cata"></cata>
         </div>
         <section class="content">
             <section>
                 <section class="gallery">
-                    <h2>画廊<span>GALLERY</span></h2>
-                    <ul>
+                    <h2>画廊  <span>GALLERY</span></h2>
+                    <!-- <ul>
                         <works-cata v-for="item in catas_c" :cata_c="item" @switchcata="switchworks"></works-cata>
                     </ul>
                     <ul>
@@ -40,10 +28,21 @@
                     </ul>
                     <ul v-if="list.length>nPerPage" class="pagination">
                         <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
+                    </ul> -->
+                    <ul class="works_cata">
+                        <works-cata v-for="(item,index) in catas_c" :cata_c="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchworks"></works-cata>
                     </ul>
+                    <ul class="works_list">
+                        <works-item v-for="item in displayedItem" :works-data="item"></works-item>
+                    </ul>
+                    <div class="pagination_wrapper"><!-- 为了让pagination水平居中，加了这一层 -->
+                        <ul v-if="list.length>nPerPage" class="pagination">
+                            <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
+                        </ul>
+                    </div>
                 </section>
                 <section class="DERIVATIVES">
-                    <h2>衍生品<span>derivatives</span></h2>
+                    <h2>衍生品  <span>DERIVATIVES</span></h2>
                 </section>
             </section>
         </section>
@@ -52,25 +51,6 @@
 
     <footer id="common-footer">
         <common-footer></common-footer>
-        <!-- <div>
-            <div id="bulletin-tab">
-                <h2>公告 BULLETIN</h2>
-                <bulletin-tab :tab="getTab"></bulletin-tab>
-                <span>more</span>
-            </div>
-            <div id="gallery_base_info">
-                <gallery-base-info></gallery-base-info>
-            </div>
-        </div>
-        <div>
-            <p>陕ICP备</p>
-            <div>
-                <a href="">会员</a>
-                <a href="">联系我们</a>
-                <a href="">下载专区</a>
-            </div>
-            <img alt="右下角logo" />
-        </div> -->
     </footer>
 
 </body>

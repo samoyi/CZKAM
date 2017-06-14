@@ -38,25 +38,21 @@ a {
 body {
   font-family: "Microsoft YaHei"; }
 
-.art_chronology > img {
-  width: 100%;
-  margin-top: 24px; }
-
-.works {
+.gallery {
   font-size: 12px; }
-  .works .works_cata {
+  .gallery .works_cata {
     height: 22px;
     margin-top: 16px; }
-    .works .works_cata .active_cata {
+    .gallery .works_cata .active_cata {
       color: #761301; }
-    .works .works_cata li {
+    .gallery .works_cata li {
       height: 22px;
       float: left;
       margin-right: 30px;
       cursor: pointer; }
-  .works .works_list > li {
+  .gallery .works_list > li {
     margin-top: 24px; }
-    .works .works_list > li .thumbnail {
+    .gallery .works_list > li .thumbnail {
       float: left;
       width: 355px;
       height: 200px;
@@ -65,39 +61,10 @@ body {
       background-size: contain;
       background-position: center;
       cursor: pointer; }
-    .works .works_list > li .info {
+    .gallery .works_list > li .info {
       float: left;
       margin-left: 34px;
       width: 355px;
       overflow: hidden; }
-      .works .works_list > li .info span {
+      .gallery .works_list > li .info span {
         color: #b3b3b3; }
-
-.treatise {
-  font-size: 12px; }
-  .treatise .treatise_list > li {
-    margin-top: 24px; }
-    .treatise .treatise_list > li .cover {
-      float: left;
-      width: 355px;
-      height: 200px;
-      background-color: #b3b3b3;
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: center;
-      cursor: pointer; }
-    .treatise .treatise_list > li .info {
-      float: left;
-      margin-left: 34px; }
-      .treatise .treatise_list > li .info span {
-        color: #b3b3b3; }
-
-.video > div {
-  float: left;
-  margin-left: 92px;
-  width: 270px; }
-  .video > div h3 {
-    white-space: pre-wrap;
-    font-size: 14px; }
-.video div:nth-child(3n+2) {
-  margin-left: 0; }

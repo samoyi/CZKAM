@@ -65,6 +65,9 @@
                 }
             }
             ul{
+                .active_page{
+                    color: $STANDARD_COLOR;
+                }
                 li{
                     font-size:12px;
                     box-sizing: border-box;
@@ -86,10 +89,6 @@
         >section{
             >section{
                 display: none;
-            }
-            .article{ // 只有文章形式才是这种样式
-                font-size: $ARTICLE_FONT_SIZE;
-                color: $BASIC_BLACK;
                 h2{
                     font-size: 16px;
                     color: $BASIC_BLACK;
@@ -98,6 +97,10 @@
                         color: $BASIC_GRAY;
                     }
                 }
+            }
+            .article{ // 只有文章形式才是这种样式
+                font-size: $ARTICLE_FONT_SIZE;
+                color: $BASIC_BLACK;
                 p{
                     margin-top: 24px;
                 }
