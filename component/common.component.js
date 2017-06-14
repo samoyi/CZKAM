@@ -22,65 +22,62 @@ let vHeader = new Vue({
 });
 
 
-let vCatalog = null;
-if( document.querySelector("#catalog") ){ // 首页没有
-    vCatalog = new Vue({
-        components: {
-            "cata": {
-                props: ["cata", "currentTitle"],
-                template: `<div>
-                <h3>{{cata[0].title_c}}<br /><span>{{cata[1].title_e}}</span></h3>
-                <ul>
-                    <li :class="{active_page: item===currentTitle}" @click="clickCata(cata[4], index)" v-for='(item,index) in cata[2].cata_c'>{{item}}<br /><span>{{cata[3].cata_e[index]}}</span></li>
-                </ul>
-                </div>`,
-                methods: {
-                    clickCata(cataIndex, index){
-                        this.$emit( "display_content", cataIndex, index );
-                    },
+let vCatalog = new Vue({
+    components: {
+        "cata": {
+            props: ["cata", "currentTitle"],
+            template: `<div>
+            <h3>{{cata[0].title_c}}<br /><span>{{cata[1].title_e}}</span></h3>
+            <ul>
+                <li :class="{active_page: item===currentTitle}" @click="clickCata(cata[4], index)" v-for='(item,index) in cata[2].cata_c'>{{item}}<br /><span>{{cata[3].cata_e[index]}}</span></li>
+            </ul>
+            </div>`,
+            methods: {
+                clickCata(cataIndex, index){
+                    this.$emit( "display_content", cataIndex, index );
                 },
             },
         },
-        el: "#catalog",
-        data:{
-            title: [],
-            catas: [],
-            currentTitle: "", // 当前数据记录的被点击的标题
-        },
-        methods: {
-            display(cataIndex, index){
-                let catas = document.querySelectorAll(".common-middle .content>section"),
-                catas_len = catas.length;
-                for(let i=0; i<catas_len; i++){
-                    let items = catas[i].children,
-                    items_len = items.length;
-                    for(let j=0; j<items_len; j++ ){
-                        if( i===cataIndex && j===index ){
-                            items[j].style.display = "block";
-                        }
-                        else{
-                            items[j].style.display = "none";
-                        }
+    },
+    el: "#catalog",
+    data:{
+        title: [],
+        catas: [],
+        currentTitle: "", // 当前数据记录的被点击的标题
+    },
+    methods: {
+        display(cataIndex, index){
+            let catas = document.querySelectorAll(".common-middle .content>section"),
+            catas_len = catas.length;
+            for(let i=0; i<catas_len; i++){
+                let items = catas[i].children,
+                items_len = items.length;
+                for(let j=0; j<items_len; j++ ){
+                    if( i===cataIndex && j===index ){
+                        items[j].style.display = "block";
+                    }
+                    else{
+                        items[j].style.display = "none";
                     }
                 }
-                console.log(this.currentTitle );
-                // 更新当前数据记录的被点击的标题 如果此标题等于被单击的li的标题，该li通过class变色
-                this.currentTitle = this.catas[cataIndex][2].cata_c[index];
-
-                location.hash = ((this.catas)[cataIndex][2].cata_c)[index];
             }
+            console.log(this.currentTitle );
+            // 更新当前数据记录的被点击的标题 如果此标题等于被单击的li的标题，该li通过class变色
+            this.currentTitle = this.catas[cataIndex][2].cata_c[index];
+
+            location.hash = ((this.catas)[cataIndex][2].cata_c)[index];
+        }
+    },
+    watch: {
+        catas(){
+            // 初始化目录，将目录中第一个标题加上激活的class
+            this.currentTitle = this.catas[0][2].cata_c[0];
         },
-        watch: {
-            catas(){
-                // 初始化目录，将目录中第一个标题加上激活的class
-                this.currentTitle = this.catas[0][2].cata_c[0];
-            },
-        },
-        updated(){
-            location.hash = ((this.catas)[0][2].cata_c)[0];
-        },
-    });
-}
+    },
+    updated(){
+        location.hash = ((this.catas)[0][2].cata_c)[0];
+    },
+});
 
 
 
@@ -183,16 +180,7 @@ let vCommonFooter = new Vue({
         },
     },
 });
-// 之后将要从后台接收到的数据
-// vCommonFooter.$children[0].tabs = [
-//     ["公告标题1", "公告内容1<br />公告内容1<br />公告内容1", "2015"],
-//     ["公告标题2", "公告内容2<br />公告内容2<br />公告内容2", "2016"],
-//     ["公告标题3", "公告内容3<br />公告内容3<br />公告内容3", "2017"]
-// ];
-// // 轮播
-// setInterval(function(){
-//     vCommonFooter.$children[0].index = (vCommonFooter.$children[0].index+1) % 3;
-// }, 1000);
+
 
 
 

@@ -4,45 +4,37 @@
     <meta charset="utf-8">
     <title></title>
     <link href="css/common_page.css" type="text/css" rel="stylesheet">
-    <link href="css/about_us.css" type="text/css" rel="stylesheet">
+    <link href="css/index.css" type="text/css" rel="stylesheet">
 </head>
 <body>
     <header id="common-header">
-        <img alt="左上角logo" />
-        <ul>
-            <li>关于我们<span>ABOUT US</span></li>
-            <li>崔振宽艺术<span>CUIZHENKUAN ART</span></li>
-            <li>展览<span>EXHIBITION</span></li>
-            <li>公共教育<span>PUBLIC EDUCATION</span></li>
-            <li>学术研究·馆藏<span>RESERCH·COLLECTION</span></li>
-            <li>画廊·衍生品<span>GALLERY·DERIVATIVES</span></li>
-            <li>服务中心<span>SERVICE CENTER5</span></li>
-        </ul>
+        <header-template></header-template>
     </header>
+
     <section id="content">
         <div id="carousel-tab">
-            <carousel-tab :tab="carouselGetTab"></carousel-tab>
+            <carousel-tab v-for="item in carouselTabs" :style="{backgroundImage:'url(' +item[0]+ ')'}" :tab="item"></carousel-tab>
         </div>
         <div id="exhibition-tab">
             <h2>展览 EXHIBITION</h2>
-            <exhibition-tab :tab="exhibitionGetTab"></exhibition-tab>
-            <span>more</span>
+            <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/exhibition/test1.png" />
+            <exhibition-news v-for="item in exhibitionNews" :news="item"></exhibition-news>
+            <span class="more">more</span>
         </div>
         <div id="public_education-tab">
             <h2>公共教育 PUBLIC EDUCATION</h2>
-            <public_education-tab :tab="publicEducationGetTab"></public_education-tab>
-            <span>more</span>
+            <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/exhibition/test1.png" />
+            <public_education-news v-for="item in publicEducationNews" :news="item"></public_education-news>
+            <span class="more">more</span>
         </div>
         <div id="bulletin-tab">
             <h2>公告 BULLETIN</h2>
-            <bulletin-tab :tab="getTab">
-                <img alt="首页公告图片" />
+            <bulletin-tab :tab="bulletinGetTab">
             </bulletin-tab>
-            <span>more</span>
+            <span class="more">more</span>
         </div>
-        <div id="gallery_base_info">
-            <gallery-base-info></gallery-base-info>
-        </div>
+        <gallery-base-info id="gallery_base_info"></gallery-base-info>
+        <p style="clear:both;"></p>
     </section>
     <footer>
         <div>
@@ -57,6 +49,5 @@
     </footer>
 </body>
 <script src="js/vue.js"></script>
-<script src="component/common.component.js"></script>
 <script src="component/index.component.js"></script>
 </html>

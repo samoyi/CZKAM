@@ -1,0 +1,57 @@
+@import "basic.scss";
+
+#content{
+    width: $MIDDLE_WIDTH;
+    margin-left: auto; margin-right: auto;
+    >div{
+        height: 515px;
+        float: left;
+        background-color: pink;
+        margin-bottom: 10px;
+    }
+    #carousel-tab{
+        width: 815px;
+        position: relative;
+        >div{
+            width: 100%; height: 450px;
+            background-size: 100% 100%;
+            position: absolute;
+            h3{
+                position: relative;
+                top: 480px;
+            }
+        }
+    }
+    $tab_width: 400px;
+    #exhibition-tab, #public_education-tab, #bulletin-tab, #gallery_base_info{
+        width: $tab_width;
+        position: relative;
+        h2{
+            position: absolute; left: 25px; bottom: 25px;
+            font-size: 18px; font-weight: bold;
+            color: $STANDARD_COLOR;
+        }
+    }
+    #exhibition-tab{
+        margin-left: $MIDDLE_WIDTH - 815 - $tab_width;
+        img{
+            width: 100%; height:170px;
+            display: block;
+        }
+        >div{
+            width: 360px; height: 76px;
+            margin-left: auto; margin-right: auto;
+            box-sizing: border-box; border-top: 1px solid $BASIC_GRAY;
+            position: relative;
+            h3{
+                position: absolute; top: 30px;
+            }
+            p{
+                position: absolute; top: 58px;
+            }
+        }
+    }
+    #bulletin-tab, #gallery_base_info{
+        margin-left: ($MIDDLE_WIDTH - $tab_width * 3) / 2;
+    }
+}
