@@ -21,6 +21,7 @@ a {text-decoration: none;}
 $HEADER_WIDTH: 100%;
 $HEADER_HEIGHT: 163px;
 $HEADER_MENU_FONT_SIZE: 14px;
+$HEADER_MENU__WIDTH: 1226px;
 $HEADER_CONTENT_WIDTH_1366: 1226px;
 $HEADER_CONTENT_WIDTH_1920: 1780px;
 
@@ -35,6 +36,7 @@ $FOOTER_WIDTH_1366: 1226px;
 $FOOTER_CONTENT_WIDTH: 1226px;
 $FOOTER_H2_FONT_SIZE: 14px;
 $FOOTER_FONT_SIZE: 12px;
+$FOOTER_DOWN_HEIGHT: 78px;
 
 
 // color
@@ -46,4 +48,16 @@ $BASIC_GRAY: #b3b3b3;
 // font
 body{
     font-family: "Microsoft YaHei";
+}
+
+// other
+.more{
+    font:{
+        size: 10px;
+        weight: bold;
+    }
+    color: $STANDARD_COLOR;
+}
+a{
+    color: inherit;
 }

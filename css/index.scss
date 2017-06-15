@@ -1,26 +1,66 @@
 @import "basic.scss";
 
 #content{
+    position: relative; top: 30px;
     width: $MIDDLE_WIDTH;
     margin-left: auto; margin-right: auto;
     >div{
         height: 515px;
         float: left;
-        background-color: pink;
+        background-color: #efefef;
         margin-bottom: 10px;
+        .more{
+            position: absolute; right: 25px; bottom: 25px;
+            cursor: pointer;
+        }
     }
     #carousel-tab{
         width: 815px;
-        position: relative;
-        >div{
-            width: 100%; height: 450px;
-            background-size: 100% 100%;
-            position: absolute;
-            h3{
-                position: relative;
-                top: 480px;
+        .swiper-wrapper{
+            >div{
+                background-size: contain;
+                background-repeat: no-repeat;
             }
         }
+        .swiper-pagination{
+            bottom: 80px;
+            .swiper-pagination-bullet{
+                background-color: $BASIC_GRAY;
+            }
+            .swiper-pagination-bullet-active, .swiper-button-prev, .swiper-button-next{
+                background-color: $STANDARD_COLOR;
+            }
+        }
+        .swiper-button-prev, .swiper-button-next{
+            width: 39px; height: 98px;
+            top: 37%;
+            background: red;
+        }
+        .swiper-button-prev{
+            left: 0;
+        }
+        .swiper-button-next{
+            right: 0;
+        }
+        // >div{
+        //     height: 100%;
+        // }
+        // position: relative;
+        // >div{
+        //     width: 100%;
+        //     height: 450px;
+        //     background-size: 100% 100%;
+        //     position: absolute;
+        //     h3{
+        //         position: relative;
+        //         top: 480px;
+        //     }
+        //     .swiper-wrapper{
+        //         >div{
+        //             width: 100%; height: 100%;
+        //         }
+        //     }
+        // }
     }
     $tab_width: 400px;
     #exhibition-tab, #public_education-tab, #bulletin-tab, #gallery_base_info{
@@ -31,6 +71,9 @@
             font-size: 18px; font-weight: bold;
             color: $STANDARD_COLOR;
         }
+    }
+    #bulletin-tab, #gallery_base_info{
+        margin-left: ($MIDDLE_WIDTH - $tab_width * 3) / 2;
     }
     #exhibition-tab{
         margin-left: $MIDDLE_WIDTH - 815 - $tab_width;
@@ -44,14 +87,128 @@
             box-sizing: border-box; border-top: 1px solid $BASIC_GRAY;
             position: relative;
             h3{
-                position: absolute; top: 30px;
+                position: absolute; top: 24px;
+                font-size: 14px; font-weight: bold;
+                span{
+                    color: $STANDARD_COLOR;
+                }
             }
             p{
-                position: absolute; top: 58px;
+                position: absolute; top: 48px;
+                font-size: 12px; font-weight: bold;
+                color: $BASIC_GRAY;
             }
         }
+        >div:nth-child(3){
+            border-top: none;
+        }
     }
-    #bulletin-tab, #gallery_base_info{
-        margin-left: ($MIDDLE_WIDTH - $tab_width * 3) / 2;
+    #public_education-tab{
+        img{
+            width: 100%; height:170px;
+            display: block;
+        }
+        >div{
+            width: 360px; height: 52px;
+            margin-left: auto; margin-right: auto;
+            box-sizing: border-box; border-top: 1px solid $BASIC_GRAY;
+            position: relative;
+            h3{
+                position: absolute; top: 24px;
+                font-size: 12px;
+                span{
+                    color: $STANDARD_COLOR;
+                }
+            }
+        }
+        >div:nth-child(3){
+            border-top: none;
+        }
+    }
+    #bulletin-tab{
+        img{
+            width: 100%; height:170px;
+            display: block;
+        }
+        >div{
+            width: 360px;
+            margin-left: auto; margin-right: auto;
+            position: relative;
+            font-size: 12px;
+            h3{
+                position: absolute; top: 24px;
+            }
+            .bulletin_content{
+                position: absolute; top: 62px;
+                color: $BASIC_GRAY;
+                line-height: 22px;
+            }
+        }
+        >div:nth-child(3){
+            border-top: none;
+        }
+    }
+    #gallery_base_info{
+        >div{
+            font-size: 12px;
+            width: 360px;
+            margin-left: auto; margin-right: auto;
+            h2{
+                font-weight: normal;
+                top: 40px; left: ($tab_width - 360)/2;
+            }
+            >div{
+                color: $BASIC_GRAY;
+                position: absolute;
+                line-height: 22px;
+                h3{
+                    color: $BASIC_BLACK;
+                }
+            }
+            .time{
+                top: 90px;
+            }
+            .add{
+                top: 175px;
+            }
+            .tel{
+                top: 240px;
+            }
+        }
+        img{
+            width: 110px; height: 110px;
+            position: absolute; right: 20px; bottom: 20px;
+        }
+    }
+}
+#footer{
+    width: $FOOTER_WIDTH_1366;
+    height: $FOOTER_DOWN_HEIGHT;
+    box-sizing: border-box;
+    color: $BASIC_GRAY;
+    border-top: 1px solid $BASIC_GRAY;
+    margin: 200px auto auto auto;
+    @media (min-width: 1920px){
+        width: $FOOTER_WIDTH_1920;
+    }
+    font-size: $FOOTER_FONT_SIZE;
+
+    position: relative;
+
+    >p, >div{
+        float: left;
+        line-height: $FOOTER_DOWN_HEIGHT;
+    }
+    >div{
+        position: absolute;;
+        left: 780px;
+        line-height: $FOOTER_DOWN_HEIGHT;
+    }
+    >img{
+        float: right;
+        $__height:30px;
+        width: 149px; height:$__height;
+        position: relative;
+        top: ($FOOTER_DOWN_HEIGHT - $__height)/2;
     }
 }

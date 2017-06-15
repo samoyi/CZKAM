@@ -38,6 +38,14 @@ a {
 body {
   font-family: "Microsoft YaHei"; }
 
+.more {
+  font-size: 10px;
+  font-weight: bold;
+  color: #761301; }
+
+a {
+  color: inherit; }
+
 #common-header {
   width: 100%;
   height: 163px;
@@ -47,7 +55,8 @@ body {
     width: 1226px;
     height: 100%;
     margin-left: auto;
-    margin-right: auto; }
+    margin-right: auto;
+    position: relative; }
     @media (min-width: 1920px) {
       #common-header > div {
         width: 1780px; } }
@@ -61,22 +70,26 @@ body {
           width: 256px;
           height: 51px;
           top: 34px; } }
-    #common-header > div .menu li {
-      width: 175.14286px;
-      float: left;
-      position: relative;
-      top: 80px;
-      color: black;
-      font-size: 14px;
-      font-weight: bold;
-      cursor: pointer; }
+    #common-header > div .menu {
+      width: 1226px;
+      height: 35px;
+      position: absolute;
+      top: 110px; }
       @media (min-width: 1920px) {
-        #common-header > div .menu li {
-          width: 150px;
-          float: right;
-          top: 68px; } }
-      #common-header > div .menu li span {
-        color: #761301; }
+        #common-header > div .menu {
+          right: 0; } }
+      #common-header > div .menu li {
+        width: 175.14286px;
+        float: left;
+        text-align: center;
+        position: relative;
+        color: black;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer; }
+        #common-header > div .menu li p {
+          color: #761301;
+          margin-top: 4px; }
 
 .common-middle {
   width: 1226px;

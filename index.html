@@ -5,49 +5,69 @@
     <title></title>
     <link href="css/common_page.css" type="text/css" rel="stylesheet">
     <link href="css/index.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="css/swiper.min.css">
 </head>
 <body>
     <header id="common-header">
         <header-template></header-template>
     </header>
-
     <section id="content">
-        <div id="carousel-tab">
-            <carousel-tab v-for="item in carouselTabs" :style="{backgroundImage:'url(' +item[0]+ ')'}" :tab="item"></carousel-tab>
-        </div>
+            <div id="carousel-tab" class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div style="background-image:url(http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/carousel/test.jpg)" class="swiper-slide">
+                        <h3><span>预告 | </span>2016中国西安“崔振宽美术馆”国际雕塑创作营（一）</h3>
+                    </div>
+                    <div style="background-image:url(http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/carousel/test.jpg)" class="swiper-slide">
+                        <h3><span>预告 | </span>2016中国西安“崔振宽美术馆”国际雕塑创作营（而）</h3>
+                    </div>
+                    <div style="background-image:url(http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/carousel/test.jpg)" class="swiper-slide">
+                        <h3><span>预告 | </span>2016中国西安“崔振宽美术馆”国际雕塑创作营（三）</h3>
+                    </div>
+                    <div style="background-image:url(http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/carousel/test.jpg)" class="swiper-slide">
+                        <h3><span>预告 | </span>2016中国西安“崔振宽美术馆”国际雕塑创作营（四）</h3>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
         <div id="exhibition-tab">
             <h2>展览 EXHIBITION</h2>
             <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/exhibition/test1.png" />
             <exhibition-news v-for="item in exhibitionNews" :news="item"></exhibition-news>
-            <span class="more">more</span>
+            <a href="exhibition.html" target="_blank" class="more">MORE</a>
         </div>
         <div id="public_education-tab">
             <h2>公共教育 PUBLIC EDUCATION</h2>
             <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/exhibition/test1.png" />
             <public_education-news v-for="item in publicEducationNews" :news="item"></public_education-news>
-            <span class="more">more</span>
+            <a href="public_education.html" target="_blank" class="more">MORE</a>
         </div>
         <div id="bulletin-tab">
             <h2>公告 BULLETIN</h2>
-            <bulletin-tab :tab="bulletinGetTab">
-            </bulletin-tab>
-            <span class="more">more</span>
+            <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/exhibition/test1.png" />
+            <bulletin-tab :tab="bulletinGetTab"></bulletin-tab>
+            <a href="http://127.0.0.1/gits/CZKAM/service_center.html#公告" target="_blank" class="more">MORE</a>
         </div>
-        <gallery-base-info id="gallery_base_info"></gallery-base-info>
+        <div id="gallery_base_info">
+            <gallery-base-info></gallery-base-info>
+            <img alt="二维码" />
+        </div>
         <p style="clear:both;"></p>
     </section>
-    <footer>
+    <footer id="footer">
+        <p>陕ICP备07030830号-5  Copyright © 2015 czkam.net Inc. All Rights Reserved. 崔振宽美术馆 版权所有  Designed by 凡卡互动</p>
         <div>
-            <p>陕ICP备</p>
-            <div>
-                <a href="">会员</a>
-                <a href="">联系我们</a>
-                <a href="">下载专区</a>
-            </div>
-            <img alt="右下角logo" />
+            <a href="service_center.html#公告" target="_blank">会员</a>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="about_us.html#简介" target="_blank">联系我们</a>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <a href="service_center.html#公告" target="_blank">下载专区</a>
         </div>
+        <img alt="右下角logo" />
     </footer>
 </body>
 <script src="js/vue.js"></script>
+<script src="js/swiper.min.js"></script>
 <script src="component/index.component.js"></script>
 </html>

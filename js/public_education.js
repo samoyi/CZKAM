@@ -3,13 +3,34 @@
 
 vCatalog.title = ["公共教育", "PUBLIC EDUCATION"];
 vCatalog.catas = [
+        // [
+        //     {title_c: ""},
+        //     {title_e: ""},
+        //     {cata_c: ["公教活动", "合作交流", "志愿者服务"]},
+        //     {cata_e: ["ACTIVITIES", "EXCHANGES", "VOLUNTEERING"]},
+        //     0
+        // ]
         [
-            {title_c: ""},
-            {title_e: ""},
-            {cata_c: ["公教活动", "合作交流", "志愿者服务"]},
-            {cata_e: ["ACTIVITIES", "EXCHANGES", "VOLUNTEERING"]},
+            {title_c: "公教活动"},
+            {title_e: "ART GALLERY"},
+            {cata_c: ["高山盐水", "高山盐水2"]},
+            {cata_e: ["INTRODUCE", "EVENTS"]},
             0
-        ]
+        ],
+        [
+            {title_c: "合作交流"},
+            {title_e: "FACILITIES"},
+            {cata_c: ["合作交流"]},
+            {cata_e: ["ART HOTEL"]},
+            1
+        ],
+        [
+            {title_c: "志愿者服务"},
+            {title_e: "FACILITIES"},
+            {cata_c: ["志愿者服务"]},
+            {cata_e: ["ART HOTEL"]},
+            2
+        ],
     ];
 
 let vActivities = new Vue({

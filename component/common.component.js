@@ -5,15 +5,15 @@ let vHeader = new Vue({
         "header-template": {
             template: `
                 <div>
-                    <img id="top_logo" alt="崔振宽美术馆" />
+                    <a href="index.html"><img id="top_logo" alt="崔振宽美术馆" /></html>
                     <ul class="menu">
-                        <a href="about_us.html"><li>关于我们<br /><span>ABOUT US</span></li></a>
-                        <a href="CuiZhenkuan.html"><li>崔振宽艺术<br /><span>CUIZHENKUAN ART</span></li></a>
-                        <a href="exhibition.html"><li>展览<br /><span>EXHIBITION</span></li></a>
-                        <a href="public_education.html"><li>公共教育<br /><span>PUBLIC EDUCATION</span></li></a>
-                        <a href="reserch-collection.html"><li>学术研究·馆藏<br /><span>RESERCH·COLLECTION</span></li></a>
-                        <a href="gallery-derivatives.html"><li>画廊·衍生品<br /><span>GALLERY·DERIVATIVES</span></li></a>
-                        <a href="service_center.html"><li>服务中心<br /><span>SERVICE CENTER5</span></li></a>
+                        <li><a href="about_us.html">关于我们<p>ABOUT US</p></a></li>
+                        <li><a href="CuiZhenkuan.html">崔振宽艺术<p>CUIZHENKUAN ART</p></a></li>
+                        <li><a href="exhibition.html">展览<p>EXHIBITION</p></a></li>
+                        <li><a href="public_education.html">公共教育<p>PUBLIC EDUCATION</p></a></li>
+                        <li><a href="reserch-collection.html">学术研究·馆藏<p>RESERCH·COLLECTION</p></a></li>
+                        <li><a href="gallery-derivatives.html">画廊·衍生品<p>GALLERY·DERIVATIVES</p></a></li>
+                        <li><a href="service_center.html">服务中心<p>SERVICE CENTER5</p></a></li>
                     </ul>
                 </div>`,
         }
@@ -124,9 +124,11 @@ let vCommonFooter = new Vue({
                 <div class="footer_down">
                     <p>陕ICP备07030830号-5  Copyright © 2015 czkam.net Inc. All Rights Reserved. 崔振宽美术馆 版权所有  Designed by 凡卡互动</p>
                     <div>
-                        <a href="">会员</a>
-                        <a href="">联系我们</a>
-                        <a href="">下载专区</a>
+                        <a href="service_center.html#公告" target="_blank">会员</a>
+                        &nbsp;&nbsp;|&nbsp;&nbsp;
+                        <a href="about_us.html#简介" target="_blank">联系我们</a>
+                        &nbsp;&nbsp;|&nbsp;&nbsp;
+                        <a href="service_center.html#公告" target="_blank">下载专区</a>
                     </div>
                     <img alt="右下角logo" />
                 </div>
