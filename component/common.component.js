@@ -5,7 +5,7 @@ let vHeader = new Vue({
         "header-template": {
             template: `
                 <div>
-                    <a href="index.html"><img id="top_logo" alt="崔振宽美术馆" /></html>
+                    <a href="index.html"><img id="top_logo" alt="崔振宽美术馆" /></a>
                     <ul class="menu">
                         <li><a href="about_us.html">关于我们<p>ABOUT US</p></a></li>
                         <li><a href="CuiZhenkuan.html">崔振宽艺术<p>CUIZHENKUAN ART</p></a></li>
@@ -25,16 +25,19 @@ let vHeader = new Vue({
 let vCatalog = new Vue({
     components: {
         "cata": {
-            props: ["cata", "currentTitle"],
+            props: ["cata", "currentLevel1Title", "currentLevel2Title"],
             template: `<div>
-            <h3>{{cata[0].title_c}}<br /><span>{{cata[1].title_e}}</span></h3>
+            <h3 v-bind:title="cata[0].title_c" :class="{active_page: cata[0].title_c===currentLevel1Title}"  @click="clickTitle(cata[4])">{{cata[0].title_c}}<br /><span>{{cata[1].title_e}}</span></h3>
             <ul>
-                <li :class="{active_page: item===currentTitle}" @click="clickCata(cata[4], index)" v-for='(item,index) in cata[2].cata_c'>{{item}}<br /><span>{{cata[3].cata_e[index]}}</span></li>
+                <li :class="{active_page: item===currentLevel2Title}" @click="clickCata(cata[4], index)" v-for='(item,index) in cata[2].cata_c'>{{item}}<br /><span>{{cata[3].cata_e[index]}}</span></li>
             </ul>
             </div>`,
             methods: {
-                clickCata(cataIndex, index){
+                clickCata(cataIndex, index){ // 点击二级标题
                     this.$emit( "display_content", cataIndex, index );
+                },
+                clickTitle(titleIndex){ // 点击二级标题
+                    this.$emit( "display_content", titleIndex );
                 },
             },
         },
@@ -43,27 +46,38 @@ let vCatalog = new Vue({
     data:{
         title: [],
         catas: [],
-        currentTitle: "", // 当前数据记录的被点击的标题
+         // 当前数据记录的被点击的标题，点击一个标题时，比对这个数据。如果一样，高亮标题
+        currentLevel1Title: "",
+        currentLevel2Title: "",
     },
     methods: {
         display(cataIndex, index){
-            let catas = document.querySelectorAll(".common-middle .content>section"),
+
+            let catas = document.querySelectorAll(".common-middle .content>section"), // 根据一级标题的版块分类
             catas_len = catas.length;
             for(let i=0; i<catas_len; i++){
-                let items = catas[i].children,
+                let items = catas[i].children, // 当前一级标题分类下的所有具体内容版块
                 items_len = items.length;
                 for(let j=0; j<items_len; j++ ){
-                    if( i===cataIndex && j===index ){
-                        items[j].style.display = "block";
+
+                    if( i===cataIndex ){
+                        if(index && j===index ){ // 点击一级标题
+                            items[j].style.display = "block";
+                        }else if(!index){ // 点击二级标题
+                            items[0].style.display = "block";
+                        }else{
+                            items[j].style.display = "none";
+                        }
                     }
                     else{
                         items[j].style.display = "none";
                     }
                 }
             }
-            console.log(this.currentTitle );
             // 更新当前数据记录的被点击的标题 如果此标题等于被单击的li的标题，该li通过class变色
-            this.currentTitle = this.catas[cataIndex][2].cata_c[index];
+            this.currentLevel1Title = this.catas[cataIndex][0].title_c;
+            console.log(this.currentLevel1Title);
+            this.currentLevel2Title = this.catas[cataIndex][2].cata_c[index];
 
             location.hash = ((this.catas)[cataIndex][2].cata_c)[index];
         }
@@ -71,7 +85,8 @@ let vCatalog = new Vue({
     watch: {
         catas(){
             // 初始化目录，将目录中第一个标题加上激活的class
-            this.currentTitle = this.catas[0][2].cata_c[0];
+            this.currentLevel1Title = this.catas[0][0].title_c;
+            this.currentLevel2Title = this.catas[0][2].cata_c[0];
         },
     },
     updated(){

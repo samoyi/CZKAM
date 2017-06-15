@@ -4,12 +4,40 @@
 vCatalog.title = ["服务中心", "SERVICE CENTER"];
 vCatalog.catas = [
         [
-            {title_c: ""},
-            {title_e: ""},
-            {cata_c: ["公告", "会员", "下载专区", "参观导览", "意见留言"]},
-            {cata_e: ["bulletin", "MEMBER SHIP", "DOWNLOAD", "GUIDE", "COMMENTS"]},
+            {title_c: "公告"},
+            {title_e: "BULLETIN"},
+            {cata_c: []},
+            {cata_e: []},
             0
-        ]
+        ],
+        [
+            {title_c: "会员"},
+            {title_e: "MEMBER SHIP"},
+            {cata_c: []},
+            {cata_e: []},
+            1
+        ],
+        [
+            {title_c: "下载专区"},
+            {title_e: "DOWNLOAD"},
+            {cata_c: []},
+            {cata_e: []},
+            2
+        ],
+        [
+            {title_c: "参观导览"},
+            {title_e: "GUIDE"},
+            {cata_c: []},
+            {cata_e: []},
+            3
+        ],
+        [
+            {title_c: "意见留言"},
+            {title_e: "COMMENTS"},
+            {cata_c: []},
+            {cata_e: []},
+            4
+        ],
     ];
 
 

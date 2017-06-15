@@ -4,12 +4,47 @@
 vCatalog.title = ["崔振宽简介", "CUI ZHENKUAN ART"];
 vCatalog.catas = [
         [
-            {title_c: ""},
-            {title_e: ""},
-            {cata_c: ["崔振宽简介", "艺术年表", "作品", "艺术论著", "艺术活动", "艺术影像"]},
-            {cata_e: ["CUI ZHENKUAN", "ART CHRONOLOGY", "WORKS", "TREATISE", "ACTIVITY", "VIDEO"]},
+            {title_c: "崔振宽简介"},
+            {title_e: "CUI ZHENKUAN"},
+            {cata_c: []},
+            {cata_e: []},
             0
-        ]
+        ],
+        [
+            {title_c: "艺术年表"},
+            {title_e: "ART CHRONOLOGY"},
+            {cata_c: []},
+            {cata_e: []},
+            1
+        ],
+        [
+            {title_c: "作品"},
+            {title_e: "WORKS"},
+            {cata_c: []},
+            {cata_e: []},
+            2
+        ],
+        [
+            {title_c: "艺术论著"},
+            {title_e: "TREATISE"},
+            {cata_c: []},
+            {cata_e: []},
+            3
+        ],
+        [
+            {title_c: "艺术活动"},
+            {title_e: "ACTIVITY"},
+            {cata_c: []},
+            {cata_e: []},
+            4
+        ],
+        [
+            {title_c: "艺术影像"},
+            {title_e: "VIDEO"},
+            {cata_c: []},
+            {cata_e: []},
+            5
+        ],
     ];
 
 let vChronology = new Vue({

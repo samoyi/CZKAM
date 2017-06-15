@@ -109,13 +109,13 @@ a {
     .common-middle #catalog > div {
       color: black;
       margin-top: 22px; }
+      .common-middle #catalog > div .active_page {
+        color: #761301; }
       .common-middle #catalog > div h3 {
         font-size: 14px; }
         .common-middle #catalog > div h3 span {
           font-size: 12px;
           color: #b3b3b3; }
-      .common-middle #catalog > div ul .active_page {
-        color: #761301; }
       .common-middle #catalog > div ul li {
         font-size: 12px;
         box-sizing: border-box;
@@ -129,6 +129,9 @@ a {
   .common-middle .content {
     width: 1044px;
     float: left;
+    box-sizing: border-box;
+    border-left: 1px solid #b3b3b3;
+    padding-left: 50px;
     line-height: 22px; }
     .common-middle .content > section > section {
       display: none; }

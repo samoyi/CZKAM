@@ -12,9 +12,9 @@
     </header>
     <!-- <section id="about_us-middle" class="common-middle content"> -->
     <section id="about_us-middle" class="common-middle">
-        <div  id="catalog" class="catalog">
+        <div  id="catalog" class="catalog"> 
             <h2>{{title[0]}}<br /><span>{{title[1]}}</span></h2>
-            <cata :current-title="currentTitle" @display_content="display" v-for="cata in catas" :cata="cata"></cata>
+            <cata :current-level1-title="currentLevel1Title" :current-level2-title="currentLevel2Title" @display_content="display" v-for="cata in catas" :cata="cata"></cata>
         </div>
         <section class="content">
             <section class="art_gallery">

@@ -3,13 +3,22 @@
 
 vCatalog.title = ["展览", "EXHIBITION"];
 vCatalog.catas = [
+        // [
+        //     {title_c: ""},
+        //     {title_e: ""},
+        //     // {cata_c: ["展览预告", "常设展览", "在线展览"]},
+        //     // {cata_e: ["UPCOMING EXHIBTION", "PERMANENT EXHIBTION", "ON-LINE"]},
+        //     {cata_c: ["常设展览"]},
+        //     {cata_e: [ "PERMANENT EXHIBTION"]},
+        //     0
+        // ]
         [
-            {title_c: ""},
-            {title_e: ""},
+            {title_c: "常设展览"},
+            {title_e: "PERMANENT EXHIBTION"},
             // {cata_c: ["展览预告", "常设展览", "在线展览"]},
             // {cata_e: ["UPCOMING EXHIBTION", "PERMANENT EXHIBTION", "ON-LINE"]},
-            {cata_c: ["常设展览"]},
-            {cata_e: [ "PERMANENT EXHIBTION"]},
+            {cata_c: []},
+            {cata_e: []},
             0
         ]
     ];

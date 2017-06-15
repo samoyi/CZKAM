@@ -61,6 +61,9 @@
         >div{
             color: $BASIC_BLACK;
             margin-top: 22px;
+            .active_page{
+                color: $STANDARD_COLOR;
+            }
             h3{
                 font-size:14px;
                 span{
@@ -69,9 +72,6 @@
                 }
             }
             ul{
-                .active_page{
-                    color: $STANDARD_COLOR;
-                }
                 li{
                     font-size:12px;
                     box-sizing: border-box;
@@ -89,6 +89,7 @@
     }
     .content{
         width: $MIDDLE_CONTENT_WIDTH; float: left;
+        box-sizing: border-box; border-left: 1px solid $BASIC_GRAY; padding-left: 50px;
         line-height: 22px;
         >section{
             >section{

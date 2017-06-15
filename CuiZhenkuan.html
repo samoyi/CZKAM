@@ -13,7 +13,7 @@
     <section id="CuiZhenkuan-middle" class="common-middle">
         <div  id="catalog" class="catalog">
             <h2>{{title[0]}}<br /><span>{{title[1]}}</span></h2>
-            <cata :current-title="currentTitle" @display_content="display" v-for="cata in catas" :cata="cata"></cata>
+            <cata :current-level1-title="currentLevel1Title" :current-level2-title="currentLevel2Title" @display_content="display" v-for="cata in catas" :cata="cata"></cata>
         </div>
         <section class="content">
             <section>
@@ -30,10 +30,14 @@
                     <br />
                     <p class="articalImgP"><img class="articalImg" alt="崔振宽著作" /></p>
                 </section>
+            </section>
+            <section>
                 <section class="art_chronology">
                     <h2>艺术年表  <span>ART CHRONOLOGY</span></h2>
                     <chronology-pic v-for="item in srcs" :src="item"></chronology-pic>
                 </section>
+            </section>
+            <section>
                 <section class="works">
                     <h2>作品  <span>WORKS</span></h2>
                     <ul class="works_cata">
@@ -48,6 +52,8 @@
                         </ul>
                     </div>
                 </section>
+            </section>
+            <section>
                 <section class="treatise">
                     <h2>艺术论著  <span>TREATISE</span></h2>
                     <ul class="treatise_list">
@@ -59,6 +65,8 @@
                         </ul>
                     </div>
                 </section>
+            </section>
+            <section>
                 <section class="activity">
                     <h2>艺术活动  <span>ACTIVITY</span></h2>
                     <ul>
@@ -68,6 +76,8 @@
                         <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
                     </ul>
                 </section>
+            </section>
+            <section>
                 <section class="video">
                     <h2>艺术影像  <span>VIDEO</span></h2>
                     <video-template v-for="(item, index) in srcs" :src="item" :title="titles[index]"></video-template>
