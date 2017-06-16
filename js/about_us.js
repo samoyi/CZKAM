@@ -21,9 +21,6 @@ vCatalog.catas = [
 
 
 
-
-
-
 // lazy loading
 window.onload = function(){
 
@@ -53,16 +50,32 @@ window.onload = function(){
             imgs[i].src = "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/about_us/facilities/mo_coffee/" + i + ".jpg";
         }
     }
-    // 百度地图
-    {
-        var map = new BMap.Map("bd_map");
-        var point = new BMap.Point(109.0958070000, 34.2943670000);
-        map.centerAndZoom(point, 15);
 
-        //创建标注
-        var pt = new BMap.Point(109.0958070000, 34.2943670000);
-        var myIcon = new BMap.Icon("http://developer.baidu.com/map/jsdemo/img/fox.gif", new BMap.Size(38,46));
-        var marker2 = new BMap.Marker(pt,{icon:myIcon});  // 创建标注
-        map.addOverlay(marker2);              // 将标注添加到地图中
-    }
+    /*
+     * 虽然给地图控件设置了尺寸，但是在不显示的情况下，百度地图会认为其尺寸为0，大小
+     * 为一个点，就是实际矩形的左上角。因此页面在没显示的情况下加载下面的代码，百度
+     * 地图会选定这一点为中心点。最终地图显示出来之后，中心点会处于矩形的左上角。
+     * 所以这里一直监听是否切换到了地图页面的显示，如果是的话，再加载地图代码。
+     */
+     {
+         let mapWatcher = setInterval(function(){
+             if("地理交通" === vCatalog.currentLevel2Title){
+                 var map = new BMap.Map("bd_map");
+                 var point = new BMap.Point(109.095807, 34.294372);
+                 map.centerAndZoom(point, 15);
+
+                 //创建标注
+                 var marker = new BMap.Marker(point);  // 创建标注
+             	map.addOverlay(marker);               // 将标注添加到地图中
+             	marker.setAnimation();
+
+                 // 启用滚轮放大缩小
+                 map.enableScrollWheelZoom();
+
+                 clearInterval(mapWatcher);
+             }
+         }, 500);
+     }
+
+
 };
