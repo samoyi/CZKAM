@@ -36,7 +36,7 @@ let vCatalog = new Vue({
                 clickCata(cataIndex, index){ // 点击二级标题
                     this.$emit( "display_content", cataIndex, index );
                 },
-                clickTitle(titleIndex){ // 点击二级标题
+                clickTitle(titleIndex){ // 点击一级标题
                     this.$emit( "display_content", titleIndex );
                 },
             },
@@ -76,10 +76,14 @@ let vCatalog = new Vue({
             }
             // 更新当前数据记录的被点击的标题 如果此标题等于被单击的li的标题，该li通过class变色
             this.currentLevel1Title = this.catas[cataIndex][0].title_c;
-            console.log(this.currentLevel1Title);
             this.currentLevel2Title = this.catas[cataIndex][2].cata_c[index];
 
-            location.hash = ((this.catas)[cataIndex][2].cata_c)[index];
+            if(index){ // 点击二级标题
+                location.hash = ((this.catas)[cataIndex][2].cata_c)[index];
+            }
+            else{ // 点击一级标题
+                location.hash = (this.catas)[cataIndex][0].title_c;
+            }
         }
     },
     watch: {
@@ -90,9 +94,100 @@ let vCatalog = new Vue({
         },
     },
     updated(){
-        location.hash = ((this.catas)[0][2].cata_c)[0];
+        // let subTitle = ((this.catas)[0][2].cata_c)[0];
+        let subTitle = this.currentLevel2Title;
+        // 有二级标题则显示二级标题，否则一级标题
+        location.hash = subTitle ? subTitle : this.currentLevel1Title;
     },
 });
+
+
+
+// 展览组件
+function exhibitionClass(elSelector){
+    let instance = new Vue({
+        el: elSelector,
+        data: {
+            list: [
+                ["", "", "", ""],
+            ],
+            lists: {},
+            // catas: ["2017", "2016", "2015", "2014"],
+            // 具体的年份列表要根据数据中实际有的来决定
+            catas: [],
+            nCataIndex: 0,
+            nPerPage: 6, // 每页显示6个
+            nPageIndex : 0, // 当前页码
+        },
+        computed: {
+            displayedItem(){
+                return this.list.slice(this.nPageIndex*this.nPerPage, (this.nPageIndex+1)*this.nPerPage);
+            },
+            pageNum(){
+                return Math.ceil((this.list.length)/this.nPerPage);
+            },
+        },
+        methods: {
+            switchpage(index){
+                this.nPageIndex = index;
+            },
+            switchexhibitions(index){
+                this.list = this.lists[this.catas[index]];
+                this.nCataIndex = index;
+            },
+        },
+        updated(){
+            // this.catas = Object.keys(this.lists);
+            console.log( this.catas );
+            // for(let year in this.lists){
+            //     this.catas.push
+            //     let index = this.catas.indexOf(year);
+            //     console.log( year )
+            //     if( index === -1){
+            //         this.catas.splice(index, 1);
+            //     }
+            // }
+        },
+        components: {
+            "exhibition-item": {
+                props: ["exhibitionData"],
+                template: `
+                <li>
+                <img class="cover" :src="exhibitionData[0]" :alt="exhibitionData[2]" />
+                <div class="info">
+                <h3><span>{{exhibitionData[1]}}</span><span v-if="exhibitionData[1]"> | </span>{{exhibitionData[2]}}</h3>
+                <p class="date">{{exhibitionData[3]}}</p>
+                <p class="summary">{{exhibitionData[4]}}</p>
+                <span class="more">MORE</span>
+                </div>
+                <div style="clear:both;"></div>
+                </li>`,
+            },
+            "exhibition-cata": {
+                props: ["cata", "thisIndex", "cataIndex"],
+                template: `<li :class="{active_cata: thisIndex===cataIndex}" @click="clickCata(cata)">{{cata}}</li>`,
+                methods: {
+                    clickCata(cata){
+                        this.$emit("switchcata", this.$parent.catas.indexOf(cata));
+                    },
+                },
+            },
+            "list-pagination": {
+                props: ["pageIndex"],
+                template: `<li @click="clickPagination(pageIndex)">{{pageIndex+1}}</li>`,
+                methods: {
+                    clickPagination(index){
+                        this.$emit("switchpagination", index);
+                        setTimeout(function(){
+                            window.scrollTo( 0, 0 );
+                        }, 200);
+                    },
+                },
+            },
+        },
+    });
+    return instance;
+}
 
 
 

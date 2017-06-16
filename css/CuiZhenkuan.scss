@@ -1,8 +1,78 @@
 @import "basic.scss";
 .art_chronology{
-    >img{
-        width:100%;
+    position: relative;
+    .axis{
+        position: absolute;
+        width: 0px; height: 5150px;
+        border-right: 4px dotted $BASIC_GRAY;
+        left: 50px; top: 200px;
+    }
+    .range{
+        font-size: 12px;
+        width: 87px;
+        position: absolute; top: 200px; left: -30px;
+        div{
+            width: 100%;
+            position: absolute;
+            i{
+                display: inline-block;
+                width: 10px; height: 10px;
+                margin-top: 8px;
+                background-color: $BASIC_GRAY;
+                float: right;
+                border-radius: 50%;
+            }
+        }
+        div:nth-child(1){
+            top: -12px;
+        }
+        div:nth-child(2){
+            top: 341px;
+        }
+        div:nth-child(3){
+            top: 732px;
+        }
+        div:nth-child(4){
+            top: 1108px;
+        }
+        div:nth-child(5){
+            top: 1484px;
+        }
+        div:nth-child(6){
+            top: 1819px;
+        }
+        div:nth-child(7){
+            top: 2091px;
+        }
+        div:nth-child(8){
+            top: 2387px;
+        }
+        div:nth-child(9){
+            top: 2731px;
+        }
+        div:nth-child(10){
+            top: 3130px;
+        }
+        div:nth-child(11){
+            top: 3490px;
+        }
+        div:nth-child(12){
+            top: 3874px;
+        }
+        div:nth-child(13){
+            top: 4225px;
+        }
+        div:nth-child(14){
+            top: 4601px;
+        }
+        div:nth-child(15){
+            top: 5073px;
+        }
+    }
+    >a>img{
+        width: 890px;
         margin-top: 24px;
+        margin-left: 100px;
     }
 }
 

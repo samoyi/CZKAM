@@ -52,16 +52,26 @@ let vChronology = new Vue({
     components: {
         "chronology-pic": {
             props: ["src"],
-            template: `<img :src="src" alt="崔振宽艺术年表"/>`,
+            template: `<a :href="src" target="_blank"><img :src="src" alt="崔振宽艺术年表"/></a>`,
         },
     },
     data: {
         srcs: [
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/thumbnail/0.jpg",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/thumbnail/1.jpg",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/thumbnail/2.jpg",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/thumbnail/3.jpg",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/thumbnail/4.jpg",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/0.jpg",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/1.jpg",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/2.jpg",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/3.jpg",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/4.jpg",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/5.jpg",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/6.jpg",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/7.jpg",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/8.jpg",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/9.jpg",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/10.jpg",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/11.jpg",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/12.jpg",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/13.jpg",
+            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/14.jpg",
         ],
     }
 });
@@ -210,64 +220,64 @@ let vTreatise = new Vue({
 
 
 
+let vActivity = exhibitionClass(".activity");
 
-
-let vAcademicActivity = new Vue({
-    el: ".activity",
-    data: {
-        list: [
-            ["首届陕西省大学生摄影大展开幕啦", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
-            ["首届陕西省大学生摄影大展开幕啦", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
-            ["首届陕西省大学生摄影大展开幕啦", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
-            ["首届陕西省大学生摄影大展开幕啦", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
-            ["首届陕西省大学生摄影大展开幕啦", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
-            ["首届陕西省大学生摄影大展开幕啦", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
-            ["首届陕西省大学生摄影大展开幕啦", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
-            ["首届陕西省大学生摄影大展开幕啦", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
-            ["首届陕西省大学生摄影大展开幕啦", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
-            ["首届陕西省大学生摄影大展开幕啦", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
-            ["首届陕西省大学生摄影大展开幕啦", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
-        ],
-        nPerPage: 8, // 每页显示10个
-        nPageIndex : 0, // 当前页码
-    },
-    computed: {
-        displayedItem(){
-            return this.list.slice(this.nPageIndex*this.nPerPage, (this.nPageIndex+1)*this.nPerPage);
-        },
-        pageNum(){
-            return Math.ceil((this.list.length)/this.nPerPage);
-        },
-    },
-    methods: {
-        switchpage(index){
-            this.nPageIndex = index;
-        }
-    },
-    components: {
-        "activity-item": {
-            props: ["liData"],
-            template: `<news-list>
-                    <h3 slot="title">{{liData[0]}}</h3>
-                    <img :src="liData[1]" slot="image" />
-                    <p slot="summary">{{liData[2]}}</p>
-                    <span slot="remark">{{liData[3]}}</span>
-                </news-list>`,
-        },
-        "list-pagination": {
-            props: ["pageIndex"],
-            template: `<li @click="clickPagination(pageIndex)">{{pageIndex+1}}</li>`,
-            methods: {
-                clickPagination(index){
-                    this.$emit("switchpagination", index);
-                    setTimeout(function(){
-                        window.scrollTo( 0, 0 );
-                    }, 200);
-                },
-            },
-        },
-    },
-});
+// let vAcademicActivity = new Vue({
+//     el: ".activity",
+//     data: {
+//         list: [
+//             ["首届陕西省大学生摄影大展开幕啦", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+//             ["首届陕西省大学生摄影大展开幕啦", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+//             ["首届陕西省大学生摄影大展开幕啦", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+//             ["首届陕西省大学生摄影大展开幕啦", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+//             ["首届陕西省大学生摄影大展开幕啦", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+//             ["首届陕西省大学生摄影大展开幕啦", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+//             ["首届陕西省大学生摄影大展开幕啦", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+//             ["首届陕西省大学生摄影大展开幕啦", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+//             ["首届陕西省大学生摄影大展开幕啦", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+//             ["首届陕西省大学生摄影大展开幕啦", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+//             ["首届陕西省大学生摄影大展开幕啦", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
+//         ],
+//         nPerPage: 8, // 每页显示10个
+//         nPageIndex : 0, // 当前页码
+//     },
+//     computed: {
+//         displayedItem(){
+//             return this.list.slice(this.nPageIndex*this.nPerPage, (this.nPageIndex+1)*this.nPerPage);
+//         },
+//         pageNum(){
+//             return Math.ceil((this.list.length)/this.nPerPage);
+//         },
+//     },
+//     methods: {
+//         switchpage(index){
+//             this.nPageIndex = index;
+//         }
+//     },
+//     components: {
+//         "activity-item": {
+//             props: ["liData"],
+//             template: `<news-list>
+//                     <h3 slot="title">{{liData[0]}}</h3>
+//                     <img :src="liData[1]" slot="image" />
+//                     <p slot="summary">{{liData[2]}}</p>
+//                     <span slot="remark">{{liData[3]}}</span>
+//                 </news-list>`,
+//         },
+//         "list-pagination": {
+//             props: ["pageIndex"],
+//             template: `<li @click="clickPagination(pageIndex)">{{pageIndex+1}}</li>`,
+//             methods: {
+//                 clickPagination(index){
+//                     this.$emit("switchpagination", index);
+//                     setTimeout(function(){
+//                         window.scrollTo( 0, 0 );
+//                     }, 200);
+//                 },
+//             },
+//         },
+//     },
+// });
 
 
 let vVideo = new Vue({
@@ -321,6 +331,19 @@ window.onload = function(){
             },
             fnFailCallback = function(status){
                 console.error("加载著作数据失败");
+            };
+        AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+    }
+    // 活动数据
+    {
+        let sURL = "ajax.php?item=cuizhenkuan_activity",
+            fnSuccessCallback = function(res){
+                vActivity.lists = JSON.parse(res);
+                vActivity.catas = Object.keys(vActivity.lists);
+                vActivity.list = vActivity.lists[vActivity.catas[0]];
+            },
+            fnFailCallback = function(status){
+                console.error("加载活动数据失败");
             };
         AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
     }

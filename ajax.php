@@ -18,6 +18,10 @@
 		responseGet($_GET['item']);
 	}
 
+	if( $_GET['item'] === 'cuizhenkuan_activity' ){
+		responseGet($_GET['item']);
+	}
+
 	if( $_GET['item'] === 'cuizhenkuan_video' ){
 		responseGet($_GET['item']);
 	}
