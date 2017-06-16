@@ -20,15 +20,6 @@
             <section>
                 <section class="gallery">
                     <h2>画廊  <span>GALLERY</span></h2>
-                    <!-- <ul>
-                        <works-cata v-for="item in catas_c" :cata_c="item" @switchcata="switchworks"></works-cata>
-                    </ul>
-                    <ul>
-                        <works-item v-for="item in displayedItem" :works-data="item"></works-item>
-                    </ul>
-                    <ul v-if="list.length>nPerPage" class="pagination">
-                        <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
-                    </ul> -->
                     <ul class="works_cata">
                         <works-cata v-for="(item,index) in catas_c" :cata_c="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchworks"></works-cata>
                     </ul>
@@ -41,8 +32,21 @@
                         </ul>
                     </div>
                 </section>
-                <section class="DERIVATIVES">
+            </section>
+            <section>
+                <section class="derivatives">
                     <h2>衍生品  <span>DERIVATIVES</span></h2>
+                    <ul class="works_cata">
+                        <works-cata v-for="(item,index) in catas_c" :cata_c="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchworks"></works-cata>
+                    </ul>
+                    <ul class="works_list">
+                        <works-item v-for="item in displayedItem" :works-data="item"></works-item>
+                    </ul>
+                    <div class="pagination_wrapper"><!-- 为了让pagination水平居中，加了这一层 -->
+                        <ul v-if="list.length>nPerPage" class="pagination">
+                            <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
+                        </ul>
+                    </div>
                 </section>
             </section>
         </section>

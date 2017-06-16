@@ -144,10 +144,13 @@
     }
 }
 
+.activity{
+    @include exhibition_class("activity");
+}
 .video{
     >div{
         float: left;
-        margin-left: 92px;
+        margin-left: 90px;
         width: 270px;
         h3{
             white-space: pre-wrap;

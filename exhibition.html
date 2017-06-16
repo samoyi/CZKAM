@@ -22,17 +22,19 @@
                 </section> -->
                 <section class="permanent_exhibition">
                     <h2>常设展览  <span>PERMANENT EXHIBTION</span></h2>
-                    <ul class="permanent_exhibition_cata">
-                        <exhibition-cata v-for="(item,index) in catas" :cata="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchexhibitions"></exhibition-cata>
-                    </ul>
-                    <ul class="permanent_exhibition_list">
-                        <exhibition-item v-for="item in displayedItem" :exhibition-data="item"></exhibition-item>
-                    </ul>
-                    <div class="pagination_wrapper"><!-- 为了让pagination水平居中，加了这一层 -->
-                        <ul v-if="list.length>nPerPage" class="pagination">
-                            <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
+                    <div>
+                        <ul class="permanent_exhibition_cata">
+                            <exhibition-cata v-for="(item,index) in catas" :cata="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchexhibitions"></exhibition-cata>
                         </ul>
-                    </div>
+                        <ul class="permanent_exhibition_list">
+                            <exhibition-item v-for="item in displayedItem" :exhibition-data="item"></exhibition-item>
+                        </ul>
+                        <div class="pagination_wrapper"><!-- 为了让pagination水平居中，加了这一层 -->
+                            <ul v-if="list.length>nPerPage" class="pagination">
+                                <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
+                            </ul>
+                        </div>
+                    <div>
                 </section>
                 <!-- <section class="online">
                     <h2>在线展览<span>ON-LINE</span></h2>

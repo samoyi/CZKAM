@@ -87,16 +87,18 @@
             <section>
                 <section class="activity">
                     <h2>艺术活动  <span>ACTIVITY</span></h2>
-                    <ul class="permanent_exhibition_cata">
-                        <exhibition-cata v-for="(item,index) in catas" :cata="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchexhibitions"></exhibition-cata>
-                    </ul>
-                    <ul class="permanent_exhibition_list">
-                        <exhibition-item v-for="item in displayedItem" :exhibition-data="item"></exhibition-item>
-                    </ul>
-                    <div class="pagination_wrapper"><!-- 为了让pagination水平居中，加了这一层 -->
-                        <ul v-if="list.length>nPerPage" class="pagination">
-                            <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
+                    <div>
+                        <ul class="activity_cata">
+                            <exhibition-cata v-for="(item,index) in catas" :cata="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchexhibitions"></exhibition-cata>
                         </ul>
+                        <ul class="activity_list">
+                            <exhibition-item v-for="item in displayedItem" :exhibition-data="item"></exhibition-item>
+                        </ul>
+                        <div class="pagination_wrapper"><!-- 为了让pagination水平居中，加了这一层 -->
+                            <ul v-if="list.length>nPerPage" class="pagination">
+                                <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
+                            </ul>
+                        </div>
                     </div>
                 </section>
             </section>
@@ -112,25 +114,6 @@
 
     <footer id="common-footer">
         <common-footer></common-footer>
-        <!-- <div>
-            <div id="bulletin-tab">
-                <h2>公告 BULLETIN</h2>
-                <bulletin-tab :tab="getTab"></bulletin-tab>
-                <span>more</span>
-            </div>
-            <div id="gallery_base_info">
-                <gallery-base-info></gallery-base-info>
-            </div>
-        </div>
-        <div>
-            <p>陕ICP备</p>
-            <div>
-                <a href="">会员</a>
-                <a href="">联系我们</a>
-                <a href="">下载专区</a>
-            </div>
-            <img alt="右下角logo" />
-        </div> -->
     </footer>
 
 </body>

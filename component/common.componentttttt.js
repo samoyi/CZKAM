@@ -5,13 +5,13 @@ let vHeader = new Vue({
         "header-template": {
             template: `
                 <div>
-                    <a href="index.html"><div id="top_logo"></div></a>
+                    <a href="index.html"><img id="top_logo" alt="崔振宽美术馆" /></a>
                     <ul class="menu">
                         <li><a href="about_us.html">关于我们<p>ABOUT US</p></a></li>
                         <li><a href="CuiZhenkuan.html">崔振宽艺术<p>CUIZHENKUAN ART</p></a></li>
                         <li><a href="exhibition.html">展览<p>EXHIBITION</p></a></li>
                         <li><a href="public_education.html">公共教育<p>PUBLIC EDUCATION</p></a></li>
-                        <li><a href="research-collection.html">学术研究·馆藏<p>RESEARCH·COLLECTION</p></a></li>
+                        <li><a href="research-collection.html">学术研究·馆藏<p>RESERCH·COLLECTION</p></a></li>
                         <li><a href="gallery-derivatives.html">画廊·衍生品<p>GALLERY·DERIVATIVES</p></a></li>
                         <li><a href="service_center.html">服务中心<p>SERVICE CENTER5</p></a></li>
                     </ul>
@@ -137,41 +137,60 @@ function exhibitionClass(elSelector){
             },
         },
         components: {
-            "exhibition-item": {
-                props: ["exhibitionData"],
+            "exhibition-class": {
                 template: `
-                <li>
-                <img class="cover" :src="exhibitionData[0]" :alt="exhibitionData[2]" />
-                <div class="info">
-                <h3><span>{{exhibitionData[1]}}</span><span v-if="exhibitionData[1]"> | </span>{{exhibitionData[2]}}</h3>
-                <p class="date">{{exhibitionData[3]}}</p>
-                <p class="summary">{{exhibitionData[4]}}</p>
-                <span class="more">MORE</span>
-                </div>
-                <div style="clear:both;"></div>
-                </li>`,
-            },
-            "exhibition-cata": {
-                props: ["cata", "thisIndex", "cataIndex"],
-                template: `<li :class="{active_cata: thisIndex===cataIndex}" @click="clickCata(cata)">{{cata}}</li>`,
-                methods: {
-                    clickCata(cata){
-                        this.$emit("switchcata", this.$parent.catas.indexOf(cata));
+                    <div>
+                        <ul class="activity_cata">
+                            <exhibition-cata v-for="(item,index) in catas" :cata="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchexhibitions"></exhibition-cata>
+                        </ul>
+                        <ul class="activity_list">
+                            <exhibition-item v-for="item in displayedItem" :exhibition-data="item"></exhibition-item>
+                        </ul>
+                        <div class="pagination_wrapper"><!-- 为了让pagination水平居中，加了这一层 -->
+                            <ul v-if="list.length>nPerPage" class="pagination">
+                                <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
+                            </ul>
+                        </div>
+                    </div>
+                `,
+                components: {
+                    "exhibition-item": {
+                        props: ["exhibitionData"],
+                        template: `
+                        <li>
+                        <img class="cover" :src="exhibitionData[0]" :alt="exhibitionData[2]" />
+                        <div class="info">
+                        <h3><span>{{exhibitionData[1]}}</span><span v-if="exhibitionData[1]"> | </span>{{exhibitionData[2]}}</h3>
+                        <p class="date">{{exhibitionData[3]}}</p>
+                        <p class="summary">{{exhibitionData[4]}}</p>
+                        <span class="more">MORE</span>
+                        </div>
+                        <div style="clear:both;"></div>
+                        </li>`,
+                    },
+                    "exhibition-cata": {
+                        props: ["cata", "thisIndex", "cataIndex"],
+                        template: `<li :class="{active_cata: thisIndex===cataIndex}" @click="clickCata(cata)">{{cata}}</li>`,
+                        methods: {
+                            clickCata(cata){
+                                this.$emit("switchcata", this.$parent.catas.indexOf(cata));
+                            },
+                        },
+                    },
+                    "list-pagination": {
+                        props: ["pageIndex"],
+                        template: `<li @click="clickPagination(pageIndex)">{{pageIndex+1}}</li>`,
+                        methods: {
+                            clickPagination(index){
+                                this.$emit("switchpagination", index);
+                                setTimeout(function(){
+                                    window.scrollTo( 0, 0 );
+                                }, 200);
+                            },
+                        },
                     },
                 },
-            },
-            "list-pagination": {
-                props: ["pageIndex"],
-                template: `<li @click="clickPagination(pageIndex)">{{pageIndex+1}}</li>`,
-                methods: {
-                    clickPagination(index){
-                        this.$emit("switchpagination", index);
-                        setTimeout(function(){
-                            window.scrollTo( 0, 0 );
-                        }, 200);
-                    },
-                },
-            },
+            }
         },
     });
     return instance;
@@ -210,15 +229,13 @@ let vCommonFooter = new Vue({
                     <div id="bulletin-tab">
                         <h2>公告 BULLETIN</h2>
                         <bulletin-tab ref="bulletin" :tab="getTab"></bulletin-tab>
-                        <ul>
-                            <bulletin-pagination v-for="(item, index) in tabs" :bulletin-index="index" :cur-index="curIndex" @switchpagination="switchtab"></bulletin-pagination>
-                        </ul>
                         <span class="more">MORE</span>
                     </div>
                     <div id="gallery_base_info">
                         <gallery-base-info></gallery-base-info>
+                        <span class="more">MORE</span>
                     </div>
-                    <i></i>
+                    <img alt="二维码" />
                     <div style="clear:both;"></div>
                 </div>
                 <div class="footer_down">
@@ -230,7 +247,7 @@ let vCommonFooter = new Vue({
                         &nbsp;&nbsp;|&nbsp;&nbsp;
                         <a href="service_center.html#公告" target="_blank">下载专区</a>
                     </div>
-                    <i></i>
+                    <img alt="右下角logo" />
                 </div>
             </section>
             `,
@@ -245,15 +262,6 @@ let vCommonFooter = new Vue({
                         <slot></slot>
                     </div>`,
 
-                },
-                "bulletin-pagination": {
-                    props: ["bulletinIndex", "curIndex"],
-                    template: `<li v-bind:class="{active_tab: bulletinIndex===curIndex}" @click="clickPagination(bulletinIndex)">●</li>`,
-                    methods: {
-                        clickPagination(clickedIndex){
-                            this.$emit("switchpagination", clickedIndex);
-                        },
-                    },
                 },
                 "gallery-base-info": {
                     // FIXME 这里不得已而加了一个没有用处的根元素，在HTML多出了一个没用div节点
@@ -270,13 +278,13 @@ let vCommonFooter = new Vue({
             data: function(){
                 return {
                     tabs: [],
-                    curIndex: 0,
+                    index: 0,
                 };
             },
             computed: {
                 getTab(){
                     if( this.tabs.length ){
-                        return this.tabs[this.curIndex];
+                        return this.tabs[this.index];
                     }
                     else{
                         return [,,];
@@ -286,11 +294,6 @@ let vCommonFooter = new Vue({
                         * 空的三项数组，否则模板里取数组项的时候就会出错。有没有更好的办法？
                         */
                     }
-                },
-            },
-            methods: {
-                switchtab(clickedIndex){
-                    this.curIndex = clickedIndex;
                 },
             },
         },
@@ -306,8 +309,8 @@ let vCommonFooter = new Vue({
         fnSuccessCallback = function(res){
             vCommonFooter.$children[0].tabs = JSON.parse(res);
             setInterval(function(){
-                vCommonFooter.$children[0].curIndex = (vCommonFooter.$children[0].curIndex+1) % 3;
-            }, 5000);
+                vCommonFooter.$children[0].index = (vCommonFooter.$children[0].index+1) % 3;
+            }, 1000);
         },
         fnFailCallback = function(status){
             console.error("加载公告数据失败");

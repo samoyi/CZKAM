@@ -4,26 +4,14 @@
     <meta charset="utf-8">
     <title></title>
     <link href="css/common_page.css" type="text/css" rel="stylesheet">
-    <link href="css/about_us.css" type="text/css" rel="stylesheet">
+    <link href="css/research-collection.css" type="text/css" rel="stylesheet">
 </head>
 <body>
     <header id="common-header">
         <header-template></header-template>
-        <!-- <div>
-            <img alt="左上角logo" />
-            <ul class="menu">
-                <li>关于我们<span>ABOUT US</span></li>
-                <li>崔振宽艺术<span>CUIZHENKUAN ART</span></li>
-                <li>展览<span>EXHIBITION</span></li>
-                <li>公共教育<span>PUBLIC EDUCATION</span></li>
-                <li>学术研究·馆藏<span>RESERCH·COLLECTION</span></li>
-                <li>画廊·衍生品<span>GALLERY·DERIVATIVES</span></li>
-                <li>服务中心<span>SERVICE CENTER5</span></li>
-            </ul>
-        </div> -->
     </header>
 
-    <section id="reserch-collection-middle" class="common-middle">
+    <section id="research-collection-middle" class="common-middle">
         <div  id="catalog" class="catalog">
             <h2>{{title[0]}}<span>{{title[1]}}</span></h2>
             <cata :current-level1-title="currentLevel1Title" :current-level2-title="currentLevel2Title" @display_content="display" v-for="cata in catas" :cata="cata"></cata>
@@ -35,12 +23,19 @@
                 </section>
                 <section class="academic_events">
                     <h2>学术活动<span>ACADEMIC EVENTS</span></h2>
-                    <ul>
-                        <activity-item v-for="item in displayedItem" :li-data="item"></activity-item>
-                    </ul>
-                    <ul v-if="list.length>nPerPage" class="pagination">
-                        <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
-                    </ul>
+                    <div>
+                        <ul class="academic_events_cata">
+                            <exhibition-cata v-for="(item,index) in catas" :cata="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchexhibitions"></exhibition-cata>
+                        </ul>
+                        <ul class="academic_events_list">
+                            <exhibition-item v-for="item in displayedItem" :exhibition-data="item"></exhibition-item>
+                        </ul>
+                        <div class="pagination_wrapper"><!-- 为了让pagination水平居中，加了这一层 -->
+                            <ul v-if="list.length>nPerPage" class="pagination">
+                                <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
+                            </ul>
+                        </div>
+                    </div>
                 </section>
             </section>
             <section>
@@ -102,5 +97,5 @@
 </body>
 <script src="js/vue.js"></script>
 <script src="component/common.component.js"></script>
-<script src="js\reserch-collection.js"></script>
+<script src="js\research-collection.js"></script>
 </html>

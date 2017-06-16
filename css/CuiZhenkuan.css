@@ -157,9 +157,51 @@ a {
       .treatise .treatise_list > li .info span {
         color: #b3b3b3; }
 
+.activity {
+  font-size: 12px; }
+  .activity .activity_cata {
+    height: 22px;
+    margin-top: 16px; }
+    .activity .activity_cata .active_cata {
+      color: #761301; }
+    .activity .activity_cata li {
+      height: 22px;
+      float: left;
+      margin-right: 30px;
+      cursor: pointer; }
+  .activity .activity_list > li {
+    margin-top: 24px; }
+    .activity .activity_list > li .cover {
+      float: left;
+      width: 355px;
+      height: 200px;
+      cursor: pointer; }
+    .activity .activity_list > li .info {
+      width: 355px;
+      overflow: hidden;
+      float: left;
+      margin-left: 34px; }
+      .activity .activity_list > li .info h3 {
+        font-size: 14px;
+        font-weight: bold; }
+        .activity .activity_list > li .info h3 span {
+          color: #761301; }
+      .activity .activity_list > li .info p {
+        font-size: 12px;
+        color: #b3b3b3; }
+      .activity .activity_list > li .info .date {
+        font-weight: bold; }
+      .activity .activity_list > li .info .summary {
+        margin-top: 16px; }
+      .activity .activity_list > li .info .more {
+        color: #761301;
+        font-size: 10px;
+        display: inline-block;
+        margin-top: 16px; }
+
 .video > div {
   float: left;
-  margin-left: 92px;
+  margin-left: 90px;
   width: 270px; }
   .video > div h3 {
     white-space: pre-wrap;

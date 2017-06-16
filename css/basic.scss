@@ -61,3 +61,65 @@ body{
 a{
     color: inherit;
 }
+
+
+
+
+// mixin
+
+// 所有和展览一样的办款的样式
+// 参数为版块类名
+@mixin exhibition_class($class){
+    font-size: 12px;
+    .#{$class}_cata{
+        height: 22px;
+        margin-top: 16px;
+        .active_cata{
+            color: $STANDARD_COLOR;
+        }
+        li{
+            height: 22px;
+            float: left;
+            margin-right: 30px;
+            cursor: pointer;
+        }
+    }
+    .#{$class}_list{
+        >li{
+            margin-top: 24px;
+            .cover{
+                float: left;
+                width: 355px; height: 200px;
+                cursor: pointer;
+            }
+            .info{
+                width: 355px;
+                overflow: hidden;
+                float: left;
+                margin-left: 34px;
+                h3{
+                    font-size: 14px;
+                    font-weight: bold;
+                    span{
+                        color: $STANDARD_COLOR;
+                    }
+                }
+                p{
+                    font-size: 12px;
+                    color: $BASIC_GRAY;
+                }
+                .date{
+                    font-weight: bold;
+                }
+                .summary{
+                    margin-top: 16px;
+                }
+                .more{
+                    color: $STANDARD_COLOR;
+                    font-size: 10px;
+                    display: inline-block; margin-top: 16px;
+                }
+            }
+        }
+    }
+}

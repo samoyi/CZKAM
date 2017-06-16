@@ -67,6 +67,14 @@ a {
     #content #carousel-tab .swiper-wrapper > div {
       background-size: contain;
       background-repeat: no-repeat; }
+      #content #carousel-tab .swiper-wrapper > div h3 {
+        font-size: 18px;
+        font-weight: bold;
+        position: absolute;
+        bottom: 22px;
+        left: 22px; }
+        #content #carousel-tab .swiper-wrapper > div h3 span {
+          color: #761301; }
     #content #carousel-tab .swiper-pagination {
       bottom: 80px; }
       #content #carousel-tab .swiper-pagination .swiper-pagination-bullet {
@@ -77,11 +85,14 @@ a {
       width: 39px;
       height: 98px;
       top: 37%;
-      background: red; }
+      background: url("http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/sprite.png");
+      background-position: -1590px -81px; }
     #content #carousel-tab .swiper-button-prev {
       left: 0; }
     #content #carousel-tab .swiper-button-next {
-      right: 0; }
+      right: 0;
+      -webkit-transform: rotateZ(180deg);
+      transform: rotateZ(180deg); }
   #content #exhibition-tab, #content #public_education-tab, #content #bulletin-tab, #content #gallery_base_info {
     width: 400px;
     position: relative; }
@@ -184,12 +195,14 @@ a {
       top: 175px; }
     #content #gallery_base_info > div .tel {
       top: 240px; }
-  #content #gallery_base_info img {
-    width: 110px;
-    height: 110px;
+  #content #gallery_base_info .code {
+    width: 109px;
+    height: 109px;
     position: absolute;
     right: 20px;
-    bottom: 20px; }
+    bottom: 20px;
+    background-image: url("http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/sprite.png");
+    background-position: -1629px -81px; }
 
 #footer {
   width: 1226px;
@@ -210,9 +223,13 @@ a {
     position: absolute;
     left: 780px;
     line-height: 78px; }
-  #footer > img {
+  #footer i {
+    width: 149px;
+    height: 30px;
     float: right;
     width: 149px;
     height: 30px;
     position: relative;
-    top: 24px; }
+    top: 24px;
+    background-image: url("http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/sprite.png");
+    background-position: -1590px -51px; }

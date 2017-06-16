@@ -1,0 +1,6 @@
+@import "basic.scss";
+
+
+.academic_events{
+    @include exhibition_class("academic_events");
+}

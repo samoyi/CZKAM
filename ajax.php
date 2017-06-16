@@ -30,7 +30,23 @@
 		responseGet($_GET['item']);
 	}
 
+	if( $_GET['item'] === 'public_exchanges' ){
+		responseGet($_GET['item']);
+	}
+
+	if( $_GET['item'] === 'public_volunteering' ){
+		responseGet($_GET['item']);
+	}
+
+	if( $_GET['item'] === 'research_events' ){
+		responseGet($_GET['item']);
+	}
+
 	if( $_GET['item'] === 'gallery_works' ){
+		responseGet($_GET['item']);
+	}
+
+	if( $_GET['item'] === 'gallery_derivatives' ){
 		responseGet($_GET['item']);
 	}
 

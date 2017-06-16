@@ -5,13 +5,13 @@ let vHeader = new Vue({
         "header-template": {
             template: `
                 <div>
-                    <img id="top_logo" alt="崔振宽美术馆" />
+                    <div id="top_logo"></div>
                     <ul class="menu">
                         <li><a href="about_us.html">关于我们<p>ABOUT US</p></a></li>
                         <li><a href="CuiZhenkuan.html">崔振宽艺术<p>CUIZHENKUAN ART</p></a></li>
                         <li><a href="exhibition.html">展览<p>EXHIBITION</p></a></li>
                         <li><a href="public_education.html">公共教育<p>PUBLIC EDUCATION</p></a></li>
-                        <li><a href="reserch-collection.html">学术研究·馆藏<p>RESERCH·COLLECTION</p></a></li>
+                        <li><a href="research-collection.html">学术研究·馆藏<p>RESEARCH·COLLECTION</p></a></li>
                         <li><a href="gallery-derivatives.html">画廊·衍生品<p>GALLERY·DERIVATIVES</p></a></li>
                         <li><a href="service_center.html">服务中心<p>SERVICE CENTER5</p></a></li>
                     </ul>

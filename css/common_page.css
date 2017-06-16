@@ -61,15 +61,12 @@ a {
       #common-header > div {
         width: 1780px; } }
     #common-header > div #top_logo {
-      width: 232px;
-      height: 46px;
+      width: 256px;
+      height: 51px;
       position: relative;
-      top: 28px; }
-      @media (min-width: 1920px) {
-        #common-header > div #top_logo {
-          width: 256px;
-          height: 51px;
-          top: 34px; } }
+      top: 28px;
+      background-image: url("http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/sprite.png");
+      background-position: -1590px 0px; }
     #common-header > div .menu {
       width: 1226px;
       height: 35px;
@@ -77,7 +74,7 @@ a {
       top: 110px; }
       @media (min-width: 1920px) {
         #common-header > div .menu {
-          right: 0; } }
+          left: 276px; } }
       #common-header > div .menu li {
         width: 175.14286px;
         float: left;
@@ -112,7 +109,8 @@ a {
       .common-middle #catalog > div .active_page {
         color: #761301; }
       .common-middle #catalog > div h3 {
-        font-size: 14px; }
+        font-size: 14px;
+        cursor: pointer; }
         .common-middle #catalog > div h3 span {
           font-size: 12px;
           color: #b3b3b3; }
@@ -190,8 +188,7 @@ a {
     border-bottom: 1px solid #b3b3b3; }
     #common-footer > section .footer_up #bulletin-tab, #common-footer > section .footer_up #gallery_base_info {
       float: left;
-      position: relative;
-      background-color: yellow; }
+      position: relative; }
       #common-footer > section .footer_up #bulletin-tab h2, #common-footer > section .footer_up #gallery_base_info h2 {
         font-size: 14px;
         font-weight: bold;
@@ -220,6 +217,15 @@ a {
         #common-footer > section .footer_up #bulletin-tab > div .bulletin_content {
           line-height: 22px;
           margin-bottom: 24px; }
+      #common-footer > section .footer_up #bulletin-tab ul {
+        position: absolute;
+        bottom: 0px;
+        right: 0; }
+        #common-footer > section .footer_up #bulletin-tab ul .active_tab {
+          color: #761301; }
+        #common-footer > section .footer_up #bulletin-tab ul li {
+          float: left;
+          margin-left: 6px; }
     #common-footer > section .footer_up #gallery_base_info {
       width: 365px;
       height: 158px;
@@ -229,9 +235,11 @@ a {
         margin-top: 16px; }
         #common-footer > section .footer_up #gallery_base_info > div p span {
           color: black; }
-    #common-footer > section .footer_up > img {
-      width: 95px;
-      height: 95px;
+    #common-footer > section .footer_up > i {
+      width: 109px;
+      height: 109px;
+      background-image: url("http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/sprite.png");
+      background-position: -1629px -81px;
       float: right;
       margin-right: 20px; }
   #common-footer > section .footer_down {
@@ -244,9 +252,13 @@ a {
       position: absolute;
       left: 780px;
       line-height: 78px; }
-    #common-footer > section .footer_down > img {
+    #common-footer > section .footer_down > i {
+      width: 149px;
+      height: 30px;
       float: right;
       width: 149px;
       height: 30px;
       position: relative;
-      top: 24px; }
+      top: 24px;
+      background-image: url("http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/sprite.png");
+      background-position: -1590px -51px; }

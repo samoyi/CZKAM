@@ -38,21 +38,29 @@ a {
 body {
   font-family: "Microsoft YaHei"; }
 
-.gallery {
+.more {
+  font-size: 10px;
+  font-weight: bold;
+  color: #761301; }
+
+a {
+  color: inherit; }
+
+.gallery, .derivatives {
   font-size: 12px; }
-  .gallery .works_cata {
+  .gallery .works_cata, .derivatives .works_cata {
     height: 22px;
     margin-top: 16px; }
-    .gallery .works_cata .active_cata {
+    .gallery .works_cata .active_cata, .derivatives .works_cata .active_cata {
       color: #761301; }
-    .gallery .works_cata li {
+    .gallery .works_cata li, .derivatives .works_cata li {
       height: 22px;
       float: left;
       margin-right: 30px;
       cursor: pointer; }
-  .gallery .works_list > li {
+  .gallery .works_list > li, .derivatives .works_list > li {
     margin-top: 24px; }
-    .gallery .works_list > li .thumbnail {
+    .gallery .works_list > li .thumbnail, .derivatives .works_list > li .thumbnail {
       float: left;
       width: 355px;
       height: 200px;
@@ -61,10 +69,10 @@ body {
       background-size: contain;
       background-position: center;
       cursor: pointer; }
-    .gallery .works_list > li .info {
+    .gallery .works_list > li .info, .derivatives .works_list > li .info {
       float: left;
       margin-left: 34px;
       width: 355px;
       overflow: hidden; }
-      .gallery .works_list > li .info span {
+      .gallery .works_list > li .info span, .derivatives .works_list > li .info span {
         color: #b3b3b3; }
