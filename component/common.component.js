@@ -223,6 +223,22 @@ Vue.component("news-list", {
 
 
 
+
+// 后台上传的文章
+let vUpdatedArticle = null
+if(document.querySelector("#updated_article")){
+    vUpdatedArticle = new Vue({
+        el: "#updated_article",
+        data: {
+            articleHTML: "<p style='color: red;'>正在加载……</p>",
+        },
+    });
+}
+
+
+
+
+
 let vCommonFooter = new Vue({
     el: "#common-footer",
     components: {

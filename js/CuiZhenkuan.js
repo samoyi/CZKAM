@@ -102,12 +102,12 @@ let vWorks = new Vue({
             props: ["worksData"],
             template: `
                 <li>
-                    <div class="thumbnail" :style="getUrl(worksData[0])"></div>
+                    <a :href="worksData[1]" target="_blank"><div class="thumbnail" :style="getUrl(worksData[0])"></div></a>
                     <div class="info">
-                        <p><span>作品名称：</span>{{worksData[1]}}</p>
-                        <p><span>尺寸：</span>{{worksData[2]}}</p>
-                        <p><span>时间：</span>{{worksData[3]}}</p>
-                        <p><span>作者：</span>{{worksData[4]}}</p>
+                        <p><span>作品名称：</span>{{worksData[2]}}</p>
+                        <p><span>尺寸：</span>{{worksData[3]}}</p>
+                        <p><span>时间：</span>{{worksData[4]}}</p>
+                        <p><span>作者：</span>{{worksData[5]}}</p>
                     </div>
                     <div style="clear:both;"></div>
                 </li>`,
@@ -300,5 +300,4 @@ window.onload = function(){
             };
         AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
     }
-
 };

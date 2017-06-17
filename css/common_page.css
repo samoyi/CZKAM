@@ -57,6 +57,9 @@ a {
   height: 163px;
   box-sizing: border-box;
   border-bottom: 1px solid #b3b3b3; }
+  @media (min-width: 1920px) {
+    #common-header {
+      height: 120px; } }
   #common-header > div {
     width: 1226px;
     height: 100%;
@@ -73,6 +76,11 @@ a {
       top: 28px;
       background-image: url("http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/sprite.png");
       background-position: -1590px 0px; }
+      @media (min-width: 1920px) {
+        #common-header > div #top_logo {
+          width: 256px;
+          height: 51px;
+          top: 34px; } }
     #common-header > div .menu {
       width: 1226px;
       height: 35px;
@@ -80,19 +88,32 @@ a {
       top: 110px; }
       @media (min-width: 1920px) {
         #common-header > div .menu {
-          left: 276px; } }
+          top: 68px;
+          left: 554px; } }
       #common-header > div .menu li {
         width: 175.14286px;
         float: left;
-        text-align: center;
-        position: relative;
+        position: absolute;
         color: black;
         font-size: 14px;
         font-weight: bold;
         cursor: pointer; }
         #common-header > div .menu li p {
           color: #761301;
-          margin-top: 4px; }
+          margin-top: 4px;
+          font-size: 10px; }
+      #common-header > div .menu li:nth-child(2) {
+        left: 148px; }
+      #common-header > div .menu li:nth-child(3) {
+        left: 342px; }
+      #common-header > div .menu li:nth-child(4) {
+        left: 494px; }
+      #common-header > div .menu li:nth-child(5) {
+        left: 684px; }
+      #common-header > div .menu li:nth-child(6) {
+        left: 908px; }
+      #common-header > div .menu li:nth-child(7) {
+        left: 1134px; }
 
 .common-middle {
   width: 1226px;
@@ -137,12 +158,12 @@ a {
     border-left: 1px solid #b3b3b3;
     padding-left: 50px;
     line-height: 22px; }
-    .common-middle .content > section > section {
+    .common-middle .content > section > section, .common-middle .content > section .artile {
       display: none; }
-      .common-middle .content > section > section h2 {
+      .common-middle .content > section > section h2, .common-middle .content > section .artile h2 {
         font-size: 16px;
         color: black; }
-        .common-middle .content > section > section h2 span {
+        .common-middle .content > section > section h2 span, .common-middle .content > section .artile h2 span {
           font-size: 14px;
           color: #b3b3b3; }
     .common-middle .content > section .article {

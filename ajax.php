@@ -70,5 +70,9 @@
 		responseGet($_GET['item']);
 	}
 
+	if( $_GET['item'] === 'article_hanzhong' ){
+		responseGet($_GET['item']);
+	}
+
 
 ?>

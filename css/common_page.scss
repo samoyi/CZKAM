@@ -2,7 +2,9 @@
 @import "basic.scss";
 #common-header{
     width: $HEADER_WIDTH; height: $HEADER_HEIGHT;
-
+    @media (min-width: 1920px){
+        height: $HEADER_HEIGHT_1920;
+    }
     box-sizing: border-box;
     border-bottom: 1px solid $BASIC_GRAY;
     >div{
@@ -22,30 +24,48 @@
                 position: -1590px 0px;
             }
             @media (min-width: 1920px){
-                // width: 256px; height: 51px;
-                // top:34px;
+                width: 256px; height: 51px;
+                top:34px;
             }
         }
         .menu{
             width: $HEADER_MENU__WIDTH; height: 35px;
             position: absolute; top: 110px;
             @media (min-width: 1920px){
-                // right: 0;
-                left: 276px;
+                top: 68px;
+                left: 554px;
             }
             li{
                 width: $HEADER_MENU__WIDTH/7;
                 float: left;
-                text-align: center;
-                position:relative;
+                position:absolute;
                 color: $BASIC_BLACK;
                 font-size: $HEADER_MENU_FONT_SIZE;
                 font-weight: bold;
                 p{
                     color: $STANDARD_COLOR;
                     margin-top: 4px;
+                    font-size: 10px;
                 }
                 cursor: pointer;
+            }
+            li:nth-child(2){
+                left: 148px;
+            }
+            li:nth-child(3){
+                left: 342px;
+            }
+            li:nth-child(4){
+                left: 494px;
+            }
+            li:nth-child(5){
+                left: 684px;
+            }
+            li:nth-child(6){
+                left: 908px;
+            }
+            li:nth-child(7){
+                left: 1134px;
             }
         }
     }
@@ -99,7 +119,7 @@
         box-sizing: border-box; border-left: 1px solid $BASIC_GRAY; padding-left: 50px;
         line-height: 22px;
         >section{
-            >section{
+            >section, .artile{
                 display: none;
                 h2{
                     font-size: 16px;

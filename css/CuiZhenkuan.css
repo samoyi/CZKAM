@@ -38,6 +38,9 @@ a {
 body {
   font-family: "Microsoft YaHei"; }
 
+#top_logo {
+  cursor: pointer; }
+
 .more {
   font-size: 10px;
   font-weight: bold;
@@ -45,6 +48,9 @@ body {
 
 a {
   color: inherit; }
+
+.active_tab {
+  color: #761301; }
 
 .art_chronology {
   position: relative; }
@@ -125,7 +131,7 @@ a {
       float: left;
       width: 355px;
       height: 200px;
-      background-color: #b3b3b3;
+      background-color: #f2f2f2;
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
@@ -146,7 +152,7 @@ a {
       float: left;
       width: 355px;
       height: 200px;
-      background-color: #b3b3b3;
+      background-color: #f2f2f2;
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
