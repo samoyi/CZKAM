@@ -5,7 +5,7 @@ vCatalog.title = ["公共教育", "PUBLIC EDUCATION"];
 vCatalog.catas = [
         [
             {title_c: "公教活动"},
-            {title_e: "ART GALLERY"},
+            {title_e: "ACTIVITIES"},
             {cata_c: ["山水高研班", "艺术大讲堂"]},
             {cata_e: ["SHANSHUIGAOYANBAN", "YISHUDAJIANGTANG"]},
             0
@@ -26,107 +26,9 @@ vCatalog.catas = [
         ],
     ];
 
-let vActivities = new Vue({
-    el: ".activities",
-    data: {
-        list: [
-            ["公共教育呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
-            ["公共教育呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
-            ["公共教育呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
-            ["公共教育呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
-            ["公共教育呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
-            ["公共教育呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
-        ],
-        nPerPage: 8, // 每页显示10个
-        nPageIndex : 0, // 当前页码
-    },
-    computed: {
-        displayedItem(){
-            return this.list.slice(this.nPageIndex*this.nPerPage, (this.nPageIndex+1)*this.nPerPage);
-        },
-        pageNum(){
-            return Math.ceil((this.list.length)/this.nPerPage);
-        },
-    },
-    methods: {
-        switchpage(index){
-            this.nPageIndex = index;
-        }
-    },
-    components: {
-        "public-activity": {
-            props: ["liData"],
-            template: `<news-list>
-                    <h3 slot="title">{{liData[0]}}</h3>
-                    <img :src="liData[1]" slot="image" />
-                    <p slot="summary">{{liData[2]}}</p>
-                    <span slot="remark">{{liData[3]}}</span>
-                </news-list>`,
-        },
-        "list-pagination": {
-            props: ["pageIndex"],
-            template: `<li @click="clickPagination(pageIndex)">{{pageIndex+1}}</li>`,
-            methods: {
-                clickPagination(index){
-                    this.$emit("switchpagination", index);
-                },
-            },
-        },
-    },
-});
 
-// let vExchanges = new Vue({
-//     el: ".exchanges",
-//     data: {
-//         list: [
-//             ["合作交流呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
-//             ["合作交流呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
-//             ["合作交流呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
-//             ["合作交流呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
-//             ["合作交流呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
-//             ["合作交流呵呵呵呵", "", "由山西省教育厅主办第三个是感受到水电费水电费水电费是水电费水电费水电费是的给我个省份的记录数惊呆了发熟练度设定了烦死了对方说……", "2016年11月13日"],
-//         ],
-//         nPerPage: 8, // 每页显示10个
-//         nPageIndex : 0, // 当前页码
-//     },
-//     computed: {
-//         displayedItem(){
-//             return this.list.slice(this.nPageIndex*this.nPerPage, (this.nPageIndex+1)*this.nPerPage);
-//         },
-//         pageNum(){
-//             return Math.ceil((this.list.length)/this.nPerPage);
-//         },
-//     },
-//     methods: {
-//         switchpage(index){
-//             this.nPageIndex = index;
-//         }
-//     },
-//     components: {
-//         "exchanges-item": {
-//             props: ["liData"],
-//             template: `<news-list>
-//                     <h3 slot="title">{{liData[0]}}</h3>
-//                     <img :src="liData[1]" slot="image" />
-//                     <p slot="summary">{{liData[2]}}</p>
-//                     <span slot="remark">{{liData[3]}}</span>
-//                 </news-list>`,
-//         },
-//         "list-pagination": {
-//             props: ["pageIndex"],
-//             template: `<li @click="clickPagination(pageIndex)">{{pageIndex+1}}</li>`,
-//             methods: {
-//                 clickPagination(index){
-//                     this.$emit("switchpagination", index);
-//                 },
-//             },
-//         },
-//     },
-// });
-
-
-
-
+let vSsgyb= exhibitionClass(".ssgyb");
+let vYsdjt= exhibitionClass(".ysdjt");
 let vExchanges= exhibitionClass(".exchanges");
 let vVolunteering = exhibitionClass(".volunteering");
 
@@ -134,6 +36,34 @@ let vVolunteering = exhibitionClass(".volunteering");
 window.onload = function(){
 
     let oContent = document.querySelector(".content");
+
+    // 山水高研班数据
+    {
+        let sURL = "ajax.php?item=public_ssgyb",
+            fnSuccessCallback = function(res){
+                vSsgyb.lists = JSON.parse(res);
+                vSsgyb.catas = Object.keys(vSsgyb.lists).reverse();
+                vSsgyb.list = vSsgyb.lists[vSsgyb.catas[0]];
+            },
+            fnFailCallback = function(status){
+                console.error("山水高研班数据加载失败");
+            };
+        AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+    }
+
+    // 艺术大讲堂数据
+    {
+        let sURL = "ajax.php?item=public_ysdjt",
+            fnSuccessCallback = function(res){
+                vYsdjt.lists = JSON.parse(res);
+                vYsdjt.catas = Object.keys(vYsdjt.lists).reverse();
+                vYsdjt.list = vYsdjt.lists[vYsdjt.catas[0]];
+            },
+            fnFailCallback = function(status){
+                console.error("艺术大讲堂数据加载失败");
+            };
+        AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+    }
 
     // 合作交流数据
     {

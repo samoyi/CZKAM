@@ -50,7 +50,7 @@ let vContent = new Vue({
                 </div>`,
         },
         "bulletin-tab": {
-            props: ["tab"],
+            props: ["tab", "curIndex"],
             template: `
                 <div id="bulletin-tab">
                     <h3>{{tab[0]}}</h3>
@@ -59,8 +59,17 @@ let vContent = new Vue({
                         <br /><br />
                         <span class="bulletin_date">{{tab[2]}}</span>
                     </p>
-
+                    <ul>
+                        <li v-bind:class="{active_tab: curIndex===0}"  @click="clickPagination(0)">●</li>
+                        <li v-bind:class="{active_tab: curIndex===1}"  @click="clickPagination(1)">●</li>
+                        <li v-bind:class="{active_tab: curIndex===2}"  @click="clickPagination(2)">●</li>
+                    </ul>
                 </div>`,
+            methods: {
+                clickPagination(clickedIndex){
+                    this.$emit("switchpagination", clickedIndex);
+                },
+            },
         },
         "gallery-base-info": {
             template: `
@@ -101,6 +110,11 @@ let vContent = new Vue({
             }
         },
     },
+    methods: {
+        switchtab(clickedIndex){
+            this.bulletinIndex = clickedIndex;
+        },
+    },
 });
 
 // 之后将要从后台接收到的数据
@@ -112,9 +126,9 @@ vContent.carouselTabs = [
     ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/carousel/test.png", "预告", "2016中国西安“崔振宽美术馆”国际雕塑创作营（四）"],
 ];
 // 轮播
-setInterval(function(){
-    vContent.carouselIndex = (vContent.carouselIndex+1) % 3;
-}, 1000);
+// setInterval(function(){
+//     vContent.carouselIndex = (vContent.carouselIndex+1) % 3;
+// }, 1000);
 
 vContent.exhibitionNews = [
     ["预告", "2016中国·西安“崔振宽美术馆”国际", "2016.9.20-10.20", "exhibition.html"],
@@ -130,9 +144,9 @@ vContent.publicEducationNews = [
     ["公教活动", "2016首届崔振宽山水画创作研修班汉中采风行（四）", "public_education.html"]
 ];
 // 轮播
-setInterval(function(){
-    vContent.publicEducationIndex = (vContent.publicEducationIndex+1) % 3;
-}, 1000);
+// setInterval(function(){
+//     vContent.publicEducationIndex = (vContent.publicEducationIndex+1) % 3;
+// }, 1000);
 
 vContent.bulletinTabs = [
     ["提前闭馆通知1", "1通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容", "2017.5.5"],
@@ -143,7 +157,7 @@ vContent.bulletinTabs = [
 // 轮播
 setInterval(function(){
     vContent.bulletinIndex = (vContent.bulletinIndex+1) % 3;
-}, 1000);
+}, 10000);
 
 
 

@@ -38,6 +38,9 @@ a {
 body {
   font-family: "Microsoft YaHei"; }
 
+#top_logo {
+  cursor: pointer; }
+
 .more {
   font-size: 10px;
   font-weight: bold;
@@ -45,6 +48,9 @@ body {
 
 a {
   color: inherit; }
+
+.active_tab {
+  color: #761301; }
 
 #content {
   position: relative;
@@ -154,26 +160,35 @@ a {
         color: #761301; }
   #content #public_education-tab > div:nth-child(3) {
     border-top: none; }
-  #content #bulletin-tab img {
-    width: 100%;
-    height: 170px;
-    display: block; }
-  #content #bulletin-tab > div {
-    width: 360px;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    font-size: 12px; }
-    #content #bulletin-tab > div h3 {
+  #content #bulletin-tab {
+    position: relative; }
+    #content #bulletin-tab img {
+      width: 100%;
+      height: 170px;
+      display: block; }
+    #content #bulletin-tab > div {
+      width: 360px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      font-size: 12px; }
+      #content #bulletin-tab > div h3 {
+        position: absolute;
+        top: 24px; }
+      #content #bulletin-tab > div .bulletin_content {
+        position: absolute;
+        top: 62px;
+        color: #b3b3b3;
+        line-height: 22px; }
+    #content #bulletin-tab > div:nth-child(3) {
+      border-top: none; }
+    #content #bulletin-tab > ul {
       position: absolute;
-      top: 24px; }
-    #content #bulletin-tab > div .bulletin_content {
-      position: absolute;
-      top: 62px;
-      color: #b3b3b3;
-      line-height: 22px; }
-  #content #bulletin-tab > div:nth-child(3) {
-    border-top: none; }
+      top: 24px;
+      right: 0; }
+      #content #bulletin-tab > ul li {
+        float: left;
+        margin-right: 6px; }
   #content #gallery_base_info > div {
     font-size: 12px;
     width: 360px;

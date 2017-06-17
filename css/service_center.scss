@@ -1,30 +1,101 @@
 @import "basic.scss";
 
-.member_ship{
-    color: $BASIC_GRAY;
-    font-size: 12px;
-    >p{
-        margin-top: 24px;
-    }
-    >ol, >ul{
-        margin-top: 50px;
-    }
-    >ul{
-        ol{
-            margin-top: 20px;
+.content{
+    >section{
+        .bulletin{
+            >ul{
+                position: relative; top: 30px;
+                li{
+                    font-size: 12px;
+                    color: $BASIC_GRAY;
+                    line-height: 22px;
+                    margin-bottom: 32px;
+                    position: relative;
+                    h3{
+                        font-size: 14px;
+                        color: $BASIC_BLACK;
+                    }
+                    P{
+                        margin-top: 6px;
+                    }
+                    span{
+                        position: absolute;
+                        top: 0; right: 0;
+                    }
+                }
+            }
         }
-    }
-    h3{
-        font-weight: bold;
-        margin-bottom: 14px;
-    }
-    h3, h4{
-        color: $BASIC_BLACK;
-    }
-    ol{
-        li{
-            list-style-type: decimal;
-            list-style-position:inside;
+
+        .member_ship{
+            color: $BASIC_GRAY;
+            font-size: 12px;
+            >p{
+                margin-top: 24px;
+            }
+            >ol, >ul{
+                margin-top: 50px;
+            }
+            >ul{
+                ol{
+                    margin-top: 20px;
+                }
+            }
+            h3{
+                font-weight: bold;
+                margin-bottom: 14px;
+            }
+            h3, h4{
+                color: $BASIC_BLACK;
+            }
+            ol{
+                li{
+                    list-style-type: decimal;
+                    list-style-position:inside;
+                }
+            }
+        }
+
+        .download{
+            >ul{
+                position: relative; top: 30px;
+                li{
+                    font-size: 12px;
+                    color: $BASIC_GRAY;
+                    margin-bottom: 32px;
+                    position: relative;
+                    height: 16px; background-color: #f4f4f4;
+                    width: 450px;
+                    height: 30px; line-height:30px;
+                    box-sizing: border-box; padding: 0 12px;
+                    span{
+                        display: inline-block;
+                    }
+                    .title{
+                        font-size: 14px;
+                        color: $BASIC_BLACK;
+                        margin-left: 30px;
+                        width: 230px;height: 100%;
+                        white-space:nowrap; overflow:hidden; text-overflow: ellipsis;
+                    }
+                    .time{
+                        float: left;
+                    }
+                    .dl_icon{
+                        color: $STANDARD_COLOR;
+                        float: right;
+                        width: 50px;
+                        position: relative;
+                        i{
+                            width: 16px; height: 12px; // 虽然图标宽14px，但写14px显示不全
+                            position: absolute;
+                            right: 0; top: 9px;
+                            background-image: url("http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/sprite.png");
+                            background-position: -1738px -81px;
+                        }
+
+                    }
+                }
+            }
         }
     }
 }

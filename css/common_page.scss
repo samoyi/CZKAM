@@ -184,14 +184,6 @@
                         color: $BASIC_GRAY;
                     }
                 }
-                >span{
-                    font-weight: bold;
-                    color: $STANDARD_COLOR;
-                    font-size: 10px;
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                }
             }
             #bulletin-tab{
                 width: 335px; height:158px;
@@ -218,6 +210,11 @@
                         float: left;
                         margin-left: 6px;
                     }
+                }
+                .more{
+                    position: absolute;
+                    top: 0;
+                    right: 0;
                 }
             }
             #gallery_base_info{

@@ -50,7 +50,11 @@ body{
     font-family: "Microsoft YaHei";
 }
 
+
 // other
+#top_logo{
+    cursor: pointer;
+}
 .more{
     font:{
         size: 10px;
@@ -60,6 +64,9 @@ body{
 }
 a{
     color: inherit;
+}
+.active_tab{
+    color: $STANDARD_COLOR;
 }
 
 

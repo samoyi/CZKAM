@@ -10,6 +10,10 @@
 		responseGet($_GET['item']);
 	}
 
+	if( $_GET['item'] === 'cuizhenkuan_chronology' ){
+		responseGet($_GET['item']);
+	}
+
 	if( $_GET['item'] === 'cuizhenkuan_works' ){
 		responseGet($_GET['item']);
 	}
@@ -30,6 +34,14 @@
 		responseGet($_GET['item']);
 	}
 
+	if( $_GET['item'] === 'public_ssgyb' ){
+		responseGet($_GET['item']);
+	}
+
+	if( $_GET['item'] === 'public_ysdjt' ){
+		responseGet($_GET['item']);
+	}
+
 	if( $_GET['item'] === 'public_exchanges' ){
 		responseGet($_GET['item']);
 	}
@@ -47,6 +59,14 @@
 	}
 
 	if( $_GET['item'] === 'gallery_derivatives' ){
+		responseGet($_GET['item']);
+	}
+
+	if( $_GET['item'] === 'service_bulletin' ){
+		responseGet($_GET['item']);
+	}
+
+	if( $_GET['item'] === 'service_download' ){
 		responseGet($_GET['item']);
 	}
 

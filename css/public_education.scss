@@ -1,5 +1,12 @@
 @import "basic.scss";
 
+.ssgyb{
+    @include exhibition_class("ssgyb");
+}
+
+.ysdjt{
+    @include exhibition_class("ysdjt");
+}
 
 .volunteering{
     @include exhibition_class("volunteering");

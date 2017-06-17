@@ -1,7 +1,7 @@
 ;"use strict";
 
 
-vCatalog.title = ["崔振宽简介", "CUI ZHENKUAN ART"];
+vCatalog.title = ["崔振宽艺术", "CUI ZHENKUAN ART"];
 vCatalog.catas = [
         [
             {title_c: "崔振宽简介"},
@@ -56,23 +56,7 @@ let vChronology = new Vue({
         },
     },
     data: {
-        srcs: [
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/0.jpg",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/1.jpg",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/2.jpg",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/3.jpg",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/4.jpg",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/5.jpg",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/6.jpg",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/7.jpg",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/8.jpg",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/9.jpg",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/10.jpg",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/11.jpg",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/12.jpg",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/13.jpg",
-            "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/chronology/14.jpg",
-        ],
+        srcs: [],
     }
 });
 
@@ -254,6 +238,18 @@ window.onload = function(){
 
     let oContent = document.querySelector(".content");
 
+    // 艺术年表
+    {
+        let sURL = "ajax.php?item=cuizhenkuan_chronology",
+            fnSuccessCallback = function(res){
+                vChronology.srcs = JSON.parse(res);
+            },
+            fnFailCallback = function(status){
+                console.error("加载艺术年表数据失败");
+            };
+        AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+    }
+
     // 作品数据
     {
         let sURL = "ajax.php?item=cuizhenkuan_works",
@@ -273,7 +269,7 @@ window.onload = function(){
                 vTreatise.list = JSON.parse(res);
             },
             fnFailCallback = function(status){
-                console.error("加载著作数据失败");
+                console.error("加载论著数据失败");
             };
         AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
     }

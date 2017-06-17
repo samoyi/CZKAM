@@ -38,6 +38,9 @@ a {
 body {
   font-family: "Microsoft YaHei"; }
 
+#top_logo {
+  cursor: pointer; }
+
 .more {
   font-size: 10px;
   font-weight: bold;
@@ -45,6 +48,9 @@ body {
 
 a {
   color: inherit; }
+
+.active_tab {
+  color: #761301; }
 
 #common-header {
   width: 100%;
@@ -197,13 +203,6 @@ a {
         font-size: 12px; }
         #common-footer > section .footer_up #bulletin-tab > div p, #common-footer > section .footer_up #gallery_base_info > div p {
           color: #b3b3b3; }
-      #common-footer > section .footer_up #bulletin-tab > span, #common-footer > section .footer_up #gallery_base_info > span {
-        font-weight: bold;
-        color: #761301;
-        font-size: 10px;
-        position: absolute;
-        top: 0;
-        right: 0; }
     #common-footer > section .footer_up #bulletin-tab {
       width: 335px;
       height: 158px; }
@@ -226,6 +225,10 @@ a {
         #common-footer > section .footer_up #bulletin-tab ul li {
           float: left;
           margin-left: 6px; }
+      #common-footer > section .footer_up #bulletin-tab .more {
+        position: absolute;
+        top: 0;
+        right: 0; }
     #common-footer > section .footer_up #gallery_base_info {
       width: 365px;
       height: 158px;

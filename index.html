@@ -46,7 +46,7 @@
         <div id="bulletin-tab">
             <h2>公告 BULLETIN</h2>
             <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/exhibition/test1.png" />
-            <bulletin-tab :tab="bulletinGetTab"></bulletin-tab>
+            <bulletin-tab :tab="bulletinGetTab" :cur-index="bulletinIndex"  @switchpagination="switchtab"></bulletin-tab>
             <a href="http://127.0.0.1/gits/CZKAM/service_center.html#公告" target="_blank" class="more">MORE</a>
         </div>
         <div id="gallery_base_info">
