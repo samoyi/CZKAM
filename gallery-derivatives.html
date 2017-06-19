@@ -13,7 +13,7 @@
 
     <section id="gallery-derivatives-middle" class="common-middle">
         <div  id="catalog" class="catalog">
-            <h2>{{title[0]}}<span>{{title[1]}}</span></h2>
+            <h2>{{title[0]}}<br /><span>{{title[1]}}</span></h2>
             <cata :current-level1-title="currentLevel1Title" :current-level2-title="currentLevel2Title" @display_content="display" v-for="cata in catas" :cata="cata"></cata>
         </div>
         <section class="content">

@@ -29,14 +29,16 @@ vCatalog.catas = [
             {title_e: "TREATISE"},
             {cata_c: []},
             {cata_e: []},
-            3
+            3,
+            "none",
         ],
         [
             {title_c: "艺术活动"},
             {title_e: "ACTIVITY"},
             {cata_c: []},
             {cata_e: []},
-            4
+            4,
+            "none",
         ],
         [
             {title_c: "艺术影像"},

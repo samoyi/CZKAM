@@ -27,6 +27,7 @@ vCatalog.catas = [
     ];
 
 
+
 let vSsgyb= exhibitionClass(".ssgyb");
 let vYsdjt= exhibitionClass(".ysdjt");
 let vExchanges= exhibitionClass(".exchanges");

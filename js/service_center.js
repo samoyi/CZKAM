@@ -29,14 +29,16 @@ vCatalog.catas = [
             {title_e: "GUIDE"},
             {cata_c: []},
             {cata_e: []},
-            3
+            3,
+            "none",
         ],
         [
             {title_c: "意见留言"},
             {title_e: "COMMENTS"},
             {cata_c: []},
             {cata_e: []},
-            4
+            4,
+            "none",
         ],
     ];
 

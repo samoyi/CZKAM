@@ -13,8 +13,10 @@ vCatalog.catas = [
         [
             {title_c: "配套设施"},
             {title_e: "FACILITIES"},
-            {cata_c: ["艺术酒店", "咖啡厅", "多功能报告厅", "贵宾厅", "停车位"]},
-            {cata_e: ["ART HOTEL", "MO COFFEE", "MULTI-FUNCTIONAL AUDITORIUM", "VIP HALL", "PARKING"]},
+            // {cata_c: ["艺术酒店", "咖啡厅", "多功能报告厅", "贵宾厅", "停车位"]},
+            // {cata_e: ["ART HOTEL", "MO COFFEE", "MULTI-FUNCTIONAL AUDITORIUM", "VIP HALL", "PARKING"]},
+            {cata_c: ["艺术酒店", "咖啡厅"]},
+            {cata_e: ["ART HOTEL", "MO COFFEE"]},
             1
         ],
     ];

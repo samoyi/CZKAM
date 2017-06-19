@@ -21,12 +21,60 @@ let vHeader = new Vue({
     el: "#common-header",
 });
 
+function displayContentSection(nLevel1Index, nLevel2Index){
+    let catas = document.querySelectorAll(".common-middle .content>section"), // 根据一级标题的版块分类
+    catas_len = catas.length;
+    for(let i=0; i<catas_len; i++){ // 循环所有大类
+        let items = catas[i].children, // 当前一级标题分类下的所有具体内容版块
+        items_len = items.length;
+        /*
+         * 具体的例子是，公共教育进去后，点击艺术大讲堂（01）再点击公教活动（0）
+         * 下面的这一段的错误之处在于，先点击01（第一大标题第二个小标题），01版块正常显示，
+         * 然后点击0（第一个大标题），i===cataIndex 为真，则显示00，但此时正在显示的01并未隐藏。
+         * 然后进行第二轮循环，第二轮循环中，i===cataIndex 仍然为真，再次显示00,
+         * 01仍然没有隐藏。于是两个子版块的内容就同时出现了。
+         */
+        // for(let j=0; j<items_len; j++ ){
+        //     if( i===cataIndex ){ // 点击的是当前大类的一级标题或二级标题
+        //         if(j===index ){ // 点击二级标题
+        //             items[j].style.display = "block";
+        //             console.log("222");
+        //         }else if(index===undefined){ // 点击一级标题
+        //             items[0].style.display = "block";
+        //             console.log("111");
+        //         }else{
+        //             items[j].style.display = "none";
+        //         }
+        //     }
+        //     else{
+        //         items[j].style.display = "none";
+        //     }
+        // }
+        /*
+         * 改成这个之后，在01显示的状态下点击0，会首先隐藏00，虽然此时00本来就是隐藏的。
+         * 然后在进行判断，00会显示出来。进行下一轮循环，仍然是首先隐藏01，此前正在显示
+         * 的01就被隐藏了，之后再进行判断，会再次显示已经显示的00。
+         */
+        for(let j=0; j<items_len; j++ ){ // 循环一个大类中的所有小类
+            items[j].style.display = "none"; // 先把所有的小类版块都隐藏
+            if( i===nLevel1Index ){ // 点击的是当前大类的一级标题或二级标题
+                if(j===nLevel2Index ){ // 点击二级标题
+                    items[j].style.display = "block";
+                }
+                else if(nLevel2Index===null){ // 点击一级标题
+                    items[0].style.display = "block";
+                }
+
+            }
+        }
+    }
+}
 
 let vCatalog = new Vue({
     components: {
         "cata": {
             props: ["cata", "currentLevel1Title", "currentLevel2Title"],
-            template: `<div>
+            template: `<div v-if="!cata[5]">
             <h3 v-bind:title="cata[0].title_c" :class="{active_page: cata[0].title_c===currentLevel1Title}"  @click="clickTitle(cata[4])">{{cata[0].title_c}}<br /><span>{{cata[1].title_e}}</span></h3>
             <ul>
                 <li :class="{active_page: item===currentLevel2Title}" @click="clickCata(cata[4], index)" v-for='(item,index) in cata[2].cata_c'>{{item}}<br /><span>{{cata[3].cata_e[index]}}</span></li>
@@ -37,7 +85,7 @@ let vCatalog = new Vue({
                     this.$emit( "display_content", cataIndex, index );
                 },
                 clickTitle(titleIndex){ // 点击一级标题
-                    this.$emit( "display_content", titleIndex );
+                    this.$emit( "display_content", titleIndex, null );
                 },
             },
         },
@@ -49,58 +97,73 @@ let vCatalog = new Vue({
          // 当前数据记录的被点击的标题，点击一个标题时，比对这个数据。如果一样，高亮标题
         currentLevel1Title: "",
         currentLevel2Title: "",
+
+        // 点击当前大小标题的序号，让右边版块的显示和隐藏绑定这两个序号
+        currentLevel1Index: 0,
+        currentLevel2Index: null, // 在点击没有二级标题的一级标题是，这个值为null
     },
     methods: {
         display(cataIndex, index){
+            this.currentLevel1Index = cataIndex;
+            this.currentLevel2Index = index;
+
+
             Bus.$emit("clickCataToCloseDetailArticle"); // 点击侧标题，发送事件给右边内容模块，让其关闭详情页
-            let catas = document.querySelectorAll(".common-middle .content>section"), // 根据一级标题的版块分类
-            catas_len = catas.length;
-            for(let i=0; i<catas_len; i++){ // 循环所有大类
-                let items = catas[i].children, // 当前一级标题分类下的所有具体内容版块
-                items_len = items.length;
-                /*
-                 * 具体的例子是，公共教育进去后，点击艺术大讲堂（01）再点击公教活动（0）
-                 * 下面的这一段的错误之处在于，先点击01（第一大标题第二个小标题），01版块正常显示，
-                 * 然后点击0（第一个大标题），i===cataIndex 为真，则显示00，但此时正在显示的01并未隐藏。
-                 * 然后进行第二轮循环，第二轮循环中，i===cataIndex 仍然为真，再次显示00,
-                 * 01仍然没有隐藏。于是两个子版块的内容就同时出现了。
-                 */
-                // for(let j=0; j<items_len; j++ ){
-                //     if( i===cataIndex ){ // 点击的是当前大类的一级标题或二级标题
-                //         if(j===index ){ // 点击二级标题
-                //             items[j].style.display = "block";
-                //             console.log("222");
-                //         }else if(index===undefined){ // 点击一级标题
-                //             items[0].style.display = "block";
-                //             console.log("111");
-                //         }else{
-                //             items[j].style.display = "none";
-                //         }
-                //     }
-                //     else{
-                //         items[j].style.display = "none";
-                //     }
-                // }
-                /*
-                 * 改成这个之后，在01显示的状态下点击0，会首先隐藏00，虽然此时00本来就是隐藏的。
-                 * 然后在进行判断，00会显示出来。进行下一轮循环，仍然是首先隐藏01，此前正在显示
-                 * 的01就被隐藏了，之后再进行判断，会再次显示已经显示的00。
-                 */
-                for(let j=0; j<items_len; j++ ){ // 循环一个大类中的所有小类
-                    items[j].style.display = "none"; // 先把所有的小类版块都隐藏
-                    if( i===cataIndex ){ // 点击的是当前大类的一级标题或二级标题
-                        if(j===index ){ // 点击二级标题
-                            items[j].style.display = "block";
-                        }
-                        else if(index===undefined){ // 点击一级标题
-                            items[0].style.display = "block";
-                        }
-                    }
-                }
-            }
+
+// Bus.$emit("catasChange", [cataIndex, index]); //
+
+            displayContentSection(cataIndex, index);
+
+            // let catas = document.querySelectorAll(".common-middle .content>section"), // 根据一级标题的版块分类
+            // catas_len = catas.length;
+            // for(let i=0; i<catas_len; i++){ // 循环所有大类
+            //     let items = catas[i].children, // 当前一级标题分类下的所有具体内容版块
+            //     items_len = items.length;
+            //     /*
+            //      * 具体的例子是，公共教育进去后，点击艺术大讲堂（01）再点击公教活动（0）
+            //      * 下面的这一段的错误之处在于，先点击01（第一大标题第二个小标题），01版块正常显示，
+            //      * 然后点击0（第一个大标题），i===cataIndex 为真，则显示00，但此时正在显示的01并未隐藏。
+            //      * 然后进行第二轮循环，第二轮循环中，i===cataIndex 仍然为真，再次显示00,
+            //      * 01仍然没有隐藏。于是两个子版块的内容就同时出现了。
+            //      */
+            //     // for(let j=0; j<items_len; j++ ){
+            //     //     if( i===cataIndex ){ // 点击的是当前大类的一级标题或二级标题
+            //     //         if(j===index ){ // 点击二级标题
+            //     //             items[j].style.display = "block";
+            //     //             console.log("222");
+            //     //         }else if(index===undefined){ // 点击一级标题
+            //     //             items[0].style.display = "block";
+            //     //             console.log("111");
+            //     //         }else{
+            //     //             items[j].style.display = "none";
+            //     //         }
+            //     //     }
+            //     //     else{
+            //     //         items[j].style.display = "none";
+            //     //     }
+            //     // }
+            //     /*
+            //      * 改成这个之后，在01显示的状态下点击0，会首先隐藏00，虽然此时00本来就是隐藏的。
+            //      * 然后在进行判断，00会显示出来。进行下一轮循环，仍然是首先隐藏01，此前正在显示
+            //      * 的01就被隐藏了，之后再进行判断，会再次显示已经显示的00。
+            //      */
+            //     for(let j=0; j<items_len; j++ ){ // 循环一个大类中的所有小类
+            //         items[j].style.display = "none"; // 先把所有的小类版块都隐藏
+            //         if( i===cataIndex ){ // 点击的是当前大类的一级标题或二级标题
+            //             if(j===index ){ // 点击二级标题
+            //                 items[j].style.display = "block";
+            //             }
+            //             else if(index===null){ // 点击一级标题
+            //                 items[0].style.display = "block";
+            //             }
+            //
+            //         }
+            //     }
+            // }
             // 更新当前数据记录的被点击的标题 如果此标题等于被单击的li的标题，该li通过class变色
             this.currentLevel1Title = this.catas[cataIndex][0].title_c;
             this.currentLevel2Title = this.catas[cataIndex][2].cata_c[index];
+
 
             if(index){ // 点击二级标题
                 location.hash = ((this.catas)[cataIndex][2].cata_c)[index];
@@ -108,28 +171,41 @@ let vCatalog = new Vue({
             else{ // 点击一级标题
                 location.hash = (this.catas)[cataIndex][0].title_c;
             }
+
         }
     },
     watch: {
         catas(){
-
             if( location.hash ){ // 带hash进入该页面
                 // this.currentLevel1Title = this.catas[0][0].title_c;
                 // this.currentLevel2Title = this.catas[0][2].cata_c[0];
-                let sHash = location.hash,
+                let sHashTitle = location.hash.slice(1),
                     catas = this.catas;
                 for(let i=0; i<catas.length; i++){
-                    if( sHash === catas[i][0].title_c ){ // hash对应一级标题
-                        this.currentLevel1Title = sHash;
+                    if( sHashTitle === catas[i][0].title_c ){ // hash对应一级标题
+                        this.currentLevel1Title = sHashTitle;
                         this.currentLevel2Title = this.catas[i][2].cata_c[0];
+
+                        this.currentLevel1Index = i;
+                        this.currentLevel2Index = null;
+                        console.log(this.currentLevel1Index, this.currentLevel2Index);
+                        Bus.$emit("catasChange", [this.currentLevel1Index, this.currentLevel2Index]);
+
                         break;
                     }
                     else{ // hash对应二级标题或什么也不对应
-                        let aLevel2Title = catas[i][2].title_c;
+                        let aLevel2Title = catas[i][2].cata_c;
                         for(let j=0; j<aLevel2Title.length; j++){
-                            if( sHash === catas[i][0].title_c[j] ){ // hash对应一级标题
+
+                            if( sHashTitle === aLevel2Title[j] ){ // hash对应一级标题
                                 this.currentLevel1Title = this.catas[i][0].title_c;
                                 this.currentLevel2Title = this.catas[i][2].cata_c[j];
+
+                                this.currentLevel1Index = i;
+                                this.currentLevel2Index = j;
+                                Bus.$emit("catasChange", [this.currentLevel1Index, this.currentLevel2Index]);
+
+                                break;
                             }
                         }
                     }
@@ -139,6 +215,7 @@ let vCatalog = new Vue({
                 this.currentLevel1Title = this.catas[0][0].title_c;
                 this.currentLevel2Title = this.catas[0][2].cata_c[0];
             }
+
         },
     },
     updated(){
@@ -155,6 +232,9 @@ let vCatalog = new Vue({
  *  1. 点击侧菜单关闭详情文章
  */
 const Bus = new Vue();
+
+
+
 
 // 展览组件
 function exhibitionClass(elSelector){
@@ -173,6 +253,9 @@ function exhibitionClass(elSelector){
             nPageIndex : 0, // 当前页码
             detailArticleHTML: "",
             bDisplayDetailArticle: false,
+
+            currentLevel1Index: 0,
+            currentLevel2Index: null,
         },
         computed: {
             displayedItem(){
@@ -264,7 +347,7 @@ function exhibitionClass(elSelector){
         },
         created(){
             // 接收侧目录组件发送的点击通知，关闭详情文章
-            Bus.$on('clickCataToCloseDetailArticle', ()=>{
+            Bus.$on('clickCataToCloseDetailArticle', (indexes)=>{
                 this.detailArticleHTML = "";
                 this.bDisplayDetailArticle = false;
             });
@@ -272,6 +355,7 @@ function exhibitionClass(elSelector){
     });
     return instance;
 }
+
 
 
 
