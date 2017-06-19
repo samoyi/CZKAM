@@ -93,4 +93,20 @@ window.onload = function(){
             };
         AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
     }
+
+
+    // 汉中数据
+    // {
+    //     let sURL = "ajax.php?item=article_hanzhong",
+    //         fnSuccessCallback = function(res){
+    //             let oParsed = JSON.parse(res);
+    //             setTimeout(function(){
+    //                 vUploadedArticle.articleHTML = oParsed.hanzhong;
+    //             }, 2000);
+    //         },
+    //         fnFailCallback = function(status){
+    //             console.error("加载汉中行数据失败");
+    //         };
+    //     AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+    // }
 };

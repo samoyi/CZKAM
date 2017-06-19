@@ -52,6 +52,7 @@ let vCatalog = new Vue({
     },
     methods: {
         display(cataIndex, index){
+            Bus.$emit("clickCataToCloseDetailArticle"); // 点击侧标题，发送事件给右边内容模块，让其关闭详情页
             let catas = document.querySelectorAll(".common-middle .content>section"), // 根据一级标题的版块分类
             catas_len = catas.length;
             for(let i=0; i<catas_len; i++){ // 循环所有大类
@@ -111,9 +112,33 @@ let vCatalog = new Vue({
     },
     watch: {
         catas(){
-            // 初始化目录，将目录中第一个标题加上激活的class
-            this.currentLevel1Title = this.catas[0][0].title_c;
-            this.currentLevel2Title = this.catas[0][2].cata_c[0];
+
+            if( location.hash ){ // 带hash进入该页面
+                // this.currentLevel1Title = this.catas[0][0].title_c;
+                // this.currentLevel2Title = this.catas[0][2].cata_c[0];
+                let sHash = location.hash,
+                    catas = this.catas;
+                for(let i=0; i<catas.length; i++){
+                    if( sHash === catas[i][0].title_c ){ // hash对应一级标题
+                        this.currentLevel1Title = sHash;
+                        this.currentLevel2Title = this.catas[i][2].cata_c[0];
+                        break;
+                    }
+                    else{ // hash对应二级标题或什么也不对应
+                        let aLevel2Title = catas[i][2].title_c;
+                        for(let j=0; j<aLevel2Title.length; j++){
+                            if( sHash === catas[i][0].title_c[j] ){ // hash对应一级标题
+                                this.currentLevel1Title = this.catas[i][0].title_c;
+                                this.currentLevel2Title = this.catas[i][2].cata_c[j];
+                            }
+                        }
+                    }
+                }
+            }
+            else{ // 初始化目录，将目录中第一个标题加上激活的class
+                this.currentLevel1Title = this.catas[0][0].title_c;
+                this.currentLevel2Title = this.catas[0][2].cata_c[0];
+            }
         },
     },
     updated(){
@@ -124,7 +149,12 @@ let vCatalog = new Vue({
     },
 });
 
-
+// 中央事件总线
+/*
+ * 用途：
+ *  1. 点击侧菜单关闭详情文章
+ */
+const Bus = new Vue();
 
 // 展览组件
 function exhibitionClass(elSelector){
@@ -141,6 +171,8 @@ function exhibitionClass(elSelector){
             nCataIndex: 0,
             nPerPage: 6, // 每页显示6个
             nPageIndex : 0, // 当前页码
+            detailArticleHTML: "",
+            bDisplayDetailArticle: false,
         },
         computed: {
             displayedItem(){
@@ -164,7 +196,7 @@ function exhibitionClass(elSelector){
                 props: ["exhibitionData"],
                 template: `
                 <li>
-                <img class="cover" :src="exhibitionData[0]" :alt="exhibitionData[2]" />
+                <img class="cover" :src="exhibitionData[0]" :alt="exhibitionData[2]" @click="displayDetailArticle(exhibitionData[5])" />
                 <div class="info">
                 <h3><span>{{exhibitionData[1]}}</span><span v-if="exhibitionData[1]"> | </span>{{exhibitionData[2]}}</h3>
                 <p class="date">{{exhibitionData[3]}}</p>
@@ -173,6 +205,27 @@ function exhibitionClass(elSelector){
                 </div>
                 <div style="clear:both;"></div>
                 </li>`,
+                methods: {
+                    // 显示详情文章页面
+                    displayDetailArticle(articleID){
+                        if(articleID){ // 列表项图片绑定了详情文章ID才显示文章
+                            let parent = this.$parent;
+                            parent.bDisplayDetailArticle = true;
+                            let detailArticleHTML = parent.detailArticleHTML;
+                            if(!detailArticleHTML){ // 如果没有文章数据数据。一般都是没有的，因为不会预加载，且上一篇详情隐藏后也会清除数据
+                                parent.detailArticleHTML = "<p>正在加载……</p>"
+                                let sURL = "ajax.php?item=article_" + articleID,
+                                    fnSuccessCallback = function(res){
+                                        parent.detailArticleHTML = JSON.parse(res);
+                                    },
+                                    fnFailCallback = function(status){
+                                        console.error("加载详情页数据失败");
+                                    };
+                                AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+                            }
+                        }
+                    },
+                },
             },
             "exhibition-cata": {
                 props: ["cata", "thisIndex", "cataIndex"],
@@ -195,6 +248,26 @@ function exhibitionClass(elSelector){
                     },
                 },
             },
+            "uploaded-article": {
+                props: ["contentHtml"],
+                template: `<article>
+                            <div v-html="contentHtml"></div>
+                            <i class="close_article" @click="closeDetailArticle">关闭文章</i>
+                        </article>`,
+                methods: {
+                    closeDetailArticle(){
+                        this.$parent.detailArticleHTML = "";
+                        this.$parent.bDisplayDetailArticle = false;
+                    },
+                },
+            },
+        },
+        created(){
+            // 接收侧目录组件发送的点击通知，关闭详情文章
+            Bus.$on('clickCataToCloseDetailArticle', ()=>{
+                this.detailArticleHTML = "";
+                this.bDisplayDetailArticle = false;
+            });
         },
     });
     return instance;
@@ -225,15 +298,15 @@ Vue.component("news-list", {
 
 
 // 后台上传的文章
-let vUpdatedArticle = null
-if(document.querySelector("#updated_article")){
-    vUpdatedArticle = new Vue({
-        el: "#updated_article",
-        data: {
-            articleHTML: "<p style='color: red;'>正在加载……</p>",
-        },
-    });
-}
+// let vUploadedArticle = null
+// if(document.querySelector("#vUploaded_article")){
+//     vUploadedArticle = new Vue({
+//         el: "#vUploaded_article",
+//         data: {
+//             articleHTML: "<p style='color: red;'>正在加载……</p>",
+//         },
+//     });
+// }
 
 
 

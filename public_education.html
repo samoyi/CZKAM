@@ -19,7 +19,7 @@
             <section>
                 <section class="ssgyb">
                     <h2>山水高研班  <span>SMGYB</span></h2>
-                    <div>
+                    <div v-show="!bDisplayDetailArticle">
                         <ul class="ssgyb_cata">
                             <exhibition-cata v-for="(item,index) in catas" :cata="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchexhibitions"></exhibition-cata>
                         </ul>
@@ -32,10 +32,11 @@
                             </ul>
                         </div>
                     </div>
+                    <uploaded-article id="vUploaded_article" v-show="bDisplayDetailArticle" :content-html="detailArticleHTML"></uploaded-article>
                 </section>
                 <section class="ysdjt">
                     <h2>艺术大讲堂  <span>YSDJT</span></h2>
-                    <div>
+                    <div v-show="!bDisplayDetailArticle"> <!-- 显示详情文章的时候，就隐藏 -->
                         <ul class="ysdjt_cata">
                             <exhibition-cata v-for="(item,index) in catas" :cata="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchexhibitions"></exhibition-cata>
                         </ul>
@@ -48,6 +49,7 @@
                             </ul>
                         </div>
                     </div>
+                    <uploaded-article id="vUploaded_article" v-show="bDisplayDetailArticle" :content-html="detailArticleHTML"></uploaded-article>
                 </section>
             </section>
             <section>
@@ -71,7 +73,7 @@
             <section>
                 <section class="volunteering">
                     <h2>志愿者服务  <span>VOLUNTEERING</span></h2>
-                    <div>
+                    <div v-show="!bDisplayDetailArticle">
                         <ul class="volunteering_cata">
                             <exhibition-cata v-for="(item,index) in catas" :cata="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchexhibitions"></exhibition-cata>
                         </ul>
@@ -84,6 +86,7 @@
                             </ul>
                         </div>
                     </div>
+                    <uploaded-article id="vUploaded_article" v-show="bDisplayDetailArticle" :content-html="detailArticleHTML"></uploaded-article>
                 </section>
             </section>
         </section>

@@ -23,7 +23,7 @@
                 </section>
                 <section class="academic_events">
                     <h2>学术活动<span>ACADEMIC EVENTS</span></h2>
-                    <div>
+                    <div v-show="!bDisplayDetailArticle">
                         <ul class="academic_events_cata">
                             <exhibition-cata v-for="(item,index) in catas" :cata="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchexhibitions"></exhibition-cata>
                         </ul>
@@ -36,14 +36,26 @@
                             </ul>
                         </div>
                     </div>
+                    <uploaded-article id="vUploaded_article" v-show="bDisplayDetailArticle" :content-html="detailArticleHTML"></uploaded-article>
                 </section>
             </section>
-            <section>
+            <section class="collection">
                 <section class="relics">
                     <h2>历史文物<span>RELICS</span></h2>
                 </section>
                 <section class="Chinese_painting">
                     <h2>国画<span>CHINESE PAINTING</span></h2>
+                    <ul class="works_cata">
+                        <works-cata v-for="(item,index) in catas_c" :cata_c="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchworks"></works-cata>
+                    </ul>
+                    <ul class="works_list">
+                        <works-item v-for="item in displayedItem" :works-data="item"></works-item>
+                    </ul>
+                    <div class="pagination_wrapper"><!-- 为了让pagination水平居中，加了这一层 -->
+                        <ul v-if="list.length>nPerPage" class="pagination">
+                            <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
+                        </ul>
+                    </div>
                 </section>
                 <section class="oli_painting">
                     <h2>油画<span>OLI PAINTING</span></h2>

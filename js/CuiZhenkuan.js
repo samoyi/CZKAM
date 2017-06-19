@@ -211,10 +211,10 @@ let vVideo = new Vue({
     el: ".video",
     components: {
         "video-template": {
-            props: ["src", "title"],
+            props: ["src", "title", "poster"],
             template: `
                 <div>
-                    <video :src="src" width="270" height="260" controls="controls">
+                    <video :src="src" width="270" height="260" controls="controls" preload="none" :poster="poster">
                         你的浏览器版本过低
                     </video>
                     <h3>{{title}}</h3>
@@ -225,6 +225,7 @@ let vVideo = new Vue({
     data: {
         srcs: [],
         titles: [],
+        posters: [],
     },
 });
 
@@ -294,6 +295,7 @@ window.onload = function(){
                 console.log(oParsed);
                 vVideo.srcs = oParsed.srcs;
                 vVideo.titles = oParsed.titles;
+                vVideo.posters = oParsed.posters;
             },
             fnFailCallback = function(status){
                 console.error("加载艺术影像数据失败");

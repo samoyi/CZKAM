@@ -38,6 +38,9 @@ a {
 body {
   font-family: "Microsoft YaHei"; }
 
+#top_logo {
+  cursor: pointer; }
+
 .more {
   font-size: 10px;
   font-weight: bold;
@@ -45,6 +48,19 @@ body {
 
 a {
   color: inherit; }
+
+.active_tab {
+  color: #761301; }
+
+#vUploaded_article {
+  position: relative; }
+  #vUploaded_article > div img {
+    display: block; }
+  #vUploaded_article .close_article {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    cursor: pointer; }
 
 .art_chronology > img {
   width: 100%;

@@ -54,6 +54,10 @@
 		responseGet($_GET['item']);
 	}
 
+	if( $_GET['item'] === 'collection_chinese' ){
+		responseGet($_GET['item']);
+	}
+
 	if( $_GET['item'] === 'gallery_works' ){
 		responseGet($_GET['item']);
 	}
@@ -70,7 +74,8 @@
 		responseGet($_GET['item']);
 	}
 
-	if( $_GET['item'] === 'article_hanzhong' ){
+	// 文章详情
+	if( strtok($_GET['item'], '_') === 'article' ){
 		responseGet($_GET['item']);
 	}
 

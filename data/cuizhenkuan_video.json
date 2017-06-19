@@ -1,18 +1,29 @@
 {
     "srcs": [
-        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/test1.mp4",
-        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/test1.mp4",
-        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/test1.mp4",
-        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/test1.mp4",
-        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/test1.mp4",
-        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/test1.mp4"
+        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/cangshanwuyan.mp4",
+        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/congyi50nian.mp4",
+        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/cuizhenkuanhetadexibushanshui.mp4",
+        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/dongfangzhizi.mp4",
+        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/huangtudidehuigui.mp4",
+        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/qixiangcangmang.mp4",
+        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/shoucangtianxia.mp4"
     ],
     "titles": [
-        "构建美术馆在知识和当代艺术实践领域的专业性1",
-        "构建美术馆在知识和当代艺术实践领域的专业性2",
-        "构建美术馆在知识和当代艺术实践领域的专业性3",
-        "构建美术馆在知识和当代艺术实践领域的专业性4",
-        "构建美术馆在知识和当代艺术实践领域的专业性5",
-        "构建美术馆在知识和当代艺术实践领域的专业性6"
+        "苍山无言",
+        "从艺50年",
+        "崔振宽和他的西部山水",
+        "东方之子",
+        "黄土地的回归",
+        "气象苍茫",
+        "收藏天下"
+    ],
+    "posters": [
+        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/cover/cangshanwuyan.jpg",
+        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/cover/congyi50nian.jpg",
+        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/cover/cuizhenkuanhetadexibushanshui.jpg",
+        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/cover/dongfangzhizi.jpg",
+        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/cover/huangtudidehuigui.jpg",
+        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/cover/qixiangcangmang.jpg",
+        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/video/cover/shoucangtianxia.jpg"
     ]
 }

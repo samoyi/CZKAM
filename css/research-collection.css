@@ -38,6 +38,9 @@ a {
 body {
   font-family: "Microsoft YaHei"; }
 
+#top_logo {
+  cursor: pointer; }
+
 .more {
   font-size: 10px;
   font-weight: bold;
@@ -46,44 +49,87 @@ body {
 a {
   color: inherit; }
 
-.academic_events {
+.active_tab {
+  color: #761301; }
+
+#vUploaded_article {
+  position: relative; }
+  #vUploaded_article > div img {
+    display: block; }
+  #vUploaded_article .close_article {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    cursor: pointer; }
+
+.content > section .academic_events {
   font-size: 12px; }
-  .academic_events .academic_events_cata {
+  .content > section .academic_events .academic_events_cata {
     height: 22px;
     margin-top: 16px; }
-    .academic_events .academic_events_cata .active_cata {
+    .content > section .academic_events .academic_events_cata .active_cata {
       color: #761301; }
-    .academic_events .academic_events_cata li {
+    .content > section .academic_events .academic_events_cata li {
       height: 22px;
       float: left;
       margin-right: 30px;
       cursor: pointer; }
-  .academic_events .academic_events_list > li {
+  .content > section .academic_events .academic_events_list > li {
     margin-top: 24px; }
-    .academic_events .academic_events_list > li .cover {
+    .content > section .academic_events .academic_events_list > li .cover {
       float: left;
       width: 355px;
       height: 200px;
       cursor: pointer; }
-    .academic_events .academic_events_list > li .info {
+    .content > section .academic_events .academic_events_list > li .info {
       width: 355px;
       overflow: hidden;
       float: left;
       margin-left: 34px; }
-      .academic_events .academic_events_list > li .info h3 {
+      .content > section .academic_events .academic_events_list > li .info h3 {
         font-size: 14px;
         font-weight: bold; }
-        .academic_events .academic_events_list > li .info h3 span {
+        .content > section .academic_events .academic_events_list > li .info h3 span {
           color: #761301; }
-      .academic_events .academic_events_list > li .info p {
+      .content > section .academic_events .academic_events_list > li .info p {
         font-size: 12px;
         color: #b3b3b3; }
-      .academic_events .academic_events_list > li .info .date {
+      .content > section .academic_events .academic_events_list > li .info .date {
         font-weight: bold; }
-      .academic_events .academic_events_list > li .info .summary {
+      .content > section .academic_events .academic_events_list > li .info .summary {
         margin-top: 16px; }
-      .academic_events .academic_events_list > li .info .more {
+      .content > section .academic_events .academic_events_list > li .info .more {
         color: #761301;
         font-size: 10px;
         display: inline-block;
         margin-top: 16px; }
+.content .collection > section {
+  font-size: 12px; }
+  .content .collection > section .works_cata {
+    height: 22px;
+    margin-top: 16px; }
+    .content .collection > section .works_cata .active_cata {
+      color: #761301; }
+    .content .collection > section .works_cata li {
+      height: 22px;
+      float: left;
+      margin-right: 30px;
+      cursor: pointer; }
+  .content .collection > section .works_list > li {
+    margin-top: 24px; }
+    .content .collection > section .works_list > li .thumbnail {
+      float: left;
+      width: 355px;
+      height: 200px;
+      background-color: #f2f2f2;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      cursor: pointer; }
+    .content .collection > section .works_list > li .info {
+      float: left;
+      margin-left: 34px;
+      width: 355px;
+      overflow: hidden; }
+      .content .collection > section .works_list > li .info span {
+        color: #b3b3b3; }
