@@ -78,7 +78,7 @@ window.onload = function(){
                         aAll.push(data);
                     })
                 }
-                oParsed.All = aAll.reverse();
+                oParsed.All = aAll;
                 vYsdjt.lists = oParsed;
                 vYsdjt.catas = Object.keys(vYsdjt.lists).reverse();
                 vYsdjt.list = vYsdjt.lists[vYsdjt.catas[0]];
