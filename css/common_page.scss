@@ -6,7 +6,7 @@
         height: $HEADER_HEIGHT_1920;
     }
     box-sizing: border-box;
-    border-bottom: 1px solid $BASIC_GRAY;
+    border-bottom: 1px solid $LINE_GRAY;
     >div{
         width: $HEADER_CONTENT_WIDTH_1366;
         @media (min-width: 1920px){
@@ -73,9 +73,12 @@
 .common-middle{
     width: $MIDDLE_WIDTH;
     margin-left: auto; margin-right: auto;
-    padding-top: 65px; box-sizing: border-box;
+    padding-top: 105px;
+    box-sizing: border-box;
     #catalog{
         width: $MIDDLE_CATALOG_WIDTH; float: left;
+        box-sizing: border-box; border-right: 1px solid $LINE_GRAY;
+        position: relative;
         h2{
             font-size: 18px;
             font-weight: bold;
@@ -93,7 +96,7 @@
             h3{
                 font-size:14px;
                 span{
-                    font-size:12px;
+                    font-size:10px;
                     color: $BASIC_GRAY;
                 }
                 cursor: pointer;
@@ -113,10 +116,17 @@
                 }
             }
         }
+        .breadcrumb{
+            color: $BASIC_GRAY;
+            font-size: 10px;
+            position: absolute;
+            top: -40px;
+            white-space:nowrap;
+        }
     }
     .content{
         width: $MIDDLE_CONTENT_WIDTH; float: left;
-        box-sizing: border-box; border-left: 1px solid $BASIC_GRAY; padding-left: 50px;
+        box-sizing: border-box; padding-left: 50px;
         line-height: 22px;
         >section{
             >section, .artile{
@@ -127,6 +137,7 @@
                     span{
                         font-size: 14px;
                         color: $BASIC_GRAY;
+                        font-weight: bold;
                     }
                 }
             }
@@ -188,8 +199,8 @@
         .footer_up{
             height: 230px; padding: 38px 0 38px 0;
             box-sizing: border-box;
-            border-top: 1px solid $BASIC_GRAY;
-            border-bottom: 1px solid $BASIC_GRAY;
+            border-top: 1px solid $LINE_GRAY;
+            border-bottom: 1px solid $LINE_GRAY;
             #bulletin-tab, #gallery_base_info{
                 float: left;
                 position: relative;
@@ -207,6 +218,9 @@
             }
             #bulletin-tab{
                 width: 335px; height:158px;
+                @media (min-width: 1920px){
+                    margin-left: 277px;
+                }
                 >div{
                     font-size: 12px;
                     position: relative;

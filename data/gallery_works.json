@@ -1,58 +1,11 @@
 {
-    "cuizhenkuan": [
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "崔振宽作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "崔振宽作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "崔振宽作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "崔振宽作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "崔振宽作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "崔振宽作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "崔振宽作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "崔振宽作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "崔振宽作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "崔振宽作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "崔振宽作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "崔振宽作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "崔振宽作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "崔振宽作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "崔振宽作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "崔振宽作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "崔振宽作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "崔振宽作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "崔振宽作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "崔振宽作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "崔振宽作品名称", "158cm x 362cm", "2016年", "崔振宽"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "崔振宽作品名称", "158cm x 362cm", "2016年", "崔振宽"]
-                ],
-    "huoming": [
-                ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "霍明作品名称", "158cm x 362cm", "2016年", "霍明"],
-                ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "霍明作品名称", "158cm x 362cm", "2016年", "霍明"],
-                ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "霍明作品名称", "158cm x 362cm", "2016年", "霍明"],
-                ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "霍明作品名称", "158cm x 362cm", "2016年", "霍明"],
-                ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "霍明作品名称", "158cm x 362cm", "2016年", "霍明"],
-                ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "霍明作品名称", "158cm x 362cm", "2016年", "霍明"],
-                ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "霍明作品名称", "158cm x 362cm", "2016年", "霍明"],
-                ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "霍明作品名称", "158cm x 362cm", "2016年", "霍明"],
-                ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "霍明作品名称", "158cm x 362cm", "2016年", "霍明"],
-                ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "霍明作品名称", "158cm x 362cm", "2016年", "霍明"],
-                ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "霍明作品名称", "158cm x 362cm", "2016年", "霍明"]
-            ],
-    "wangyanlin": [
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "王炎林作品名称", "158cm x 362cm", "2016年", "王炎林"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "王炎林作品名称", "158cm x 362cm", "2016年", "王炎林"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "王炎林作品名称", "158cm x 362cm", "2016年", "王炎林"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "王炎林作品名称", "158cm x 362cm", "2016年", "王炎林"]
-                ],
-    "luopingan": [
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "罗平安作品名称", "158cm x 362cm", "2016年", "罗平安"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "罗平安作品名称", "158cm x 362cm", "2016年", "罗平安"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "罗平安作品名称", "158cm x 362cm", "2016年", "罗平安"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "罗平安作品名称", "158cm x 362cm", "2016年", "罗平安"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "罗平安作品名称", "158cm x 362cm", "2016年", "罗平安"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "罗平安作品名称", "158cm x 362cm", "2016年", "罗平安"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "罗平安作品名称", "158cm x 362cm", "2016年", "罗平安"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test0.jpg", "罗平安作品名称", "158cm x 362cm", "2016年", "罗平安"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "罗平安作品名称", "158cm x 362cm", "2016年", "罗平安"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "罗平安作品名称", "158cm x 362cm", "2016年", "罗平安"],
-                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/CuiZhenkuan/works/test1.jpg", "罗平安作品名称", "158cm x 362cm", "2016年", "罗平安"]
+    "": [
+                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/gallery/0.jpg", "", "", "", ""],
+                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/gallery/1.jpg", "", "", "", ""],
+                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/gallery/2.jpg", "", "", "", ""],
+                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/gallery/3.jpg", "", "", "", ""],
+                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/gallery/4.jpg", "", "", "", ""],
+                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/gallery/5.jpg", "", "", "", ""],
+                    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/gallery/6.jpg", "", "", "", ""]
                 ]
 }

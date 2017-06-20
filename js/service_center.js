@@ -30,7 +30,7 @@ vCatalog.catas = [
             {cata_c: []},
             {cata_e: []},
             3,
-            "none",
+            "none", // 不渲染
         ],
         [
             {title_c: "意见留言"},
@@ -51,6 +51,9 @@ let vBulletin = new Vue({
         list: [],
         nPerPage: 8, // 每页显示10个
         nPageIndex : 0, // 当前页码
+
+        detailArticleHTML: "",
+        bDisplayDetailArticle: false,
     },
     computed: {
         displayedItem(){
@@ -69,10 +72,31 @@ let vBulletin = new Vue({
         "bulletin-item": {
             props: ["liData"],
             template: `<news-list>
-                    <h3 slot="title">{{liData[0]}}</h3>
+                    <h3 @click="displayDetailArticle(liData[3])" slot="title">{{liData[0]}}</h3>
                     <p slot="summary">{{liData[1]}}</p>
                     <span slot="remark">{{liData[2]}}</span>
                 </news-list>`,
+            methods: {
+                // 显示详情文章页面
+                displayDetailArticle(articleID){
+                    if(articleID){ // 列表项图片绑定了详情文章ID才显示文章
+                        let parent = this.$parent;
+                        parent.bDisplayDetailArticle = true;
+                        let detailArticleHTML = parent.detailArticleHTML;
+                        if(!detailArticleHTML){ // 如果没有文章数据数据。一般都是没有的，因为不会预加载，且上一篇详情隐藏后也会清除数据
+                            parent.detailArticleHTML = "<p>正在加载……</p>"
+                            let sURL = "ajax.php?item=article_" + articleID,
+                                fnSuccessCallback = function(res){
+                                    parent.detailArticleHTML = JSON.parse(res);
+                                },
+                                fnFailCallback = function(status){
+                                    console.error("加载详情页数据失败");
+                                };
+                            AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+                        }
+                    }
+                },
+            },
         },
         "list-pagination": {
             props: ["pageIndex"],
@@ -86,6 +110,26 @@ let vBulletin = new Vue({
                 },
             },
         },
+        "uploaded-article": {
+            props: ["contentHtml"],
+            template: `<article>
+                        <div v-html="contentHtml"></div>
+                        <i class="close_article" @click="closeDetailArticle">关闭文章</i>
+                    </article>`,
+            methods: {
+                closeDetailArticle(){
+                    this.$parent.detailArticleHTML = "";
+                    this.$parent.bDisplayDetailArticle = false;
+                },
+            },
+        },
+    },
+    created(){
+        // 接收侧目录组件发送的点击通知，关闭详情文章
+        Bus.$on('clickCataToCloseDetailArticle', (indexes)=>{
+            this.detailArticleHTML = "";
+            this.bDisplayDetailArticle = false;
+        });
     },
 });
 
@@ -116,7 +160,7 @@ let vDownload = new Vue({
             template: `<news-list>
                     <span class="title" slot="title">{{liData[0]}}</span>
                     <span class="time" slot="remark">{{liData[1]}}</span>
-                    <a class="dl_icon" :href="liData[3]">{{liData[2]}}<i></i></a>
+                    <a class="dl_icon" :href="liData[3]" target="_self">{{liData[2]}}<i></i></a>
                 </news-list>`,
         },
         "list-pagination": {

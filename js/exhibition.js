@@ -18,7 +18,7 @@ vCatalog.catas = [
 
 
 let vPermanentExhibition = exhibitionClass(".permanent_exhibition");
-
+directToDetailArticle(vPermanentExhibition);
 
 
 // lazy loading
@@ -26,11 +26,20 @@ window.onload = function(){
 
     let oContent = document.querySelector(".content");
 
-    // 作品数据
+    // 展览数据
     {
         let sURL = "ajax.php?item=exhibition_permanent",
             fnSuccessCallback = function(res){
-                vPermanentExhibition.lists = JSON.parse(res);
+                let oParsed = JSON.parse(res),
+                    aAll = [];
+                for(let item in oParsed){
+                    // console.log(item)
+                    oParsed[item].forEach(function(data){
+                        aAll.push(data);
+                    })
+                }
+                oParsed.All = aAll.reverse();
+                vPermanentExhibition.lists = oParsed;
                 // 获得所有年份字符串组成的数组
                 vPermanentExhibition.catas = Object.keys(vPermanentExhibition.lists).reverse();
                 vPermanentExhibition.list = vPermanentExhibition.lists[vPermanentExhibition.catas[0]];

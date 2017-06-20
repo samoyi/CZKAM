@@ -15,11 +15,16 @@
         <div  id="catalog" class="catalog">
             <h2>{{title[0]}}<br /><span>{{title[1]}}</span></h2>
             <cata :current-level1-title="currentLevel1Title" :current-level2-title="currentLevel2Title" @display_content="display" v-for="cata in catas" :cata="cata"></cata>
+            <p class="breadcrumb"><a href="index.html">🏠</a> ＞ <span>{{title[0]}}</span><span> ＞ {{currentLevel1Title}}</span><span v-if="currentLevel2Title"> ＞ {{currentLevel2Title}}</span></p>
         </div>
         <section class="content">
             <section>
                 <section class="academic_committee">
                     <h2>学术委员会<span>ACADEMIC COMMITTEE</span></h2>
+                    <div>
+                        <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/research/committee/0.jpg" />
+                        <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/research/committee/1.jpg" />
+                    </div>
                 </section>
                 <section class="academic_events">
                     <h2>学术活动<span>ACADEMIC EVENTS</span></h2>
@@ -40,9 +45,6 @@
                 </section>
             </section>
             <section class="collection">
-                <section class="relics">
-                    <h2>历史文物<span>RELICS</span></h2>
-                </section>
                 <section class="Chinese_painting">
                     <h2>国画<span>CHINESE PAINTING</span></h2>
                     <ul class="works_cata">
@@ -56,6 +58,9 @@
                             <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
                         </ul>
                     </div>
+                </section>
+                <section class="relics">
+                    <h2>历史文物<span>RELICS</span></h2>
                 </section>
                 <section class="oli_painting">
                     <h2>油画<span>OLI PAINTING</span></h2>

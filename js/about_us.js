@@ -35,6 +35,17 @@ window.onload = function(){
             imgs[i].src = "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/about_us/art_gallery/events/" + i + ".jpg";
         }
     }
+
+    // 联系我们
+    {
+        let imgs = oContent.querySelectorAll(".contact_us img"),
+            len = imgs.length;
+        for(let i=0; i<len; i++){
+            imgs[i].src = "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/about_us/art_gallery/contact_us/" + i + ".jpg";
+        }
+
+    }
+
     // 艺术酒店
     {
         let imgs = oContent.querySelectorAll(".art_hotel img"),

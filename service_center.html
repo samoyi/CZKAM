@@ -15,20 +15,24 @@
         <div  id="catalog" class="catalog">
             <h2>{{title[0]}}<br /><span>{{title[1]}}</span></h2>
             <cata :current-level1-title="currentLevel1Title" :current-level2-title="currentLevel2Title" @display_content="display" v-for="cata in catas" :cata="cata"></cata>
+            <p class="breadcrumb"><a href="index.html">🏠</a> ＞ <span>{{title[0]}}</span><span> ＞ {{currentLevel1Title}}</span><span v-if="currentLevel2Title"> ＞ {{currentLevel2Title}}</span></p>
         </div>
         <section class="content">
             <section>
                 <section class="bulletin">
                     <h2>公告  <span>BULLETIN</span></h2>
-                    <ul>
-                        <bulletin-item v-for="item in displayedItem" :li-data="item"></BULLETIN-item>
-                    </ul>
-                    <div class="pagination_wrapper"><!-- 为了让pagination水平居中，加了这一层 -->
-                        <ul v-if="list.length>nPerPage" class="pagination">
-                            <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
-                            <!-- TODO VUE定义类不能用连字符？ <list-pagination v-for="n in pageNum" :page-index="n"  :class="{current-li:1}"></list-pagination> -->
+                    <div v-show="!bDisplayDetailArticle">
+                        <ul>
+                            <bulletin-item v-for="item in displayedItem" :li-data="item"></BULLETIN-item>
                         </ul>
+                        <div class="pagination_wrapper"><!-- 为了让pagination水平居中，加了这一层 -->
+                            <ul v-if="list.length>nPerPage" class="pagination">
+                                <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
+                                <!-- TODO VUE定义类不能用连字符？ <list-pagination v-for="n in pageNum" :page-index="n"  :class="{current-li:1}"></list-pagination> -->
+                            </ul>
+                        </div>
                     </div>
+                    <uploaded-article id="vUploaded_article" v-show="bDisplayDetailArticle" :content-html="detailArticleHTML"></uploaded-article>
                 </section>
             </section>
             <section>

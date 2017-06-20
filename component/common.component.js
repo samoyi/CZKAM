@@ -70,6 +70,27 @@ function displayContentSection(nLevel1Index, nLevel2Index){
     }
 }
 
+// 手动显示详情文章。用于通过连接直接进入详情页
+function directToDetailArticle(component){
+    let articleID = location.search.slice(4);
+    if(articleID){
+        component.bDisplayDetailArticle = true;
+        let detailArticleHTML = component.detailArticleHTML;
+        if(!detailArticleHTML){ // 如果没有文章数据数据。一般都是没有的，因为不会预加载，且上一篇详情隐藏后也会清除数据
+            component.detailArticleHTML = "<p>正在加载……</p>"
+            let sURL = "ajax.php?item=article_" + articleID,
+            fnSuccessCallback = function(res){
+                component.detailArticleHTML = JSON.parse(res);
+            },
+            fnFailCallback = function(status){
+                console.error("加载详情页数据失败");
+            };
+            AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+        }
+    }
+}
+
+
 let vCatalog = new Vue({
     components: {
         "cata": {
@@ -188,7 +209,6 @@ let vCatalog = new Vue({
 
                         this.currentLevel1Index = i;
                         this.currentLevel2Index = null;
-                        console.log(this.currentLevel1Index, this.currentLevel2Index);
                         Bus.$emit("catasChange", [this.currentLevel1Index, this.currentLevel2Index]);
 
                         break;
@@ -210,6 +230,7 @@ let vCatalog = new Vue({
                         }
                     }
                 }
+
             }
             else{ // 初始化目录，将目录中第一个标题加上激活的class
                 this.currentLevel1Title = this.catas[0][0].title_c;
@@ -232,7 +253,6 @@ let vCatalog = new Vue({
  *  1. 点击侧菜单关闭详情文章
  */
 const Bus = new Vue();
-
 
 
 
@@ -284,7 +304,6 @@ function exhibitionClass(elSelector){
                 <h3><span>{{exhibitionData[1]}}</span><span v-if="exhibitionData[1]"> | </span>{{exhibitionData[2]}}</h3>
                 <p class="date">{{exhibitionData[3]}}</p>
                 <p class="summary">{{exhibitionData[4]}}</p>
-                <span class="more">MORE</span>
                 </div>
                 <div style="clear:both;"></div>
                 </li>`,
@@ -357,6 +376,15 @@ function exhibitionClass(elSelector){
 }
 
 
+// 带hash进入页面，内容版块进行相应显示
+// FIXME4 因为vCatalog组件会修改currentLevel1Index和currentLevel2Index，所以这里
+// 用setTimeout把displayContentSection推到修改之后
+if( location.hash ){
+    console.log( vCatalog.currentLevel1Index, vCatalog.currentLevel2Index );
+    setTimeout(function(){
+        displayContentSection(vCatalog.currentLevel1Index, vCatalog.currentLevel2Index)
+    }, 0);
+}
 
 
 // 文章列表类的模板
@@ -444,7 +472,7 @@ let vCommonFooter = new Vue({
                 },
                 "bulletin-pagination": {
                     props: ["bulletinIndex", "curIndex"],
-                    template: `<li v-bind:class="{active_tab: bulletinIndex===curIndex}" @click="clickPagination(bulletinIndex)">●</li>`,
+                    template: `<li v-if="false" v-bind:class="{active_tab: bulletinIndex===curIndex}" @click="clickPagination(bulletinIndex)">●</li>`,
                     methods: {
                         clickPagination(clickedIndex){
                             this.$emit("switchpagination", clickedIndex);
@@ -501,9 +529,9 @@ let vCommonFooter = new Vue({
     let sURL = "ajax.php?item=common_bulletin",
         fnSuccessCallback = function(res){
             vCommonFooter.$children[0].tabs = JSON.parse(res);
-            setInterval(function(){
-                vCommonFooter.$children[0].curIndex = (vCommonFooter.$children[0].curIndex+1) % 3;
-            }, 5000);
+            // setInterval(function(){
+            //     vCommonFooter.$children[0].curIndex = (vCommonFooter.$children[0].curIndex+1) % 3;
+            // }, 5000);
         },
         fnFailCallback = function(status){
             console.error("加载公告数据失败");

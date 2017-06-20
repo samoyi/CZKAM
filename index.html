@@ -5,7 +5,7 @@
     <title></title>
     <link href="css/common_page.css" type="text/css" rel="stylesheet">
     <link href="css/index.css" type="text/css" rel="stylesheet">
-    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css">
 </head>
 <body>
     <header id="common-header">
@@ -14,17 +14,17 @@
     <section id="content">
             <div id="carousel-tab" class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div style="background-image:url(http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/carousel/test.jpg)" class="swiper-slide">
-                        <h3><span>预告 | </span>2016中国西安“崔振宽美术馆”国际雕塑创作营（一）</h3>
+                    <div class="swiper-slide">
+                        <a href="exhibition.html?id=baochijilu#常设展览" target="_blank"><img src="image/index/carousel/0.jpg" /></a>
+                        <a href="exhibition.html?id=baochijilu#常设展览" target="_blank"><h3><span>预告 | </span>保持记录——2017西安国际摄影邀请展</h3></a>
                     </div>
-                    <div style="background-image:url(http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/carousel/test.jpg)" class="swiper-slide">
-                        <h3><span>预告 | </span>2016中国西安“崔振宽美术馆”国际雕塑创作营（而）</h3>
+                    <div class="swiper-slide">
+                        <a href="public_education.html?id=gongjiangjingshen#艺术大讲堂" target="_blank"><img src="image/index/carousel/1.jpg" /></a>
+                        <a href="public_education.html?id=gongjiangjingshen#艺术大讲堂" target="_blank"><h3><span></span>工匠精神——谈国展创作</h3></a>
                     </div>
-                    <div style="background-image:url(http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/carousel/test.jpg)" class="swiper-slide">
-                        <h3><span>预告 | </span>2016中国西安“崔振宽美术馆”国际雕塑创作营（三）</h3>
-                    </div>
-                    <div style="background-image:url(http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/carousel/test.jpg)" class="swiper-slide">
-                        <h3><span>预告 | </span>2016中国西安“崔振宽美术馆”国际雕塑创作营（四）</h3>
+                    <div class="swiper-slide">
+                        <a href="exhibition.html?id=mosewujian#常设展览" target="_blank"><img src="image/index/carousel/2.jpg" /></a>
+                        <a href="exhibition.html?id=mosewujian#常设展览" target="_blank"><h3><span></span>墨色无间——汪劲松、王承云实验艺术展开幕</h3></a>
                     </div>
                 </div>
                 <div class="swiper-pagination"></div>
@@ -33,21 +33,21 @@
             </div>
         <div id="exhibition-tab">
             <h2>展览 EXHIBITION</h2>
-            <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/exhibition/test1.png" />
+            <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/exhibition/head.jpg" />
             <exhibition-news v-for="item in exhibitionNews" :news="item"></exhibition-news>
             <a href="exhibition.html" target="_blank" class="more">MORE</a>
         </div>
         <div id="public_education-tab">
             <h2>公共教育 PUBLIC EDUCATION</h2>
-            <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/exhibition/test1.png" />
+            <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/public/head.jpg" />
             <public_education-news v-for="item in publicEducationNews" :news="item"></public_education-news>
             <a href="public_education.html" target="_blank" class="more">MORE</a>
         </div>
         <div id="bulletin-tab">
             <h2>公告 BULLETIN</h2>
-            <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/exhibition/test1.png" />
+            <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/bulletin/head.jpg" />
             <bulletin-tab :tab="bulletinGetTab" :cur-index="bulletinIndex"  @switchpagination="switchtab"></bulletin-tab>
-            <a href="http://127.0.0.1/gits/CZKAM/service_center.html#公告" target="_blank" class="more">MORE</a>
+            <a href="service_center.html#公告" target="_blank" class="more">MORE</a>
         </div>
         <div id="gallery_base_info">
             <gallery-base-info></gallery-base-info>
@@ -68,6 +68,7 @@
     </footer>
 </body>
 <script src="js/vue.js"></script>
-<script src="js/swiper.min.js"></script>
+<!-- <script src="https://cdn.bootcss.com/vue/2.3.4/vue.min.js"></script> -->
+<script src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.min.js"></script>
 <script src="component/index.component.js"></script>
 </html>

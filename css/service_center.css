@@ -62,21 +62,23 @@ a {
     right: 0;
     cursor: pointer; }
 
-.content > section .bulletin > ul {
+.content > section > section {
+  font-size: 12px; }
+.content > section .bulletin > div > ul {
   position: relative;
   top: 30px; }
-  .content > section .bulletin > ul li {
+  .content > section .bulletin > div > ul li {
     font-size: 12px;
     color: #b3b3b3;
     line-height: 22px;
     margin-bottom: 32px;
     position: relative; }
-    .content > section .bulletin > ul li h3 {
+    .content > section .bulletin > div > ul li h3 {
       font-size: 14px;
       color: black; }
-    .content > section .bulletin > ul li P {
+    .content > section .bulletin > div > ul li P {
       margin-top: 6px; }
-    .content > section .bulletin > ul li span {
+    .content > section .bulletin > div > ul li span {
       position: absolute;
       top: 0;
       right: 0; }

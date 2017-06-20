@@ -1,5 +1,9 @@
 @import "basic.scss";
-
+body{
+    background:{
+        image: url(http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/bg.jpg);
+    }
+}
 #content{
     position: relative; top: 30px;
     width: $MIDDLE_WIDTH;
@@ -17,21 +21,26 @@
     #carousel-tab{
         width: 815px;
         .swiper-wrapper{
-            >div{
-                background-size: contain;
-                background-repeat: no-repeat;
-                h3{
-                    font:{
-                        size: 18px;
-                        weight: bold;
+                >div{
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    ima{
+                        position: absolute;
+                        width: 100%;
+                        left: 0;
                     }
-                    position: absolute;
-                    bottom: 22px; left: 22px;
-                    span{
-                        color: $STANDARD_COLOR;
+                    h3{
+                        font:{
+                            size: 18px;
+                            weight: bold;
+                        }
+                        position: absolute;
+                        bottom: 22px; left: 22px;
+                        span{
+                            color: $STANDARD_COLOR;
+                        }
                     }
                 }
-            }
         }
         .swiper-pagination{
             bottom: 80px;
@@ -43,8 +52,9 @@
             }
         }
         .swiper-button-prev, .swiper-button-next{
+            opacity: 0.3;
             width: 39px; height: 98px;
-            top: 37%; 
+            top: 37%;
             background: url("http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/sprite.png");
             background-position: -1590px -81px;
         }
@@ -79,7 +89,7 @@
         >div{
             width: 360px; height: 76px;
             margin-left: auto; margin-right: auto;
-            box-sizing: border-box; border-top: 1px solid $BASIC_GRAY;
+            box-sizing: border-box; border-top: 1px solid $LINE_GRAY;
             position: relative;
             h3{
                 position: absolute; top: 24px;
@@ -106,7 +116,7 @@
         >div{
             width: 360px; height: 52px;
             margin-left: auto; margin-right: auto;
-            box-sizing: border-box; border-top: 1px solid $BASIC_GRAY;
+            box-sizing: border-box; border-top: 1px solid $LINE_GRAY;
             position: relative;
             h3{
                 position: absolute; top: 24px;
@@ -135,7 +145,7 @@
                 position: absolute; top: 24px;
             }
             .bulletin_content{
-                position: absolute; top: 62px;
+                position: absolute; top: 47px;
                 color: $BASIC_GRAY;
                 line-height: 22px;
             }
@@ -194,8 +204,8 @@
     height: $FOOTER_DOWN_HEIGHT;
     box-sizing: border-box;
     color: $BASIC_GRAY;
-    border-top: 1px solid $BASIC_GRAY;
-    margin: 200px auto auto auto;
+    border-top: 1px solid $LINE_GRAY;
+    margin: 150px auto auto auto;
     @media (min-width: 1920px){
         width: $FOOTER_WIDTH_1920;
     }

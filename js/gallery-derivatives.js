@@ -30,8 +30,8 @@ let vWorks = new Vue({
             ["", "", "", "", ""],
         ],
         lists: {},
-        catas: ["cuizhenkuan" , "huoming", "wangyanlin", "luopingan"],
-        catas_c: ["崔振宽", "霍明", "王炎林", "罗平安"],
+        catas: [""],
+        catas_c: [""],
         nCataIndex: 0,
         nPerPage: 6, // 每页显示10个
         nPageIndex : 0, // 当前页码
@@ -66,10 +66,10 @@ let vWorks = new Vue({
                 <li>
                     <div class="thumbnail" :style="getUrl(worksData[0])"></div>
                     <div class="info">
-                        <p><span>作品名称：</span>{{worksData[1]}}</p>
-                        <p><span>尺寸：</span>{{worksData[2]}}</p>
-                        <p><span>时间：</span>{{worksData[3]}}</p>
-                        <p><span>作者：</span>{{worksData[4]}}</p>
+                        <p v-if="worksData[1]"><span>作品名称：</span>{{worksData[1]}}</p>
+                        <p v-if="worksData[2]"><span>尺寸：</span>{{worksData[2]}}</p>
+                        <p v-if="worksData[3]"><span>时间：</span>{{worksData[3]}}</p>
+                        <p v-if="worksData[4]"><span>作者：</span>{{worksData[4]}}</p>
                     </div>
                     <div style="clear:both;"></div>
                 </li>`,
@@ -114,8 +114,8 @@ let vDerivatives = new Vue({
             ["", "", "", "", ""],
         ],
         lists: {},
-        catas: ["cuizhenkuan" , "huoming", "wangyanlin", "luopingan"],
-        catas_c: ["衍生品类别一", "衍生品类别二", "衍生品类别三", "衍生品类别四"],
+        catas: [""],
+        catas_c: [""],
         nCataIndex: 0,
         nPerPage: 6, // 每页显示10个
         nPageIndex : 0, // 当前页码
@@ -150,10 +150,10 @@ let vDerivatives = new Vue({
                 <li>
                     <div class="thumbnail" :style="getUrl(worksData[0])"></div>
                     <div class="info">
-                        <p><span>作品名称：</span>{{worksData[1]}}</p>
-                        <p><span>尺寸：</span>{{worksData[2]}}</p>
-                        <p><span>时间：</span>{{worksData[3]}}</p>
-                        <p><span>作者：</span>{{worksData[4]}}</p>
+                        <p v-if="worksData[1]"><span>作品名称：</span>{{worksData[1]}}</p>
+                        <p v-if="worksData[2]"><span>尺寸：</span>{{worksData[2]}}</p>
+                        <p v-if="worksData[3]"><span>时间：</span>{{worksData[3]}}</p>
+                        <p v-if="worksData[4]"><span>作者：</span>{{worksData[4]}}</p>
                     </div>
                     <div style="clear:both;"></div>
                 </li>`,

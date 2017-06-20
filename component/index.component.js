@@ -56,13 +56,13 @@ let vContent = new Vue({
                     <h3>{{tab[0]}}</h3>
                     <p class="bulletin_content">
                         {{tab[1]}}
-                        <br /><br />
+                        <br />
                         <span class="bulletin_date">{{tab[2]}}</span>
                     </p>
                     <ul>
-                        <li v-bind:class="{active_tab: curIndex===0}"  @click="clickPagination(0)">●</li>
-                        <li v-bind:class="{active_tab: curIndex===1}"  @click="clickPagination(1)">●</li>
-                        <li v-bind:class="{active_tab: curIndex===2}"  @click="clickPagination(2)">●</li>
+                        <li v-if="false" v-bind:class="{active_tab: curIndex===0}"  @click="clickPagination(0)">●</li>
+                        <li v-if="false" v-bind:class="{active_tab: curIndex===1}"  @click="clickPagination(1)">●</li>
+                        <li v-if="false" v-bind:class="{active_tab: curIndex===2}"  @click="clickPagination(2)">●</li>
                     </ul>
                 </div>`,
             methods: {
@@ -118,46 +118,33 @@ let vContent = new Vue({
 });
 
 // 之后将要从后台接收到的数据
-vContent.carouselTabs = [
-    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/carousel/test.png", "预告", "2016中国西安“崔振宽美术馆”国际雕塑创作营（一）"],
-    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/carousel/test.png", "预告", "2016中国西安“崔振宽美术馆”国际雕塑创作营（二）"],
-    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/carousel/test.png", "预告", "2016中国西安“崔振宽美术馆”国际雕塑创作营（三）"],
-    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/carousel/test.png", "预告", "2016中国西安“崔振宽美术馆”国际雕塑创作营（四）"],
-    ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/carousel/test.png", "预告", "2016中国西安“崔振宽美术馆”国际雕塑创作营（四）"],
-];
-// 轮播
-// setInterval(function(){
-//     vContent.carouselIndex = (vContent.carouselIndex+1) % 3;
-// }, 1000);
+// vContent.carouselTabs = [
+//     ["image/index/carousel/0.jpg", "预告", "保持记录——2017西安国际摄影邀请展"],
+//     ["image/index/carousel/1.jpg", "预告", "工匠精神——谈国展创作"],
+//     ["image/index/carousel/2.jpg", "预告", "墨色无间——汪劲松、王承云实验艺术展开幕"]
+// ];
+
 
 vContent.exhibitionNews = [
-    ["预告", "2016中国·西安“崔振宽美术馆”国际", "2016.9.20-10.20", "exhibition.html"],
-    ["", "首届陕西省大学生摄影大展开幕啦！", "2016.11.6", "exhibition.html"],
-    ["", "墨色无间——汪劲松、王承云实验艺术展开幕", "2016.11.20-12.5", "exhibition.html"]
+    ["", "崔振宽美术馆开馆暨“苍山无言——崔振宽画展”启幕", "2016.9.20-10.20", "exhibition.html?id=kaiguan#常设展览"],
+    ["", "首届陕西省大学生摄影大展开幕啦！", "2016.11.6", "exhibition.html?id=daxueshengsheyingzhan#常设展览"],
+    ["", "墨色无间——汪劲松、王承云实验艺术展开幕", "2016.11.20-12.5", "exhibition.html?id=mosewujian#常设展览"]
 ];
 
 
 vContent.publicEducationNews = [
-    ["公教活动", "2016首届崔振宽山水画创作研修班汉中采风行（一）", "public_education.html"],
-    ["公教活动", "2016首届崔振宽山水画创作研修班汉中采风行（二）", "public_education.html"],
-    ["公教活动", "2016首届崔振宽山水画创作研修班汉中采风行（三）", "public_education.html"],
-    ["公教活动", "2016首届崔振宽山水画创作研修班汉中采风行（四）", "public_education.html"]
+    ["公教活动", "2016首届崔振宽山水画创作研修班汉中采风行", "public_education.html?id=hanzhong#山水高研班"],
+    ["公教活动", "工匠精神——谈国展创作", "public_education.html?id=gongjiangjingshen#艺术大讲堂"],
+];
+
+
+vContent.bulletinTabs = [
+    ["五一假期开闭馆时间安排", "五一假期，崔振宽美术馆、水墨长安艺术博物馆正常开馆", "2017.4.28"]
 ];
 // 轮播
 // setInterval(function(){
-//     vContent.publicEducationIndex = (vContent.publicEducationIndex+1) % 3;
-// }, 1000);
-
-vContent.bulletinTabs = [
-    ["提前闭馆通知1", "1通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容", "2017.5.5"],
-    ["提前闭馆通知2", "2通知内容通知内容通知内容通知内容通知内容通内容通知内容通知内容通知内容通知内容通内容通知内容通知内容通知内容通知内容通内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容", "2017.5.5"],
-    ["提前闭馆通知3", "3通知内容通知内容通知内容内容通知内容通知内容通知内容通知内容通知内容通知内容通通知内容通知内容通知内容通知内容通知内容通知内容", "2017.5.5"],
-    ["提前闭馆通知4", "4通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容", "2017.5.5"]
-];
-// 轮播
-setInterval(function(){
-    vContent.bulletinIndex = (vContent.bulletinIndex+1) % 3;
-}, 10000);
+//     vContent.bulletinIndex = (vContent.bulletinIndex+1) % 3;
+// }, 10000);
 
 
 
@@ -175,3 +162,9 @@ var mySwiper = new Swiper ('.swiper-container', {
     prevButton: '.swiper-button-prev',
 
   })
+
+
+  window.onload = function(){
+
+      // 预加载轮播图连接的资源
+  };

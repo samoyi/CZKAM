@@ -14,11 +14,12 @@
         <div  id="catalog" class="catalog">
             <h2>{{title[0]}}<br /><span>{{title[1]}}</span></h2>
             <cata :current-level1-title="currentLevel1Title" :current-level2-title="currentLevel2Title" @display_content="display" v-for="cata in catas" :cata="cata"></cata>
+            <p class="breadcrumb"><a href="index.html">🏠</a> ＞ <span>{{title[0]}}</span><span> ＞ {{currentLevel1Title}}</span><span v-if="currentLevel2Title"> ＞ {{currentLevel2Title}}</span></p>
         </div>
         <section class="content">
             <section>
                 <section class="ssgyb">
-                    <h2>山水高研班  <span>SMGYB</span></h2>
+                    <h2>山水高研班  <span>ADVANCED SEMINAR</span></h2>
                     <div v-show="!bDisplayDetailArticle">
                         <ul class="ssgyb_cata">
                             <exhibition-cata v-for="(item,index) in catas" :cata="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchexhibitions"></exhibition-cata>
@@ -35,7 +36,7 @@
                     <uploaded-article id="vUploaded_article" v-show="bDisplayDetailArticle" :content-html="detailArticleHTML"></uploaded-article>
                 </section>
                 <section class="ysdjt">
-                    <h2>艺术大讲堂  <span>YSDJT</span></h2>
+                    <h2>艺术大讲堂  <span>ART FORUM</span></h2>
                     <div v-show="!bDisplayDetailArticle"> <!-- 显示详情文章的时候，就隐藏 -->
                         <ul class="ysdjt_cata">
                             <exhibition-cata v-for="(item,index) in catas" :cata="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchexhibitions"></exhibition-cata>

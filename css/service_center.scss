@@ -2,25 +2,30 @@
 
 .content{
     >section{
+        >section{
+            font-size: 12px;
+        }
         .bulletin{
-            >ul{
-                position: relative; top: 30px;
-                li{
-                    font-size: 12px;
-                    color: $BASIC_GRAY;
-                    line-height: 22px;
-                    margin-bottom: 32px;
-                    position: relative;
-                    h3{
-                        font-size: 14px;
-                        color: $BASIC_BLACK;
-                    }
-                    P{
-                        margin-top: 6px;
-                    }
-                    span{
-                        position: absolute;
-                        top: 0; right: 0;
+            >div{
+                >ul{
+                    position: relative; top: 30px;
+                    li{
+                        font-size: 12px;
+                        color: $BASIC_GRAY;
+                        line-height: 22px;
+                        margin-bottom: 32px;
+                        position: relative;
+                        h3{
+                            font-size: 14px;
+                            color: $BASIC_BLACK;
+                        }
+                        P{
+                            margin-top: 6px;
+                        }
+                        span{
+                            position: absolute;
+                            top: 0; right: 0;
+                        }
                     }
                 }
             }

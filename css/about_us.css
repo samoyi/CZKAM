@@ -8,7 +8,9 @@
 .common-middle .content .art_gallery .contact_us .gongzhongCode, .common-middle .content .art_gallery .contact_us .dingyueCode, .common-middle .content .art_gallery .contact_us .shuimochanganCode {
   background-image: url("http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/sprite.png");
   width: 530px;
-  height: 530px; }
+  height: 530px;
+  -webkit-transform: scale3d(0.5, 0.5, 0.5);
+  transform: scale3d(0.5, 0.5, 0.5); }
 .common-middle .content .art_gallery .contact_us .gongzhongCode {
   background-position: 0 0; }
 .common-middle .content .art_gallery .contact_us .dingyueCode {
