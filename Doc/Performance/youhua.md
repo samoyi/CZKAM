@@ -15,6 +15,12 @@
 ## Lazy Loading
 * 分页首个版块加载完成后，加载其他版块的图片
 
+## Minimize HTTP Requests
+* 图标sprite
+* 合并CSS
+
+## Use a CDN
+Vue.js使用BootCDN上的
 
 
 

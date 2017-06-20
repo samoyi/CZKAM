@@ -345,7 +345,7 @@ function exhibitionClass(elSelector){
                     clickPagination(index){
                         this.$emit("switchpagination", index);
                         setTimeout(function(){
-                            window.scrollTo( 0, 0 );
+                            window.scrollTo(0, 0);
                         }, 200);
                     },
                 },
@@ -355,12 +355,16 @@ function exhibitionClass(elSelector){
                 template: `<article>
                             <div v-html="contentHtml"></div>
                             <i class="close_article" @click="closeDetailArticle">关闭文章</i>
+                            <i class="backToTop" @click="backToTop">回到顶部</i>
                         </article>`,
                 methods: {
                     closeDetailArticle(){
                         this.$parent.detailArticleHTML = "";
                         this.$parent.bDisplayDetailArticle = false;
                     },
+                    backToTop(){
+                        window.scrollTo(0, 0);
+                    }
                 },
             },
         },

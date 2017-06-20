@@ -71,19 +71,6 @@ a{
 .active_tab{
     color: $STANDARD_COLOR;
 }
-#vUploaded_article{
-    position: relative;
-    >div{
-        img{
-            display: block;
-        }
-    }
-    .close_article{
-        position: absolute;
-        top: 70px; right: 0;
-        cursor: pointer;
-    }
-}
 
 
 

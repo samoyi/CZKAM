@@ -1,5 +1,3 @@
-
-
 ;"use strict";
 
 var vHeader = new Vue({
@@ -332,11 +330,14 @@ function exhibitionClass(elSelector) {
             },
             "uploaded-article": {
                 props: ["contentHtml"],
-                template: "<article>\n                            <div v-html=\"contentHtml\"></div>\n                            <i class=\"close_article\" @click=\"closeDetailArticle\">\u5173\u95ED\u6587\u7AE0</i>\n                        </article>",
+                template: "<article>\n                            <div v-html=\"contentHtml\"></div>\n                            <i class=\"close_article\" @click=\"closeDetailArticle\">\u5173\u95ED\u6587\u7AE0</i>\n                            <i class=\"backToTop\" @click=\"backToTop\">\u56DE\u5230\u9876\u90E8</i>\n                        </article>",
                 methods: {
                     closeDetailArticle: function closeDetailArticle() {
                         this.$parent.detailArticleHTML = "";
                         this.$parent.bDisplayDetailArticle = false;
+                    },
+                    backToTop: function backToTop() {
+                        window.scrollTo(0, 0);
                     }
                 }
             }
