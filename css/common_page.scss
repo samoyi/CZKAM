@@ -276,6 +276,7 @@
         .footer_down{
             position: relative;
             height: $FOOTER_DOWN_HEIGHT;
+            color: $BASIC_GRAY;
             >p, >div{
                 float: left;
                 line-height: $FOOTER_DOWN_HEIGHT;

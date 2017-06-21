@@ -1,4 +1,4 @@
-# 优化策略
+## 优化策略
 * 静态资源托管：图片、脚本、视频
 * 外部脚本等（如Vue.js）使用国内公共CDN
 * 分步加载
@@ -6,6 +6,9 @@
 * 一次请求加载完所有的数据
 * 缓存耗时操作
 * 脚本合并压缩
+
+## 使用工具
+* Chrome Audits
 
 ## Preloading
 * 首页加载完成后，预加载首页各连接的资源
@@ -15,7 +18,8 @@
 ## Lazy Loading
 * 分页首个版块加载完成后，加载其他版块的图片
 
-
+## 加速渲染
+* 给尺寸固定的`image`指定`width`和`height`属性
 
 
 https://www.sitepoint.com/web-site-optimization-steps/

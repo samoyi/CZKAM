@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <title></title>
-    <link href="css/common_page.css" type="text/css" rel="stylesheet">
-    <link href="css/public_education.css" type="text/css" rel="stylesheet">
+    <link href="css/compressed/common_page.css" type="text/css" rel="stylesheet">
+    <link href="css/compressed/public_education.css" type="text/css" rel="stylesheet">
 </head>
 <body>
     <header id="common-header">
@@ -25,6 +25,23 @@
                             <exhibition-cata v-for="(item,index) in catas" :cata="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchexhibitions"></exhibition-cata>
                         </ul>
                         <ul class="ssgyb_list">
+                            <exhibition-item v-for="item in displayedItem" :exhibition-data="item"></exhibition-item>
+                        </ul>
+                        <div class="pagination_wrapper"><!-- 为了让pagination水平居中，加了这一层 -->
+                            <ul v-if="list.length>nPerPage" class="pagination">
+                                <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
+                            </ul>
+                        </div>
+                    </div>
+                    <uploaded-article id="vUploaded_article" v-show="bDisplayDetailArticle" :content-html="detailArticleHTML"></uploaded-article>
+                </section>
+                <section class="sfb">
+                    <h2>书法班  <span>CALLIGRAPHY SEMINAR</span></h2>
+                    <div v-show="!bDisplayDetailArticle">
+                        <ul class="sfb_cata">
+                            <exhibition-cata v-for="(item,index) in catas" :cata="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchexhibitions"></exhibition-cata>
+                        </ul>
+                        <ul class="sfb_list">
                             <exhibition-item v-for="item in displayedItem" :exhibition-data="item"></exhibition-item>
                         </ul>
                         <div class="pagination_wrapper"><!-- 为了让pagination水平居中，加了这一层 -->

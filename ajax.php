@@ -1,4 +1,5 @@
 <?php
+	header('Cache-Control: max-age=3600');
 
 	function responseGet($item){
 		$data = file_get_contents('data/' . $item . '.json');
@@ -35,6 +36,9 @@
 	}
 
 	if( $_GET['item'] === 'public_ssgyb' ){
+		responseGet($_GET['item']);
+	}
+	if( $_GET['item'] === 'public_sfb' ){
 		responseGet($_GET['item']);
 	}
 

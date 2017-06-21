@@ -6,8 +6,8 @@ vCatalog.catas = [
         [
             {title_c: "公教活动"},
             {title_e: "ACTIVITIES"},
-            {cata_c: ["山水高研班", "艺术大讲堂"]},
-            {cata_e: ["ADVANCED SEMINAR", "ART FORUM"]},
+            {cata_c: ["山水高研班", "书法班", "艺术大讲堂"]},
+            {cata_e: ["ADVANCED SEMINAR", "CALLIGRAPHY SEMINAR", "ART FORUM"]},
             0
         ],
         [
@@ -31,6 +31,8 @@ vCatalog.catas = [
 
 let vSsgyb= exhibitionClass(".ssgyb");
 directToDetailArticle(vSsgyb);
+let vSfb= exhibitionClass(".sfb");
+directToDetailArticle(vSfb);
 let vYsdjt= exhibitionClass(".ysdjt");
 directToDetailArticle(vYsdjt);
 let vExchanges= exhibitionClass(".exchanges");
@@ -59,6 +61,29 @@ window.onload = function(){
                 vSsgyb.lists = oParsed;
                 vSsgyb.catas = Object.keys(vSsgyb.lists).reverse();
                 vSsgyb.list = vSsgyb.lists[vSsgyb.catas[0]];
+            },
+            fnFailCallback = function(status){
+                console.error("山水高研班数据加载失败");
+            };
+        AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+    }
+
+    // 书法班数据
+    {
+        let sURL = "ajax.php?item=public_sfb",
+            fnSuccessCallback = function(res){
+                let oParsed = JSON.parse(res),
+                    aAll = [];
+                for(let item in oParsed){
+                    // console.log(item)
+                    oParsed[item].forEach(function(data){
+                        aAll.push(data);
+                    })
+                }
+                oParsed.All = aAll.reverse();
+                vSfb.lists = oParsed;
+                vSfb.catas = Object.keys(vSfb.lists).reverse();
+                vSfb.list = vSfb.lists[vSsgyb.catas[0]];
             },
             fnFailCallback = function(status){
                 console.error("山水高研班数据加载失败");
