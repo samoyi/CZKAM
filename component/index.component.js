@@ -161,7 +161,7 @@ var mySwiper = new Swiper ('.swiper-container', {
 
 // 1920版块滑动
 {
-    let oContent = document.querySelector("#content")
+    let oContent = document.querySelector("#content"),
         oBlockWrapper = oContent.querySelector("#blockWrapper"),
         oBlockSelector = oContent.querySelector("#blockSelector"),
         aSelectorList = oBlockSelector.querySelectorAll("li"),

@@ -3,7 +3,9 @@ body{
     background:{
         image: url(http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/bg.jpg);
     }
-    overflow: hidden;
+    @media (min-width: 1920px){
+        overflow: hidden; // 实现横向滚动
+    }
 }
 #content{
     position: relative; top: 30px;
