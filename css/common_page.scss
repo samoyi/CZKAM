@@ -140,6 +140,25 @@
                         font-weight: bold;
                     }
                 }
+                #vUploaded_article{
+                    position: relative;
+                    >div{
+                        img{
+                            display: block;
+                        }
+                    }
+                    .close_article, .backToTop{
+                        position: absolute;
+                        cursor: pointer;
+                        right: 0;
+                    }
+                    .close_article{
+                        top: 70px;
+                    }
+                    .backToTop{
+                        bottom: -50px;
+                    }
+                }
             }
             .article{ // 只有文章形式才是这种样式
                 font-size: $ARTICLE_FONT_SIZE;
