@@ -117,13 +117,6 @@ let vContent = new Vue({
     },
 });
 
-// 之后将要从后台接收到的数据
-// vContent.carouselTabs = [
-//     ["image/index/carousel/0.jpg", "预告", "保持记录——2017西安国际摄影邀请展"],
-//     ["image/index/carousel/1.jpg", "预告", "工匠精神——谈国展创作"],
-//     ["image/index/carousel/2.jpg", "预告", "墨色无间——汪劲松、王承云实验艺术展开幕"]
-// ];
-
 
 vContent.exhibitionNews = [
     ["", "墨色无间——汪劲松、王承云实验艺术展开幕", "2016.11.20-12.5", "exhibition.html?id=mosewujian#常设展览"],
@@ -163,7 +156,57 @@ var mySwiper = new Swiper ('.swiper-container', {
     nextButton: '.swiper-button-next',
     prevButton: '.swiper-button-prev',
 
-  })
+});
+
+
+// 1920版块滑动
+{
+    let oContent = document.querySelector("#content")
+        oBlockWrapper = oContent.querySelector("#blockWrapper"),
+        oBlockSelector = oContent.querySelector("#blockSelector"),
+        aSelectorList = oBlockSelector.querySelectorAll("li"),
+        nBlockNum = aSelectorList.length,
+        oLeftArrow = oBlockSelector.querySelector(".left_arrow"),
+        oRightArrow = oBlockSelector.querySelector(".right_arrow"),
+        aBlockIcon = oBlockSelector.querySelectorAll("i"),
+        index = 0;
+
+    aBlockIcon[0].style.color = "#761301";
+
+    for(let i=0; i<nBlockNum; i++){
+        aSelectorList[i].addEventListener("click", function(){
+            index = i;
+            // 413px 是一块的宽度加一个margin
+            oBlockWrapper.style.transform = "translate3d(-" + i*413 + "px, 0, 0)";
+            oBlockWrapper.style.webkitTransform = "translate3d(-" + i*413 + "px, 0, 0)";
+            aBlockIcon[0].style.color = "#b3b3b3";
+            aBlockIcon[1].style.color = "#b3b3b3";
+            aBlockIcon[2].style.color = "#b3b3b3";
+            aBlockIcon[3].style.color = "#b3b3b3";
+            aBlockIcon[i].style.color = "#761301";
+        });
+    }
+    oRightArrow.addEventListener("click", function(){
+        console.log(index);
+        if( index !== 3 ){
+            index++;
+            oBlockWrapper.style.transform = "translate3d(-" + index*413 + "px, 0, 0)";
+            oBlockWrapper.style.webkitTransform = "translate3d(-" + index*413 + "px, 0, 0)";
+            aBlockIcon[index-1].style.color = "#b3b3b3";
+            aBlockIcon[index].style.color = "#761301";
+        }
+    });
+    oLeftArrow.addEventListener("click", function(){
+        console.log(index);
+        if( index ){
+            index--;
+            oBlockWrapper.style.transform = "translate3d(-" + index*413 + "px, 0, 0)";
+            oBlockWrapper.style.webkitTransform = "translate3d(-" + index*413 + "px, 0, 0)";
+            aBlockIcon[index+1].style.color = "#b3b3b3";
+            aBlockIcon[index].style.color = "#761301";
+        }
+    });
+}
 
 
   window.onload = function(){

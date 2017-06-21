@@ -14,6 +14,7 @@
         <header-template></header-template>
     </header>
     <section id="content">
+        <section id="blockWrapper">
             <div id="carousel-tab" class="swiper-container">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
@@ -37,29 +38,40 @@
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
             </div>
-        <div id="exhibition-tab">
-            <h2>展览 EXHIBITION</h2>
-            <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/exhibition/head.jpg" />
-            <exhibition-news v-for="item in exhibitionNews" :news="item"></exhibition-news>
-            <a href="exhibition.html" target="_blank" class="more">MORE</a>
+            <div id="exhibition-tab">
+                <h2>展览 EXHIBITION</h2>
+                <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/exhibition/head.jpg" />
+                <exhibition-news v-for="item in exhibitionNews" :news="item"></exhibition-news>
+                <a href="exhibition.html" target="_blank" class="more">MORE</a>
+            </div>
+            <div id="public_education-tab">
+                <h2>公共教育 PUBLIC EDUCATION</h2>
+                <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/public/head.jpg" />
+                <public_education-news v-for="item in publicEducationNews" :news="item"></public_education-news>
+                <a href="public_education.html" target="_blank" class="more">MORE</a>
+            </div>
+            <div id="bulletin-tab">
+                <h2>公告 BULLETIN</h2>
+                <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/bulletin/head.jpg" />
+                <bulletin-tab :tab="bulletinGetTab" :cur-index="bulletinIndex"  @switchpagination="switchtab"></bulletin-tab>
+                <a href="service_center.html#公告" target="_blank" class="more">MORE</a>
+            </div>
+            <div id="gallery_base_info">
+                <gallery-base-info></gallery-base-info>
+                <i class="code"></i><!-- 二维码 -->
+            </div>
+            <p style="clear:both;"></p>
+        </section>
+        <div id="blockSelector">
+            <div class="left_arrow"></div>
+            <ul>
+                <li>展览<br /><i>●</i><br /><span>EXHIBITION</span></li>
+                <li>公共教育<br /><i>●</i><br /><span>PUBLIC EDUCATION</span></li>
+                <li>公告<br /><i>●</i><br /><span>BULLETIN</span></li>
+                <li>美术馆<br /><i>●</i><br /><span>MUSEUM</span></li>
+            </ul>
+            <div class="right_arrow"></div>
         </div>
-        <div id="public_education-tab">
-            <h2>公共教育 PUBLIC EDUCATION</h2>
-            <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/public/head.jpg" />
-            <public_education-news v-for="item in publicEducationNews" :news="item"></public_education-news>
-            <a href="public_education.html" target="_blank" class="more">MORE</a>
-        </div>
-        <div id="bulletin-tab">
-            <h2>公告 BULLETIN</h2>
-            <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/bulletin/head.jpg" />
-            <bulletin-tab :tab="bulletinGetTab" :cur-index="bulletinIndex"  @switchpagination="switchtab"></bulletin-tab>
-            <a href="service_center.html#公告" target="_blank" class="more">MORE</a>
-        </div>
-        <div id="gallery_base_info">
-            <gallery-base-info></gallery-base-info>
-            <i class="code"></i><!-- 二维码 -->
-        </div>
-        <p style="clear:both;"></p>
     </section>
     <footer id="footer">
         <p>陕ICP备07030830号-5  Copyright © 2015 czkam.net Inc. All Rights Reserved. 崔振宽美术馆 版权所有  Designed by 凡卡互动</p>

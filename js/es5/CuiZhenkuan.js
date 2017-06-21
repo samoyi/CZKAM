@@ -1,5 +1,4 @@
 
-
 ;"use strict";
 
 vCatalog.title = ["崔振宽艺术", "CUI ZHENKUAN ART"];
@@ -182,42 +181,42 @@ window.onload = function () {
         AJAX_GET(_sURL, _fnSuccessCallback, _fnFailCallback);
     }
     // 论著数据
-    {
-        var _sURL2 = "ajax.php?item=cuizhenkuan_treatise",
-            _fnSuccessCallback2 = function _fnSuccessCallback2(res) {
-            vTreatise.list = JSON.parse(res);
-        },
-            _fnFailCallback2 = function _fnFailCallback2(status) {
-            console.error("加载论著数据失败");
-        };
-        AJAX_GET(_sURL2, _fnSuccessCallback2, _fnFailCallback2);
-    }
+    // {
+    //     let sURL = "ajax.php?item=cuizhenkuan_treatise",
+    //         fnSuccessCallback = function(res){
+    //             vTreatise.list = JSON.parse(res);
+    //         },
+    //         fnFailCallback = function(status){
+    //             console.error("加载论著数据失败");
+    //         };
+    //     AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+    // }
     // 活动数据
-    {
-        var _sURL3 = "ajax.php?item=cuizhenkuan_activity",
-            _fnSuccessCallback3 = function _fnSuccessCallback3(res) {
-            vActivity.lists = JSON.parse(res);
-            vActivity.catas = Object.keys(vActivity.lists).reverse();
-            vActivity.list = vActivity.lists[vActivity.catas[0]];
-        },
-            _fnFailCallback3 = function _fnFailCallback3(status) {
-            console.error("加载活动数据失败");
-        };
-        AJAX_GET(_sURL3, _fnSuccessCallback3, _fnFailCallback3);
-    }
+    // {
+    //     let sURL = "ajax.php?item=cuizhenkuan_activity",
+    //         fnSuccessCallback = function(res){
+    //             vActivity.lists = JSON.parse(res);
+    //             vActivity.catas = Object.keys(vActivity.lists).reverse();
+    //             vActivity.list = vActivity.lists[vActivity.catas[0]];
+    //         },
+    //         fnFailCallback = function(status){
+    //             console.error("加载活动数据失败");
+    //         };
+    //     AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+    // }
     // 艺术影像数据
     {
-        var _sURL4 = "ajax.php?item=cuizhenkuan_video",
-            _fnSuccessCallback4 = function _fnSuccessCallback4(res) {
+        var _sURL2 = "ajax.php?item=cuizhenkuan_video",
+            _fnSuccessCallback2 = function _fnSuccessCallback2(res) {
             var oParsed = JSON.parse(res);
             console.log(oParsed);
             vVideo.srcs = oParsed.srcs;
             vVideo.titles = oParsed.titles;
             vVideo.posters = oParsed.posters;
         },
-            _fnFailCallback4 = function _fnFailCallback4(status) {
+            _fnFailCallback2 = function _fnFailCallback2(status) {
             console.error("加载艺术影像数据失败");
         };
-        AJAX_GET(_sURL4, _fnSuccessCallback4, _fnFailCallback4);
+        AJAX_GET(_sURL2, _fnSuccessCallback2, _fnFailCallback2);
     }
 };

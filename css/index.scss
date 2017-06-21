@@ -3,24 +3,40 @@ body{
     background:{
         image: url(http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/bg.jpg);
     }
+    overflow: hidden;
 }
 #content{
     position: relative; top: 30px;
     width: $MIDDLE_WIDTH;
-    margin-left: auto; margin-right: auto;
-    >div{
-        height: 515px;
-        float: left;
-        background-color: #efefef;
-        margin-bottom: 10px;
-        .more{
-            position: absolute; right: 25px; bottom: 25px;
-            cursor: pointer;
-        }
+    @media (min-width: 1920px){
+        width: $HEADER_CONTENT_WIDTH_1920;
     }
-    #carousel-tab{
-        width: 815px;
-        .swiper-wrapper{
+    margin-left: auto; margin-right: auto;
+
+    $carousel_width: 813px;
+    $tab_width: 400px;
+    $tab_marginLeft: 13px;
+
+
+    #blockWrapper{
+        @media (min-width: 1920px){
+            width: $carousel_width + $tab_width*4 + $tab_marginLeft*4;
+        }
+        -webkit-transition: -webkit-transform 0.5s;
+        transition: transform 0.5s;
+        >div{
+            height: 515px;
+            float: left;
+            background-color: #efefef;
+            margin-bottom: 10px;
+            .more{
+                position: absolute; right: 25px; bottom: 25px;
+                cursor: pointer;
+            }
+        }
+        #carousel-tab{
+            width: $carousel_width;
+            .swiper-wrapper{
                 >div{
                     background-size: contain;
                     background-repeat: no-repeat;
@@ -41,160 +57,222 @@ body{
                         }
                     }
                 }
-        }
-        .swiper-pagination{
-            bottom: 80px;
-            .swiper-pagination-bullet{
-                background-color: $BASIC_GRAY;
             }
-            .swiper-pagination-bullet-active, .swiper-button-prev, .swiper-button-next{
-                background-color: $STANDARD_COLOR;
-            }
-        }
-        .swiper-button-prev, .swiper-button-next{
-            opacity: 0.3;
-            width: 39px; height: 98px;
-            top: 37%;
-            background: url("http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/sprite.png");
-            background-position: -1590px -81px;
-        }
-        .swiper-button-prev{
-            left: 0;
-        }
-        .swiper-button-next{
-            right: 0;
-            -webkit-transform: rotateZ(180deg);
-            transform: rotateZ(180deg);
-        }
-    }
-    $tab_width: 400px;
-    #exhibition-tab, #public_education-tab, #bulletin-tab, #gallery_base_info{
-        width: $tab_width;
-        position: relative;
-        h2{
-            position: absolute; left: 25px; bottom: 25px;
-            font-size: 18px; font-weight: bold;
-            color: $STANDARD_COLOR;
-        }
-    }
-    #bulletin-tab, #gallery_base_info{
-        margin-left: ($MIDDLE_WIDTH - $tab_width * 3) / 2;
-    }
-    #exhibition-tab{
-        margin-left: $MIDDLE_WIDTH - 815 - $tab_width;
-        img{
-            width: 100%; height:170px;
-            display: block;
-        }
-        >div{
-            width: 360px; height: 76px;
-            margin-left: auto; margin-right: auto;
-            box-sizing: border-box; border-top: 1px solid $LINE_GRAY;
-            position: relative;
-            h3{
-                position: absolute; top: 24px;
-                font-size: 14px; font-weight: bold;
-                span{
-                    color: $STANDARD_COLOR;
+            .swiper-pagination{
+                bottom: 80px;
+                .swiper-pagination-bullet{
+                    background-color: $BASIC_GRAY;
+                }
+                .swiper-pagination-bullet-active, .swiper-button-prev, .swiper-button-next{
+                    background-color: $STANDARD_COLOR;
                 }
             }
-            p{
-                position: absolute; top: 48px;
-                font-size: 12px; font-weight: bold;
-                color: $BASIC_GRAY;
+            .swiper-button-prev, .swiper-button-next{
+                opacity: 0.3;
+                width: 39px; height: 98px;
+                top: 37%;
+                background: url("http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/sprite.png");
+                background-position: -1590px -81px;
+            }
+            .swiper-button-prev{
+                left: 0;
+            }
+            .swiper-button-next{
+                right: 0;
+                -webkit-transform: rotateZ(180deg);
+                transform: rotateZ(180deg);
             }
         }
-        >div:nth-child(3){
-            border-top: none;
-        }
-    }
-    #public_education-tab{
-        img{
-            width: 100%; height:170px;
-            display: block;
-        }
-        >div{
-            width: 360px; height: 52px;
-            margin-left: auto; margin-right: auto;
-            box-sizing: border-box; border-top: 1px solid $LINE_GRAY;
+
+        #exhibition-tab, #public_education-tab, #bulletin-tab, #gallery_base_info{
+            width: $tab_width;
             position: relative;
-            h3{
-                position: absolute; top: 24px;
-                font-size: 12px;
-                span{
-                    color: $STANDARD_COLOR;
-                }
-            }
-        }
-        >div:nth-child(3){
-            border-top: none;
-        }
-    }
-    #bulletin-tab{
-        position: relative;
-        img{
-            width: 100%; height:170px;
-            display: block;
-        }
-        >div{
-            width: 360px;
-            margin-left: auto; margin-right: auto;
-            position: relative;
-            font-size: 12px;
-            h3{
-                position: absolute; top: 24px;
-            }
-            .bulletin_content{
-                position: absolute; top: 47px;
-                color: $BASIC_GRAY;
-                line-height: 22px;
-            }
-        }
-        >div:nth-child(3){
-            border-top: none;
-        }
-        >ul{
-            position: absolute;
-            top: 24px; right: 0;
-            li{
-                float: left;
-                margin-right: 6px;
-            }
-        }
-    }
-    #gallery_base_info{
-        >div{
-            font-size: 12px;
-            width: 360px;
-            margin-left: auto; margin-right: auto;
             h2{
-                font-weight: normal;
-                top: 40px; left: ($tab_width - 360)/2;
+                position: absolute; left: 25px; bottom: 25px;
+                font-size: 18px; font-weight: bold;
+                color: $STANDARD_COLOR;
+            }
+        }
+        #bulletin-tab, #gallery_base_info{
+            // margin-left: ($MIDDLE_WIDTH - $tab_width * 3) / 2;
+            margin-left: $tab_marginLeft;
+            @media (min-width: 1920px){
+                // margin-left: 13px;
+            }
+        }
+        #exhibition-tab{
+            margin-left: $MIDDLE_WIDTH - 815 - $tab_width;
+            margin-left: $tab_marginLeft;
+            @media (min-width: 1920px){
+                // margin-left: 13px;
+            }
+            img{
+                width: 100%; height:170px;
+                display: block;
             }
             >div{
-                color: $BASIC_GRAY;
-                position: absolute;
-                line-height: 22px;
+                width: 360px; height: 76px;
+                margin-left: auto; margin-right: auto;
+                box-sizing: border-box; border-top: 1px solid $LINE_GRAY;
+                position: relative;
                 h3{
-                    color: $BASIC_BLACK;
+                    position: absolute; top: 24px;
+                    font-size: 14px; font-weight: bold;
+                    span{
+                        color: $STANDARD_COLOR;
+                    }
+                }
+                p{
+                    position: absolute; top: 48px;
+                    font-size: 12px; font-weight: bold;
+                    color: $BASIC_GRAY;
                 }
             }
-            .time{
-                top: 90px;
-            }
-            .add{
-                top: 175px;
-            }
-            .tel{
-                top: 240px;
+            >div:nth-child(3){
+                border-top: none;
             }
         }
-        .code{
-            width: 109px; height: 109px;
-            position: absolute; right: 20px; bottom: 20px;
+        #public_education-tab{
+            img{
+                width: 100%; height:170px;
+                display: block;
+            }
+            >div{
+                width: 360px; height: 52px;
+                margin-left: auto; margin-right: auto;
+                box-sizing: border-box; border-top: 1px solid $LINE_GRAY;
+                position: relative;
+                h3{
+                    position: absolute; top: 24px;
+                    font-size: 12px;
+                    span{
+                        color: $STANDARD_COLOR;
+                    }
+                }
+            }
+            >div:nth-child(3){
+                border-top: none;
+            }
+        }
+        #bulletin-tab{
+            position: relative;
+            img{
+                width: 100%; height:170px;
+                display: block;
+            }
+            >div{
+                width: 360px;
+                margin-left: auto; margin-right: auto;
+                position: relative;
+                font-size: 12px;
+                h3{
+                    position: absolute; top: 24px;
+                }
+                .bulletin_content{
+                    position: absolute; top: 47px;
+                    color: $BASIC_GRAY;
+                    line-height: 22px;
+                }
+            }
+            >div:nth-child(3){
+                border-top: none;
+            }
+            >ul{
+                position: absolute;
+                top: 24px; right: 0;
+                li{
+                    float: left;
+                    margin-right: 6px;
+                }
+            }
+        }
+        #gallery_base_info{
+            >div{
+                font-size: 12px;
+                width: 360px;
+                margin-left: auto; margin-right: auto;
+                h2{
+                    font-weight: normal;
+                    top: 40px; left: ($tab_width - 360)/2;
+                }
+                >div{
+                    color: $BASIC_GRAY;
+                    position: absolute;
+                    line-height: 22px;
+                    h3{
+                        color: $BASIC_BLACK;
+                    }
+                }
+                .time{
+                    top: 90px;
+                }
+                .add{
+                    top: 175px;
+                }
+                .tel{
+                    top: 240px;
+                }
+            }
+            .code{
+                width: 109px; height: 109px;
+                position: absolute; right: 20px; bottom: 20px;
+                background:{
+                    image: url("http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/sprite.png");
+                    position: -1629px -81px;
+                }
+            }
+        }
+    }
+    #blockSelector{
+        display: none;
+        @media (min-width: 1920px){
+            display: block;
+            position: relative;
+            text-align: center;
+            width: 735px; height: 29px;
+            margin: 60px auto auto auto;
             background:{
                 image: url("http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/sprite.png");
-                position: -1629px -81px;
+                position: 0 29px;
+            }
+            ul{
+                display: inline-block;
+                position: relative;
+                text-align: left;
+                width: 100%; height: 100%;
+                li{
+                    position: absolute; top: -13px;
+                    color: $BASIC_GRAY;
+                    cursor: pointer;
+                    i{
+                        font-size: 18px;
+                    }
+                }
+                li:nth-child(1){
+                    left: 60px;
+                }
+                li:nth-child(2){
+                    left: 256px;
+                }
+                li:nth-child(3){
+                    left: 454px;
+                }
+                li:nth-child(4){
+                    left: 600px;
+                    text-align: right;
+                }
+            }
+            .left_arrow, .right_arrow{
+                width: 30px; height: 100%;
+                position: absolute; top: 0;
+                cursor: pointer;
+            }
+            .left_arrow{
+                left: 0;
+                 z-index: 1;
+            }
+            .right_arrow{
+                right: 0;
             }
         }
     }
@@ -208,6 +286,8 @@ body{
     margin: 150px auto auto auto;
     @media (min-width: 1920px){
         width: $FOOTER_WIDTH_1920;
+        position: absolute; bottom: 0;
+        left: 50%; margin-left: -$FOOTER_WIDTH_1920/2;
     }
     font-size: $FOOTER_FONT_SIZE;
 

@@ -9,6 +9,7 @@
 
 ## 使用工具
 * Chrome Audits
+* Google PageSpeed Insights
 
 ## Preloading
 * 首页加载完成后，预加载首页各连接的资源
@@ -20,7 +21,7 @@
 
 
 ## 加速渲染
-* 给尺寸固定的`image`指定`width`和`height`属性
+* 给没有通过样式指定尺寸的`image`指定`width`和`height`属性
 
 ## Minimize HTTP Requests
 * 图标sprite
@@ -28,6 +29,22 @@
 
 ## Use a CDN
 Vue.js使用BootCDN上的
+
+## Cache
+https://stackoverflow.com/questions/6794033/google-speed-leverage-browser-caching
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching
+https://stackoverflow.com/questions/4480304/how-to-set-http-headers-for-cache-control
+http://dev.mobify.com/blog/beginners-guide-to-http-cache-headers/
+
+### max-age 设置
+* 崔振宽艺术
+    * 艺术年表：31536000 一年
+    * 作品：31536000 一年
+    * 艺术影像
+        * 视频：31536000 一年
+* `ajax.php`： 3600 一小时
+* sprite : 604800 一周
 
 
 
