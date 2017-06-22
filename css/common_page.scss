@@ -1,14 +1,14 @@
 
 @import "basic.scss";
 #common-header{
-    width: $HEADER_WIDTH; height: $HEADER_HEIGHT;
+    width: 100%; height: $HEADER_HEIGHT;
     @media (min-width: 1920px){
-        height: $HEADER_HEIGHT_1920;
+        height: 120px;
     }
     box-sizing: border-box;
     border-bottom: 1px solid $LINE_GRAY;
     >div{
-        width: $HEADER_CONTENT_WIDTH_1366;
+        width: 1226px;
         @media (min-width: 1920px){
             width: $HEADER_CONTENT_WIDTH_1920;
         }
@@ -40,7 +40,7 @@
                 float: left;
                 position:absolute;
                 color: $BASIC_BLACK;
-                font-size: $HEADER_MENU_FONT_SIZE;
+                font-size: 14px;
                 font-weight: bold;
                 p{
                     color: $STANDARD_COLOR;
@@ -162,7 +162,7 @@
                 }
             }
             .article{ // 只有文章形式才是这种样式
-                font-size: $ARTICLE_FONT_SIZE;
+                font-size: 12px;
                 color: $BASIC_BLACK;
                 p{
                     margin-top: 24px;
@@ -170,7 +170,7 @@
                 .articalImgP{
                     text-align: center;
                     .articalImg{
-                        width:$ARTICLE_IMAGE_WIDTH;
+                        width:530px;
                     }
                 }
             }
@@ -225,7 +225,7 @@
                 float: left;
                 position: relative;
                 h2{
-                    font-size: $FOOTER_H2_FONT_SIZE;
+                    font-size: 14px;
                     font-weight: bold;
                     color: $STANDARD_COLOR;
                 }
