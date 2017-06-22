@@ -12,8 +12,6 @@ var vYsdjt = exhibitionClass(".ysdjt");
 directToDetailArticle(vYsdjt);
 var vPractice = exhibitionClass(".practice");
 directToDetailArticle(vPractice);
-var vExchanges = exhibitionClass(".exchanges");
-directToDetailArticle(vExchanges);
 var vVolunteering = exhibitionClass(".volunteering");
 directToDetailArticle(vVolunteering);
 
@@ -112,20 +110,6 @@ window.onload = function () {
         };
         AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
     }
-
-    // 合作交流数据
-    // {
-    //     let sURL = "ajax.php?item=public_exchanges",
-    //         fnSuccessCallback = function(res){
-    //             vExchanges.lists = JSON.parse(res);
-    //             vExchanges.catas = Object.keys(vExchanges.lists).reverse();
-    //             vExchanges.list = vExchanges.lists[vExchanges.catas[0]];
-    //         },
-    //         fnFailCallback = function(status){
-    //             console.error("合作交流数据加载失败");
-    //         };
-    //     AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
-    // }
 
     // 志愿者服务数据
     {
