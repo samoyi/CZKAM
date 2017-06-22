@@ -548,23 +548,42 @@ let vCommonFooter = new Vue({
 
 
 
+// 公共函数 ————————————————————————————————————————————————————————————————————
+function AJAX_GET(sURL, fnSuccessCallback, fnFailCallback) {
+    var xhr = new XMLHttpRequest();
+    xhr.addEventListener('readystatechange', function () {
+        if (xhr.readyState == 4) {
+            if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                // 必要的时候，使用 getResponseHeader() 检查首部信息
+                fnSuccessCallback && fnSuccessCallback(xhr.responseText);
+            } else {
+                fnFailCallback && fnFailCallback(xhr.status);
+            }
+        }
+    }, false);
+    xhr.open("get", sURL, true);
+    xhr.send(null);
+}
 
-function AJAX_GET(sURL, fnSuccessCallback, fnFailCallback)
-{
-	let xhr = new XMLHttpRequest();
-	xhr.addEventListener('readystatechange', function()
-	{
-		if (xhr.readyState == 4)
-		{
-			if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
-				// 必要的时候，使用 getResponseHeader() 检查首部信息
-				fnSuccessCallback && fnSuccessCallback( xhr.responseText );
-			}
-			else{
-				fnFailCallback && fnFailCallback( xhr.status );
-			}
-		}
-	}, false);
-	xhr.open("get", sURL, true);
-	xhr.send(null);
+
+// 分步批量图片加载
+function stepBatchLoadImage(arr){
+	let loadedCounter = 0,
+		index = arguments[1] ? arguments[1] : 0;
+
+	if( arr[index] ){
+		loadedCounter = arr[index].length;
+		arr[index].forEach(function(item){
+			let oNewImage = new Image();
+			oNewImage.src = item;
+			oNewImage.onload = function(){
+				if( loadedCounter-- === 1){
+					stepBatchLoadImage(arr, ++index);
+				}
+			};
+            oNewImage.onerror = function(){
+                console.error("stepBatchLoadImage 无法加载  " + item + "，其所在组之后的图片组（如果还有）因此无法加载");
+            }
+		});
+	}
 }

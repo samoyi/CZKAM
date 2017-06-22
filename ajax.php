@@ -46,6 +46,10 @@
 		responseGet($_GET['item']);
 	}
 
+	if( $_GET['item'] === 'public_practice' ){
+		responseGet($_GET['item']);
+	}
+
 	if( $_GET['item'] === 'public_exchanges' ){
 		responseGet($_GET['item']);
 	}

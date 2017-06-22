@@ -12,9 +12,9 @@ vCatalog.catas = [
         ],
         [
             {title_c: "合作交流"},
-            {title_e: "FACILITIES"},
-            {cata_c: []},
-            {cata_e: []},
+            {title_e: "EXCHANGES"},
+            {cata_c: ["教育实践"]},
+            {cata_e: ["EDUCATIONAL PRACTICE"]},
             1,
         ],
         [
@@ -34,6 +34,8 @@ let vSfb= exhibitionClass(".sfb");
 directToDetailArticle(vSfb);
 let vYsdjt= exhibitionClass(".ysdjt");
 directToDetailArticle(vYsdjt);
+let vPractice= exhibitionClass(".practice");
+directToDetailArticle(vPractice);
 let vExchanges= exhibitionClass(".exchanges");
 directToDetailArticle(vExchanges);
 let vVolunteering = exhibitionClass(".volunteering");
@@ -106,6 +108,28 @@ window.onload = function(){
                 vYsdjt.lists = oParsed;
                 vYsdjt.catas = Object.keys(vYsdjt.lists).reverse();
                 vYsdjt.list = vYsdjt.lists[vYsdjt.catas[0]];
+            },
+            fnFailCallback = function(status){
+                console.error("艺术大讲堂数据加载失败");
+            };
+        AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+    }
+
+    // 教育实践数据
+    {
+        let sURL = "ajax.php?item=public_practice",
+            fnSuccessCallback = function(res){
+                let oParsed = JSON.parse(res),
+                    aAll = [];
+                for(let item in oParsed){
+                    oParsed[item].forEach(function(data){
+                        aAll.push(data);
+                    })
+                }
+                oParsed.All = aAll;
+                vPractice.lists = oParsed;
+                vPractice.catas = Object.keys(vPractice.lists).reverse();
+                vPractice.list = vPractice.lists[vPractice.catas[0]];
             },
             fnFailCallback = function(status){
                 console.error("艺术大讲堂数据加载失败");

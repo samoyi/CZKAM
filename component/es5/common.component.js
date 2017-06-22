@@ -1,9 +1,10 @@
+
 ;"use strict";
 
 var vHeader = new Vue({
     components: {
         "header-template": {
-            template: "\n                <div>\n                    <a href=\"index.html\"><div id=\"top_logo\"></div></a>\n                    <ul class=\"menu\">\n                        <li><a href=\"about_us.html\">\u5173\u4E8E\u6211\u4EEC<p>ABOUT US</p></a></li>\n                        <li><a href=\"CuiZhenkuan.html\">\u5D14\u632F\u5BBD\u827A\u672F<p>CUIZHENKUAN ART</p></a></li>\n                        <li><a href=\"exhibition.html\">\u5C55\u89C8<p>EXHIBITION</p></a></li>\n                        <li><a href=\"public_education.html\">\u516C\u5171\u6559\u80B2<p>PUBLIC EDUCATION</p></a></li>\n                        <li><a href=\"research-collection.html\">\u5B66\u672F\u7814\u7A76\xB7\u9986\u85CF<p>RESEARCH\xB7COLLECTION</p></a></li>\n                        <li><a href=\"gallery-derivatives.html\">\u753B\u5ECA\xB7\u884D\u751F\u54C1<p>GALLERY\xB7DERIVATIVES</p></a></li>\n                        <li><a href=\"service_center.html\">\u670D\u52A1\u4E2D\u5FC3<p>SERVICE CENTER5</p></a></li>\n                    </ul>\n                </div>"
+            template: "\n                <div>\n                    <a href=\"index.html\"><div id=\"top_logo\"></div></a>\n                    <ul class=\"menu\">\n                        <li><a href=\"about_us.html\">关于我们<p>ABOUT US</p></a></li>\n                        <li><a href=\"CuiZhenkuan.html\">崔振宽艺术<p>CUIZHENKUAN ART</p></a></li>\n                        <li><a href=\"exhibition.html\">展览<p>EXHIBITION</p></a></li>\n                        <li><a href=\"public_education.html\">公共教育<p>PUBLIC EDUCATION</p></a></li>\n                        <li><a href=\"research-collection.html\">学术研究·馆藏<p>RESEARCH·COLLECTION</p></a></li>\n                        <li><a href=\"gallery-derivatives.html\">画廊·衍生品<p>GALLERY·DERIVATIVES</p></a></li>\n                        <li><a href=\"service_center.html\">服务中心<p>SERVICE CENTER5</p></a></li>\n                    </ul>\n                </div>"
         }
     },
     el: "#common-header"
@@ -111,8 +112,8 @@ var vCatalog = new Vue({
 
         // 点击当前大小标题的序号，让右边版块的显示和隐藏绑定这两个序号
         currentLevel1Index: 0,
-        currentLevel2Index: null // 在点击没有二级标题的一级标题是，这个值为null
-    },
+        currentLevel2Index: null },
+    // 在点击没有二级标题的一级标题是，这个值为null
     methods: {
         display: function display(cataIndex, index) {
             this.currentLevel1Index = cataIndex;
@@ -286,23 +287,27 @@ function exhibitionClass(elSelector) {
                 methods: {
                     // 显示详情文章页面
                     displayDetailArticle: function displayDetailArticle(articleID) {
+                        var _this = this;
+
                         if (articleID) {
-                            // 列表项图片绑定了详情文章ID才显示文章
-                            var parent = this.$parent;
-                            parent.bDisplayDetailArticle = true;
-                            var detailArticleHTML = parent.detailArticleHTML;
-                            if (!detailArticleHTML) {
-                                // 如果没有文章数据数据。一般都是没有的，因为不会预加载，且上一篇详情隐藏后也会清除数据
-                                parent.detailArticleHTML = "<p>正在加载……</p>";
-                                var sURL = "ajax.php?item=article_" + articleID,
-                                    fnSuccessCallback = function fnSuccessCallback(res) {
-                                    parent.detailArticleHTML = JSON.parse(res);
-                                },
-                                    fnFailCallback = function fnFailCallback(status) {
-                                    console.error("加载详情页数据失败");
-                                };
-                                AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
-                            }
+                            (function () {
+                                // 列表项图片绑定了详情文章ID才显示文章
+                                var parent = _this.$parent;
+                                parent.bDisplayDetailArticle = true;
+                                var detailArticleHTML = parent.detailArticleHTML;
+                                if (!detailArticleHTML) {
+                                    // 如果没有文章数据数据。一般都是没有的，因为不会预加载，且上一篇详情隐藏后也会清除数据
+                                    parent.detailArticleHTML = "<p>正在加载……</p>";
+                                    var sURL = "ajax.php?item=article_" + articleID,
+                                        fnSuccessCallback = function fnSuccessCallback(res) {
+                                        parent.detailArticleHTML = JSON.parse(res);
+                                    },
+                                        fnFailCallback = function fnFailCallback(status) {
+                                        console.error("加载详情页数据失败");
+                                    };
+                                    AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+                                }
+                            })();
                         }
                     }
                 }
@@ -330,7 +335,7 @@ function exhibitionClass(elSelector) {
             },
             "uploaded-article": {
                 props: ["contentHtml"],
-                template: "<article>\n                            <div v-html=\"contentHtml\"></div>\n                            <i class=\"close_article\" @click=\"closeDetailArticle\">\u5173\u95ED\u6587\u7AE0</i>\n                            <i class=\"backToTop\" @click=\"backToTop\">\u56DE\u5230\u9876\u90E8</i>\n                        </article>",
+                template: "<article>\n                            <div v-html=\"contentHtml\"></div>\n                            <i class=\"close_article\" @click=\"closeDetailArticle\">关闭文章</i>\n                            <i class=\"backToTop\" @click=\"backToTop\">回到顶部</i>\n                        </article>",
                 methods: {
                     closeDetailArticle: function closeDetailArticle() {
                         this.$parent.detailArticleHTML = "";
@@ -343,12 +348,12 @@ function exhibitionClass(elSelector) {
             }
         },
         created: function created() {
-            var _this = this;
+            var _this2 = this;
 
             // 接收侧目录组件发送的点击通知，关闭详情文章
             Bus.$on('clickCataToCloseDetailArticle', function (indexes) {
-                _this.detailArticleHTML = "";
-                _this.bDisplayDetailArticle = false;
+                _this2.detailArticleHTML = "";
+                _this2.bDisplayDetailArticle = false;
             });
         }
     });
@@ -359,6 +364,7 @@ function exhibitionClass(elSelector) {
 // FIXME4 因为vCatalog组件会修改currentLevel1Index和currentLevel2Index，所以这里
 // 用setTimeout把displayContentSection推到修改之后
 if (location.hash) {
+    console.log(vCatalog.currentLevel1Index, vCatalog.currentLevel2Index);
     setTimeout(function () {
         displayContentSection(vCatalog.currentLevel1Index, vCatalog.currentLevel2Index);
     }, 0);
@@ -386,12 +392,11 @@ Vue.component("news-list", {
 //     });
 // }
 
-
 var vCommonFooter = new Vue({
     el: "#common-footer",
     components: {
         "common-footer": {
-            template: "\n            <section>\n                <div class=\"footer_up\">\n                    <div id=\"bulletin-tab\">\n                        <h2>\u516C\u544A BULLETIN</h2>\n                        <bulletin-tab ref=\"bulletin\" :tab=\"getTab\"></bulletin-tab>\n                        <ul>\n                            <bulletin-pagination v-for=\"(item, index) in tabs\" :bulletin-index=\"index\" :cur-index=\"curIndex\" @switchpagination=\"switchtab\"></bulletin-pagination>\n                        </ul>\n                        <a href=\"service_center.html#\u516C\u544A\" target=\"_black\" class=\"more\">MORE</a>\n                    </div>\n                    <div id=\"gallery_base_info\">\n                        <gallery-base-info></gallery-base-info>\n                    </div>\n                    <i></i>\n                    <div style=\"clear:both;\"></div>\n                </div>\n                <div class=\"footer_down\">\n                    <p>\u9655ICP\u590707030830\u53F7-5  Copyright \xA9 2015 czkam.net Inc. All Rights Reserved. \u5D14\u632F\u5BBD\u7F8E\u672F\u9986 \u7248\u6743\u6240\u6709  Designed by \u51E1\u5361\u4E92\u52A8</p>\n                    <div>\n                        <a href=\"service_center.html#\u516C\u544A\" target=\"_blank\">\u4F1A\u5458</a>\n                        &nbsp;&nbsp;|&nbsp;&nbsp;\n                        <a href=\"about_us.html#\u7B80\u4ECB\" target=\"_blank\">\u8054\u7CFB\u6211\u4EEC</a>\n                        &nbsp;&nbsp;|&nbsp;&nbsp;\n                        <a href=\"service_center.html#\u516C\u544A\" target=\"_blank\">\u4E0B\u8F7D\u4E13\u533A</a>\n                    </div>\n                    <i></i>\n                </div>\n            </section>\n            ",
+            template: "\n            <section>\n                <div class=\"footer_up\">\n                    <div id=\"bulletin-tab\">\n                        <h2>公告 BULLETIN</h2>\n                        <bulletin-tab ref=\"bulletin\" :tab=\"getTab\"></bulletin-tab>\n                        <ul>\n                            <bulletin-pagination v-for=\"(item, index) in tabs\" :bulletin-index=\"index\" :cur-index=\"curIndex\" @switchpagination=\"switchtab\"></bulletin-pagination>\n                        </ul>\n                        <a href=\"service_center.html#公告\" target=\"_black\" class=\"more\">MORE</a>\n                    </div>\n                    <div id=\"gallery_base_info\">\n                        <gallery-base-info></gallery-base-info>\n                    </div>\n                    <i></i>\n                    <div style=\"clear:both;\"></div>\n                </div>\n                <div class=\"footer_down\">\n                    <p>陕ICP备07030830号-5  Copyright © 2015 czkam.net Inc. All Rights Reserved. 崔振宽美术馆 版权所有  Designed by 凡卡互动</p>\n                    <div>\n                        <a href=\"service_center.html#公告\" target=\"_blank\">会员</a>\n                        &nbsp;&nbsp;|&nbsp;&nbsp;\n                        <a href=\"about_us.html#简介\" target=\"_blank\">联系我们</a>\n                        &nbsp;&nbsp;|&nbsp;&nbsp;\n                        <a href=\"service_center.html#公告\" target=\"_blank\">下载专区</a>\n                    </div>\n                    <i></i>\n                </div>\n            </section>\n            ",
             components: {
                 "bulletin-tab": {
                     props: ["tab"],
@@ -400,7 +405,7 @@ var vCommonFooter = new Vue({
                 },
                 "bulletin-pagination": {
                     props: ["bulletinIndex", "curIndex"],
-                    template: "<li v-if=\"false\" v-bind:class=\"{active_tab: bulletinIndex===curIndex}\" @click=\"clickPagination(bulletinIndex)\">\u25CF</li>",
+                    template: "<li v-if=\"false\" v-bind:class=\"{active_tab: bulletinIndex===curIndex}\" @click=\"clickPagination(bulletinIndex)\">●</li>",
                     methods: {
                         clickPagination: function clickPagination(clickedIndex) {
                             this.$emit("switchpagination", clickedIndex);
@@ -409,7 +414,7 @@ var vCommonFooter = new Vue({
                 },
                 "gallery-base-info": {
                     // FIXME 这里不得已而加了一个没有用处的根元素，在HTML多出了一个没用div节点
-                    template: "\n                    <div>\n                        <h2>\u7F8E\u672F\u9986 ART GALLERY</h2>\n                        <p><span>\u5F00\u653E\u65F6\u95F4\uFF1A</span>\u5468\u4E8C\u81F3\u5468\u65E5 9:30--17:00\uFF0816:30\u505C\u6B62\u5165\u9986\uFF09<br />\u5468\u4E00\u95ED\u9986\uFF08\u8282\u5047\u65E5\u9664\u5916\uFF0C\u7279\u6B8A\u60C5\u51B5\u5C06\u5728\u672C\u7F51\u7AD9\u901A\u77E5\uFF09</p>\n                        <p><span>\u5730\u5740\uFF1A</span>\u897F\u5B89\u5E02\u705E\u6865\u533A\u705E\u6865\u751F\u6001\u6E7F\u5730\u516C\u56ED\u67F3\u96EA\u8DEF996\u53F7</p>\n                        <p><span>\u7535\u8BDD\uFF1A</span>029-83626699</p>\n                    </div>\n                    "
+                    template: "\n                    <div>\n                        <h2>美术馆 ART GALLERY</h2>\n                        <p><span>开放时间：</span>周二至周日 9:30--17:00（16:30停止入馆）<br />周一闭馆（节假日除外，特殊情况将在本网站通知）</p>\n                        <p><span>地址：</span>西安市灞桥区灞桥生态湿地公园柳雪路996号</p>\n                        <p><span>电话：</span>029-83626699</p>\n                    </div>\n                    "
                 }
             },
             data: function data() {
@@ -456,7 +461,6 @@ var vCommonFooter = new Vue({
     AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
 }
 
-
 // 公共函数 ————————————————————————————————————————————————————————————————————
 function AJAX_GET(sURL, fnSuccessCallback, fnFailCallback) {
     var xhr = new XMLHttpRequest();
@@ -474,25 +478,24 @@ function AJAX_GET(sURL, fnSuccessCallback, fnFailCallback) {
     xhr.send(null);
 }
 
-
 // 分步批量图片加载
-function stepBatchLoadImage(arr){
-	let loadedCounter = 0,
-		index = arguments[1] ? arguments[1] : 0;
+function stepBatchLoadImage(arr) {
+    var loadedCounter = 0,
+        index = arguments[1] ? arguments[1] : 0;
 
-	if( arr[index] ){
-		loadedCounter = arr[index].length;
-		arr[index].forEach(function(item){
-			let oNewImage = new Image();
-			oNewImage.src = item;
-			oNewImage.onload = function(){
-				if( loadedCounter-- === 1){
-					stepBatchLoadImage(arr, ++index);
-				}
-			};
-            oNewImage.onerror = function(){
+    if (arr[index]) {
+        loadedCounter = arr[index].length;
+        arr[index].forEach(function (item) {
+            var oNewImage = new Image();
+            oNewImage.src = item;
+            oNewImage.onload = function () {
+                if (loadedCounter-- === 1) {
+                    stepBatchLoadImage(arr, ++index);
+                }
+            };
+            oNewImage.onerror = function () {
                 console.error("stepBatchLoadImage 无法加载  " + item + "，其所在组之后的图片组（如果还有）因此无法加载");
-            }
-		});
-	}
+            };
+        });
+    }
 }

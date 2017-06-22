@@ -12,6 +12,10 @@
     @include exhibition_class("ysdjt");
 }
 
+.practice{
+    @include exhibition_class("practice");
+}
+
 .volunteering{
     @include exhibition_class("volunteering");
 }

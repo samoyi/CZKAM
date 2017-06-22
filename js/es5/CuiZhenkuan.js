@@ -9,7 +9,7 @@ var vChronology = new Vue({
     components: {
         "chronology-pic": {
             props: ["src"],
-            template: "<a :href=\"src\" target=\"_blank\"><img :src=\"src\" alt=\"\u5D14\u632F\u5BBD\u827A\u672F\u5E74\u8868\"/></a>"
+            template: "<a :href=\"src\" target=\"_blank\"><img :src=\"src\" alt=\"崔振宽艺术年表\"/></a>"
         }
     },
     data: {
@@ -25,11 +25,12 @@ var vWorks = new Vue({
         catas: ["jiaomo", "shuimo", "xiaopin", "xiesheng"],
         catas_c: ["焦墨", "水墨", "小品", "写生"],
         nCataIndex: 0,
-        nPerPage: 6, // 每页显示10个
-        nPageIndex: 0 // 当前页码
-    },
+        nPerPage: 6, // 每页显示6个
+        nPageIndex: 0 },
+    // 当前页码
     computed: {
         displayedItem: function displayedItem() {
+            console.log("displayedItem");
             return this.list.slice(this.nPageIndex * this.nPerPage, (this.nPageIndex + 1) * this.nPerPage);
         },
         pageNum: function pageNum() {
@@ -54,7 +55,7 @@ var vWorks = new Vue({
     components: {
         "works-item": {
             props: ["worksData"],
-            template: "\n                <li>\n                    <a :href=\"worksData[1]\" target=\"_blank\"><div class=\"thumbnail\" :style=\"getUrl(worksData[0])\"></div></a>\n                    <div class=\"info\">\n                        <p><span>\u4F5C\u54C1\u540D\u79F0\uFF1A</span>{{worksData[2]}}</p>\n                        <p><span>\u5C3A\u5BF8\uFF1A</span>{{worksData[3]}}</p>\n                        <p><span>\u65F6\u95F4\uFF1A</span>{{worksData[4]}}</p>\n                        <p><span>\u4F5C\u8005\uFF1A</span>{{worksData[5]}}</p>\n                    </div>\n                    <div style=\"clear:both;\"></div>\n                </li>",
+            template: "\n                <li>\n                    <a :href=\"worksData[1]\" target=\"_blank\">\n                        <div class=\"thumbnail\" :style=\"getUrl(worksData[0])\"></div>\n                    </a>\n                    <div class=\"info\">\n                        <p><span>作品名称：</span>{{worksData[2]}}</p>\n                        <p><span>尺寸：</span>{{worksData[3]}}</p>\n                        <p><span>时间：</span>{{worksData[4]}}</p>\n                        <p><span>作者：</span>{{worksData[5]}}</p>\n                    </div>\n                    <div style=\"clear:both;\"></div>\n                </li>",
             methods: {
                 getUrl: function getUrl(url) {
                     return {
@@ -92,8 +93,8 @@ var vTreatise = new Vue({
     data: {
         list: [["", "", ""]],
         nPerPage: 4, // 每页显示10个
-        nPageIndex: 0 // 当前页码
-    },
+        nPageIndex: 0 },
+    // 当前页码
     computed: {
         displayedItem: function displayedItem() {
             return this.list.slice(this.nPageIndex * this.nPerPage, (this.nPageIndex + 1) * this.nPerPage);
@@ -110,7 +111,7 @@ var vTreatise = new Vue({
     components: {
         "treatise-item": {
             props: ["treatiseData"],
-            template: "\n                <li>\n                    <div class=\"cover\" :style=\"getUrl(treatiseData[0])\"></div>\n                    <div class=\"info\">\n                        <p><span>\u4F5C\u8005\uFF1A</span>{{treatiseData[1]}}</p>\n                        <p><span>\u65F6\u95F4\uFF1A</span>{{treatiseData[2]}}</p>\n                    </div>\n                    <div style=\"clear:both;\"></div>\n                </li>",
+            template: "\n                <li>\n                    <div class=\"cover\" :style=\"getUrl(treatiseData[0])\"></div>\n                    <div class=\"info\">\n                        <p><span>作者：</span>{{treatiseData[1]}}</p>\n                        <p><span>时间：</span>{{treatiseData[2]}}</p>\n                    </div>\n                    <div style=\"clear:both;\"></div>\n                </li>",
             methods: {
                 getUrl: function getUrl(url) {
                     return {
@@ -141,7 +142,7 @@ var vVideo = new Vue({
     components: {
         "video-template": {
             props: ["src", "title", "poster"],
-            template: "\n                <div>\n                    <video :src=\"src\" width=\"270\" height=\"260\" controls=\"controls\" preload=\"none\" :poster=\"poster\">\n                        \u4F60\u7684\u6D4F\u89C8\u5668\u7248\u672C\u8FC7\u4F4E\n                    </video>\n                    <h3>{{title}}</h3>\n                </div>\n                "
+            template: "\n                <div>\n                    <video :src=\"src\" width=\"270\" height=\"260\" controls=\"controls\" preload=\"none\" :poster=\"poster\">\n                        你的浏览器版本过低\n                    </video>\n                    <h3>{{title}}</h3>\n                </div>\n                "
         }
     },
     data: {
@@ -153,7 +154,6 @@ var vVideo = new Vue({
 
 // lazy loading
 window.onload = function () {
-
     var oContent = document.querySelector(".content");
 
     // 艺术年表
@@ -170,15 +170,23 @@ window.onload = function () {
 
     // 作品数据
     {
-        var _sURL = "ajax.php?item=cuizhenkuan_works",
-            _fnSuccessCallback = function _fnSuccessCallback(res) {
+        var sURL = "ajax.php?item=cuizhenkuan_works",
+            fnSuccessCallback = function fnSuccessCallback(res) {
             vWorks.lists = JSON.parse(res);
             vWorks.list = vWorks.lists[vWorks.catas[0]];
+
+            var aPreload = [];
+            for (var i = 0, len = vWorks.catas.length; i < len; i++) {
+                aPreload[i] = vWorks.lists[vWorks.catas[i]].map(function (item) {
+                    return item[1];
+                });
+            }
+            stepBatchLoadImage(aPreload);
         },
-            _fnFailCallback = function _fnFailCallback(status) {
+            fnFailCallback = function fnFailCallback(status) {
             console.error("加载作品数据失败");
         };
-        AJAX_GET(_sURL, _fnSuccessCallback, _fnFailCallback);
+        AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
     }
     // 论著数据
     // {
@@ -206,17 +214,16 @@ window.onload = function () {
     // }
     // 艺术影像数据
     {
-        var _sURL2 = "ajax.php?item=cuizhenkuan_video",
-            _fnSuccessCallback2 = function _fnSuccessCallback2(res) {
+        var sURL = "ajax.php?item=cuizhenkuan_video",
+            fnSuccessCallback = function fnSuccessCallback(res) {
             var oParsed = JSON.parse(res);
-            console.log(oParsed);
             vVideo.srcs = oParsed.srcs;
             vVideo.titles = oParsed.titles;
             vVideo.posters = oParsed.posters;
         },
-            _fnFailCallback2 = function _fnFailCallback2(status) {
+            fnFailCallback = function fnFailCallback(status) {
             console.error("加载艺术影像数据失败");
         };
-        AJAX_GET(_sURL2, _fnSuccessCallback2, _fnFailCallback2);
+        AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
     }
 };

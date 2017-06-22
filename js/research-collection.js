@@ -152,6 +152,14 @@ window.onload = function(){
             fnSuccessCallback = function(res){
                 vChinesePainting.lists = JSON.parse(res);
                 vChinesePainting.list = vChinesePainting.lists[vChinesePainting.catas[0]];
+
+                let aPreload = [];
+                for(let i=0,len=vChinesePainting.catas.length; i<len; i++){
+                    aPreload[i] = vChinesePainting.lists[vChinesePainting.catas[i]].map(function(item){
+                        return item[1];
+                    });
+                }
+                stepBatchLoadImage(aPreload);
             },
             fnFailCallback = function(status){
                 console.error("加载国画数据失败");

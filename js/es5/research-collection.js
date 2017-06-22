@@ -1,5 +1,4 @@
 
-
 ;"use strict";
 
 vCatalog.title = ["学术研究·馆藏", "RESEARCH·COLLECTION"];
@@ -23,8 +22,8 @@ function vCollectionClass(elSelector, catas_e, catas_c) {
             catas_c: catas_c,
             nCataIndex: 0,
             nPerPage: 6, // 每页显示10个
-            nPageIndex: 0 // 当前页码
-        },
+            nPageIndex: 0 },
+        // 当前页码
         computed: {
             displayedItem: function displayedItem() {
                 return this.list.slice(this.nPageIndex * this.nPerPage, (this.nPageIndex + 1) * this.nPerPage);
@@ -51,7 +50,7 @@ function vCollectionClass(elSelector, catas_e, catas_c) {
         components: {
             "works-item": {
                 props: ["worksData"],
-                template: "\n                    <li>\n                        <a :href=\"worksData[1]\" target=\"_blank\"><div class=\"thumbnail\" :style=\"getUrl(worksData[0])\"></div></a>\n                        <div class=\"info\">\n                            <p><span>\u4F5C\u54C1\u540D\u79F0\uFF1A</span>{{worksData[2]}}</p>\n                            <p><span>\u5C3A\u5BF8\uFF1A</span>{{worksData[3]}}</p>\n                            <p><span>\u65F6\u95F4\uFF1A</span>{{worksData[4]}}</p>\n                            <p><span>\u4F5C\u8005\uFF1A</span>{{worksData[5]}}</p>\n                            <p v-if=\"worksData[6]\"><span>\u98CE\u683C\uFF1A</span>{{worksData[6]}}</p>\n                        </div>\n                        <div style=\"clear:both;\"></div>\n                    </li>",
+                template: "\n                    <li>\n                        <a :href=\"worksData[1]\" target=\"_blank\"><div class=\"thumbnail\" :style=\"getUrl(worksData[0])\"></div></a>\n                        <div class=\"info\">\n                            <p><span>作品名称：</span>{{worksData[2]}}</p>\n                            <p><span>尺寸：</span>{{worksData[3]}}</p>\n                            <p><span>时间：</span>{{worksData[4]}}</p>\n                            <p><span>作者：</span>{{worksData[5]}}</p>\n                            <p v-if=\"worksData[6]\"><span>风格：</span>{{worksData[6]}}</p>\n                        </div>\n                        <div style=\"clear:both;\"></div>\n                    </li>",
                 methods: {
                     getUrl: function getUrl(url) {
                         return {
@@ -115,14 +114,22 @@ window.onload = function () {
 
     // 国画数据
     {
-        var _sURL = "ajax.php?item=collection_chinese",
-            _fnSuccessCallback = function _fnSuccessCallback(res) {
+        var sURL = "ajax.php?item=collection_chinese",
+            fnSuccessCallback = function fnSuccessCallback(res) {
             vChinesePainting.lists = JSON.parse(res);
             vChinesePainting.list = vChinesePainting.lists[vChinesePainting.catas[0]];
+
+            var aPreload = [];
+            for (var i = 0, len = vChinesePainting.catas.length; i < len; i++) {
+                aPreload[i] = vChinesePainting.lists[vChinesePainting.catas[i]].map(function (item) {
+                    return item[1];
+                });
+            }
+            stepBatchLoadImage(aPreload);
         },
-            _fnFailCallback = function _fnFailCallback(status) {
+            fnFailCallback = function fnFailCallback(status) {
             console.error("加载国画数据失败");
         };
-        AJAX_GET(_sURL, _fnSuccessCallback, _fnFailCallback);
+        AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
     }
 };

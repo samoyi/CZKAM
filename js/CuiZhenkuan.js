@@ -264,9 +264,11 @@ window.onload = function(){
                 vWorks.list = vWorks.lists[vWorks.catas[0]];
 
                 let aPreload = [];
-                aPreload[0] = vWorks.list.slice(0, vWorks.nPerPage).map(function(item){
-                    return item[1];
-                });
+                for(let i=0,len=vWorks.catas.length; i<len; i++){
+                    aPreload[i] = vWorks.lists[vWorks.catas[i]].map(function(item){
+                        return item[1];
+                    });
+                }
                 stepBatchLoadImage(aPreload);
             },
             fnFailCallback = function(status){
