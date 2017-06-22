@@ -3,9 +3,6 @@ body{
     background:{
         image: url(http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/bg.jpg);
     }
-    @media (min-width: 1920px){
-        overflow: hidden; // 实现横向滚动
-    }
 }
 #content{
     position: relative; top: 30px;
@@ -88,6 +85,7 @@ body{
 
         #exhibition-tab, #public_education-tab, #bulletin-tab, #gallery_base_info{
             width: $tab_width;
+            margin-left: $tab_marginLeft;
             position: relative;
             h2{
                 position: absolute; left: 25px; bottom: 25px;
@@ -95,19 +93,7 @@ body{
                 color: $STANDARD_COLOR;
             }
         }
-        #bulletin-tab, #gallery_base_info{
-            // margin-left: ($MIDDLE_WIDTH - $tab_width * 3) / 2;
-            margin-left: $tab_marginLeft;
-            @media (min-width: 1920px){
-                // margin-left: 13px;
-            }
-        }
         #exhibition-tab{
-            margin-left: $MIDDLE_WIDTH - 815 - $tab_width;
-            margin-left: $tab_marginLeft;
-            @media (min-width: 1920px){
-                // margin-left: 13px;
-            }
             img{
                 width: 100%; height:170px;
                 display: block;
@@ -135,6 +121,10 @@ body{
             }
         }
         #public_education-tab{
+            margin-left: 0;
+            @media (min-width: 1920px){
+                margin-left: $tab_marginLeft;
+            }
             img{
                 width: 100%; height:170px;
                 display: block;
@@ -242,16 +232,26 @@ body{
                 position: relative;
                 text-align: left;
                 width: 100%; height: 100%;
+                font-size: 14px;
                 li{
-                    position: absolute; top: -13px;
+                    position: absolute; top: -12px;
                     color: $BASIC_GRAY;
                     cursor: pointer;
                     i{
                         font-size: 18px;
+                        background-color: $BASIC_GRAY;
+                        box-sizing: border-box;
+                        border: 1px solid $BASIC_GRAY;
+                        border-radius: 1000%;
+                        width: 10px;
+                        height: 10px;
+                        display: block;
+                        position: relative;
+                        top: 7px;
                     }
                 }
                 li:nth-child(1){
-                    left: 60px;
+                    left: 58px;
                 }
                 li:nth-child(2){
                     left: 256px;
@@ -260,8 +260,11 @@ body{
                     left: 454px;
                 }
                 li:nth-child(4){
-                    left: 600px;
-                    text-align: right;
+                    left: 605px;
+                    i{
+                        position: relative;
+                        right: -55px;
+                    }
                 }
             }
             .left_arrow, .right_arrow{

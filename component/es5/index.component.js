@@ -1,3 +1,4 @@
+
 ;"use strict";
 
 var vHeader = new Vue({
@@ -106,7 +107,7 @@ var mySwiper = new Swiper('.swiper-container', {
             aBlockIcon = oBlockSelector.querySelectorAll("i"),
             index = 0;
 
-        aBlockIcon[0].style.color = "#761301";
+        aBlockIcon[0].style.backgroundColor = "white";
 
         var _loop = function (i) {
             aSelectorList[i].addEventListener("click", function () {
@@ -114,11 +115,11 @@ var mySwiper = new Swiper('.swiper-container', {
                 // 413px 是一块的宽度加一个margin
                 oBlockWrapper.style.transform = "translate3d(-" + i * 413 + "px, 0, 0)";
                 oBlockWrapper.style.webkitTransform = "translate3d(-" + i * 413 + "px, 0, 0)";
-                aBlockIcon[0].style.color = "#b3b3b3";
-                aBlockIcon[1].style.color = "#b3b3b3";
-                aBlockIcon[2].style.color = "#b3b3b3";
-                aBlockIcon[3].style.color = "#b3b3b3";
-                aBlockIcon[i].style.color = "#761301";
+                aBlockIcon[0].style.backgroundColor = "#b3b3b3";
+                aBlockIcon[1].style.backgroundColor = "#b3b3b3";
+                aBlockIcon[2].style.backgroundColor = "#b3b3b3";
+                aBlockIcon[3].style.backgroundColor = "#b3b3b3";
+                aBlockIcon[i].style.backgroundColor = "white";
             });
         };
 
@@ -131,8 +132,8 @@ var mySwiper = new Swiper('.swiper-container', {
                 index++;
                 oBlockWrapper.style.transform = "translate3d(-" + index * 413 + "px, 0, 0)";
                 oBlockWrapper.style.webkitTransform = "translate3d(-" + index * 413 + "px, 0, 0)";
-                aBlockIcon[index - 1].style.color = "#b3b3b3";
-                aBlockIcon[index].style.color = "#761301";
+                aBlockIcon[index - 1].style.backgroundColor = "#b3b3b3";
+                aBlockIcon[index].style.backgroundColor = "white";
             }
         });
         oLeftArrow.addEventListener("click", function () {
@@ -141,8 +142,8 @@ var mySwiper = new Swiper('.swiper-container', {
                 index--;
                 oBlockWrapper.style.transform = "translate3d(-" + index * 413 + "px, 0, 0)";
                 oBlockWrapper.style.webkitTransform = "translate3d(-" + index * 413 + "px, 0, 0)";
-                aBlockIcon[index + 1].style.color = "#b3b3b3";
-                aBlockIcon[index].style.color = "#761301";
+                aBlockIcon[index + 1].style.backgroundColor = "#b3b3b3";
+                aBlockIcon[index].style.backgroundColor = "white";
             }
         });
     })();

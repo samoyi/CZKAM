@@ -51,6 +51,9 @@ $LINE_GRAY: #eaeaea;
 // font
 body{
     font-family: "Microsoft YaHei";
+    @media (min-width: 1920px){
+        overflow-x: hidden; // 实现横向滚动
+    }
 }
 
 

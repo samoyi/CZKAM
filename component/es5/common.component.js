@@ -359,7 +359,6 @@ function exhibitionClass(elSelector) {
 // FIXME4 因为vCatalog组件会修改currentLevel1Index和currentLevel2Index，所以这里
 // 用setTimeout把displayContentSection推到修改之后
 if (location.hash) {
-    console.log(vCatalog.currentLevel1Index, vCatalog.currentLevel2Index);
     setTimeout(function () {
         displayContentSection(vCatalog.currentLevel1Index, vCatalog.currentLevel2Index);
     }, 0);
@@ -457,6 +456,8 @@ var vCommonFooter = new Vue({
     AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
 }
 
+
+// 公共函数 ————————————————————————————————————————————————————————————————————
 function AJAX_GET(sURL, fnSuccessCallback, fnFailCallback) {
     var xhr = new XMLHttpRequest();
     xhr.addEventListener('readystatechange', function () {
@@ -471,4 +472,27 @@ function AJAX_GET(sURL, fnSuccessCallback, fnFailCallback) {
     }, false);
     xhr.open("get", sURL, true);
     xhr.send(null);
+}
+
+
+// 分步批量图片加载
+function stepBatchLoadImage(arr){
+	let loadedCounter = 0,
+		index = arguments[1] ? arguments[1] : 0;
+
+	if( arr[index] ){
+		loadedCounter = arr[index].length;
+		arr[index].forEach(function(item){
+			let oNewImage = new Image();
+			oNewImage.src = item;
+			oNewImage.onload = function(){
+				if( loadedCounter-- === 1){
+					stepBatchLoadImage(arr, ++index);
+				}
+			};
+            oNewImage.onerror = function(){
+                console.error("stepBatchLoadImage 无法加载  " + item + "，其所在组之后的图片组（如果还有）因此无法加载");
+            }
+		});
+	}
 }

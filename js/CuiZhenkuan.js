@@ -73,11 +73,12 @@ let vWorks = new Vue({
         catas: ["jiaomo" , "shuimo", "xiaopin", "xiesheng"],
         catas_c: ["焦墨", "水墨", "小品", "写生"],
         nCataIndex: 0,
-        nPerPage: 6, // 每页显示10个
+        nPerPage: 6, // 每页显示6个
         nPageIndex : 0, // 当前页码
     },
     computed: {
         displayedItem(){
+            console.log("displayedItem");
             return this.list.slice(this.nPageIndex*this.nPerPage, (this.nPageIndex+1)*this.nPerPage);
         },
         pageNum(){
@@ -104,7 +105,9 @@ let vWorks = new Vue({
             props: ["worksData"],
             template: `
                 <li>
-                    <a :href="worksData[1]" target="_blank"><div class="thumbnail" :style="getUrl(worksData[0])"></div></a>
+                    <a :href="worksData[1]" target="_blank">
+                        <div class="thumbnail" :style="getUrl(worksData[0])"></div>
+                    </a>
                     <div class="info">
                         <p><span>作品名称：</span>{{worksData[2]}}</p>
                         <p><span>尺寸：</span>{{worksData[3]}}</p>
@@ -238,7 +241,6 @@ let vVideo = new Vue({
 
 // lazy loading
 window.onload = function(){
-
     let oContent = document.querySelector(".content");
 
     // 艺术年表
@@ -246,6 +248,7 @@ window.onload = function(){
         let sURL = "ajax.php?item=cuizhenkuan_chronology",
             fnSuccessCallback = function(res){
                 vChronology.srcs = JSON.parse(res);
+
             },
             fnFailCallback = function(status){
                 console.error("加载艺术年表数据失败");
@@ -259,6 +262,12 @@ window.onload = function(){
             fnSuccessCallback = function(res){
                 vWorks.lists = JSON.parse(res);
                 vWorks.list = vWorks.lists[vWorks.catas[0]];
+
+                let aPreload = [];
+                aPreload[0] = vWorks.list.slice(0, vWorks.nPerPage).map(function(item){
+                    return item[1];
+                });
+                stepBatchLoadImage(aPreload);
             },
             fnFailCallback = function(status){
                 console.error("加载作品数据失败");
@@ -294,7 +303,6 @@ window.onload = function(){
         let sURL = "ajax.php?item=cuizhenkuan_video",
             fnSuccessCallback = function(res){
                 let oParsed = JSON.parse(res);
-                console.log(oParsed);
                 vVideo.srcs = oParsed.srcs;
                 vVideo.titles = oParsed.titles;
                 vVideo.posters = oParsed.posters;

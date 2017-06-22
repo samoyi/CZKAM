@@ -16,7 +16,6 @@ vCatalog.catas = [
             {cata_c: []},
             {cata_e: []},
             1,
-            "none",
         ],
         [
             {title_c: "志愿者服务"},
