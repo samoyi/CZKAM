@@ -212,4 +212,6 @@ var mySwiper = new Swiper ('.swiper-container', {
   window.onload = function(){
 
       // 预加载轮播图连接的资源
+      let cssPreloader = new Image();
+      cssPreloader.src = "css/compressed/common_page.css";
   };

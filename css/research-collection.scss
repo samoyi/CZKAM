@@ -1,14 +1,16 @@
 @import "basic.scss";
 
-.content{
-    >section{
-        .academic_events{
-            @include exhibition_class("academic_events");
-        }
-    }
-    .collection{
+#research-collection-middle{
+    .content{
         >section{
-            @include works_class;
+            .academic_events{
+                @include exhibition_class("academic_events");
+            }
+        }
+        .collection{
+            >section{
+                @include works_class;
+            }
         }
     }
-} 
+}

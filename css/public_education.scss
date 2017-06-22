@@ -1,25 +1,27 @@
 @import "basic.scss";
 
-.ssgyb{
-    @include exhibition_class("ssgyb");
-}
+#public_education-middle{
+    .ssgyb{
+        @include exhibition_class("ssgyb");
+    }
 
-.sfb{
-    @include exhibition_class("sfb");
-}
+    .sfb{
+        @include exhibition_class("sfb");
+    }
 
-.ysdjt{
-    @include exhibition_class("ysdjt");
-}
+    .ysdjt{
+        @include exhibition_class("ysdjt");
+    }
 
-.practice{
-    @include exhibition_class("practice");
-}
+    .practice{
+        @include exhibition_class("practice");
+    }
 
-.volunteering{
-    @include exhibition_class("volunteering");
-}
+    .volunteering{
+        @include exhibition_class("volunteering");
+    }
 
-.exchanges{
-    @include exhibition_class("exchanges");
+    .exchanges{
+        @include exhibition_class("exchanges");
+    }
 }

@@ -1,126 +1,129 @@
 @import "basic.scss";
-.art_chronology{
-    position: relative;
-    .axis{
-        position: absolute;
-        width: 0px; height: 5150px;
-        border-right: 4px dotted $BASIC_GRAY;
-        left: 50px; top: 200px;
-    }
-    .range{
-        font-size: 12px;
-        width: 87px;
-        position: absolute; top: 200px; left: -30px;
-        div{
-            width: 100%;
+
+#CuiZhenkuan-middle{
+    .art_chronology{
+        position: relative;
+        .axis{
             position: absolute;
-            i{
-                display: inline-block;
-                width: 10px; height: 10px;
-                margin-top: 8px;
-                background-color: $BASIC_GRAY;
-                float: right;
-                border-radius: 50%;
+            width: 0px; height: 5150px;
+            border-right: 4px dotted $BASIC_GRAY;
+            left: 50px; top: 200px;
+        }
+        .range{
+            font-size: 12px;
+            width: 87px;
+            position: absolute; top: 200px; left: -30px;
+            div{
+                width: 100%;
+                position: absolute;
+                i{
+                    display: inline-block;
+                    width: 10px; height: 10px;
+                    margin-top: 8px;
+                    background-color: $BASIC_GRAY;
+                    float: right;
+                    border-radius: 50%;
+                }
+            }
+            div:nth-child(1){
+                top: -12px;
+            }
+            div:nth-child(2){
+                top: 341px;
+            }
+            div:nth-child(3){
+                top: 732px;
+            }
+            div:nth-child(4){
+                top: 1108px;
+            }
+            div:nth-child(5){
+                top: 1484px;
+            }
+            div:nth-child(6){
+                top: 1819px;
+            }
+            div:nth-child(7){
+                top: 2091px;
+            }
+            div:nth-child(8){
+                top: 2387px;
+            }
+            div:nth-child(9){
+                top: 2731px;
+            }
+            div:nth-child(10){
+                top: 3130px;
+            }
+            div:nth-child(11){
+                top: 3490px;
+            }
+            div:nth-child(12){
+                top: 3874px;
+            }
+            div:nth-child(13){
+                top: 4225px;
+            }
+            div:nth-child(14){
+                top: 4601px;
+            }
+            div:nth-child(15){
+                top: 5073px;
             }
         }
-        div:nth-child(1){
-            top: -12px;
-        }
-        div:nth-child(2){
-            top: 341px;
-        }
-        div:nth-child(3){
-            top: 732px;
-        }
-        div:nth-child(4){
-            top: 1108px;
-        }
-        div:nth-child(5){
-            top: 1484px;
-        }
-        div:nth-child(6){
-            top: 1819px;
-        }
-        div:nth-child(7){
-            top: 2091px;
-        }
-        div:nth-child(8){
-            top: 2387px;
-        }
-        div:nth-child(9){
-            top: 2731px;
-        }
-        div:nth-child(10){
-            top: 3130px;
-        }
-        div:nth-child(11){
-            top: 3490px;
-        }
-        div:nth-child(12){
-            top: 3874px;
-        }
-        div:nth-child(13){
-            top: 4225px;
-        }
-        div:nth-child(14){
-            top: 4601px;
-        }
-        div:nth-child(15){
-            top: 5073px;
-        }
-    }
-    >a>img{
-        width: 890px;
-        margin-top: 24px;
-        margin-left: 100px;
-    }
-}
-
-.works{
-    @include works_class;
-}
-
-.treatise{
-    font-size: 12px;
-    .treatise_list{
-        >li{
+        >a>img{
+            width: 890px;
             margin-top: 24px;
-            .cover{
-                float: left;
-                width: 355px; height: 200px;
-                background:{
-                    color: $BACKGROUND_GRAY;
-                    repeat: no-repeat;
-                    size: contain;
-                    position: center;
-                }
-                cursor: pointer;
-            }
-            .info{
-                float: left;
-                margin-left: 34px;
-                span{
-                    color: $BASIC_GRAY;
-                }
-            }
+            margin-left: 100px;
         }
     }
-}
 
-.activity{
-    @include exhibition_class("activity");
-}
-.video{
-    >div{
-        float: left;
-        margin-left: 90px;
-        width: 270px;
-        h3{
-            white-space: pre-wrap;
-            font-size: 14px;
+    .works{
+        @include works_class;
+    }
+
+    .treatise{
+        font-size: 12px;
+        .treatise_list{
+            >li{
+                margin-top: 24px;
+                .cover{
+                    float: left;
+                    width: 355px; height: 200px;
+                    background:{
+                        color: $BACKGROUND_GRAY;
+                        repeat: no-repeat;
+                        size: contain;
+                        position: center;
+                    }
+                    cursor: pointer;
+                }
+                .info{
+                    float: left;
+                    margin-left: 34px;
+                    span{
+                        color: $BASIC_GRAY;
+                    }
+                }
+            }
         }
     }
-    div:nth-child(3n+2){
-        margin-left: 0;
+
+    .activity{
+        @include exhibition_class("activity");
+    }
+    .video{
+        >div{
+            float: left;
+            margin-left: 90px;
+            width: 270px;
+            h3{
+                white-space: pre-wrap;
+                font-size: 14px;
+            }
+        }
+        div:nth-child(3n+2){
+            margin-left: 0;
+        }
     }
 }
