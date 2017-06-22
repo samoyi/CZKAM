@@ -13,9 +13,9 @@
     </header>
     <section id="about_us-middle" class="common-middle">
         <div  id="catalog" class="catalog">
-            <h2>{{title[0]}}<br /><span>{{title[1]}}</span></h2>
+            <h2 v-text="title[0]"><br /><span v-text="title[1]"></span></h2>
             <cata :current-level1-title="currentLevel1Title" :current-level2-title="currentLevel2Title" @display_content="display" v-for="cata in catas" :cata="cata"></cata>
-            <p class="breadcrumb"><a href="index.html">🏠</a> ＞ <span>{{title[0]}}</span><span> ＞ {{currentLevel1Title}}</span><span v-if="currentLevel2Title"> ＞ {{currentLevel2Title}}</span></p>
+            <p class="breadcrumb"><a href="index.html">🏠</a> ＞ <span v-text="title[0]"></span><span v-cloak> ＞ {{currentLevel1Title}}</span><span v-cloak> ＞ {{currentLevel2Title}}</span></p>
         </div>
         <section class="content">
             <section class="art_gallery">

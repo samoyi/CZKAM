@@ -19,6 +19,10 @@ a{
     color: $STANDARD_COLOR;
 }
 
+[v-cloak] {
+  display: none;
+}
+
 
 #common-header{
     width: 100%; height: $HEADER_HEIGHT;

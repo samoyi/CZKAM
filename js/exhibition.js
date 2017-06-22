@@ -1,6 +1,5 @@
 ;"use strict";
 
-
 vCatalog.title = ["展览", "EXHIBITION"];
 vCatalog.catas = [
         [
