@@ -1,3 +1,4 @@
+"use strict";
 
 ;"use strict";
 
@@ -396,7 +397,7 @@ var vCommonFooter = new Vue({
     el: "#common-footer",
     components: {
         "common-footer": {
-            template: "\n            <section>\n                <div class=\"footer_up\">\n                    <div id=\"bulletin-tab\">\n                        <h2>公告 BULLETIN</h2>\n                        <bulletin-tab ref=\"bulletin\" :tab=\"getTab\"></bulletin-tab>\n                        <ul>\n                            <bulletin-pagination v-for=\"(item, index) in tabs\" :bulletin-index=\"index\" :cur-index=\"curIndex\" @switchpagination=\"switchtab\"></bulletin-pagination>\n                        </ul>\n                        <a href=\"service_center.html#公告\" target=\"_black\" class=\"more\">MORE</a>\n                    </div>\n                    <div id=\"gallery_base_info\">\n                        <gallery-base-info></gallery-base-info>\n                    </div>\n                    <i></i>\n                    <div style=\"clear:both;\"></div>\n                </div>\n                <div class=\"footer_down\">\n                    <p>陕ICP备07030830号-5  Copyright © 2015 czkam.net Inc. All Rights Reserved. 崔振宽美术馆 版权所有  Designed by 凡卡互动</p>\n                    <div>\n                        <a href=\"service_center.html#公告\" target=\"_blank\">会员</a>\n                        &nbsp;&nbsp;|&nbsp;&nbsp;\n                        <a href=\"about_us.html#简介\" target=\"_blank\">联系我们</a>\n                        &nbsp;&nbsp;|&nbsp;&nbsp;\n                        <a href=\"service_center.html#公告\" target=\"_blank\">下载专区</a>\n                    </div>\n                    <i></i>\n                </div>\n            </section>\n            ",
+            template: "\n            <section>\n                <div class=\"footer_up\">\n                    <div id=\"bulletin-tab\">\n                        <h2>公告 BULLETIN</h2>\n                        <bulletin-tab ref=\"bulletin\" :tab=\"tabs[curIndex]\"></bulletin-tab>\n                        <ul>\n                            <bulletin-pagination v-for=\"(item, index) in tabs\" :bulletin-index=\"index\" :cur-index=\"curIndex\" @switchpagination=\"switchtab\"></bulletin-pagination>\n                        </ul>\n                        <a href=\"service_center.html#公告\" target=\"_black\" class=\"more\">MORE</a>\n                    </div>\n                    <div id=\"gallery_base_info\">\n                        <gallery-base-info></gallery-base-info>\n                    </div>\n                    <i></i>\n                    <div style=\"clear:both;\"></div>\n                </div>\n                <div class=\"footer_down\">\n                    <p>陕ICP备07030830号-5  Copyright © 2015 czkam.net Inc. All Rights Reserved. 崔振宽美术馆 版权所有  Designed by 凡卡互动</p>\n                    <div>\n                        <a href=\"service_center.html#公告\" target=\"_blank\">会员</a>\n                        &nbsp;&nbsp;|&nbsp;&nbsp;\n                        <a href=\"about_us.html#简介\" target=\"_blank\">联系我们</a>\n                        &nbsp;&nbsp;|&nbsp;&nbsp;\n                        <a href=\"service_center.html#公告\" target=\"_blank\">下载专区</a>\n                    </div>\n                    <i></i>\n                </div>\n            </section>\n            ",
             components: {
                 "bulletin-tab": {
                     props: ["tab"],
@@ -419,23 +420,9 @@ var vCommonFooter = new Vue({
             },
             data: function data() {
                 return {
-                    tabs: [],
+                    tabs: [[,,]],
                     curIndex: 0
                 };
-            },
-            computed: {
-                getTab: function getTab() {
-                    if (this.tabs.length) {
-                        return this.tabs[this.curIndex];
-                    } else {
-                        return [,,];
-                        /*
-                        * FIXME1
-                        * 这里计算的时候，tabs还是是空的，所以只能通过判断然后先返回一个
-                        * 空的三项数组，否则模板里取数组项的时候就会出错。有没有更好的办法？
-                        */
-                    }
-                }
             },
             methods: {
                 switchtab: function switchtab(clickedIndex) {

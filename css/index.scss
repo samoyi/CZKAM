@@ -249,6 +249,9 @@ body{
                         position: relative;
                         top: 7px;
                     }
+                    span{
+                        font-size: 10px;
+                    }
                 }
                 li:nth-child(1){
                     left: 58px;
@@ -261,6 +264,7 @@ body{
                 }
                 li:nth-child(4){
                     left: 605px;
+                    text-align: right;
                     i{
                         position: relative;
                         right: -55px;

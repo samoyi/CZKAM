@@ -437,7 +437,7 @@ let vCommonFooter = new Vue({
                 <div class="footer_up">
                     <div id="bulletin-tab">
                         <h2>公告 BULLETIN</h2>
-                        <bulletin-tab ref="bulletin" :tab="getTab"></bulletin-tab>
+                        <bulletin-tab ref="bulletin" :tab="tabs[curIndex]"></bulletin-tab>
                         <ul>
                             <bulletin-pagination v-for="(item, index) in tabs" :bulletin-index="index" :cur-index="curIndex" @switchpagination="switchtab"></bulletin-pagination>
                         </ul>
@@ -484,7 +484,7 @@ let vCommonFooter = new Vue({
                     },
                 },
                 "gallery-base-info": {
-                    // FIXME 这里不得已而加了一个没有用处的根元素，在HTML多出了一个没用div节点
+                    // FIXME2 这里不得已而加了一个没有用处的根元素，在HTML多出了一个没用div节点
                     template: `
                     <div>
                         <h2>美术馆 ART GALLERY</h2>
@@ -497,24 +497,9 @@ let vCommonFooter = new Vue({
             },
             data: function(){
                 return {
-                    tabs: [],
+                    tabs: [[,,]],
                     curIndex: 0,
                 };
-            },
-            computed: {
-                getTab(){
-                    if( this.tabs.length ){
-                        return this.tabs[this.curIndex];
-                    }
-                    else{
-                        return [,,];
-                        /*
-                        * FIXME1
-                        * 这里计算的时候，tabs还是是空的，所以只能通过判断然后先返回一个
-                        * 空的三项数组，否则模板里取数组项的时候就会出错。有没有更好的办法？
-                        */
-                    }
-                },
             },
             methods: {
                 switchtab(clickedIndex){

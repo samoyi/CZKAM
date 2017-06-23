@@ -74,7 +74,7 @@ let vContent = new Vue({
         "gallery-base-info": {
             template: `
                 <div>
-                    <h2>美术馆 ART GALLERY</h2>
+                    <h2>美术馆 ART MUSEUM</h2>
                     <div class="time"><h3>开放时间：</h3>周二至周日 9:30--17:00（16:30停止入馆）<br />周一闭馆（节假日除外，特殊情况将在本网站通知）</div>
                     <div class="add"><h3>地址：</h3>西安市灞桥区灞桥生态湿地公园柳雪路996号</div>
                     <div class="tel"><h3>电话：</h3>029-83626699</div>
