@@ -137,7 +137,7 @@ window.onload = function () {
 
     // 公告数据
     {
-        var sURL = "ajax.php?item=service_bulletin",
+        var sURL = "ajax.php?item=common_bulletin",
             fnSuccessCallback = function fnSuccessCallback(res) {
             vBulletin.list = JSON.parse(res);
         },

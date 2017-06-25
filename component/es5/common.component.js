@@ -1,5 +1,3 @@
-"use strict";
-
 ;"use strict";
 
 var vHeader = new Vue({
@@ -365,7 +363,6 @@ function exhibitionClass(elSelector) {
 // FIXME4 因为vCatalog组件会修改currentLevel1Index和currentLevel2Index，所以这里
 // 用setTimeout把displayContentSection推到修改之后
 if (location.hash) {
-    console.log(vCatalog.currentLevel1Index, vCatalog.currentLevel2Index);
     setTimeout(function () {
         displayContentSection(vCatalog.currentLevel1Index, vCatalog.currentLevel2Index);
     }, 0);
@@ -414,7 +411,7 @@ var vCommonFooter = new Vue({
                     }
                 },
                 "gallery-base-info": {
-                    // FIXME 这里不得已而加了一个没有用处的根元素，在HTML多出了一个没用div节点
+                    // FIXME2 这里不得已而加了一个没有用处的根元素，在HTML多出了一个没用div节点
                     template: "\n                    <div>\n                        <h2>美术馆 ART GALLERY</h2>\n                        <p><span>开放时间：</span>周二至周日 9:30--17:00（16:30停止入馆）<br />周一闭馆（节假日除外，特殊情况将在本网站通知）</p>\n                        <p><span>地址：</span>西安市灞桥区灞桥生态湿地公园柳雪路996号</p>\n                        <p><span>电话：</span>029-83626699</p>\n                    </div>\n                    "
                 }
             },

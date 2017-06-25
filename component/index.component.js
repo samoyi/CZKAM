@@ -62,7 +62,6 @@ let vContent = new Vue({
                     <ul>
                         <li v-if="false" v-bind:class="{active_tab: curIndex===0}"  @click="clickPagination(0)">●</li>
                         <li v-if="false" v-bind:class="{active_tab: curIndex===1}"  @click="clickPagination(1)">●</li>
-                        <li v-if="false" v-bind:class="{active_tab: curIndex===2}"  @click="clickPagination(2)">●</li>
                     </ul>
                 </div>`,
             methods: {
@@ -134,12 +133,11 @@ vContent.publicEducationNews = [
 
 
 vContent.bulletinTabs = [
-    ["五一假期开闭馆时间安排", "五一假期，崔振宽美术馆、水墨长安艺术博物馆正常开馆", "2017.4.28"]
-];
+    ["6月26日（周一）开闭馆时间安排", "因“保持记录-2017西安国际摄影邀请展”观展人数众多，观展需求量大，2017年6月26日（周一），西安崔振宽美术馆、水墨长安艺术博物馆将不闭馆，欢迎各界社会人士前来参观。同时，6月26日19:30时，国际论坛《美术馆、博物馆的策展与管理》也将在崔振宽美术馆学术报告厅举办。", "2017年6月25日", "bulletin20170625"]];
 // 轮播
 // setInterval(function(){
 //     vContent.bulletinIndex = (vContent.bulletinIndex+1) % 3;
-// }, 10000);
+// }, 5000);
 
 
 

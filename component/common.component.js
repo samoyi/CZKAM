@@ -384,7 +384,6 @@ function exhibitionClass(elSelector){
 // FIXME4 因为vCatalog组件会修改currentLevel1Index和currentLevel2Index，所以这里
 // 用setTimeout把displayContentSection推到修改之后
 if( location.hash ){
-    console.log( vCatalog.currentLevel1Index, vCatalog.currentLevel2Index );
     setTimeout(function(){
         displayContentSection(vCatalog.currentLevel1Index, vCatalog.currentLevel2Index)
     }, 0);
