@@ -1,5 +1,3 @@
-
-
 ;"use strict";
 
 vCatalog.title = ["展览", "EXHIBITION"];
@@ -22,13 +20,13 @@ window.onload = function () {
             fnSuccessCallback = function fnSuccessCallback(res) {
             var oParsed = JSON.parse(res),
                 aAll = [];
-            for (var item in oParsed) {
-                // console.log(item)
+            aKey = Object.keys(oParsed);
+            aKey.reverse().forEach(function (item) {
                 oParsed[item].forEach(function (data) {
                     aAll.push(data);
                 });
-            }
-            oParsed.All = aAll.reverse();
+            });
+            oParsed.All = aAll;
             vPermanentExhibition.lists = oParsed;
             // 获得所有年份字符串组成的数组
             vPermanentExhibition.catas = Object.keys(vPermanentExhibition.lists).reverse();
