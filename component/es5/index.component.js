@@ -69,7 +69,7 @@ var vContent = new Vue({
     }
 });
 
-vContent.exhibitionNews = [["", "墨色无间——汪劲松、王承云实验艺术展开幕", "2016.11.20-12.5", "exhibition.html?id=mosewujian#常设展览"], ["", "首届陕西省大学生摄影大展开幕啦！", "2016.11.6", "exhibition.html?id=daxueshengsheyingzhan#常设展览"], ["", "崔振宽美术馆开馆暨“苍山无言——崔振宽画展”启幕", "2016.9.20-10.20", "exhibition.html?id=kaiguan#常设展览"]];
+vContent.exhibitionNews = [["", "丰碑大碣——历代金石拓本全国巡回展", "2017.8.26-9.24", "exhibition.html?id=fengbeidajie#常设展览"], ["", "《保持记录-2017西安国际摄影邀请展》隆重开幕！", "2017.6.24-7.23", "exhibition.html?id=baochijilu1#常设展览"], ["", "《保持记录-2017西安国际摄影邀请展》论坛、讲座回播", "2017.6.24", "exhibition.html?id=baochijiluReplay#常设展览"]];
 
 vContent.publicEducationNews = [["公教活动", "马蒂斯与布列松论坛预告", "public_education.html?id=madisiyubuliesong#艺术大讲堂"], ["公教活动", "苏美玉讲座预告", "public_education.html?id=sumeiyujiangzuo#艺术大讲堂"], ["公教活动", "2016首届崔振宽山水画创作研修班汉中采风行", "public_education.html?id=hanzhong#山水高研班"], ["公教活动", "工匠精神——谈国展创作", "public_education.html?id=gongjiangjingshen#艺术大讲堂"]];
 
