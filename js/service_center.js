@@ -71,11 +71,11 @@ let vBulletin = new Vue({
     components: {
         "bulletin-item": {
             props: ["liData"],
-            template: `<news-list>
-                    <h3 @click="displayDetailArticle(liData[3])" slot="title">{{liData[0]}}</h3>
-                    <p slot="summary">{{liData[1]}}</p>
-                    <span slot="remark">{{liData[2]}}</span>
-                </news-list>`,
+            template: `<li>
+                <h3 @click="displayDetailArticle(liData[3])" slot="title">{{liData[0]}}</h3>
+                <p slot="summary">{{liData[1]}}</p>
+                <span slot="remark">{{liData[2]}}</span>
+            </li>`,
             methods: {
                 // 显示详情文章页面
                 displayDetailArticle(articleID){
@@ -95,18 +95,6 @@ let vBulletin = new Vue({
                             AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
                         }
                     }
-                },
-            },
-        },
-        "list-pagination": {
-            props: ["pageIndex"],
-            template: `<li @click="clickPagination(pageIndex)">{{pageIndex+1}}</li>`,
-            methods: {
-                clickPagination(index){
-                    this.$emit("switchpagination", index);
-                    setTimeout(function(){
-                        window.scrollTo( 0, 0 );
-                    }, 200);
                 },
             },
         },
@@ -157,27 +145,14 @@ let vDownload = new Vue({
     components: {
         "bulletin-item": {
             props: ["liData"],
-            template: `<news-list>
-                    <span class="title" slot="title">{{liData[0]}}</span>
-                    <span class="time" slot="remark">{{liData[1]}}</span>
-                    <a class="dl_icon" :href="liData[3]" target="_self">{{liData[2]}}<i></i></a>
-                </news-list>`,
-        },
-        "list-pagination": {
-            props: ["pageIndex"],
-            template: `<li @click="clickPagination(pageIndex)">{{pageIndex+1}}</li>`,
-            methods: {
-                clickPagination(index){
-                    this.$emit("switchpagination", index);
-                    setTimeout(function(){
-                        window.scrollTo( 0, 0 );
-                    }, 200);
-                },
-            },
+            template: `<li>
+                        <span class="title" slot="title">{{liData[0]}}</span>
+                        <span class="time" slot="remark">{{liData[1]}}</span>
+                        <a class="dl_icon" :href="liData[3]" target="_self">{{liData[2]}}<i></i></a>
+                    </li>`,
         },
     },
 });
-
 
 
 
@@ -188,7 +163,7 @@ window.onload = function(){
 
     // 公告数据
     {
-        let sURL = "ajax.php?item=common_bulletin",
+        let sURL = "ajax.php?item=service_bulletin",
             fnSuccessCallback = function(res){
                 vBulletin.list = JSON.parse(res);
             },

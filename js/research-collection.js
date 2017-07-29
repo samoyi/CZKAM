@@ -98,18 +98,6 @@ function vCollectionClass(elSelector, catas_e, catas_c){
                     },
                 },
             },
-            "list-pagination": {
-                props: ["pageIndex"],
-                template: `<li @click="clickPagination(pageIndex)">{{pageIndex+1}}</li>`,
-                methods: {
-                    clickPagination(index){
-                        this.$emit("switchpagination", index);
-                        setTimeout(function(){
-                            window.scrollTo( 0, 0 );
-                        }, 200);
-                    },
-                },
-            },
         },
     });
 }

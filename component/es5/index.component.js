@@ -24,11 +24,11 @@ var vContent = new Vue({
             template: "\n                <div>\n                    <h3><span>{{news[0]}} | </span><a :href=\"news[2]\" target=\"_blank\">{{news[1]}}</a></h3>\n                </div>"
         },
         "bulletin-tab": {
-            props: ["tab", "curIndex"],
-            template: "\n                <div id=\"bulletin-tab\">\n                    <h3>{{tab[0]}}</h3>\n                    <p class=\"bulletin_content\">\n                        {{tab[1]}}\n                        <br />\n                        <span class=\"bulletin_date\">{{tab[2]}}</span>\n                    </p>\n                    <ul>\n                        <li v-if=\"false\" v-bind:class=\"{active_tab: curIndex===0}\"  @click=\"clickPagination(0)\">●</li>\n                        <li v-if=\"false\" v-bind:class=\"{active_tab: curIndex===1}\"  @click=\"clickPagination(1)\">●</li>\n                    </ul>\n                </div>",
+            props: ["tab", "tabs", "curIndex"],
+            template: "\n                <div id=\"bulletin-tab\" v-if=\"tabs.length>0\">\n                    <h3>{{tabs[curIndex][0]}}</h3>\n                    <p class=\"bulletin_content\">\n                        {{tabs[curIndex][1]}}\n                        <br />\n                        <span class=\"bulletin_date\">{{tabs[curIndex][2]}}</span>\n                    </p>\n                    <ul v-if=\"tabs.length>1\">\n                        <li v-for=\"(tab,index) in tabs\" v-bind:class=\"{active_tab: curIndex===index}\"  @click=\"clickPagination(index)\">●</li>\n                    </ul>\n                </div>",
             methods: {
                 clickPagination: function clickPagination(clickedIndex) {
-                    this.$emit("switchpagination", clickedIndex);
+                    this.$parent.bulletinIndex = clickedIndex;
                 }
             }
         },
@@ -45,39 +45,47 @@ var vContent = new Vue({
         publicEducationNews: [[,]],
         bulletinTabs: [],
         bulletinIndex: 0
-    },
-    computed: {
-        carouselGetTab: function carouselGetTab() {
-            if (this.carouselTabs.length) {
-                return this.carouselTabs[this.carouselIndex];
-            } else {
-                return [,,];
-            }
-        },
-        bulletinGetTab: function bulletinGetTab() {
-            if (this.bulletinTabs.length) {
-                return this.bulletinTabs[this.bulletinIndex];
-            } else {
-                return [,,];
-            }
-        }
-    },
-    methods: {
-        switchtab: function switchtab(clickedIndex) {
-            this.bulletinIndex = clickedIndex;
-        }
     }
 });
+
+// 加载首页公告数据
+{
+    var sURL = "ajax.php?item=service_bulletin",
+        fnSuccessCallback = function fnSuccessCallback(res) {
+        vContent.bulletinTabs = JSON.parse(res);
+        var nLen = vContent.bulletinTabs.length;
+        if (nLen > 1) {
+            // 轮播
+            setInterval(function () {
+                vContent.bulletinIndex = (vContent.bulletinIndex + 1) % nLen;
+            }, 5000);
+        }
+    },
+        fnFailCallback = function fnFailCallback(status) {
+        console.error("加载公告数据失败");
+    };
+    AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+}
+
+function AJAX_GET(sURL, fnSuccessCallback, fnFailCallback) {
+    var xhr = new XMLHttpRequest();
+    xhr.addEventListener('readystatechange', function () {
+        if (xhr.readyState == 4) {
+            if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                // 必要的时候，使用 getResponseHeader() 检查首部信息
+                fnSuccessCallback && fnSuccessCallback(xhr.responseText);
+            } else {
+                fnFailCallback && fnFailCallback(xhr.status);
+            }
+        }
+    }, false);
+    xhr.open("get", sURL, true);
+    xhr.send(null);
+}
 
 vContent.exhibitionNews = [["", "丰碑大碣——历代金石拓本全国巡回展", "2017.8.26-9.24", "exhibition.html?id=fengbeidajie#常设展览"], ["", "《保持记录-2017西安国际摄影邀请展》隆重开幕！", "2017.6.24-7.23", "exhibition.html?id=baochijilu1#常设展览"], ["", "《保持记录-2017西安国际摄影邀请展》论坛、讲座回播", "2017.6.24", "exhibition.html?id=baochijiluReplay#常设展览"]];
 
 vContent.publicEducationNews = [["公教活动", "马蒂斯与布列松论坛预告", "public_education.html?id=madisiyubuliesong#艺术大讲堂"], ["公教活动", "苏美玉讲座预告", "public_education.html?id=sumeiyujiangzuo#艺术大讲堂"], ["公教活动", "2016首届崔振宽山水画创作研修班汉中采风行", "public_education.html?id=hanzhong#山水高研班"], ["公教活动", "工匠精神——谈国展创作", "public_education.html?id=gongjiangjingshen#艺术大讲堂"]];
-
-vContent.bulletinTabs = [["6月26日（周一）开闭馆时间安排", "因“保持记录-2017西安国际摄影邀请展”观展人数众多，观展需求量大，2017年6月26日（周一），西安崔振宽美术馆、水墨长安艺术博物馆将不闭馆，欢迎各界社会人士前来参观。同时，6月26日19:30时，国际论坛《美术馆、博物馆的策展与管理》也将在崔振宽美术馆学术报告厅举办。", "2017年6月25日", "bulletin20170625"]];
-// 轮播
-// setInterval(function(){
-//     vContent.bulletinIndex = (vContent.bulletinIndex+1) % 3;
-// }, 5000);
 
 var mySwiper = new Swiper('.swiper-container', {
     direction: 'horizontal',

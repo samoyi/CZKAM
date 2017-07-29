@@ -133,18 +133,6 @@ let vWorks = new Vue({
                 },
             },
         },
-        "list-pagination": {
-            props: ["pageIndex"],
-            template: `<li @click="clickPagination(pageIndex)">{{pageIndex+1}}</li>`,
-            methods: {
-                clickPagination(index){
-                    this.$emit("switchpagination", index);
-                    setTimeout(function(){
-                        window.scrollTo( 0, 0 );
-                    }, 200);
-                },
-            },
-        },
     },
 });
 
@@ -189,18 +177,6 @@ let vTreatise = new Vue({
                     return {
                         backgroundImage: "url(" + url + ")",
                     };
-                },
-            },
-        },
-        "list-pagination": {
-            props: ["pageIndex"],
-            template: `<li @click="clickPagination(pageIndex)">{{pageIndex+1}}</li>`,
-            methods: {
-                clickPagination(index){
-                    this.$emit("switchpagination", index);
-                    setTimeout(function(){
-                        window.scrollTo( 0, 0 );
-                    }, 200);
                 },
             },
         },

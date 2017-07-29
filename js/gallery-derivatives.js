@@ -90,18 +90,6 @@ let vWorks = new Vue({
                 },
             },
         },
-        "list-pagination": {
-            props: ["pageIndex"],
-            template: `<li @click="clickPagination(pageIndex)">{{pageIndex+1}}</li>`,
-            methods: {
-                clickPagination(index){
-                    this.$emit("switchpagination", index);
-                    setTimeout(function(){
-                        window.scrollTo( 0, 0 );
-                    }, 200);
-                },
-            },
-        },
     },
 });
 
@@ -171,18 +159,6 @@ let vDerivatives = new Vue({
             methods: {
                 clickCata(cata){
                     this.$emit("switchcata", this.$parent.catas_c.indexOf(cata));
-                },
-            },
-        },
-        "list-pagination": {
-            props: ["pageIndex"],
-            template: `<li @click="clickPagination(pageIndex)">{{pageIndex+1}}</li>`,
-            methods: {
-                clickPagination(index){
-                    this.$emit("switchpagination", index);
-                    setTimeout(function(){
-                        window.scrollTo( 0, 0 );
-                    }, 200);
                 },
             },
         },

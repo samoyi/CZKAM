@@ -1,5 +1,3 @@
-
-
 ;"use strict";
 
 vCatalog.title = ["画廊·衍生品", "GALLERY·DERIVATIVES"];
@@ -14,8 +12,8 @@ var vWorks = new Vue({
         catas_c: [""],
         nCataIndex: 0,
         nPerPage: 6, // 每页显示10个
-        nPageIndex: 0 // 当前页码
-    },
+        nPageIndex: 0 },
+    // 当前页码
     computed: {
         displayedItem: function displayedItem() {
             return this.list.slice(this.nPageIndex * this.nPerPage, (this.nPageIndex + 1) * this.nPerPage);
@@ -42,7 +40,7 @@ var vWorks = new Vue({
     components: {
         "works-item": {
             props: ["worksData"],
-            template: "\n                <li>\n                    <div class=\"thumbnail\" :style=\"getUrl(worksData[0])\"></div>\n                    <div class=\"info\">\n                        <p v-if=\"worksData[1]\"><span>\u4F5C\u54C1\u540D\u79F0\uFF1A</span>{{worksData[1]}}</p>\n                        <p v-if=\"worksData[2]\"><span>\u5C3A\u5BF8\uFF1A</span>{{worksData[2]}}</p>\n                        <p v-if=\"worksData[3]\"><span>\u65F6\u95F4\uFF1A</span>{{worksData[3]}}</p>\n                        <p v-if=\"worksData[4]\"><span>\u4F5C\u8005\uFF1A</span>{{worksData[4]}}</p>\n                    </div>\n                    <div style=\"clear:both;\"></div>\n                </li>",
+            template: "\n                <li>\n                    <div class=\"thumbnail\" :style=\"getUrl(worksData[0])\"></div>\n                    <div class=\"info\">\n                        <p v-if=\"worksData[1]\"><span>作品名称：</span>{{worksData[1]}}</p>\n                        <p v-if=\"worksData[2]\"><span>尺寸：</span>{{worksData[2]}}</p>\n                        <p v-if=\"worksData[3]\"><span>时间：</span>{{worksData[3]}}</p>\n                        <p v-if=\"worksData[4]\"><span>作者：</span>{{worksData[4]}}</p>\n                    </div>\n                    <div style=\"clear:both;\"></div>\n                </li>",
             methods: {
                 getUrl: function getUrl(url) {
                     return {
@@ -57,18 +55,6 @@ var vWorks = new Vue({
             methods: {
                 clickCata: function clickCata(cata) {
                     this.$emit("switchcata", this.$parent.catas_c.indexOf(cata));
-                }
-            }
-        },
-        "list-pagination": {
-            props: ["pageIndex"],
-            template: "<li @click=\"clickPagination(pageIndex)\">{{pageIndex+1}}</li>",
-            methods: {
-                clickPagination: function clickPagination(index) {
-                    this.$emit("switchpagination", index);
-                    setTimeout(function () {
-                        window.scrollTo(0, 0);
-                    }, 200);
                 }
             }
         }
@@ -84,8 +70,8 @@ var vDerivatives = new Vue({
         catas_c: [""],
         nCataIndex: 0,
         nPerPage: 6, // 每页显示10个
-        nPageIndex: 0 // 当前页码
-    },
+        nPageIndex: 0 },
+    // 当前页码
     computed: {
         displayedItem: function displayedItem() {
             return this.list.slice(this.nPageIndex * this.nPerPage, (this.nPageIndex + 1) * this.nPerPage);
@@ -112,7 +98,7 @@ var vDerivatives = new Vue({
     components: {
         "works-item": {
             props: ["worksData"],
-            template: "\n                <li>\n                    <div class=\"thumbnail\" :style=\"getUrl(worksData[0])\"></div>\n                    <div class=\"info\">\n                        <p v-if=\"worksData[1]\"><span>\u4F5C\u54C1\u540D\u79F0\uFF1A</span>{{worksData[1]}}</p>\n                        <p v-if=\"worksData[2]\"><span>\u5C3A\u5BF8\uFF1A</span>{{worksData[2]}}</p>\n                        <p v-if=\"worksData[3]\"><span>\u65F6\u95F4\uFF1A</span>{{worksData[3]}}</p>\n                        <p v-if=\"worksData[4]\"><span>\u4F5C\u8005\uFF1A</span>{{worksData[4]}}</p>\n                    </div>\n                    <div style=\"clear:both;\"></div>\n                </li>",
+            template: "\n                <li>\n                    <div class=\"thumbnail\" :style=\"getUrl(worksData[0])\"></div>\n                    <div class=\"info\">\n                        <p v-if=\"worksData[1]\"><span>作品名称：</span>{{worksData[1]}}</p>\n                        <p v-if=\"worksData[2]\"><span>尺寸：</span>{{worksData[2]}}</p>\n                        <p v-if=\"worksData[3]\"><span>时间：</span>{{worksData[3]}}</p>\n                        <p v-if=\"worksData[4]\"><span>作者：</span>{{worksData[4]}}</p>\n                    </div>\n                    <div style=\"clear:both;\"></div>\n                </li>",
             methods: {
                 getUrl: function getUrl(url) {
                     return {
@@ -127,18 +113,6 @@ var vDerivatives = new Vue({
             methods: {
                 clickCata: function clickCata(cata) {
                     this.$emit("switchcata", this.$parent.catas_c.indexOf(cata));
-                }
-            }
-        },
-        "list-pagination": {
-            props: ["pageIndex"],
-            template: "<li @click=\"clickPagination(pageIndex)\">{{pageIndex+1}}</li>",
-            methods: {
-                clickPagination: function clickPagination(index) {
-                    this.$emit("switchpagination", index);
-                    setTimeout(function () {
-                        window.scrollTo(0, 0);
-                    }, 200);
                 }
             }
         }
@@ -165,14 +139,14 @@ window.onload = function () {
 
     // 衍生品数据
     {
-        var _sURL = "ajax.php?item=gallery_derivatives",
-            _fnSuccessCallback = function _fnSuccessCallback(res) {
+        var sURL = "ajax.php?item=gallery_derivatives",
+            fnSuccessCallback = function fnSuccessCallback(res) {
             vDerivatives.lists = JSON.parse(res);
             vDerivatives.list = vDerivatives.lists[vDerivatives.catas[0]];
         },
-            _fnFailCallback = function _fnFailCallback(status) {
+            fnFailCallback = function fnFailCallback(status) {
             console.error("加载衍生品数据失败");
         };
-        AJAX_GET(_sURL, _fnSuccessCallback, _fnFailCallback);
+        AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
     }
 };

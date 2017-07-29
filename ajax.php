@@ -6,11 +6,6 @@
 		echo $data;
 	}
 
-
-	if( $_GET['item'] === 'common_bulletin' ){
-		responseGet($_GET['item']);
-	}
-
 	if( $_GET['item'] === 'cuizhenkuan_chronology' ){
 		responseGet($_GET['item']);
 	}

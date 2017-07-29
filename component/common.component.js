@@ -256,7 +256,31 @@ const Bus = new Vue();
 
 
 
-// 展览组件
+
+
+
+// 带hash进入页面，内容版块进行相应显示
+// FIXME4 因为vCatalog组件会修改currentLevel1Index和currentLevel2Index，所以这里
+// 用setTimeout把displayContentSection推到修改之后
+if( location.hash ){
+    setTimeout(function(){
+        displayContentSection(vCatalog.currentLevel1Index, vCatalog.currentLevel2Index)
+    }, 0);
+}
+
+
+
+// 公共组件——————————————————————————————————————————————————————————————————————
+
+// 生成展览及类展览的实例
+/*
+ * 传入元素选择器（如“#sth”），返回一个展览或类展览实例
+ * 该实例包括组件：
+ *   1. 展览分类：如按年份的分类目录
+ *   2. 展览目录列表项
+ *   3. 展览详情页
+ *
+ */
 function exhibitionClass(elSelector){
     let instance = new Vue({
         el: elSelector,
@@ -338,18 +362,6 @@ function exhibitionClass(elSelector){
                     },
                 },
             },
-            "list-pagination": {
-                props: ["pageIndex"],
-                template: `<li @click="clickPagination(pageIndex)">{{pageIndex+1}}</li>`,
-                methods: {
-                    clickPagination(index){
-                        this.$emit("switchpagination", index);
-                        setTimeout(function(){
-                            window.scrollTo(0, 0);
-                        }, 200);
-                    },
-                },
-            },
             "uploaded-article": {
                 props: ["contentHtml"],
                 template: `<article>
@@ -380,53 +392,7 @@ function exhibitionClass(elSelector){
 }
 
 
-// 带hash进入页面，内容版块进行相应显示
-// FIXME4 因为vCatalog组件会修改currentLevel1Index和currentLevel2Index，所以这里
-// 用setTimeout把displayContentSection推到修改之后
-if( location.hash ){
-    setTimeout(function(){
-        displayContentSection(vCatalog.currentLevel1Index, vCatalog.currentLevel2Index)
-    }, 0);
-}
-
-
-// 文章列表类的模板
-/*
-* 有一个title或没有
-* 有一个image或没有
-* 有一个summary或没有
-* 有一个remark（例如日期、作者）或没有
-*/
-Vue.component("news-list", {
-    template: `
-    <li>
-    <slot name="title"></slot>
-    <slot name="image"></slot>
-    <slot name="summary"></slot>
-    <slot name="remark"></slot>
-    <slot></slot>
-    </li>
-    `,
-});
-
-
-
-
-// 后台上传的文章
-// let vUploadedArticle = null
-// if(document.querySelector("#vUploaded_article")){
-//     vUploadedArticle = new Vue({
-//         el: "#vUploaded_article",
-//         data: {
-//             articleHTML: "<p style='color: red;'>正在加载……</p>",
-//         },
-//     });
-// }
-
-
-
-
-
+// 首页以外其他页面的底部
 let vCommonFooter = new Vue({
     el: "#common-footer",
     components: {
@@ -510,29 +476,26 @@ let vCommonFooter = new Vue({
 });
 
 
-
-
-// 请求公告数据
-{
-    let sURL = "ajax.php?item=common_bulletin",
-        fnSuccessCallback = function(res){
-            vCommonFooter.$children[0].tabs = JSON.parse(res);
-            // setInterval(function(){
-            //     vCommonFooter.$children[0].curIndex = (vCommonFooter.$children[0].curIndex+1) % 3;
-            // }, 5000);
+// 列表页下方的页码选择
+Vue.component('list-pagination', {
+    props: ["pageIndex"],
+    template: `<li @click="clickPagination(pageIndex)">{{pageIndex+1}}</li>`,
+    methods: {
+        clickPagination(index){
+            this.$emit("switchpagination", index);
+            setTimeout(function(){
+                window.scrollTo( 0, 0 );
+            }, 200);
         },
-        fnFailCallback = function(status){
-            console.error("加载公告数据失败");
-        };
-    AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
-}
+    },
+});
 
 
 
 
+// 公共函数 —————————————————————————————————————————————————————————————————————
 
-
-// 公共函数 ————————————————————————————————————————————————————————————————————
+// AJAX_GET
 function AJAX_GET(sURL, fnSuccessCallback, fnFailCallback) {
     var xhr = new XMLHttpRequest();
     xhr.addEventListener('readystatechange', function () {
