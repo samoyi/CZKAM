@@ -11,46 +11,10 @@
     .permanent_exhibition{
         @include exhibition_class("permanent_exhibition");
     }
+    .online_exhibition{
+        @include exhibition_class("online_exhibition");
+    }
+    .other_exhibition{
+        @include exhibition_class("other_exhibition");
+    }
 }
-
-// .treatise{
-//     font-size: 12px;
-//     .treatise_list{
-//         >li{
-//             margin-top: 24px;
-//             .cover{
-//                 float: left;
-//                 width: 355px; height: 200px;
-//                 background:{
-//                     color: $BASIC_GRAY;
-//                     repeat: no-repeat;
-//                     size: contain;
-//                     position: center;
-//                 }
-//                 cursor: pointer;
-//             }
-//             .info{
-//                 float: left;
-//                 margin-left: 34px;
-//                 span{
-//                     color: $BASIC_GRAY;
-//                 }
-//             }
-//         }
-//     }
-// }
-//
-// .video{
-//     >div{
-//         float: left;
-//         margin-left: 92px;
-//         width: 270px;
-//         h3{
-//             white-space: pre-wrap;
-//             font-size: 14px;
-//         }
-//     }
-//     div:nth-child(3n+2){
-//         margin-left: 0;
-//     }
-// }

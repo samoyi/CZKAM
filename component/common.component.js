@@ -26,7 +26,8 @@ function displayContentSection(nLevel1Index, nLevel2Index){
     catas_len = catas.length;
     for(let i=0; i<catas_len; i++){ // 循环所有大类
         let items = catas[i].children, // 当前一级标题分类下的所有具体内容版块
-        items_len = items.length;
+            items_len = items.length;
+
         /*
          * 具体的例子是，公共教育进去后，点击艺术大讲堂（01）再点击公教活动（0）
          * 下面的这一段的错误之处在于，先点击01（第一大标题第二个小标题），01版块正常显示，
@@ -55,37 +56,43 @@ function displayContentSection(nLevel1Index, nLevel2Index){
          * 然后在进行判断，00会显示出来。进行下一轮循环，仍然是首先隐藏01，此前正在显示
          * 的01就被隐藏了，之后再进行判断，会再次显示已经显示的00。
          */
+
         for(let j=0; j<items_len; j++ ){ // 循环一个大类中的所有小类
             items[j].style.display = "none"; // 先把所有的小类版块都隐藏
             if( i===nLevel1Index ){ // 点击的是当前大类的一级标题或二级标题
+
                 if(j===nLevel2Index ){ // 点击二级标题
                     items[j].style.display = "block";
                 }
                 else if(nLevel2Index===null){ // 点击一级标题
                     items[0].style.display = "block";
                 }
-
             }
         }
     }
 }
 
+
 // 手动显示详情文章。用于通过连接直接进入详情页
 function directToDetailArticle(component){
-    let articleID = location.search.slice(4);
-    if(articleID){
-        component.bDisplayDetailArticle = true;
-        let detailArticleHTML = component.detailArticleHTML;
-        if(!detailArticleHTML){ // 如果没有文章数据数据。一般都是没有的，因为不会预加载，且上一篇详情隐藏后也会清除数据
-            component.detailArticleHTML = "<p>正在加载……</p>"
-            let sURL = "ajax.php?item=article_" + articleID,
-            fnSuccessCallback = function(res){
-                component.detailArticleHTML = JSON.parse(res);
-            },
-            fnFailCallback = function(status){
-                console.error("加载详情页数据失败");
-            };
-            AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+    let nIDUnderline = location.hash.indexOf("_");
+    if( nIDUnderline>-1 ){ // 直接进入详情页
+        let articleID = location.hash.slice(nIDUnderline+1);
+        if(articleID){
+            this.bDisplayDetailArticle = true;
+            let detailArticleHTML = this.detailArticleHTML;
+            if(!detailArticleHTML){ // 如果没有文章数据数据。一般都是没有的，因为不会预加载，且上一篇详情隐藏后也会清除数据
+                this.detailArticleHTML = "<p>正在加载</p>"
+                let sURL = "ajax.php?item=article_" + articleID,
+                fnSuccessCallback = (res)=>{
+                    console.log(this);
+                    this.detailArticleHTML = JSON.parse(res);
+                },
+                fnFailCallback = function(status){
+                    console.error("加载详情页数据失败");
+                };
+                AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+            }
         }
     }
 }
@@ -198,10 +205,16 @@ let vCatalog = new Vue({
     watch: {
         catas(){
             if( location.hash ){ // 带hash进入该页面
-                // this.currentLevel1Title = this.catas[0][0].title_c;
-                // this.currentLevel2Title = this.catas[0][2].cata_c[0];
-                let sHashTitle = location.hash.slice(1),
+                let nIDUnderline = location.hash.indexOf("_"),
+                    sHashTitle = "",
                     catas = this.catas;
+                if(nIDUnderline===-1){ // 不带详情页ID
+                    sHashTitle = location.hash.slice(1);
+                }
+                else{
+                    sHashTitle = location.hash.slice(1, nIDUnderline);
+                }
+
                 for(let i=0; i<catas.length; i++){
                     if( sHashTitle === catas[i][0].title_c ){ // hash对应一级标题
                         this.currentLevel1Title = sHashTitle;
@@ -230,7 +243,6 @@ let vCatalog = new Vue({
                         }
                     }
                 }
-
             }
             else{ // 初始化目录，将目录中第一个标题加上激活的class
                 this.currentLevel1Title = this.catas[0][0].title_c;
@@ -243,7 +255,9 @@ let vCatalog = new Vue({
         // let subTitle = ((this.catas)[0][2].cata_c)[0];
         let subTitle = this.currentLevel2Title;
         // 有二级标题则显示二级标题，否则一级标题
-        location.hash = subTitle ? subTitle : this.currentLevel1Title;
+        let nIDUnderline = location.hash.indexOf("_"),
+            sIDStr = ( nIDUnderline>-1) ? location.hash.slice(nIDUnderline) : "";
+        location.hash = (subTitle ? subTitle : this.currentLevel1Title) + sIDStr;
     },
 });
 
@@ -280,6 +294,8 @@ if( location.hash ){
  *   2. 展览目录列表项
  *   3. 展览详情页
  *
+ * 展览目录列表项通过exhibitionData属性从父组件接收数据，exhibitionData的格式为 6 项
+ * 数组，分别为：图片URL、标签（如“预告”）、标题、发布日期、简介、详情文章ID
  */
 function exhibitionClass(elSelector){
     let instance = new Vue({
@@ -289,14 +305,12 @@ function exhibitionClass(elSelector){
                 ["", "", "", ""],
             ],
             lists: {},
-            // catas: ["2017", "2016", "2015", "2014"],
-            // 具体的年份列表要根据数据中实际有的来决定
-            catas: [],
+            catas: [], // 可以按年份分类，也可以其他类别
             nCataIndex: 0,
             nPerPage: 6, // 每页显示6个
             nPageIndex : 0, // 当前页码
-            detailArticleHTML: "",
-            bDisplayDetailArticle: false,
+            detailArticleHTML: "", // 详情文章的代码
+            bDisplayDetailArticle: false, // 根据这个属性来决定显示列表还是显示文章
 
             currentLevel1Index: 0,
             currentLevel2Index: null,
@@ -317,19 +331,27 @@ function exhibitionClass(elSelector){
                 this.list = this.lists[this.catas[index]];
                 this.nCataIndex = index;
             },
+            // 对象转数组
+            // 组件中的exhibitionData属性接收的数据格式是数组，如果请求到的是对象，需要进行转换
+            exhibitionItemDataObjToArr(obj){
+                let aKey = ['pic', 'flag', 'name', 'fdate', 'des', 'id'];
+                return aKey.map(function(item){
+                    return obj[item];
+                });
+            }
         },
         components: {
             "exhibition-item": {
                 props: ["exhibitionData"],
                 template: `
                 <li>
-                <img class="cover" :src="exhibitionData[0]" :alt="exhibitionData[2]" @click="displayDetailArticle(exhibitionData[5])" />
-                <div class="info">
-                <h3><span>{{exhibitionData[1]}}</span><span v-if="exhibitionData[1]"> | </span>{{exhibitionData[2]}}</h3>
-                <p class="date">{{exhibitionData[3]}}</p>
-                <p class="summary">{{exhibitionData[4]}}</p>
-                </div>
-                <div style="clear:both;"></div>
+                    <img class="cover" :src="exhibitionData[0]" :alt="exhibitionData[2]" @click="displayDetailArticle(exhibitionData[5])" />
+                    <div class="info">
+                        <h3><span>{{exhibitionData[1]}}</span><span v-if="exhibitionData[1]"> | </span>{{exhibitionData[2]}}</h3>
+                        <p class="date">{{exhibitionData[3]}}</p>
+                        <p class="summary">{{exhibitionData[4]}}</p>
+                    </div>
+                    <div style="clear:both;"></div>
                 </li>`,
                 methods: {
                     // 显示详情文章页面
@@ -338,7 +360,7 @@ function exhibitionClass(elSelector){
                             let parent = this.$parent;
                             parent.bDisplayDetailArticle = true;
                             let detailArticleHTML = parent.detailArticleHTML;
-                            if(!detailArticleHTML){ // 如果没有文章数据数据。一般都是没有的，因为不会预加载，且上一篇详情隐藏后也会清除数据
+                            if(!detailArticleHTML){ // 如果没有文章数据数据。正常都是没有的，因为不会预加载，且上一篇详情隐藏后也会清除数据
                                 parent.detailArticleHTML = "<p>正在加载……</p>"
                                 let sURL = "ajax.php?item=article_" + articleID,
                                     fnSuccessCallback = function(res){
@@ -348,6 +370,7 @@ function exhibitionClass(elSelector){
                                         console.error("加载详情页数据失败");
                                     };
                                 AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+                                location.hash = location.hash + "_" + articleID;
                             }
                         }
                     },
@@ -363,7 +386,7 @@ function exhibitionClass(elSelector){
                 },
             },
             "uploaded-article": {
-                props: ["contentHtml"],
+                props: ["contentHtml"], // 详情文章的具体代码
                 template: `<article>
                             <div v-html="contentHtml"></div>
                             <i class="close_article" @click="closeDetailArticle">关闭文章</i>
@@ -371,8 +394,13 @@ function exhibitionClass(elSelector){
                         </article>`,
                 methods: {
                     closeDetailArticle(){
+                        // 清除文章数据。如果不清除，加载其他文章时刚开始会显示上一次的
                         this.$parent.detailArticleHTML = "";
+                        // 显示文章列表
                         this.$parent.bDisplayDetailArticle = false;
+
+                        let nIDUnderline = location.hash.indexOf("_");
+                        location.hash = location.hash.slice(0, nIDUnderline);
                     },
                     backToTop(){
                         window.scrollTo(0, 0);
@@ -386,6 +414,29 @@ function exhibitionClass(elSelector){
                 this.detailArticleHTML = "";
                 this.bDisplayDetailArticle = false;
             });
+        },
+        mounted(){
+            let nIDUnderline = location.hash.indexOf("_");
+            if( nIDUnderline>-1 ){ // 直接进入详情页
+                let articleID = location.hash.slice(nIDUnderline+1);
+                console.log(articleID);
+                if(articleID){
+                    this.bDisplayDetailArticle = true;
+                    let detailArticleHTML = this.detailArticleHTML;
+                    if(!detailArticleHTML){ // 如果没有文章数据数据。一般都是没有的，因为不会预加载，且上一篇详情隐藏后也会清除数据
+                        this.detailArticleHTML = "<p>正在加载</p>"
+                        let sURL = "ajax.php?item=article_" + articleID,
+                        fnSuccessCallback = (res)=>{
+                            console.log(this);
+                            this.detailArticleHTML = JSON.parse(res);
+                        },
+                        fnFailCallback = function(status){
+                            console.error("加载详情页数据失败");
+                        };
+                        AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+                    }
+                }
+            }
         },
     });
     return instance;

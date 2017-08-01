@@ -19,9 +19,6 @@
         </div>
         <section class="content">
             <section>
-                <!-- <section class="permanent exhibition">
-                    <h2>展览预告<span>UPCOMING EXHIBTION</span></h2>
-                </section> -->
                 <section class="permanent_exhibition">
                     <h2>常设展览  <span>PERMANENT EXHIBTION</span></h2>
                     <div v-show="!bDisplayDetailArticle">
@@ -29,7 +26,7 @@
                             <exhibition-cata v-for="(item,index) in catas" :cata="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchexhibitions"></exhibition-cata>
                         </ul>
                         <ul class="permanent_exhibition_list">
-                            <exhibition-item v-for="item in displayedItem" :exhibition-data="item"></exhibition-item>
+                            <exhibition-item v-for="item in displayedItem" :exhibition-data="exhibitionItemDataObjToArr(item)"></exhibition-item>
                         </ul>
                         <div class="pagination_wrapper"><!-- 为了让pagination水平居中，加了这一层 -->
                             <ul v-if="list.length>nPerPage" class="pagination">
@@ -39,9 +36,44 @@
                     </div>
                     <uploaded-article id="vUploaded_article" v-show="bDisplayDetailArticle" :content-html="detailArticleHTML"></uploaded-article>
                 </section>
-                <!-- <section class="online">
+            </section>
+            <section>
+                <section class="online_exhibition" v-if="displayedItem.length">
                     <h2>在线展览<span>ON-LINE</span></h2>
-                </section> -->
+                    <div v-show="!bDisplayDetailArticle">
+                        <ul class="online_exhibition_cata">
+                            <exhibition-cata v-for="(item,index) in catas" :cata="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchexhibitions"></exhibition-cata>
+                        </ul>
+                        <ul class="online_exhibition_list">
+                            <exhibition-item v-for="item in displayedItem" :exhibition-data="exhibitionItemDataObjToArr(item)"></exhibition-item>
+                        </ul>
+                        <div class="pagination_wrapper"><!-- 为了让pagination水平居中，加了这一层 -->
+                            <ul v-if="list.length>nPerPage" class="pagination">
+                                <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
+                            </ul>
+                        </div>
+                    </div>
+                    <uploaded-article id="vUploaded_article" v-show="bDisplayDetailArticle" :content-html="detailArticleHTML"></uploaded-article>
+                </section>
+            </section>
+            <section>
+                <section class="other_exhibition" v-if="displayedItem.length">
+                    <h2>展览<span>OTHER</span></h2>
+                    <div v-show="!bDisplayDetailArticle">
+                        <ul class="other_exhibition_cata">
+                            <exhibition-cata v-for="(item,index) in catas" :cata="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchexhibitions"></exhibition-cata>
+                        </ul>
+                        <ul class="other_exhibition_list">
+                            <exhibition-item v-for="item in displayedItem" :exhibition-data="exhibitionItemDataObjToArr(item)"></exhibition-item>
+                        </ul>
+                        <div class="pagination_wrapper"><!-- 为了让pagination水平居中，加了这一层 -->
+                            <ul v-if="list.length>nPerPage" class="pagination">
+                                <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
+                            </ul>
+                        </div>
+                    </div>
+                    <uploaded-article id="vUploaded_article" v-show="bDisplayDetailArticle" :content-html="detailArticleHTML"></uploaded-article>
+                </section>
             </section>
         </section>
         <div style="clear:both;"></div>

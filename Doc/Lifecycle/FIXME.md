@@ -46,3 +46,6 @@
 视觉 | 侧边栏主标题的数据尚未加载的时候不要渲染，否则会瞬间看到Vue.js的花括号 ||| 6.22 | 通过 v-text 和 v-cloak
 维护 | 有三个公告内容json文件，而且首页公告还是用了独立的数据，并且公告的分页器不是动态的 |||7.29| 统一成了一个来源
 错误 | 出现了：加载`ajax.php`之后，再添加一篇文章详情json后，试图加载该json时会出现json数据错误。复制重命名一个`ajax1.php`并取消里面的`max-age`后请求该php文件恢复正常。但是感觉和`max-age`也没关系啊 ||||
+维护 | 多次出现的 let oContent = document.querySelector(".content"); 似乎没用 ||||
+维护 | swiper如果放入vue组件里，swiper的初始化代码要等组件mounted之后且用setTimeout推到队尾才行 ||||
+效率 | .htaccess中设置的缓存没效果。有延迟？ ||||

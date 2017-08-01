@@ -11,9 +11,9 @@ var vHeader = new Vue({
 
 var vContent = new Vue({
     components: {
-        "carousel-tab": {
-            props: ["tab"],
-            template: "\n                <div class=\"swiper-slide\">\n                    <h3><span>{{tab[1]}} | </span>{{tab[2]}}</h3>\n                </div>\n                "
+        "carousel-box": {
+            props: ["carouselData"],
+            template: "\n                <div id=\"carousel\" class=\"swiper-container\">\n                    <div class=\"swiper-wrapper\">\n                        <div class=\"swiper-slide\" v-for=\"tab in carouselData\" :key=\"tab.title\">\n                            <a :href=\"tab.link\" target=\"_blank\"><img width=\"815\" height=\"455\" :src=\"tab.img\" /></a>\n                            <a :href=\"tab.link\" target=\"_blank\"><h3><span v-if=\"tab.tag\">{{tab.tag}} | </span>{{tab.title}}</h3></a>\n                        </div>\n                    </div>\n                    <div class=\"swiper-pagination\"></div>\n                    <div class=\"swiper-button-prev\"></div>\n                    <div class=\"swiper-button-next\"></div>\n                </div>\n                "
         },
         "exhibition-news": {
             props: ["news"],
@@ -41,10 +41,28 @@ var vContent = new Vue({
     data: {
         carouselTabs: [],
         carouselIndex: 0,
+        carouselData: [],
         exhibitionNews: [[,,]],
         publicEducationNews: [[,]],
         bulletinTabs: [],
         bulletinIndex: 0
+    },
+    mounted: function mounted() {
+        setTimeout(function () {
+            var mySwiper = new Swiper('.swiper-container', {
+                direction: 'horizontal',
+                loop: true,
+                autoplay: 5000,
+
+                // 如果需要分页器
+                pagination: '.swiper-pagination',
+
+                // 如果需要前进后退按钮
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev'
+
+            });
+        }, 50);
     }
 });
 
@@ -87,19 +105,18 @@ vContent.exhibitionNews = [["", "丰碑大碣——历代金石拓本全国巡�
 
 vContent.publicEducationNews = [["公教活动", "马蒂斯与布列松论坛预告", "public_education.html?id=madisiyubuliesong#艺术大讲堂"], ["公教活动", "苏美玉讲座预告", "public_education.html?id=sumeiyujiangzuo#艺术大讲堂"], ["公教活动", "2016首届崔振宽山水画创作研修班汉中采风行", "public_education.html?id=hanzhong#山水高研班"], ["公教活动", "工匠精神——谈国展创作", "public_education.html?id=gongjiangjingshen#艺术大讲堂"]];
 
-var mySwiper = new Swiper('.swiper-container', {
-    direction: 'horizontal',
-    loop: true,
-    autoplay: 5000,
 
-    // 如果需要分页器
-    pagination: '.swiper-pagination',
-
-    // 如果需要前进后退按钮
-    nextButton: '.swiper-button-next',
-    prevButton: '.swiper-button-prev'
-
-});
+// 轮播图数据
+{
+    var sURL = "http://www.czkam.com/ajax/carousel.php",
+        fnSuccessCallback = function fnSuccessCallback(res) {
+        vContent.carouselData = JSON.parse(res);
+    },
+        fnFailCallback = function fnFailCallback(status) {
+        console.error("加载公告数据失败");
+    };
+    AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+}
 
 // 1920版块滑动
 {

@@ -23,14 +23,21 @@ let vHeader = new Vue({
 
 
 
-
 let vContent = new Vue({
     components: {
-        "carousel-tab": {
-            props: ["tab"],
+        "carousel-box": {
+            props: ["carouselData"],
             template: `
-                <div class="swiper-slide">
-                    <h3><span>{{tab[1]}} | </span>{{tab[2]}}</h3>
+                <div id="carousel" class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" v-for="tab in carouselData" :key="tab.title">
+                            <a :href="tab.link" target="_blank"><img width="815" height="455" :src="tab.img" /></a>
+                            <a :href="tab.link" target="_blank"><h3><span v-if="tab.tag">{{tab.tag}} | </span>{{tab.title}}</h3></a>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
                 </div>
                 `,
         },
@@ -85,10 +92,28 @@ let vContent = new Vue({
     data: {
         carouselTabs: [],
         carouselIndex: 0,
+        carouselData: [],
         exhibitionNews: [[,,],],
         publicEducationNews: [[,],],
         bulletinTabs: [],
         bulletinIndex: 0,
+    },
+    mounted: function(){
+        setTimeout(function(){
+            var mySwiper = new Swiper ('.swiper-container', {
+                direction: 'horizontal',
+                loop: true,
+                autoplay : 5000,
+
+                // 如果需要分页器
+                pagination: '.swiper-pagination',
+
+                // 如果需要前进后退按钮
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+
+            });
+        }, 50);
     },
 });
 
@@ -145,24 +170,21 @@ vContent.publicEducationNews = [
 ];
 
 
+// 轮播图数据
+{
+    let sURL = "http://www.czkam.com/ajax/carousel.php",
+        fnSuccessCallback = function(res){
+            vContent.carouselData = JSON.parse(res);
+        },
+        fnFailCallback = function(status){
+            console.error("加载公告数据失败");
+        };
+    AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+}
 
 
 
 
-
-var mySwiper = new Swiper ('.swiper-container', {
-    direction: 'horizontal',
-    loop: true,
-    autoplay : 5000,
-
-    // 如果需要分页器
-    pagination: '.swiper-pagination',
-
-    // 如果需要前进后退按钮
-    nextButton: '.swiper-button-next',
-    prevButton: '.swiper-button-prev',
-
-});
 
 
 // 1920版块滑动

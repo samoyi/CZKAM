@@ -26,7 +26,7 @@
                             <exhibition-cata v-for="(item,index) in catas" :cata="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchexhibitions"></exhibition-cata>
                         </ul>
                         <ul class="ssgyb_list">
-                            <exhibition-item v-for="item in displayedItem" :exhibition-data="item"></exhibition-item>
+                            <exhibition-item v-for="item in displayedItem" :exhibition-data="exhibitionItemDataObjToArr(item)"></exhibition-item>
                         </ul>
                         <div class="pagination_wrapper"><!-- 为了让pagination水平居中，加了这一层 -->
                             <ul v-if="list.length>nPerPage" class="pagination">
@@ -43,7 +43,7 @@
                             <exhibition-cata v-for="(item,index) in catas" :cata="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchexhibitions"></exhibition-cata>
                         </ul>
                         <ul class="sfb_list">
-                            <exhibition-item v-for="item in displayedItem" :exhibition-data="item"></exhibition-item>
+                            <exhibition-item v-for="item in displayedItem" :exhibition-data="exhibitionItemDataObjToArr(item)"></exhibition-item>
                         </ul>
                         <div class="pagination_wrapper"><!-- 为了让pagination水平居中，加了这一层 -->
                             <ul v-if="list.length>nPerPage" class="pagination">
@@ -60,7 +60,7 @@
                             <exhibition-cata v-for="(item,index) in catas" :cata="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchexhibitions"></exhibition-cata>
                         </ul>
                         <ul class="ysdjt_list">
-                            <exhibition-item v-for="item in displayedItem" :exhibition-data="item"></exhibition-item>
+                            <exhibition-item v-for="item in displayedItem" :exhibition-data="exhibitionItemDataObjToArr(item)"></exhibition-item>
                         </ul>
                         <div class="pagination_wrapper"><!-- 为了让pagination水平居中，加了这一层 -->
                             <ul v-if="list.length>nPerPage" class="pagination">
@@ -79,7 +79,7 @@
                             <exhibition-cata v-for="(item,index) in catas" :cata="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchexhibitions"></exhibition-cata>
                         </ul>
                         <ul class="practice_list">
-                            <exhibition-item v-for="item in displayedItem" :exhibition-data="item"></exhibition-item>
+                            <exhibition-item v-for="item in displayedItem" :exhibition-data="exhibitionItemDataObjToArr(item)"></exhibition-item>
                         </ul>
                         <div class="pagination_wrapper"><!-- 为了让pagination水平居中，加了这一层 -->
                             <ul v-if="list.length>nPerPage" class="pagination">
@@ -98,7 +98,7 @@
                             <exhibition-cata v-for="(item,index) in catas" :cata="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchexhibitions"></exhibition-cata>
                         </ul>
                         <ul class="volunteering_list">
-                            <exhibition-item v-for="item in displayedItem" :exhibition-data="item"></exhibition-item>
+                            <exhibition-item v-for="item in displayedItem" :exhibition-data="exhibitionItemDataObjToArr(item)"></exhibition-item>
                         </ul>
                         <div class="pagination_wrapper"><!-- 为了让pagination水平居中，加了这一层 -->
                             <ul v-if="list.length>nPerPage" class="pagination">

@@ -82,5 +82,4 @@
 		responseGet($_GET['item']);
 	}
 
-
 ?>
