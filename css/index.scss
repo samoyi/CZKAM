@@ -48,6 +48,11 @@ body{
                         font:{
                             size: 18px;
                             weight: bold;
+
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            width: 760px;
                         }
                         position: absolute;
                         bottom: 22px; left: 22px;
@@ -91,6 +96,14 @@ body{
                 position: absolute; left: 25px; bottom: 25px;
                 font-size: 18px; font-weight: bold;
                 color: $STANDARD_COLOR;
+            }
+            >div{
+                h3{
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    width: 360px;
+                }
             }
         }
         #exhibition-tab{

@@ -18,7 +18,7 @@
 				console.log( "全局作用域下声明的函数以及用var声明的全局变量：", aCustomGlobalVariables );
 			}
 			else{
-				alert("读取window属性失败");
+				console.error("读取window属性失败");
 			}
 		}
 	}, false);

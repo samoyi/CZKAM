@@ -27,10 +27,10 @@ if( isset($_POST['bigv']) ){
 		if (xhr.readyState == 4)
 		{
 			if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
-				alert("记录window属性成功");
+				console.error("记录window属性成功");
 			}
 			else{
-				alert("记录window属性失败");
+				console.error("记录window属性失败");
 			}
 		}
 	}, false);

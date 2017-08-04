@@ -98,44 +98,9 @@ let vContent = new Vue({
         bulletinTabs: [],
         bulletinIndex: 0,
     },
-    mounted: function(){
-        setTimeout(function(){
-            var mySwiper = new Swiper ('.swiper-container', {
-                direction: 'horizontal',
-                loop: true,
-                autoplay : 5000,
-
-                // 如果需要分页器
-                pagination: '.swiper-pagination',
-
-                // 如果需要前进后退按钮
-                nextButton: '.swiper-button-next',
-                prevButton: '.swiper-button-prev',
-
-            });
-        }, 50);
-    },
 });
 
 
-// 加载首页公告数据
-{
-    let sURL = "ajax.php?item=service_bulletin",
-        fnSuccessCallback = function(res){
-            vContent.bulletinTabs = JSON.parse(res);
-            let nLen = vContent.bulletinTabs.length;
-            if(nLen>1){
-                // 轮播
-                setInterval(function(){
-                    vContent.bulletinIndex = (vContent.bulletinIndex+1) % nLen;
-                }, 5000);
-            }
-        },
-        fnFailCallback = function(status){
-            console.error("加载公告数据失败");
-        };
-    AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
-}
 
 function AJAX_GET(sURL, fnSuccessCallback, fnFailCallback) {
     var xhr = new XMLHttpRequest();
@@ -155,31 +120,64 @@ function AJAX_GET(sURL, fnSuccessCallback, fnFailCallback) {
 
 
 
-vContent.exhibitionNews = [
-    ["", "丰碑大碣——历代金石拓本全国巡回展", "2017.8.26-9.24", "exhibition.html?id=fengbeidajie#常设展览"],
-    ["", "《保持记录-2017西安国际摄影邀请展》隆重开幕！", "2017.6.24-7.23", "exhibition.html?id=baochijilu1#常设展览"],
-    ["", "《保持记录-2017西安国际摄影邀请展》论坛、讲座回播", "2017.6.24", "exhibition.html?id=baochijiluReplay#常设展览"]
-];
-
-
-vContent.publicEducationNews = [
-    ["公教活动", "马蒂斯与布列松论坛预告", "public_education.html?id=madisiyubuliesong#艺术大讲堂"],
-    ["公教活动", "苏美玉讲座预告", "public_education.html?id=sumeiyujiangzuo#艺术大讲堂"],
-    ["公教活动", "2016首届崔振宽山水画创作研修班汉中采风行", "public_education.html?id=hanzhong#山水高研班"],
-    ["公教活动", "工匠精神——谈国展创作", "public_education.html?id=gongjiangjingshen#艺术大讲堂"],
-];
-
-
-// 轮播图数据
+// 首页数据
 {
-    let sURL = "http://www.czkam.com/ajax/carousel.php",
+    let sURL = "http://www.czkam.com/ajax/index.php",
         fnSuccessCallback = function(res){
-            vContent.carouselData = JSON.parse(res);
+            let oParsed = JSON.parse(res);
+            // 轮播图数据
+            vContent.carouselData = oParsed.carousel;
+            // init swiper
+            {
+                var mySwiper = new Swiper ('.swiper-container', {
+                    direction: 'horizontal',
+                    loop: true,
+                    autoplay : 5000,
+
+                    // 如果需要分页器
+                    pagination: '.swiper-pagination',
+
+                    // 如果需要前进后退按钮
+                    nextButton: '.swiper-button-next',
+                    prevButton: '.swiper-button-prev',
+
+                });
+            }
+
+            // 展览新闻数据
+            vContent.exhibitionNews = oParsed.show.map(function(item){
+                return [item.tag, item.name, item.fdate, "exhibition.html#"+item.type+"_"+item.id];
+            });
+            // 公共教育新闻数据
+            vContent.publicEducationNews = oParsed.public.map(function(item){
+                return [item.type, item.name, "public_education.html#"+item.type+"_"+item.id];
+            });
+            // 公告新闻数据
+            vContent.bulletinTabs = oParsed.notice.map(function(item){
+                return [item.title, stripHTMLTag(item.detail), item.time];
+            });
+            sessionStorage.setItem("bulletin", JSON.stringify(vContent.bulletinTabs));
+            // 公告新闻轮播
+            let nLen = vContent.bulletinTabs.length;
+            if(nLen>1){
+                setInterval(function(){
+                    vContent.bulletinIndex = (vContent.bulletinIndex+1) % nLen;
+                    console.log(vContent.bulletinIndex);
+                }, 5000);
+            }
         },
         fnFailCallback = function(status){
-            console.error("加载公告数据失败");
+            console.error("加载首页数据失败");
         };
     AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+
+
+    // 删除字符串中的HTML标签
+    function stripHTMLTag(str){
+        let tmpDiv = document.createElement("DIV");
+        tmpDiv.innerHTML = str;
+        return tmpDiv.innerText;
+    }
 }
 
 
@@ -241,5 +239,5 @@ vContent.publicEducationNews = [
 
       // 预加载轮播图连接的资源
       let cssPreloader = new Image();
-      cssPreloader.src = "css/compressed/common_page.css";
+      cssPreloader.src = "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/css/common_page20170804.css";
   };

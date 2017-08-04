@@ -1,5 +1,3 @@
-"use strict";
-
 ;"use strict";
 
 vCatalog.title = ["崔振宽艺术", "CUI ZHENKUAN ART"];
@@ -31,7 +29,6 @@ var vWorks = new Vue({
     // 当前页码
     computed: {
         displayedItem: function displayedItem() {
-            console.log("displayedItem");
             return this.list.slice(this.nPageIndex * this.nPerPage, (this.nPageIndex + 1) * this.nPerPage);
         },
         pageNum: function pageNum() {
@@ -129,10 +126,8 @@ var vVideo = new Vue({
     }
 });
 
-// lazy loading
-window.onload = function () {
-    var oContent = document.querySelector(".content");
-
+// get data
+{
     // 艺术年表
     {
         var sURL = "ajax.php?item=cuizhenkuan_chronology",
@@ -147,9 +142,18 @@ window.onload = function () {
 
     // 作品数据
     {
+        // var sURL = "ajax/art.php",
         var sURL = "ajax.php?item=cuizhenkuan_works",
-            fnSuccessCallback = function fnSuccessCallback(res) {
+        fnSuccessCallback = function fnSuccessCallback(res) {
             vWorks.lists = JSON.parse(res);
+
+            // 数据格式转换
+            // for (var list in vWorks.lists) {
+            //     vWorks.lists[list] = vWorks.lists[list].map(function (value) {
+            //         return [value.pic, value.pic, value.name, value.size, value.date, value.author];
+            //     });
+            // }
+
             vWorks.list = vWorks.lists[vWorks.catas[0]];
 
             var aPreload = [];
@@ -203,4 +207,4 @@ window.onload = function () {
         };
         AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
     }
-};
+}

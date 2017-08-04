@@ -168,9 +168,18 @@ a{
                 }
                 #vUploaded_article{
                     position: relative;
+                    h2{
+                        font-size: 20px;
+                        padding: 36px 0;
+                        font-weight: bold;
+                    }
                     >div{
                         img{
                             display: block;
+                        }
+                        b{
+                            font-weight: bold;
+                            font-size: 16px;
                         }
                     }
                     .close_article, .backToTop{
@@ -299,13 +308,13 @@ a{
             #gallery_base_info{
                 width: 365px; height:158px;
                 margin-left: 100px;
-                >div{
-                    p{
-                        line-height: 22px;
-                        margin-top: 16px;
-                        span{
-                            color: $BASIC_BLACK;
-                        }
+                font-size: 12px;
+                p{
+                    color: $BASIC_GRAY;
+                    line-height: 22px;
+                    margin-top: 16px;
+                    span{
+                        color: $BASIC_BLACK;
                     }
                 }
             }

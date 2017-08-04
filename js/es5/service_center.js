@@ -30,7 +30,7 @@ var vBulletin = new Vue({
     components: {
         "bulletin-item": {
             props: ["liData"],
-            template: "<li>\n                <h3 @click=\"displayDetailArticle(liData[3])\" slot=\"title\">{{liData[0]}}</h3>\n                <p slot=\"summary\">{{liData[1]}}</p>\n                <span slot=\"remark\">{{liData[2]}}</span>\n            </li>",
+            template: "<li>\n                <h3 @click=\"displayDetailArticle(liData[3])\" slot=\"title\">{{liData[0]}}</h3>\n                <p slot=\"summary\">{{stripHTMLTag(liData[1])}}</p>\n                <span slot=\"remark\">{{liData[2]}}</span>\n            </li>",
             methods: {
                 // 显示详情文章页面
                 displayDetailArticle: function displayDetailArticle(articleID) {
@@ -102,39 +102,34 @@ var vDownload = new Vue({
         }
     },
     components: {
-        "bulletin-item": {
+        "download-item": {
             props: ["liData"],
-            template: "<li>\n                        <span class=\"title\" slot=\"title\">{{liData[0]}}</span>\n                        <span class=\"time\" slot=\"remark\">{{liData[1]}}</span>\n                        <a class=\"dl_icon\" :href=\"liData[3]\" target=\"_self\">{{liData[2]}}<i></i></a>\n                    </li>"
+            template: "<li>\n                        <span class=\"title\" slot=\"title\">{{liData[0]}}</span>\n                        <a class=\"dl_icon\" :href=\"liData[1]\" target=\"_self\">下载<i></i></a>\n                    </li>"
         }
     }
 });
 
-// lazy loading
-window.onload = function () {
+// get data
+{
+    var sURL = "ajax/service.php",
+        fnSuccessCallback = function fnSuccessCallback(res) {
+        var oParsed = JSON.parse(res);
+        vBulletin.list = oParsed.notice.map(function (value) {
+            return [value.title, value.detail, value.time];
+        });
+        vDownload.list = oParsed.download.map(function (value) {
+            return [value.name, value.path];
+        });
+    },
+        fnFailCallback = function fnFailCallback(status) {
+        console.error("加载数据失败");
+    };
+    AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+}
 
-    var oContent = document.querySelector(".content");
-
-    // 公告数据
-    {
-        var sURL = "ajax.php?item=service_bulletin",
-            fnSuccessCallback = function fnSuccessCallback(res) {
-            vBulletin.list = JSON.parse(res);
-        },
-            fnFailCallback = function fnFailCallback(status) {
-            console.error("加载公告数据失败");
-        };
-        AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
-    }
-
-    // 下载数据
-    {
-        var sURL = "ajax.php?item=service_download",
-            fnSuccessCallback = function fnSuccessCallback(res) {
-            vDownload.list = JSON.parse(res);
-        },
-            fnFailCallback = function fnFailCallback(status) {
-            console.error("加载下载数据失败");
-        };
-        AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
-    }
-};
+// 删除字符串中的HTML标签
+function stripHTMLTag(str) {
+    var tmpDiv = document.createElement("DIV");
+    tmpDiv.innerHTML = str;
+    return tmpDiv.innerText;
+}

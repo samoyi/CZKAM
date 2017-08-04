@@ -71,13 +71,13 @@ function vCollectionClass(elSelector, catas_e, catas_c){
                 props: ["worksData"],
                 template: `
                     <li>
-                        <a :href="worksData[1]" target="_blank"><div class="thumbnail" :style="getUrl(worksData[0])"></div></a>
+                        <a :href="worksData.pic" target="_blank"><div class="thumbnail" :style="getUrl(worksData.pic)"></div></a>
                         <div class="info">
-                            <p><span>作品名称：</span>{{worksData[2]}}</p>
-                            <p><span>尺寸：</span>{{worksData[3]}}</p>
-                            <p><span>时间：</span>{{worksData[4]}}</p>
-                            <p><span>作者：</span>{{worksData[5]}}</p>
-                            <p v-if="worksData[6]"><span>风格：</span>{{worksData[6]}}</p>
+                            <p><span>作品名称：</span>{{worksData.name}}</p>
+                            <p><span>尺寸：</span>{{worksData.size}}</p>
+                            <p><span>时间：</span>{{worksData.time}}</p>
+                            <p><span>作者：</span>{{worksData.author}}</p>
+                            <p v-if="worksData.style"><span>风格：</span>{{worksData.style}}</p>
                         </div>
                         <div style="clear:both;"></div>
                     </li>`,
@@ -106,53 +106,50 @@ function vCollectionClass(elSelector, catas_e, catas_c){
 
 
 
-// lazy loading
-window.onload = function(){
+// get data
+{
+    let sURL = "ajax/research.php",
+        fnSuccessCallback = function(res){
+            let oParsed = JSON.parse(res);
 
-    let oContent = document.querySelector(".content");
-
-    // 艺术活动数据
-    {
-        let sURL = "ajax.php?item=research_events",
-            fnSuccessCallback = function(res){
-                let oParsed = JSON.parse(res),
+            // 学术研究数据
+            {
+                // 学术活动数据
+                {
+                    let oAcademicEvents = oParsed.activity,
                     aAll = [];
-                for(let item in oParsed){
-                    // console.log(item)
-                    oParsed[item].forEach(function(data){
-                        aAll.push(data);
-                    })
+                    for(let item in oAcademicEvents){
+                        oAcademicEvents[item].forEach(function(data){
+                            aAll.push(data);
+                        })
+                    }
+                    oAcademicEvents.All = aAll.reverse();
+                    vAcademicEvents.lists = oAcademicEvents;
+                    vAcademicEvents.catas = Object.keys(vAcademicEvents.lists).reverse();
+                    vAcademicEvents.list = vAcademicEvents.lists[vAcademicEvents.catas[0]];
                 }
-                oParsed.All = aAll.reverse();
-                vAcademicEvents.lists = oParsed;
-                vAcademicEvents.catas = Object.keys(vAcademicEvents.lists).reverse();
-                vAcademicEvents.list = vAcademicEvents.lists[vAcademicEvents.catas[0]];
-            },
-            fnFailCallback = function(status){
-                console.error("加载艺术活动数据失败");
-            };
-        AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
-    }
+            }
 
-    // 国画数据
-    {
-        let sURL = "ajax.php?item=collection_chinese",
-            fnSuccessCallback = function(res){
-                vChinesePainting.lists = JSON.parse(res);
+            // 馆藏数据
+            {
+                // 国画数据
+                vChinesePainting.lists = oParsed.chinese;
                 vChinesePainting.list = vChinesePainting.lists[vChinesePainting.catas[0]];
+            }
 
+            // preload
+            {
                 let aPreload = [];
                 for(let i=0,len=vChinesePainting.catas.length; i<len; i++){
                     aPreload[i] = vChinesePainting.lists[vChinesePainting.catas[i]].map(function(item){
-                        return item[1];
+                        return item.pic;
                     });
                 }
                 stepBatchLoadImage(aPreload);
-            },
-            fnFailCallback = function(status){
-                console.error("加载国画数据失败");
-            };
-        AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
-    }
-
-};
+            }
+        },
+        fnFailCallback = function(status){
+            console.error("加载国画数据失败");
+        };
+    AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+}

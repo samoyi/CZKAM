@@ -22,8 +22,8 @@ vCatalog.catas = [
     ];
 
 
-// lazy loading
-window.onload = function(){
+// get data
+{
 
     let oContent = document.querySelector(".content");
 
@@ -89,4 +89,4 @@ window.onload = function(){
          }, 500);
      }
 
-};
+}

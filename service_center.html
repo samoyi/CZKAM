@@ -5,7 +5,7 @@
     <meta name="description" content="崔振宽美术馆">
     <meta name="keywords" content="美术馆, 崔振宽, 西安美术馆, 长安画派, 水墨长安, 陕西美术馆">
     <title>崔振宽美术馆 服务中心</title>
-    <link href="css/compressed/common_page.css" type="text/css" rel="stylesheet">
+    <link href="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/css/common_page20170804.css" type="text/css" rel="stylesheet">
 </head>
 <body>
     <header id="common-header">
@@ -24,7 +24,7 @@
                     <h2>公告  <span>BULLETIN</span></h2>
                     <div v-show="!bDisplayDetailArticle">
                         <ul>
-                            <bulletin-item v-for="item in displayedItem" :li-data="item"></BULLETIN-item>
+                            <bulletin-item v-for="item in displayedItem" :li-data="item"></bulletin-item>
                         </ul>
                         <div class="pagination_wrapper"><!-- 为了让pagination水平居中，加了这一层 -->
                             <ul v-if="list.length>nPerPage" class="pagination">
@@ -103,7 +103,7 @@
                 <section class="download">
                     <h2>下载专区  <span>DOWNLOAD</span></h2>
                     <ul>
-                        <bulletin-item v-for="item in displayedItem" :li-data="item"></BULLETIN-item>
+                        <download-item v-for="item in displayedItem" :li-data="item"></download-item>
                     </ul>
                     <div class="pagination_wrapper"><!-- 为了让pagination水平居中，加了这一层 -->
                         <ul v-if="list.length>nPerPage" class="pagination">
@@ -119,7 +119,29 @@
             </section>
             <section>
                 <section class="comments">
-                    <h2>意见指南  <span>COMMENTS</span></h2>
+                    <h2>意见留言  <span>COMMENTS</span></h2>
+                    <div>
+                        <div>
+                            <p>姓名：<input v-model="name" type="text" maxlength="7" placeholder="（必填）" /></p>
+                            <p>联系方式：<input v-model="contact" type="text" maxlength="50" placeholder="（选填）" /></p>
+                            <p>留言内容：<textarea v-model="content" required></textarea></p>
+                            <p>{{sTextNumberReminder}}</p>
+                            <p>{{sContentError}}</p>
+                            <input v-model="code" type="text" name="code" size="4" />
+                            <!-- <img src="http://www.czkam.com/ajax/test.php" onclick="this.src='test.php?Math.random()'"/> -->
+                            <img :src="sCodeImgSrc" @click="refreshCode"/>
+                            <input @click="submit" type="button" value="提交" />
+                        </div>
+                        <ul>
+                            <comment-item v-for="item in displayedItem" :li-data="item"></comment-item>
+                        </ul>
+                        <div class="pagination_wrapper"><!-- 为了让pagination水平居中，加了这一层 -->
+                            <ul v-if="list.length>nPerPage" class="pagination">
+                                <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
+                                <!-- TODO VUE定义类不能用连字符？ <list-pagination v-for="n in pageNum" :page-index="n"  :class="{current-li:1}"></list-pagination> -->
+                            </ul>
+                        </div>
+                    </div>
                 </section>
             </section>
         </section>
@@ -127,11 +149,11 @@
     </section>
 
     <footer id="common-footer">
-        <common-footer></common-footer>
+        <common-footer :tabs="bulletinTabs" :bulletin-index="bulletinIndex" :bulletin-num="bulletinNum"></common-footer>
     </footer>
 
 </body>
-<script src="js/vue.js"></script>
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
 <script src="component/common.component.js"></script>
 <script src="js\service_center.js"></script>
 <script src="GlobalVarChecker/checkGlobalVariables.js"></script>

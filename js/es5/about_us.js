@@ -6,8 +6,8 @@ vCatalog.catas = [[{ title_c: "美术馆" }, { title_e: "ART GALLERY" }, { cata_
 // {cata_e: ["ART HOTEL", "MO COFFEE", "MULTI-FUNCTIONAL AUDITORIUM", "VIP HALL", "PARKING"]},
 { cata_c: ["艺术酒店", "咖啡厅"] }, { cata_e: ["ART HOTEL", "MO COFFEE"] }, 1]];
 
-// lazy loading
-window.onload = function () {
+// get data
+{
 
     var oContent = document.querySelector(".content");
 
@@ -22,27 +22,27 @@ window.onload = function () {
 
     // 联系我们
     {
-        var _imgs = oContent.querySelectorAll(".contact_us img"),
-            _len = _imgs.length;
-        for (var _i = 0; _i < _len; _i++) {
-            _imgs[_i].src = "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/about_us/art_gallery/contact_us/" + _i + ".jpg";
+        var imgs = oContent.querySelectorAll(".contact_us img"),
+            len = imgs.length;
+        for (var i = 0; i < len; i++) {
+            imgs[i].src = "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/about_us/art_gallery/contact_us/" + i + ".jpg";
         }
     }
 
     // 艺术酒店
     {
-        var _imgs2 = oContent.querySelectorAll(".art_hotel img"),
-            _len2 = _imgs2.length;
-        for (var _i2 = 0; _i2 < _len2; _i2++) {
-            _imgs2[_i2].src = "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/about_us/facilities/art_hotel/" + _i2 + ".jpg";
+        var imgs = oContent.querySelectorAll(".art_hotel img"),
+            len = imgs.length;
+        for (var i = 0; i < len; i++) {
+            imgs[i].src = "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/about_us/facilities/art_hotel/" + i + ".jpg";
         }
     }
     // 咖啡厅
     {
-        var _imgs3 = oContent.querySelectorAll(".mo_coffee img"),
-            _len3 = _imgs3.length;
-        for (var _i3 = 0; _i3 < _len3; _i3++) {
-            _imgs3[_i3].src = "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/about_us/facilities/mo_coffee/" + _i3 + ".jpg";
+        var imgs = oContent.querySelectorAll(".mo_coffee img"),
+            len = imgs.length;
+        for (var i = 0; i < len; i++) {
+            imgs[i].src = "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/about_us/facilities/mo_coffee/" + i + ".jpg";
         }
     }
 
@@ -53,22 +53,24 @@ window.onload = function () {
      * 所以这里一直监听是否切换到了地图页面的显示，如果是的话，再加载地图代码。
      */
     {
-        var mapWatcher = setInterval(function () {
-            if ("地理交通" === vCatalog.currentLevel2Title) {
-                var map = new BMap.Map("bd_map");
-                var point = new BMap.Point(109.095807, 34.294372);
-                map.centerAndZoom(point, 15);
+        (function () {
+            var mapWatcher = setInterval(function () {
+                if ("地理交通" === vCatalog.currentLevel2Title) {
+                    var map = new BMap.Map("bd_map");
+                    var point = new BMap.Point(109.095807, 34.294372);
+                    map.centerAndZoom(point, 15);
 
-                //创建标注
-                var marker = new BMap.Marker(point); // 创建标注
-                map.addOverlay(marker); // 将标注添加到地图中
-                marker.setAnimation();
+                    //创建标注
+                    var marker = new BMap.Marker(point); // 创建标注
+                    map.addOverlay(marker); // 将标注添加到地图中
+                    marker.setAnimation();
 
-                // 启用滚轮放大缩小
-                map.enableScrollWheelZoom();
+                    // 启用滚轮放大缩小
+                    map.enableScrollWheelZoom();
 
-                clearInterval(mapWatcher);
-            }
-        }, 500);
+                    clearInterval(mapWatcher);
+                }
+            }, 500);
+        })();
     }
-};
+}

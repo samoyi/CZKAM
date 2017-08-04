@@ -10,8 +10,8 @@ directToDetailArticle(vOnlineExhibition);
 var vOtherExhibition = exhibitionClass(".other_exhibition");
 directToDetailArticle(vOtherExhibition);
 
-// lazy loading
-window.onload = function () {
+// get data
+{
 
     var oContent = document.querySelector(".content");
 
@@ -87,4 +87,4 @@ window.onload = function () {
         };
         AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
     }
-};
+}

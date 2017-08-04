@@ -5,7 +5,7 @@
     <meta name="description" content="崔振宽美术馆">
     <meta name="keywords" content="美术馆, 崔振宽, 西安美术馆, 长安画派, 水墨长安, 陕西美术馆">
     <title>崔振宽美术馆 展览</title>
-    <link href="css/compressed/common_page.css" type="text/css" rel="stylesheet">
+    <link href="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/css/common_page20170804.css" type="text/css" rel="stylesheet">
 </head>
 <body>
     <header id="common-header">
@@ -80,30 +80,11 @@
     </section>
 
     <footer id="common-footer">
-        <common-footer></common-footer>
-        <!-- <div>
-            <div id="bulletin-tab">
-                <h2>公告 BULLETIN</h2>
-                <bulletin-tab :tab="getTab"></bulletin-tab>
-                <span>more</span>
-            </div>
-            <div id="gallery_base_info">
-                <gallery-base-info></gallery-base-info>
-            </div>
-        </div>
-        <div>
-            <p>陕ICP备</p>
-            <div>
-                <a href="">会员</a>
-                <a href="">联系我们</a>
-                <a href="">下载专区</a>
-            </div>
-            <img alt="右下角logo" />
-        </div> -->
+        <common-footer :tabs="bulletinTabs" :bulletin-index="bulletinIndex" :bulletin-num="bulletinNum"></common-footer>
     </footer>
 
 </body>
-<script src="js/vue.js"></script>
+<script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
 <script src="component/common.component.js"></script>
 <script src="js/exhibition.js"></script>
 <script src="GlobalVarChecker/checkGlobalVariables.js"></script>

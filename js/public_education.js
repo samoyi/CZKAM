@@ -39,8 +39,9 @@ directToDetailArticle(vPractice);
 let vVolunteering = exhibitionClass(".volunteering");
 directToDetailArticle(vVolunteering);
 
-// lazy loading
-window.onload = function(){
+
+// get data
+{
 
     // 统一请求该页的所有数据
     let sURL = "http://www.czkam.com/ajax/public.php",
@@ -129,4 +130,4 @@ window.onload = function(){
         };
     AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
 
-};
+}

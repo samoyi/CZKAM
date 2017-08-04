@@ -38,8 +38,8 @@ directToDetailArticle(vOtherExhibition);
 
 
 
-// lazy loading
-window.onload = function(){
+// get data
+{
 
     let oContent = document.querySelector(".content");
 
@@ -111,4 +111,4 @@ window.onload = function(){
         AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
     }
 
-};
+}

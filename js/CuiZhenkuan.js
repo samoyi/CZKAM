@@ -78,7 +78,6 @@ let vWorks = new Vue({
     },
     computed: {
         displayedItem(){
-            console.log("displayedItem");
             return this.list.slice(this.nPageIndex*this.nPerPage, (this.nPageIndex+1)*this.nPerPage);
         },
         pageNum(){
@@ -215,10 +214,8 @@ let vVideo = new Vue({
 
 
 
-// lazy loading
-window.onload = function(){
-    let oContent = document.querySelector(".content");
-
+// get data
+{
     // 艺术年表
     {
         let sURL = "ajax.php?item=cuizhenkuan_chronology",
@@ -234,9 +231,18 @@ window.onload = function(){
 
     // 作品数据
     {
+        // let sURL = "ajax/art.php",
         let sURL = "ajax.php?item=cuizhenkuan_works",
             fnSuccessCallback = function(res){
                 vWorks.lists = JSON.parse(res);
+
+                // 数据格式转换
+                // for(let list in vWorks.lists){
+                //     vWorks.lists[list] = vWorks.lists[list].map(function(value){
+                //         return [value.pic, value.pic, value.name, value.size, value.date, value.author];
+                //     });
+                // }
+
                 vWorks.list = vWorks.lists[vWorks.catas[0]];
 
                 let aPreload = [];
@@ -290,4 +296,4 @@ window.onload = function(){
             };
         AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
     }
-};
+}

@@ -80,7 +80,7 @@ function directToDetailArticle(component) {
             if (!detailArticleHTML) {
                 // 如果没有文章数据数据。一般都是没有的，因为不会预加载，且上一篇详情隐藏后也会清除数据
                 this.detailArticleHTML = "<p>正在加载</p>";
-                var sURL = "ajax.php?item=article_" + articleID,
+                var sURL = "ajax/detail.php?id=" + articleID + "&act=" + encodeURIComponent(location.hash.slice(1, nIDUnderline)),
                     fnSuccessCallback = function fnSuccessCallback(res) {
                     console.log(_this);
                     _this.detailArticleHTML = JSON.parse(res);
@@ -318,7 +318,7 @@ function exhibitionClass(elSelector) {
             // 对象转数组
             // 组件中的exhibitionData属性接收的数据格式是数组，如果请求到的是对象，需要进行转换
             exhibitionItemDataObjToArr: function exhibitionItemDataObjToArr(obj) {
-                var aKey = ['pic', 'flag', 'name', 'fdate', 'des', 'id'];
+                var aKey = ['pic', 'tag', 'name', 'fdate', 'des', 'id'];
                 return aKey.map(function (item) {
                     return obj[item];
                 });
@@ -342,7 +342,7 @@ function exhibitionClass(elSelector) {
                                 if (!detailArticleHTML) {
                                     // 如果没有文章数据数据。正常都是没有的，因为不会预加载，且上一篇详情隐藏后也会清除数据
                                     parent.detailArticleHTML = "<p>正在加载……</p>";
-                                    var sURL = "ajax.php?item=article_" + articleID,
+                                    var sURL = "ajax/detail.php?id=" + articleID + "&act=" + encodeURIComponent(location.hash.slice(1, location.hash.indexOf("_"))),
                                         fnSuccessCallback = function fnSuccessCallback(res) {
                                         parent.detailArticleHTML = JSON.parse(res);
                                     },
@@ -401,14 +401,13 @@ function exhibitionClass(elSelector) {
             if (nIDUnderline > -1) {
                 // 直接进入详情页
                 var articleID = location.hash.slice(nIDUnderline + 1);
-                console.log(articleID);
                 if (articleID) {
                     this.bDisplayDetailArticle = true;
                     var detailArticleHTML = this.detailArticleHTML;
                     if (!detailArticleHTML) {
                         // 如果没有文章数据数据。一般都是没有的，因为不会预加载，且上一篇详情隐藏后也会清除数据
                         this.detailArticleHTML = "<p>正在加载</p>";
-                        var sURL = "ajax.php?item=article_" + articleID,
+                        var sURL = "ajax/detail.php?id=" + articleID + "&act=" + encodeURIComponent(location.hash.slice(1)),
                             fnSuccessCallback = function fnSuccessCallback(res) {
                             console.log(_this4);
                             _this4.detailArticleHTML = JSON.parse(res);
@@ -430,38 +429,63 @@ var vCommonFooter = new Vue({
     el: "#common-footer",
     components: {
         "common-footer": {
-            template: "\n            <section>\n                <div class=\"footer_up\">\n                    <div id=\"bulletin-tab\">\n                        <h2>公告 BULLETIN</h2>\n                        <bulletin-tab ref=\"bulletin\" :tab=\"tabs[curIndex]\"></bulletin-tab>\n                        <ul>\n                            <bulletin-pagination v-for=\"(item, index) in tabs\" :bulletin-index=\"index\" :cur-index=\"curIndex\" @switchpagination=\"switchtab\"></bulletin-pagination>\n                        </ul>\n                        <a href=\"service_center.html#公告\" target=\"_black\" class=\"more\">MORE</a>\n                    </div>\n                    <div id=\"gallery_base_info\">\n                        <gallery-base-info></gallery-base-info>\n                    </div>\n                    <i></i>\n                    <div style=\"clear:both;\"></div>\n                </div>\n                <div class=\"footer_down\">\n                    <p>陕ICP备07030830号-5  Copyright © 2015 czkam.net Inc. All Rights Reserved. 崔振宽美术馆 版权所有  Designed by 凡卡互动</p>\n                    <div>\n                        <a href=\"service_center.html#公告\" target=\"_blank\">会员</a>\n                        &nbsp;&nbsp;|&nbsp;&nbsp;\n                        <a href=\"about_us.html#简介\" target=\"_blank\">联系我们</a>\n                        &nbsp;&nbsp;|&nbsp;&nbsp;\n                        <a href=\"service_center.html#公告\" target=\"_blank\">下载专区</a>\n                    </div>\n                    <i></i>\n                </div>\n            </section>\n            ",
-            components: {
-                "bulletin-tab": {
-                    props: ["tab"],
-                    template: "\n                    <div>\n                        <h3>{{tab[0]}}</h3>\n                        <p class=\"bulletin_content\" v-html=\"tab[1]\"></p>\n                        <p>{{tab[2]}}</p>\n                        <slot></slot>\n                    </div>"
-
-                },
-                "bulletin-pagination": {
-                    props: ["bulletinIndex", "curIndex"],
-                    template: "<li v-if=\"false\" v-bind:class=\"{active_tab: bulletinIndex===curIndex}\" @click=\"clickPagination(bulletinIndex)\">●</li>",
-                    methods: {
-                        clickPagination: function clickPagination(clickedIndex) {
-                            this.$emit("switchpagination", clickedIndex);
-                        }
-                    }
-                },
-                "gallery-base-info": {
-                    // FIXME2 这里不得已而加了一个没有用处的根元素，在HTML多出了一个没用div节点
-                    template: "\n                    <div>\n                        <h2>美术馆 ART GALLERY</h2>\n                        <p><span>开放时间：</span>周二至周日 9:30--17:00（16:30停止入馆）<br />周一闭馆（节假日除外，特殊情况将在本网站通知）</p>\n                        <p><span>地址：</span>西安市灞桥区灞桥生态湿地公园柳雪路996号</p>\n                        <p><span>电话：</span>029-83626699</p>\n                    </div>\n                    "
-                }
-            },
-            data: function data() {
-                return {
-                    tabs: [[,,]],
-                    curIndex: 0
-                };
-            },
+            props: ["tabs", "bulletinNum", "bulletinIndex"],
+            template: "\n                <section>\n                    <div class=\"footer_up\">\n                        <div id=\"bulletin-tab\" v-if=\"tabs\">\n                            <h2>公告 BULLETIN</h2>\n                            <div>\n                                <h3>{{tabs[bulletinIndex][0]}}</h3>\n                                <p class=\"bulletin_content\">{{tabs[bulletinIndex][1]}}</p>\n                                <p>{{tabs[bulletinIndex][2]}}</p>\n                            </div>\n                            <ul>\n                                <li v-for=\"(item, index) in bulletinNum\" v-bind:class=\"{active_tab: index===bulletinIndex}\" @click=\"switchtab(index)\">●</li>\n                            </ul>\n                            <a href=\"service_center.html#公告\" target=\"_black\" class=\"more\">MORE</a>\n                        </div>\n                        <div id=\"gallery_base_info\">\n                            <h2>美术馆 ART GALLERY</h2>\n                            <p><span>开放时间：</span>周二至周日 9:30--17:00（16:30停止入馆）<br />周一闭馆（节假日除外，特殊情况将在本网站通知）</p>\n                            <p><span>地址：</span>西安市灞桥区灞桥生态湿地公园柳雪路996号</p>\n                            <p><span>电话：</span>029-83626699</p>\n                        </div>\n                        <i></i>\n                        <div style=\"clear:both;\"></div>\n                    </div>\n                    <div class=\"footer_down\">\n                        <p>陕ICP备07030830号-5  Copyright © 2015 czkam.net Inc. All Rights Reserved. 崔振宽美术馆 版权所有  Designed by 凡卡互动</p>\n                        <div>\n                            <a href=\"service_center.html#公告\" target=\"_blank\">会员</a>\n                            &nbsp;&nbsp;|&nbsp;&nbsp;\n                            <a href=\"about_us.html#简介\" target=\"_blank\">联系我们</a>\n                            &nbsp;&nbsp;|&nbsp;&nbsp;\n                            <a href=\"service_center.html#公告\" target=\"_blank\">下载专区</a>\n                        </div>\n                        <i></i>\n                    </div>\n                </section>\n                ",
             methods: {
-                switchtab: function switchtab(clickedIndex) {
-                    this.curIndex = clickedIndex;
+                switchtab: function switchtab(index) {
+                    this.$parent.bulletinIndex = index;
                 }
             }
+        }
+    },
+    data: {
+        bulletinTabs: null,
+        bulletinNum: 0,
+        bulletinIndex: 0
+    },
+    mounted: function mounted() {
+        var _this5 = this;
+
+        // 公告数据是每个页都会用的，所以一个页面请求了，就存起来
+        var aBulletinTabs = JSON.parse(sessionStorage.getItem("bulletin"));
+        if (aBulletinTabs) {
+            (function () {
+                // 已经有了公告数据
+                var nLen = aBulletinTabs.length,
+                    index = 0;
+                if (nLen > 0) {
+                    _this5.bulletinTabs = aBulletinTabs;
+                }
+                if (nLen > 1) {
+                    _this5.bulletinNum = nLen;
+                    setInterval(function () {
+                        _this5.bulletinIndex = ++index % nLen;
+                    }, 5000);
+                }
+            })();
+        } else {
+            var sURL = "http://www.czkam.com/ajax/index.php",
+                fnSuccessCallback = function fnSuccessCallback(res) {
+                var aBulletinTabs = JSON.parse(res).notice,
+                    nLen = aBulletinTabs.length,
+                    index = 0;
+                if (nLen > 0) {
+                    aBulletinTabs = aBulletinTabs.map(function (item) {
+                        return [item.title, stripHTMLTag(item.detail), item.time];
+                    });
+                    _this5.bulletinTabs = aBulletinTabs;
+                }
+                if (nLen > 1) {
+                    _this5.bulletinNum = nLen;
+                    setInterval(function () {
+                        _this5.bulletinIndex = ++index % nLen;
+                    }, 5000);
+                }
+            },
+                fnFailCallback = function fnFailCallback(status) {
+                console.error("加载首页数据失败");
+            };
+            AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
         }
     }
 });
@@ -499,6 +523,25 @@ function AJAX_GET(sURL, fnSuccessCallback, fnFailCallback) {
     xhr.send(null);
 }
 
+// AJAX POST
+function AJAX_POST(sURL, data, fnSuccessCallback, fnFailCallback) {
+    var xhr = new XMLHttpRequest();
+    xhr.addEventListener('readystatechange', function () {
+        if (xhr.readyState == 4) {
+            if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+                // 必要的时候，使用 getResponseHeader() 检查首部信息
+                fnSuccessCallback && fnSuccessCallback(xhr.responseText);
+            } else {
+                fnFailCallback && fnFailCallback(xhr.status);
+            }
+        }
+    }, false);
+    xhr.open("post", sURL, true);
+    // 如果发送FormDate，则不需要设置Content-Type，但截至2017.5，FormDate的浏览器支持并不理想
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send(data);
+}
+
 // 分步批量图片加载
 function stepBatchLoadImage(arr) {
     var loadedCounter = 0,
@@ -519,4 +562,11 @@ function stepBatchLoadImage(arr) {
             };
         });
     }
+}
+
+// 删除字符串中的HTML标签
+function stripHTMLTag(str) {
+    var tmpDiv = document.createElement("DIV");
+    tmpDiv.innerHTML = str;
+    return tmpDiv.innerText;
 }

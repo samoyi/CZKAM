@@ -8,8 +8,8 @@ var vWorks = new Vue({
     data: {
         list: [["", "", "", "", ""]],
         lists: {},
-        catas: [""],
-        catas_c: [""],
+        catas: [""], // 就一类，这个没用
+        catas_c: [""], // 就一类，这个没用
         nCataIndex: 0,
         nPerPage: 6, // 每页显示10个
         nPageIndex: 0 },
@@ -40,7 +40,7 @@ var vWorks = new Vue({
     components: {
         "works-item": {
             props: ["worksData"],
-            template: "\n                <li>\n                    <div class=\"thumbnail\" :style=\"getUrl(worksData[0])\"></div>\n                    <div class=\"info\">\n                        <p v-if=\"worksData[1]\"><span>作品名称：</span>{{worksData[1]}}</p>\n                        <p v-if=\"worksData[2]\"><span>尺寸：</span>{{worksData[2]}}</p>\n                        <p v-if=\"worksData[3]\"><span>时间：</span>{{worksData[3]}}</p>\n                        <p v-if=\"worksData[4]\"><span>作者：</span>{{worksData[4]}}</p>\n                    </div>\n                    <div style=\"clear:both;\"></div>\n                </li>",
+            template: "\n                <li>\n                    <a :href=\"worksData[0]\" target=\"_blank\">\n                        <div class=\"thumbnail\" :style=\"getUrl(worksData[0])\"></div>\n                    </a>\n                    <div class=\"info\">\n                        <p v-if=\"worksData[1]\"><span>作品名称：</span>{{worksData[1]}}</p>\n                        <p v-if=\"worksData[2]\"><span>尺寸：</span>{{worksData[2]}}</p>\n                        <p v-if=\"worksData[3]\"><span>时间：</span>{{worksData[3]}}</p>\n                        <p v-if=\"worksData[4]\"><span>作者：</span>{{worksData[4]}}</p>\n                    </div>\n                    <div style=\"clear:both;\"></div>\n                </li>",
             methods: {
                 getUrl: function getUrl(url) {
                     return {
@@ -66,8 +66,8 @@ var vDerivatives = new Vue({
     data: {
         list: [["", "", "", "", ""]],
         lists: {},
-        catas: [""],
-        catas_c: [""],
+        catas: [""], // 就一类，这个没用
+        catas_c: [""], // 就一类，这个没用
         nCataIndex: 0,
         nPerPage: 6, // 每页显示10个
         nPageIndex: 0 },
@@ -98,7 +98,7 @@ var vDerivatives = new Vue({
     components: {
         "works-item": {
             props: ["worksData"],
-            template: "\n                <li>\n                    <div class=\"thumbnail\" :style=\"getUrl(worksData[0])\"></div>\n                    <div class=\"info\">\n                        <p v-if=\"worksData[1]\"><span>作品名称：</span>{{worksData[1]}}</p>\n                        <p v-if=\"worksData[2]\"><span>尺寸：</span>{{worksData[2]}}</p>\n                        <p v-if=\"worksData[3]\"><span>时间：</span>{{worksData[3]}}</p>\n                        <p v-if=\"worksData[4]\"><span>作者：</span>{{worksData[4]}}</p>\n                    </div>\n                    <div style=\"clear:both;\"></div>\n                </li>",
+            template: "\n                <li>\n                    <a :href=\"worksData[0]\" target=\"_blank\">\n                        <div class=\"thumbnail\" :style=\"getUrl(worksData[0])\"></div>\n                    </a>\n                    <div class=\"info\">\n                        <p v-if=\"worksData[1]\"><span>作品名称：</span>{{worksData[1]}}</p>\n                        <p v-if=\"worksData[2]\"><span>尺寸：</span>{{worksData[2]}}</p>\n                        <p v-if=\"worksData[3]\"><span>时间：</span>{{worksData[3]}}</p>\n                        <p v-if=\"worksData[4]\"><span>作者：</span>{{worksData[4]}}</p>\n                    </div>\n                    <div style=\"clear:both;\"></div>\n                </li>",
             methods: {
                 getUrl: function getUrl(url) {
                     return {
@@ -119,34 +119,33 @@ var vDerivatives = new Vue({
     }
 });
 
-// lazy loading
-window.onload = function () {
+// get data
+{
+    var sURL = "ajax/gallery.php",
+        fnSuccessCallback = function fnSuccessCallback(res) {
+        var oParsed = JSON.parse(res);
 
-    var oContent = document.querySelector(".content");
+        // 画廊数据
+        {
 
-    // 作品数据
-    {
-        var sURL = "ajax.php?item=gallery_works",
-            fnSuccessCallback = function fnSuccessCallback(res) {
-            vWorks.lists = JSON.parse(res);
-            vWorks.list = vWorks.lists[vWorks.catas[0]];
-        },
-            fnFailCallback = function fnFailCallback(status) {
-            console.error("加载作品数据失败");
-        };
-        AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
-    }
+            // 数据格式转换
+            vWorks.list = oParsed.gallery.map(function (value) {
+                return [value.pic, value.name, value.size, value.style, value.author];
+            });
+        }
 
-    // 衍生品数据
-    {
-        var sURL = "ajax.php?item=gallery_derivatives",
-            fnSuccessCallback = function fnSuccessCallback(res) {
-            vDerivatives.lists = JSON.parse(res);
-            vDerivatives.list = vDerivatives.lists[vDerivatives.catas[0]];
-        },
-            fnFailCallback = function fnFailCallback(status) {
-            console.error("加载衍生品数据失败");
-        };
-        AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
-    }
-};
+        // 衍生品数据
+        {
+            vDerivatives.lists = oParsed.derivatives;
+
+            // 数据格式转换
+            vDerivatives.list = oParsed.derivatives.map(function (value) {
+                return [value.pic, value.name, value.size, value.style, value.author];
+            });
+        }
+    },
+        fnFailCallback = function fnFailCallback(status) {
+        console.error("加载数据失败");
+    };
+    AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+}
