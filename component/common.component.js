@@ -362,7 +362,7 @@ function exhibitionClass(elSelector){
                             let detailArticleHTML = parent.detailArticleHTML;
                             if(!detailArticleHTML){ // 如果没有文章数据数据。正常都是没有的，因为不会预加载，且上一篇详情隐藏后也会清除数据
                                 parent.detailArticleHTML = "<p>正在加载……</p>"
-                                let sURL = "ajax/detail.php?id=" + articleID + "&act=" + encodeURIComponent(location.hash.slice(1, location.hash.indexOf("_"))),
+                                let sURL = "ajax/detail.php?id=" + articleID + "&act=" + encodeURIComponent(location.hash.slice(1)),
                                     fnSuccessCallback = function(res){
                                         parent.detailArticleHTML = JSON.parse(res);
                                     },
@@ -424,15 +424,14 @@ function exhibitionClass(elSelector){
                     let detailArticleHTML = this.detailArticleHTML;
                     if(!detailArticleHTML){ // 如果没有文章数据数据。一般都是没有的，因为不会预加载，且上一篇详情隐藏后也会清除数据
                         this.detailArticleHTML = "<p>正在加载</p>"
-                        let sURL = "ajax/detail.php?id=" + articleID + "&act=" + encodeURIComponent(location.hash.slice(1)),
-                        fnSuccessCallback = (res)=>{
-                            console.log(this);
-                            this.detailArticleHTML = JSON.parse(res);
-                        },
-                        fnFailCallback = function(status){
-                            console.error("加载详情页数据失败");
-                        };
-                        AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+                        let sURL = "ajax/detail.php?id=" + articleID + "&act=" + encodeURIComponent(location.hash.slice(1, nIDUnderline)),
+                            fnSuccessCallback = (res)=>{
+                                this.detailArticleHTML = JSON.parse(res);
+                            },
+                            fnFailCallback = function(status){
+                                console.error("加载详情页数据失败");
+                            };
+                            AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
                     }
                 }
             }

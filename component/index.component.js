@@ -162,7 +162,6 @@ function AJAX_GET(sURL, fnSuccessCallback, fnFailCallback) {
             if(nLen>1){
                 setInterval(function(){
                     vContent.bulletinIndex = (vContent.bulletinIndex+1) % nLen;
-                    console.log(vContent.bulletinIndex);
                 }, 5000);
             }
         },
@@ -213,7 +212,6 @@ function AJAX_GET(sURL, fnSuccessCallback, fnFailCallback) {
         });
     }
     oRightArrow.addEventListener("click", function(){
-        console.log(index);
         if( index !== 3 ){
             index++;
             oBlockWrapper.style.transform = "translate3d(-" + index*413 + "px, 0, 0)";
@@ -223,7 +221,6 @@ function AJAX_GET(sURL, fnSuccessCallback, fnFailCallback) {
         }
     });
     oLeftArrow.addEventListener("click", function(){
-        console.log(index);
         if( index ){
             index--;
             oBlockWrapper.style.transform = "translate3d(-" + index*413 + "px, 0, 0)";
