@@ -231,17 +231,17 @@ let vVideo = new Vue({
 
     // 作品数据
     {
-        // let sURL = "ajax/art.php",
-        let sURL = "ajax.php?item=cuizhenkuan_works",
+        let sURL = "ajax/art.php",
+        // let sURL = "ajax.php?item=cuizhenkuan_works",
             fnSuccessCallback = function(res){
                 vWorks.lists = JSON.parse(res);
 
                 // 数据格式转换
-                // for(let list in vWorks.lists){
-                //     vWorks.lists[list] = vWorks.lists[list].map(function(value){
-                //         return [value.pic, value.pic, value.name, value.size, value.date, value.author];
-                //     });
-                // }
+                for(let list in vWorks.lists){
+                    vWorks.lists[list] = vWorks.lists[list].map(function(value){
+                        return [value.pic, value.pic, value.name, value.size, value.date, value.author];
+                    });
+                }
 
                 vWorks.list = vWorks.lists[vWorks.catas[0]];
 

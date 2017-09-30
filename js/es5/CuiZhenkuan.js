@@ -142,17 +142,18 @@ var vVideo = new Vue({
 
     // 作品数据
     {
-        // var sURL = "ajax/art.php",
-        var sURL = "ajax.php?item=cuizhenkuan_works",
+        var sURL = "ajax/art.php",
+
+        // let sURL = "ajax.php?item=cuizhenkuan_works",
         fnSuccessCallback = function fnSuccessCallback(res) {
             vWorks.lists = JSON.parse(res);
 
-            // 数据格式转换
-            // for (var list in vWorks.lists) {
-            //     vWorks.lists[list] = vWorks.lists[list].map(function (value) {
-            //         return [value.pic, value.pic, value.name, value.size, value.date, value.author];
-            //     });
-            // }
+            // 数据格式转换;
+            for (var list in vWorks.lists) {
+                vWorks.lists[list] = vWorks.lists[list].map(function (value) {
+                    return [value.pic, value.pic, value.name, value.size, value.date, value.author];
+                });
+            }
 
             vWorks.list = vWorks.lists[vWorks.catas[0]];
 

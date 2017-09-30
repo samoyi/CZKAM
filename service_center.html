@@ -1,3 +1,9 @@
+<script>
+    // 设置cookie的域名带www
+    if(location.hostname === "czkam.com"){
+        location.href = "http://www." + location.href.split("http://")[1];
+    }
+</script>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +11,7 @@
     <meta name="description" content="崔振宽美术馆">
     <meta name="keywords" content="美术馆, 崔振宽, 西安美术馆, 长安画派, 水墨长安, 陕西美术馆">
     <title>崔振宽美术馆 服务中心</title>
-    <link href="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/css/common_page20170804.css" type="text/css" rel="stylesheet">
+    <link href="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/css/common_page20170808.css" type="text/css" rel="stylesheet">
 </head>
 <body>
     <header id="common-header">
@@ -121,16 +127,20 @@
                 <section class="comments">
                     <h2>意见留言  <span>COMMENTS</span></h2>
                     <div>
-                        <div>
-                            <p>姓名：<input v-model="name" type="text" maxlength="7" placeholder="（必填）" /></p>
-                            <p>联系方式：<input v-model="contact" type="text" maxlength="50" placeholder="（选填）" /></p>
-                            <p>留言内容：<textarea v-model="content" required></textarea></p>
-                            <p>{{sTextNumberReminder}}</p>
-                            <p>{{sContentError}}</p>
-                            <input v-model="code" type="text" name="code" size="4" />
-                            <!-- <img src="http://www.czkam.com/ajax/test.php" onclick="this.src='test.php?Math.random()'"/> -->
-                            <img :src="sCodeImgSrc" @click="refreshCode"/>
-                            <input @click="submit" type="button" value="提交" />
+                        <div class="form">
+                            <p class="name">姓名：<input v-model="name" type="text" maxlength="7" placeholder="（必填）" /></p>
+                            <p class="contact">联系方式：<input v-model="contact" type="text" maxlength="50" placeholder="（选填）" /></p>
+                            <div class="msgContent">
+                                留言内容：<textarea v-model="content" required></textarea>
+                                <p class="wordsNumTip">{{sTextNumberReminder}}</p>
+                                <p class="errTip">{{sContentError}}</p>
+                            </div>
+                            <div class="codeArea">
+                                验证码：<input v-model="code" type="text" name="code" size="4" />
+                                <!-- <img src="http://www.czkam.com/ajax/test.php" onclick="this.src='test.php?Math.random()'"/> -->
+                                <img :src="sCodeImgSrc" @click="refreshCode"/>
+                                <input @click="submit" type="button" value="提交" />
+                            </div>
                         </div>
                         <ul>
                             <comment-item v-for="item in displayedItem" :li-data="item"></comment-item>

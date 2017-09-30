@@ -180,7 +180,6 @@ let vComments = new Vue({
             this.nPageIndex = index;
         },
         refreshCode(){
-            // self.src = "http://www.czkam.com/ajax/test.php?Math.random()";
             this.sCodeImgSrc = "http://www.czkam.com/ajax/test.php?" +　Math.random();
         },
         submit(){
@@ -202,12 +201,30 @@ let vComments = new Vue({
                     + "&contact="　+ encodeURIComponent(stripHTMLTag(this.contact))
                     + "&content="　+　encodeURIComponent(stripHTMLTag(this.content))
                     + "&vcode=" + encodeURIComponent(stripHTMLTag(this.code)),
-                    fnSuccessCallback = function(){
-                        this.name = "";
-                        this.contact = "";
-                        this.content = "";
-                        this.code = "";
-                        alert("提交成功。客服回复后将显示您的留言。")
+                    fnSuccessCallback = (res)=>{
+                        if( res.trim() === "FALSE" ){
+                            alert("验证码错误");
+                            this.refreshCode();
+                        }
+                        else{
+                            alert("提交成功。客服回复后将显示您的留言。")
+
+                            let date = new Date(),
+                                year = date.getFullYear(),
+                                month = date.getMonth()+1,
+                                day = date.getDay();
+                            this.list.unshift({
+                                "name": this.name,
+                                "content": this.content,
+                                "time": year+"-"+month+"-"+day,
+                            });
+                            this.name = "";
+                            this.contact = "";
+                            this.content = "";
+                            this.code = "";
+
+                            this.refreshCode();
+                        }
                     },
                     fnFailCallback = function(status){
                         alert(status + " 提交失败，请稍后重试");
@@ -233,9 +250,10 @@ let vComments = new Vue({
         "comment-item": {
             props: ["liData"],
             template: `<li>
-                <span class="name">{{stripHTMLTag(liData.name)}}</span>
+                <span class="name">{{stripHTMLTag(liData.name)}}</span>：
                 <p class="comment">{{stripHTMLTag(liData.content)}}</p>
                 <span class="date">{{liData.data}}</span>
+                <br />
                 <span class="replyTitle" v-if="liData.reply">回复：</span>
                 <p class="reply" v-if="liData.reply">{{stripHTMLTag(liData.reply)}}</p>
                 <span class="replyData" v-if="liData.reply">{{liData.replyData}}</span>

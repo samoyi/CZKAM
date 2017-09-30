@@ -104,6 +104,75 @@
                     }
                 }
             }
+            .comments{
+                >div{
+                    .form{
+                        font-size: 14px;
+                        position: relative;
+                        height: 280px;
+                        .name{
+                            position: absolute;
+                            top: 14px;
+                        }
+                        .contact{
+                            position: absolute;
+                            top: 14px; left: 280px;
+                            input{
+                                width: 210px;
+                            }
+                        }
+                        .msgContent{
+                            position: absolute;
+                            top: 70px;
+                            textarea{
+                                width: 490px;
+                                height: 70px;
+                                resize: none;
+                            }
+                            .wordsNumTip, .errTip{
+                                position: absolute; bottom: -28px;
+                            }
+                            .wordsNumTip{
+                                left: 70px;
+                            }
+                            .errTip{
+                                right: 0;
+                                color: red;
+                            }
+                        }
+                        .codeArea{
+                            position: absolute; top: 210px;
+                        }
+                    }
+                    >ul{
+                        margin-top: 70px;
+                        background-color: #f2f2f2;
+                        box-sizing: border-box;
+                        li{
+                            border-bottom: 1px dotted;
+                            padding: 21px 14px;
+                            box-sizing: border-box;
+                            position: relative;
+                            .date, .replyData{
+                                position: absolute;
+                                right: 14px;
+                            }
+                            .comment, .reply{
+                                text-indent: 2em;
+                            }
+                            .date{
+                                top: 21px;
+                            }
+                            .replyData{
+                                top: 84px;
+                            }
+                        }
+                        li:last-child{
+                            border: none;
+                        }
+                    }
+                }
+            }
         }
     }
 }

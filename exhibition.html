@@ -5,7 +5,7 @@
     <meta name="description" content="崔振宽美术馆">
     <meta name="keywords" content="美术馆, 崔振宽, 西安美术馆, 长安画派, 水墨长安, 陕西美术馆">
     <title>崔振宽美术馆 展览</title>
-    <link href="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/css/common_page20170804.css" type="text/css" rel="stylesheet">
+    <link href="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/css/common_page20170825.css" type="text/css" rel="stylesheet">
 </head>
 <body>
     <header id="common-header">
@@ -73,6 +73,22 @@
                         </div>
                     </div>
                     <uploaded-article id="vUploaded_article" v-show="bDisplayDetailArticle" :content-html="detailArticleHTML"></uploaded-article>
+                </section>
+            </section>
+            <section>
+                <section class="appreciation">
+                    <h2>展品欣赏  <span>APPRECIATION</span></h2>
+                    <ul class="works_cata">
+                        <works-cata v-for="(item,index) in catas_c" :cata_c="item" :this-index="index" :cata-index="nCataIndex" @switchcata="switchworks"></works-cata>
+                    </ul>
+                    <ul class="works_list">
+                        <works-item v-for="item in displayedItem" :works-data="item"></works-item>
+                    </ul>
+                    <div class="pagination_wrapper">
+                        <ul v-if="list.length>nPerPage" class="pagination">
+                            <list-pagination v-for="n in pageNum" :page-index="n-1" :class="{ currentLi:nPageIndex===n-1}" @switchpagination="switchpage"></list-pagination>
+                        </ul>
+                    </div>
                 </section>
             </section>
         </section>

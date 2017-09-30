@@ -53,7 +53,7 @@ let vContent = new Vue({
             props: ["news"],
             template: `
                 <div>
-                    <h3><span>{{news[0]}} | </span><a :href="news[2]" target="_blank">{{news[1]}}</a></h3>
+                    <h3><span>{{news[0]}} {{news[1]}} | </span><a :href="news[3]" target="_blank">{{news[2]}}</a></h3>
                 </div>`,
         },
         "bulletin-tab": {
@@ -128,11 +128,12 @@ function AJAX_GET(sURL, fnSuccessCallback, fnFailCallback) {
             // 轮播图数据
             vContent.carouselData = oParsed.carousel;
             // init swiper
-            {
+            setTimeout(function(){
                 var mySwiper = new Swiper ('.swiper-container', {
                     direction: 'horizontal',
                     loop: true,
                     autoplay : 5000,
+                    autoplayDisableOnInteraction : false,
 
                     // 如果需要分页器
                     pagination: '.swiper-pagination',
@@ -142,7 +143,7 @@ function AJAX_GET(sURL, fnSuccessCallback, fnFailCallback) {
                     prevButton: '.swiper-button-prev',
 
                 });
-            }
+            });
 
             // 展览新闻数据
             vContent.exhibitionNews = oParsed.show.map(function(item){
@@ -150,7 +151,7 @@ function AJAX_GET(sURL, fnSuccessCallback, fnFailCallback) {
             });
             // 公共教育新闻数据
             vContent.publicEducationNews = oParsed.public.map(function(item){
-                return [item.type, item.name, "public_education.html#"+item.type+"_"+item.id];
+                return [item.tag, item.type, item.name, "public_education.html#"+item.type+"_"+item.id];
             });
             // 公告新闻数据
             vContent.bulletinTabs = oParsed.notice.map(function(item){
@@ -239,5 +240,5 @@ function AJAX_GET(sURL, fnSuccessCallback, fnFailCallback) {
 
       // 预加载轮播图连接的资源
       let cssPreloader = new Image();
-      cssPreloader.src = "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/css/common_page20170804.css";
+      cssPreloader.src = "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/css/common_page20170808.css";
   };

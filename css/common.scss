@@ -168,6 +168,7 @@ a{
                 }
                 #vUploaded_article{
                     position: relative;
+                    padding-top: 48px;
                     h2{
                         font-size: 20px;
                         padding: 36px 0;
@@ -179,7 +180,6 @@ a{
                         }
                         b{
                             font-weight: bold;
-                            font-size: 16px;
                         }
                     }
                     .close_article, .backToTop{
