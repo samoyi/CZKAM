@@ -342,7 +342,7 @@ function exhibitionClass(elSelector) {
                                 if (!detailArticleHTML) {
                                     // 如果没有文章数据数据。正常都是没有的，因为不会预加载，且上一篇详情隐藏后也会清除数据
                                     parent.detailArticleHTML = "<p>正在加载……</p>";
-                                    var sURL = "ajax/detail.php?id=" + articleID + "&act=" + encodeURIComponent(location.hash.slice(1, location.hash.indexOf("_"))),
+                                    var sURL = "ajax/detail.php?id=" + articleID + "&act=" + encodeURIComponent(location.hash.slice(1)),
                                         fnSuccessCallback = function fnSuccessCallback(res) {
                                         parent.detailArticleHTML = JSON.parse(res);
                                     },
@@ -407,9 +407,8 @@ function exhibitionClass(elSelector) {
                     if (!detailArticleHTML) {
                         // 如果没有文章数据数据。一般都是没有的，因为不会预加载，且上一篇详情隐藏后也会清除数据
                         this.detailArticleHTML = "<p>正在加载</p>";
-                        var sURL = "ajax/detail.php?id=" + articleID + "&act=" + encodeURIComponent(location.hash.slice(1)),
+                        var sURL = "ajax/detail.php?id=" + articleID + "&act=" + encodeURIComponent(location.hash.slice(1, nIDUnderline)),
                             fnSuccessCallback = function fnSuccessCallback(res) {
-                            console.log(_this4);
                             _this4.detailArticleHTML = JSON.parse(res);
                         },
                             fnFailCallback = function fnFailCallback(status) {
