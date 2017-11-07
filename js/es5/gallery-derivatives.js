@@ -1,4 +1,4 @@
-;"use strict";
+"use strict";
 
 vCatalog.title = ["画廊·衍生品", "GALLERY·DERIVATIVES"];
 vCatalog.catas = [[{ title_c: "画廊" }, { title_e: "GALLERY" }, { cata_c: [] }, { cata_e: [] }, 0], [{ title_c: "衍生品" }, { title_e: "DERIVATIVES" }, { cata_c: [] }, { cata_e: [] }, 1]];

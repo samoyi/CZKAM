@@ -1,6 +1,6 @@
 "use strict";
 
-;"use strict";
+"use strict";
 
 vCatalog.title = ["展览", "EXHIBITION"];
 vCatalog.catas = [[{ title_c: "常设展览" }, { title_e: "PERMANENT EXHIBTION" }, { cata_c: [] }, { cata_e: [] }, 0], [{ title_c: "在线展览" }, { title_e: "ON-LINE" }, { cata_c: [] }, { cata_e: [] }, 1], [{ title_c: "展览" }, { title_e: "OTHER" }, { cata_c: [] }, { cata_e: [] }, 2], [{ title_c: "展品欣赏（测试）" }, { title_e: "APPRECIATION" }, { cata_c: [] }, { cata_e: [] }, 3]];

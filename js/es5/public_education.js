@@ -1,4 +1,4 @@
-;"use strict";
+"use strict";
 
 vCatalog.title = ["公共教育", "PUBLIC EDUCATION"];
 vCatalog.catas = [[{ title_c: "公教活动" }, { title_e: "ACTIVITIES" }, { cata_c: ["山水高研班", "书法班", "艺术大讲堂"] }, { cata_e: ["ADVANCED SEMINAR", "CALLIGRAPHY SEMINAR", "ART FORUM"] }, 0], [{ title_c: "合作交流" }, { title_e: "EXCHANGES" }, { cata_c: ["教育实践"] }, { cata_e: ["EDUCATIONAL PRACTICE"] }, 1], [{ title_c: "志愿者服务" }, { title_e: "VOLUNTEERING" }, { cata_c: [] }, { cata_e: [] }, 2]];

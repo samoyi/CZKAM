@@ -1,4 +1,4 @@
-;"use strict";
+"use strict";
 
 vCatalog.title = ["关于我们", "ABOUT US"];
 vCatalog.catas = [[{ title_c: "美术馆" }, { title_e: "ART GALLERY" }, { cata_c: ["简介", "大事记", "开放时间", "地理交通", "联系我们"] }, { cata_e: ["INTRODUCE", "EVENTS", "OPENING HOURS", "TRANSPORTATION", "CONTACT US"] }, 0], [{ title_c: "配套设施" }, { title_e: "FACILITIES" },

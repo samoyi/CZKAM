@@ -1,4 +1,4 @@
-;"use strict";
+"use strict";
 
 
 vCatalog.title = ["画廊·衍生品", "GALLERY·DERIVATIVES"];

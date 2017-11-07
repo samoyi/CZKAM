@@ -1,4 +1,4 @@
-;"use strict";
+"use strict";
 
 
 vCatalog.title = ["公共教育", "PUBLIC EDUCATION"];

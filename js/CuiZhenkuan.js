@@ -1,4 +1,4 @@
-;"use strict";
+"use strict";
 
 
 vCatalog.title = ["崔振宽艺术", "CUI ZHENKUAN ART"];

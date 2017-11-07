@@ -1,4 +1,4 @@
-;"use strict";
+"use strict";
 
 
 vCatalog.title = ["关于我们", "ABOUT US"];

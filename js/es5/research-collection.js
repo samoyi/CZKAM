@@ -1,4 +1,4 @@
-;"use strict";
+"use strict";
 
 vCatalog.title = ["学术研究·馆藏", "RESEARCH·COLLECTION"];
 vCatalog.catas = [[{ title_c: "学术研究" }, { title_e: "RESEARCH" }, { cata_c: ["学术委员会", "学术活动"] }, { cata_e: ["ACADEMIC COMMITTEE", "ACADEMIC EVENTS"] }, 0], [{ title_c: "馆藏" }, { title_e: "COLLECTION" },

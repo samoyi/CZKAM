@@ -1,4 +1,4 @@
-;"use strict";
+"use strict";
 
 
 vCatalog.title = ["学术研究·馆藏", "RESEARCH·COLLECTION"];
