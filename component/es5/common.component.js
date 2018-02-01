@@ -3,7 +3,7 @@
 var vHeader = new Vue({
     components: {
         "header-template": {
-            template: "\n                <div>\n                    <a href=\"index.html\"><div id=\"top_logo\"></div></a>\n                    <ul class=\"menu\">\n                        <li><a href=\"about_us.html\">关于我们<p>ABOUT US</p></a></li>\n                        <li><a href=\"CuiZhenkuan.html\">崔振宽艺术<p>CUIZHENKUAN ART</p></a></li>\n                        <li><a href=\"exhibition.html\">展览<p>EXHIBITION</p></a></li>\n                        <li><a href=\"public_education.html\">公共教育<p>PUBLIC EDUCATION</p></a></li>\n                        <li><a href=\"research-collection.html\">学术研究·馆藏<p>RESEARCH·COLLECTION</p></a></li>\n                        <li><a href=\"gallery-derivatives.html\">画廊·衍生品<p>GALLERY·DERIVATIVES</p></a></li>\n                        <li><a href=\"service_center.html\">服务中心<p>SERVICE CENTER5</p></a></li>\n                    </ul>\n                </div>"
+            template: "\n                <div>\n                    <a href=\"index.html\"><div id=\"top_logo\"></div></a>\n                    <ul class=\"menu\">\n                        <li><a href=\"about_us.html\">\u5173\u4E8E\u6211\u4EEC<p>ABOUT US</p></a></li>\n                        <li><a href=\"CuiZhenkuan.html\">\u5D14\u632F\u5BBD\u827A\u672F<p>CUIZHENKUAN ART</p></a></li>\n                        <li><a href=\"exhibition.html\">\u5C55\u89C8<p>EXHIBITION</p></a></li>\n                        <li><a href=\"public_education.html\">\u516C\u5171\u6559\u80B2<p>PUBLIC EDUCATION</p></a></li>\n                        <li><a href=\"research-collection.html\">\u5B66\u672F\u7814\u7A76\xB7\u9986\u85CF<p>RESEARCH\xB7COLLECTION</p></a></li>\n                        <li><a href=\"gallery-derivatives.html\">\u753B\u5ECA\xB7\u884D\u751F\u54C1<p>GALLERY\xB7DERIVATIVES</p></a></li>\n                        <li><a href=\"service_center.html\">\u670D\u52A1\u4E2D\u5FC3<p>SERVICE CENTER5</p></a></li>\n                    </ul>\n                </div>"
         }
     },
     el: "#common-header"
@@ -80,7 +80,7 @@ function directToDetailArticle(component) {
             if (!detailArticleHTML) {
                 // 如果没有文章数据数据。一般都是没有的，因为不会预加载，且上一篇详情隐藏后也会清除数据
                 this.detailArticleHTML = "<p>正在加载</p>";
-                var sURL = "ajax/detail.php?id=" + articleID + "&act=" + encodeURIComponent(location.hash.slice(1, nIDUnderline)),
+                var sURL = "ajax/detail.php?id=" + articleID + "&act=" + location.hash.slice(1, nIDUnderline),
                     fnSuccessCallback = function fnSuccessCallback(res) {
                     console.log(_this);
                     _this.detailArticleHTML = JSON.parse(res);
@@ -121,8 +121,8 @@ var vCatalog = new Vue({
 
         // 点击当前大小标题的序号，让右边版块的显示和隐藏绑定这两个序号
         currentLevel1Index: 0,
-        currentLevel2Index: null },
-    // 在点击没有二级标题的一级标题是，这个值为null
+        currentLevel2Index: null // 在点击没有二级标题的一级标题是，这个值为null
+    },
     methods: {
         display: function display(cataIndex, index) {
             this.currentLevel1Index = cataIndex;
@@ -186,10 +186,10 @@ var vCatalog = new Vue({
 
             if (index) {
                 // 点击二级标题
-                location.hash = this.catas[cataIndex][2].cata_c[index];
+                location.hash = encodeURIComponent(this.catas[cataIndex][2].cata_c[index]);
             } else {
                 // 点击一级标题
-                location.hash = this.catas[cataIndex][0].title_c;
+                location.hash = encodeURIComponent(this.catas[cataIndex][0].title_c);
             }
         }
     },
@@ -315,6 +315,7 @@ function exhibitionClass(elSelector) {
                 this.list = this.lists[this.catas[index]];
                 this.nCataIndex = index;
             },
+
             // 对象转数组
             // 组件中的exhibitionData属性接收的数据格式是数组，如果请求到的是对象，需要进行转换
             exhibitionItemDataObjToArr: function exhibitionItemDataObjToArr(obj) {
@@ -331,28 +332,24 @@ function exhibitionClass(elSelector) {
                 methods: {
                     // 显示详情文章页面
                     displayDetailArticle: function displayDetailArticle(articleID) {
-                        var _this2 = this;
-
                         if (articleID) {
-                            (function () {
-                                // 列表项图片绑定了详情文章ID才显示文章
-                                var parent = _this2.$parent;
-                                parent.bDisplayDetailArticle = true;
-                                var detailArticleHTML = parent.detailArticleHTML;
-                                if (!detailArticleHTML) {
-                                    // 如果没有文章数据数据。正常都是没有的，因为不会预加载，且上一篇详情隐藏后也会清除数据
-                                    parent.detailArticleHTML = "<p>正在加载……</p>";
-                                    var sURL = "ajax/detail.php?id=" + articleID + "&act=" + encodeURIComponent(location.hash.slice(1)),
-                                        fnSuccessCallback = function fnSuccessCallback(res) {
-                                        parent.detailArticleHTML = JSON.parse(res);
-                                    },
-                                        fnFailCallback = function fnFailCallback(status) {
-                                        console.error("加载详情页数据失败");
-                                    };
-                                    AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
-                                    location.hash = location.hash + "_" + articleID;
-                                }
-                            })();
+                            // 列表项图片绑定了详情文章ID才显示文章
+                            var parent = this.$parent;
+                            parent.bDisplayDetailArticle = true;
+                            var detailArticleHTML = parent.detailArticleHTML;
+                            if (!detailArticleHTML) {
+                                // 如果没有文章数据数据。正常都是没有的，因为不会预加载，且上一篇详情隐藏后也会清除数据
+                                parent.detailArticleHTML = "<p>正在加载……</p>";
+                                var sURL = "ajax/detail.php?id=" + articleID + "&act=" + location.hash.slice(1),
+                                    fnSuccessCallback = function fnSuccessCallback(res) {
+                                    parent.detailArticleHTML = JSON.parse(res);
+                                },
+                                    fnFailCallback = function fnFailCallback(status) {
+                                    console.error("加载详情页数据失败");
+                                };
+                                AJAX_GET(sURL, fnSuccessCallback, fnFailCallback);
+                                location.hash = location.hash + "_" + articleID;
+                            }
                         }
                     }
                 }
@@ -368,7 +365,7 @@ function exhibitionClass(elSelector) {
             },
             "uploaded-article": {
                 props: ["contentHtml"], // 详情文章的具体代码
-                template: "<article>\n                            <div v-html=\"contentHtml\"></div>\n                            <i class=\"close_article\" @click=\"closeDetailArticle\">关闭文章</i>\n                            <i class=\"backToTop\" @click=\"backToTop\">回到顶部</i>\n                        </article>",
+                template: "<article>\n                            <div v-html=\"contentHtml\"></div>\n                            <i class=\"close_article\" @click=\"closeDetailArticle\">\u5173\u95ED\u6587\u7AE0</i>\n                            <i class=\"backToTop\" @click=\"backToTop\">\u56DE\u5230\u9876\u90E8</i>\n                        </article>",
                 methods: {
                     closeDetailArticle: function closeDetailArticle() {
                         // 清除文章数据。如果不清除，加载其他文章时刚开始会显示上一次的
@@ -386,16 +383,16 @@ function exhibitionClass(elSelector) {
             }
         },
         created: function created() {
-            var _this3 = this;
+            var _this2 = this;
 
             // 接收侧目录组件发送的点击通知，关闭详情文章
             Bus.$on('clickCataToCloseDetailArticle', function (indexes) {
-                _this3.detailArticleHTML = "";
-                _this3.bDisplayDetailArticle = false;
+                _this2.detailArticleHTML = "";
+                _this2.bDisplayDetailArticle = false;
             });
         },
         mounted: function mounted() {
-            var _this4 = this;
+            var _this3 = this;
 
             var nIDUnderline = location.hash.indexOf("_");
             if (nIDUnderline > -1) {
@@ -407,9 +404,9 @@ function exhibitionClass(elSelector) {
                     if (!detailArticleHTML) {
                         // 如果没有文章数据数据。一般都是没有的，因为不会预加载，且上一篇详情隐藏后也会清除数据
                         this.detailArticleHTML = "<p>正在加载</p>";
-                        var sURL = "ajax/detail.php?id=" + articleID + "&act=" + encodeURIComponent(location.hash.slice(1, nIDUnderline)),
+                        var sURL = "ajax/detail.php?id=" + articleID + "&act=" + location.hash.slice(1, nIDUnderline),
                             fnSuccessCallback = function fnSuccessCallback(res) {
-                            _this4.detailArticleHTML = JSON.parse(res);
+                            _this3.detailArticleHTML = JSON.parse(res);
                         },
                             fnFailCallback = function fnFailCallback(status) {
                             console.error("加载详情页数据失败");
@@ -429,7 +426,7 @@ var vCommonFooter = new Vue({
     components: {
         "common-footer": {
             props: ["tabs", "bulletinNum", "bulletinIndex"],
-            template: "\n                <section>\n                    <div class=\"footer_up\">\n                        <div id=\"bulletin-tab\" v-if=\"tabs\">\n                            <h2>公告 BULLETIN</h2>\n                            <div>\n                                <h3>{{tabs[bulletinIndex][0]}}</h3>\n                                <p class=\"bulletin_content\">{{tabs[bulletinIndex][1]}}</p>\n                                <p>{{tabs[bulletinIndex][2]}}</p>\n                            </div>\n                            <ul>\n                                <li v-for=\"(item, index) in bulletinNum\" v-bind:class=\"{active_tab: index===bulletinIndex}\" @click=\"switchtab(index)\">●</li>\n                            </ul>\n                            <a href=\"service_center.html#公告\" target=\"_black\" class=\"more\">MORE</a>\n                        </div>\n                        <div id=\"gallery_base_info\">\n                            <h2>美术馆 ART GALLERY</h2>\n                            <p><span>开放时间：</span>周二至周日 9:30--17:00（16:30停止入馆）<br />周一闭馆（节假日除外，特殊情况将在本网站通知）</p>\n                            <p><span>地址：</span>西安市灞桥区灞桥生态湿地公园柳雪路996号</p>\n                            <p><span>电话：</span>029-83626699</p>\n                        </div>\n                        <i></i>\n                        <div style=\"clear:both;\"></div>\n                    </div>\n                    <div class=\"footer_down\">\n                        <p>陕ICP备07030830号-5  Copyright © 2015 czkam.net Inc. All Rights Reserved. 崔振宽美术馆 版权所有  Designed by 凡卡互动</p>\n                        <div>\n                            <a href=\"service_center.html#公告\" target=\"_blank\">会员</a>\n                            &nbsp;&nbsp;|&nbsp;&nbsp;\n                            <a href=\"about_us.html#简介\" target=\"_blank\">联系我们</a>\n                            &nbsp;&nbsp;|&nbsp;&nbsp;\n                            <a href=\"service_center.html#公告\" target=\"_blank\">下载专区</a>\n                        </div>\n                        <i></i>\n                    </div>\n                </section>\n                ",
+            template: "\n                <section>\n                    <div class=\"footer_up\">\n                        <div id=\"bulletin-tab\" v-if=\"tabs\">\n                            <h2>\u516C\u544A BULLETIN</h2>\n                            <div>\n                                <h3>{{tabs[bulletinIndex][0]}}</h3>\n                                <p class=\"bulletin_content\">{{tabs[bulletinIndex][1]}}</p>\n                                <p>{{tabs[bulletinIndex][2]}}</p>\n                            </div>\n                            <ul>\n                                <li v-for=\"(item, index) in bulletinNum\" v-bind:class=\"{active_tab: index===bulletinIndex}\" @click=\"switchtab(index)\">\u25CF</li>\n                            </ul>\n                            <a href=\"service_center.html#\u516C\u544A\" target=\"_black\" class=\"more\">MORE</a>\n                        </div>\n                        <div id=\"gallery_base_info\">\n                            <h2>\u7F8E\u672F\u9986 ART GALLERY</h2>\n                            <p><span>\u5F00\u653E\u65F6\u95F4\uFF1A</span>\u5468\u4E8C\u81F3\u5468\u65E5 9:30--17:00\uFF0816:30\u505C\u6B62\u5165\u9986\uFF09<br />\u5468\u4E00\u95ED\u9986\uFF08\u8282\u5047\u65E5\u9664\u5916\uFF0C\u7279\u6B8A\u60C5\u51B5\u5C06\u5728\u672C\u7F51\u7AD9\u901A\u77E5\uFF09</p>\n                            <p><span>\u5730\u5740\uFF1A</span>\u897F\u5B89\u5E02\u705E\u6865\u533A\u705E\u6865\u751F\u6001\u6E7F\u5730\u516C\u56ED\u67F3\u96EA\u8DEF996\u53F7</p>\n                            <p><span>\u7535\u8BDD\uFF1A</span>029-83626699</p>\n                        </div>\n                        <i></i>\n                        <div style=\"clear:both;\"></div>\n                    </div>\n                    <div class=\"footer_down\">\n                        <p>\n                            \u9655ICP\u590715004289\u53F7-1  Copyright \xA9 2017 czkam.net Inc. All Rights Reserved. \u5D14\u632F\u5BBD\u7F8E\u672F\u9986 \u7248\u6743\u6240\u6709\n                            <a href=\"http://www.funca.com.cn\" title=\"\u51E1\u5361\u4E92\u52A8\" target=\"_blank\">Designed by</a>\n                            <a href=\"http://www.funca.com.cn\" title=\"\u6700\u5177\u4EF7\u503C\u7684\u4E92\u8054\u7F51\u54C1\u724C\u8BBE\u8BA1\" target=\"_blank\">\u51E1\u5361\u4E92\u52A8</a>\n                        </p>\n                        <div>\n                            <a href=\"service_center.html#\u516C\u544A\" target=\"_blank\">\u4F1A\u5458</a>\n                            &nbsp;&nbsp;|&nbsp;&nbsp;\n                            <a href=\"about_us.html#\u7B80\u4ECB\" target=\"_blank\">\u8054\u7CFB\u6211\u4EEC</a>\n                            &nbsp;&nbsp;|&nbsp;&nbsp;\n                            <a href=\"service_center.html#\u516C\u544A\" target=\"_blank\">\u4E0B\u8F7D\u4E13\u533A</a>\n                        </div>\n                        <i></i>\n                    </div>\n                </section>\n                ",
             methods: {
                 switchtab: function switchtab(index) {
                     this.$parent.bulletinIndex = index;
@@ -443,25 +440,23 @@ var vCommonFooter = new Vue({
         bulletinIndex: 0
     },
     mounted: function mounted() {
-        var _this5 = this;
+        var _this4 = this;
 
         // 公告数据是每个页都会用的，所以一个页面请求了，就存起来
         var aBulletinTabs = JSON.parse(sessionStorage.getItem("bulletin"));
         if (aBulletinTabs) {
-            (function () {
-                // 已经有了公告数据
-                var nLen = aBulletinTabs.length,
-                    index = 0;
-                if (nLen > 0) {
-                    _this5.bulletinTabs = aBulletinTabs;
-                }
-                if (nLen > 1) {
-                    _this5.bulletinNum = nLen;
-                    setInterval(function () {
-                        _this5.bulletinIndex = ++index % nLen;
-                    }, 5000);
-                }
-            })();
+            // 已经有了公告数据
+            var nLen = aBulletinTabs.length,
+                index = 0;
+            if (nLen > 0) {
+                this.bulletinTabs = aBulletinTabs;
+            }
+            if (nLen > 1) {
+                this.bulletinNum = nLen;
+                setInterval(function () {
+                    _this4.bulletinIndex = ++index % nLen;
+                }, 5000);
+            }
         } else {
             var sURL = "http://www.czkam.com/ajax/index.php",
                 fnSuccessCallback = function fnSuccessCallback(res) {
@@ -472,12 +467,12 @@ var vCommonFooter = new Vue({
                     aBulletinTabs = aBulletinTabs.map(function (item) {
                         return [item.title, stripHTMLTag(item.detail), item.time];
                     });
-                    _this5.bulletinTabs = aBulletinTabs;
+                    _this4.bulletinTabs = aBulletinTabs;
                 }
                 if (nLen > 1) {
-                    _this5.bulletinNum = nLen;
+                    _this4.bulletinNum = nLen;
                     setInterval(function () {
-                        _this5.bulletinIndex = ++index % nLen;
+                        _this4.bulletinIndex = ++index % nLen;
                     }, 5000);
                 }
             },

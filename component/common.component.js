@@ -83,7 +83,7 @@ function directToDetailArticle(component){
             let detailArticleHTML = this.detailArticleHTML;
             if(!detailArticleHTML){ // 如果没有文章数据数据。一般都是没有的，因为不会预加载，且上一篇详情隐藏后也会清除数据
                 this.detailArticleHTML = "<p>正在加载</p>"
-                let sURL = "ajax/detail.php?id=" + articleID + "&act=" + encodeURIComponent(location.hash.slice(1, nIDUnderline)),
+                let sURL = "ajax/detail.php?id=" + articleID + "&act=" + location.hash.slice(1, nIDUnderline),
                 fnSuccessCallback = (res)=>{
                     console.log(this);
                     this.detailArticleHTML = JSON.parse(res);
@@ -194,10 +194,10 @@ let vCatalog = new Vue({
 
 
             if(index){ // 点击二级标题
-                location.hash = ((this.catas)[cataIndex][2].cata_c)[index];
+                location.hash = encodeURIComponent(((this.catas)[cataIndex][2].cata_c)[index]);
             }
             else{ // 点击一级标题
-                location.hash = (this.catas)[cataIndex][0].title_c;
+                location.hash = encodeURIComponent((this.catas)[cataIndex][0].title_c);
             }
 
         }
@@ -362,7 +362,7 @@ function exhibitionClass(elSelector){
                             let detailArticleHTML = parent.detailArticleHTML;
                             if(!detailArticleHTML){ // 如果没有文章数据数据。正常都是没有的，因为不会预加载，且上一篇详情隐藏后也会清除数据
                                 parent.detailArticleHTML = "<p>正在加载……</p>"
-                                let sURL = "ajax/detail.php?id=" + articleID + "&act=" + encodeURIComponent(location.hash.slice(1)),
+                                let sURL = "ajax/detail.php?id=" + articleID + "&act=" + location.hash.slice(1),
                                     fnSuccessCallback = function(res){
                                         parent.detailArticleHTML = JSON.parse(res);
                                     },
@@ -424,7 +424,7 @@ function exhibitionClass(elSelector){
                     let detailArticleHTML = this.detailArticleHTML;
                     if(!detailArticleHTML){ // 如果没有文章数据数据。一般都是没有的，因为不会预加载，且上一篇详情隐藏后也会清除数据
                         this.detailArticleHTML = "<p>正在加载</p>"
-                        let sURL = "ajax/detail.php?id=" + articleID + "&act=" + encodeURIComponent(location.hash.slice(1, nIDUnderline)),
+                        let sURL = "ajax/detail.php?id=" + articleID + "&act=" + location.hash.slice(1, nIDUnderline),
                             fnSuccessCallback = (res)=>{
                                 this.detailArticleHTML = JSON.parse(res);
                             },
@@ -472,7 +472,11 @@ let vCommonFooter = new Vue({
                         <div style="clear:both;"></div>
                     </div>
                     <div class="footer_down">
-                        <p>陕ICP备07030830号-5  Copyright © 2015 czkam.net Inc. All Rights Reserved. 崔振宽美术馆 版权所有  Designed by 凡卡互动</p>
+                        <p>
+                            陕ICP备15004289号-1  Copyright © 2017 czkam.net Inc. All Rights Reserved. 崔振宽美术馆 版权所有
+                            <a href="http://www.funca.com.cn" title="凡卡互动" target="_blank">Designed by</a>
+                            <a href="http://www.funca.com.cn" title="最具价值的互联网品牌设计" target="_blank">凡卡互动</a>
+                        </p>
                         <div>
                             <a href="service_center.html#公告" target="_blank">会员</a>
                             &nbsp;&nbsp;|&nbsp;&nbsp;
