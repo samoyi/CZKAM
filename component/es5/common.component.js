@@ -68,22 +68,19 @@ function displayContentSection(nLevel1Index, nLevel2Index) {
 
 // 手动显示详情文章。用于通过连接直接进入详情页
 function directToDetailArticle(component) {
-    var _this = this;
-
     var nIDUnderline = location.hash.indexOf("_");
     if (nIDUnderline > -1) {
         // 直接进入详情页
         var articleID = location.hash.slice(nIDUnderline + 1);
         if (articleID) {
-            this.bDisplayDetailArticle = true;
-            var detailArticleHTML = this.detailArticleHTML;
+            component.bDisplayDetailArticle = true;
+            var detailArticleHTML = component.detailArticleHTML;
             if (!detailArticleHTML) {
                 // 如果没有文章数据数据。一般都是没有的，因为不会预加载，且上一篇详情隐藏后也会清除数据
-                this.detailArticleHTML = "<p>正在加载</p>";
+                component.detailArticleHTML = "<p>正在加载</p>";
                 var sURL = "ajax/detail.php?id=" + articleID + "&act=" + location.hash.slice(1, nIDUnderline),
                     fnSuccessCallback = function fnSuccessCallback(res) {
-                    console.log(_this);
-                    _this.detailArticleHTML = JSON.parse(res);
+                    component.detailArticleHTML = JSON.parse(res);
                 },
                     fnFailCallback = function fnFailCallback(status) {
                     console.error("加载详情页数据失败");
@@ -383,16 +380,16 @@ function exhibitionClass(elSelector) {
             }
         },
         created: function created() {
-            var _this2 = this;
+            var _this = this;
 
             // 接收侧目录组件发送的点击通知，关闭详情文章
             Bus.$on('clickCataToCloseDetailArticle', function (indexes) {
-                _this2.detailArticleHTML = "";
-                _this2.bDisplayDetailArticle = false;
+                _this.detailArticleHTML = "";
+                _this.bDisplayDetailArticle = false;
             });
         },
         mounted: function mounted() {
-            var _this3 = this;
+            var _this2 = this;
 
             var nIDUnderline = location.hash.indexOf("_");
             if (nIDUnderline > -1) {
@@ -406,7 +403,7 @@ function exhibitionClass(elSelector) {
                         this.detailArticleHTML = "<p>正在加载</p>";
                         var sURL = "ajax/detail.php?id=" + articleID + "&act=" + location.hash.slice(1, nIDUnderline),
                             fnSuccessCallback = function fnSuccessCallback(res) {
-                            _this3.detailArticleHTML = JSON.parse(res);
+                            _this2.detailArticleHTML = JSON.parse(res);
                         },
                             fnFailCallback = function fnFailCallback(status) {
                             console.error("加载详情页数据失败");
@@ -440,7 +437,7 @@ var vCommonFooter = new Vue({
         bulletinIndex: 0
     },
     mounted: function mounted() {
-        var _this4 = this;
+        var _this3 = this;
 
         // 公告数据是每个页都会用的，所以一个页面请求了，就存起来
         var aBulletinTabs = JSON.parse(sessionStorage.getItem("bulletin"));
@@ -454,7 +451,7 @@ var vCommonFooter = new Vue({
             if (nLen > 1) {
                 this.bulletinNum = nLen;
                 setInterval(function () {
-                    _this4.bulletinIndex = ++index % nLen;
+                    _this3.bulletinIndex = ++index % nLen;
                 }, 5000);
             }
         } else {
@@ -467,12 +464,12 @@ var vCommonFooter = new Vue({
                     aBulletinTabs = aBulletinTabs.map(function (item) {
                         return [item.title, stripHTMLTag(item.detail), item.time];
                     });
-                    _this4.bulletinTabs = aBulletinTabs;
+                    _this3.bulletinTabs = aBulletinTabs;
                 }
                 if (nLen > 1) {
-                    _this4.bulletinNum = nLen;
+                    _this3.bulletinNum = nLen;
                     setInterval(function () {
-                        _this4.bulletinIndex = ++index % nLen;
+                        _this3.bulletinIndex = ++index % nLen;
                     }, 5000);
                 }
             },

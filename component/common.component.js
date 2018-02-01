@@ -79,14 +79,13 @@ function directToDetailArticle(component){
     if( nIDUnderline>-1 ){ // 直接进入详情页
         let articleID = location.hash.slice(nIDUnderline+1);
         if(articleID){
-            this.bDisplayDetailArticle = true;
-            let detailArticleHTML = this.detailArticleHTML;
+            component.bDisplayDetailArticle = true;
+            let detailArticleHTML = component.detailArticleHTML;
             if(!detailArticleHTML){ // 如果没有文章数据数据。一般都是没有的，因为不会预加载，且上一篇详情隐藏后也会清除数据
-                this.detailArticleHTML = "<p>正在加载</p>"
+                component.detailArticleHTML = "<p>正在加载</p>"
                 let sURL = "ajax/detail.php?id=" + articleID + "&act=" + location.hash.slice(1, nIDUnderline),
                 fnSuccessCallback = (res)=>{
-                    console.log(this);
-                    this.detailArticleHTML = JSON.parse(res);
+                    component.detailArticleHTML = JSON.parse(res);
                 },
                 fnFailCallback = function(status){
                     console.error("加载详情页数据失败");
