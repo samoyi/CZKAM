@@ -253,10 +253,16 @@ let vCatalog = new Vue({
     updated(){
         // let subTitle = ((this.catas)[0][2].cata_c)[0];
         let subTitle = this.currentLevel2Title;
-        // 有二级标题则显示二级标题，否则一级标题
+        // hash显示为 一级或二级标题 加 _文章id。 如果当前不是文章详情，则只显示标题
+        // 有二级标题则显示二级标题，否则一级标题。
+        // 如果都没有，说明是直接从详情页刷新，则hash不变
         let nIDUnderline = location.hash.indexOf("_"),
             sIDStr = ( nIDUnderline>-1) ? location.hash.slice(nIDUnderline) : "";
-        location.hash = (subTitle ? subTitle : this.currentLevel1Title) + sIDStr;
+
+        let hashTitle = subTitle ? subTitle : this.currentLevel1Title
+        if(hashTitle){
+            location.hash = hashTitle + sIDStr;
+        }
     },
 });
 
