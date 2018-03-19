@@ -1,0 +1,104 @@
+<template>
+    <div id="wrapper">
+        <header id="common-header">
+            <header-template></header-template>
+        </header>
+        <section id="content">
+            <section id="blockWrapper">
+                <carousel-box :carousel-data="carouselData"></carousel-box>
+                <div id="exhibition-tab">
+                    <h2>展览 EXHIBITION</h2>
+                    <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/exhibition/head.jpg" />
+                    <exhibition-news v-for="item in exhibitionNews" :news="item"></exhibition-news>
+                    <a href="exhibition.html" target="_blank" class="more">MORE</a>
+                </div>
+                <div id="public_education-tab">
+                    <h2>公共教育 PUBLIC EDUCATION</h2>
+                    <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/public/head.jpg" />
+                    <public_education-news v-for="item in publicEducationNews" :news="item"></public_education-news>
+                    <a href="public_education.html" target="_blank" class="more">MORE</a>
+                </div>
+                <div id="bulletin-tab">
+                    <h2>公告 BULLETIN</h2>
+                    <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/bulletin/head.jpg" />
+                    <bulletin-tab :tabs="bulletinTabs" :cur-index="bulletinIndex"></bulletin-tab>
+                    <a href="service_center.html#公告" target="_blank" class="more">MORE</a>
+                </div>
+                <div id="gallery_base_info">
+                    <gallery-base-info></gallery-base-info>
+                    <i class="code"></i><!-- 二维码 -->
+                </div>
+                <p style="clear:both;"></p>
+            </section>
+            <div id="blockSelector">
+                <div class="left_arrow"></div>
+                <ul>
+                    <li>展览<br /><i></i><br /><span>EXHIBITION</span></li>
+                    <li>公共教育<br /><i></i><br /><span>PUBLIC EDUCATION</span></li>
+                    <li>公告<br /><i></i><br /><span>BULLETIN</span></li>
+                    <li>美术馆<br /><i></i><br /><span>ART MUSEUM</span></li>
+                </ul>
+                <div class="right_arrow"></div>
+            </div>
+        </section>
+        <footer id="footer">
+            <p>陕ICP备07030830号-5  Copyright © 2015 czkam.net Inc. All Rights Reserved. 崔振宽美术馆 版权所有  Designed by 凡卡互动</p>
+            <div>
+                <a href="service_center.html#会员" target="_blank">会员</a>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="about_us.html#联系我们" target="_blank">联系我们</a>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href="service_center.html#下载专区" target="_blank">下载专区</a>
+            </div>
+            <i></i> <!-- 底部logo -->
+        </footer>
+    </div>
+</template>
+
+<script>
+// import 'https://cdn.bootcss.com/vue/2.4.2/vue.min.js';
+// import 'https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.min.js';
+// import '../../js/index.component.js';
+
+export default {
+    data () {
+        return {
+            curPage: 'home.html',
+            linkTo: 'test.html'
+        }
+    }
+}
+</script>
+
+<style lang="scss">
+// @import 'http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/css/common20170803.css';
+// @import 'http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/css/index20170803.css';
+// @import 'https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css';
+
+#wrapper {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+}
+
+h1, h2 {
+    font-weight: normal;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+a {
+    color: #42b983;
+}
+</style>
