@@ -10,10 +10,9 @@ async function fetchJSON(sJSONName){
         return await {result: await response.json()};
     }
     catch(err){
-        throw Error(err);
+        throw new Error(err);
     }
 }
-
 
 module.exports = {
     fetchJSON,

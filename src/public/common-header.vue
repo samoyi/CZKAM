@@ -65,6 +65,7 @@ export default {
     },
     mounted(){
         commonJS.then(data=>{
+            console.log(data);
             this.mainMenu = data;
         })
         .catch(err=>{
