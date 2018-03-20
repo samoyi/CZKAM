@@ -1,9 +1,7 @@
 <template>
     <div id="wrapper">
-        <header id="common-header">
-            <header-template></header-template>
-        </header>
-        <section id="content">
+        <common-header></common-header>
+        <!-- <section id="content">
             <section id="blockWrapper">
                 <carousel-box :carousel-data="carouselData"></carousel-box>
                 <div id="exhibition-tab">
@@ -26,7 +24,7 @@
                 </div>
                 <div id="gallery_base_info">
                     <gallery-base-info></gallery-base-info>
-                    <i class="code"></i><!-- 二维码 -->
+                    <i class="code"></i>
                 </div>
                 <p style="clear:both;"></p>
             </section>
@@ -50,55 +48,38 @@
                 &nbsp;&nbsp;|&nbsp;&nbsp;
                 <a href="service_center.html#下载专区" target="_blank">下载专区</a>
             </div>
-            <i></i> <!-- 底部logo -->
-        </footer>
+            <i></i>
+        </footer> -->
     </div>
 </template>
 
 <script>
-// import 'https://cdn.bootcss.com/vue/2.4.2/vue.min.js';
-// import 'https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.min.js';
-// import '../../js/index.component.js';
+
+import commonHeader from '../../public/common-header.vue';
+
+// import commonHeader from '../../public/carousel-box.vue';
 
 export default {
     data () {
         return {
-            curPage: 'home.html',
-            linkTo: 'test.html'
+
         }
+    },
+    components: {
+        // 'common-header':
+        commonHeader,
+        // 'carousel-box':
+        // carouselBox,
+    },
+    mouted(){
+        window.onload = function(){
+            // 预加载轮播图连接的资源
+            let cssPreloader = new Image();
+            cssPreloader.src = "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/css/common_page20170808.css";
+        };
     }
 }
 </script>
 
 <style lang="scss">
-// @import 'http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/css/common20170803.css';
-// @import 'http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/css/index20170803.css';
-// @import 'https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css';
-
-#wrapper {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-}
-
-h1, h2 {
-    font-weight: normal;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    display: inline-block;
-    margin: 0 10px;
-}
-
-a {
-    color: #42b983;
-}
 </style>
