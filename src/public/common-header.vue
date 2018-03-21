@@ -18,72 +18,16 @@
 
 <script>
 
-import commonJS from './common.js';
+import {fetchJSON} from './myUtil.js';
 
 export default {
     data () {
         return {
             mainMenu: [],
-            // mainMenu: [
-            //     {
-            //         "link": "about_us.html",
-            //         "ch": "关于我们",
-            //         "en": "ABOUT US"
-            //     },
-            //     {
-            //         "link": "CuiZhenkuan.html",
-            //         "ch": "崔振宽艺术",
-            //         "en": "CUIZHENKUAN ART"
-            //     },
-            //     {
-            //         "link": "exhibition.html",
-            //         "ch": "展览",
-            //         "en": "EXHIBITION"
-            //     },
-            //     {
-            //         "link": "public_education.html",
-            //         "ch": "公共教育",
-            //         "en": "PUBLIC EDUCATION"
-            //     },
-            //     {
-            //         "link": "research-collection.html",
-            //         "ch": "学术研究·馆藏",
-            //         "en": "RESEARCH·COLLECTION"
-            //     },
-            //     {
-            //         "link": "gallery-derivatives.html",
-            //         "ch": "画廊·衍生品",
-            //         "en": "GALLERY·DERIVATIVES"
-            //     },
-            //     {
-            //         "link": "service_center.html",
-            //         "ch": "服务中心",
-            //         "en": "SERVICE CENTER"
-            //     }
-            // ],
         }
     },
     mounted(){
-        commonJS.then(data=>{
-            console.log(data);
-            this.mainMenu = data;
-        })
-        .catch(err=>{
-            throw new Error(err);
-        });
-        // let resd = null;
-        // fetch('/data/mainMenu.json')
-        // .then(res=>{
-        //     return res.json();
-        //     // resd = res;
-        // })
-        // .then(data=>{
-        //     return this.mainMenu = data;
-        // })
-        // .catch(err=>{
-        //     throw new Error(err);
-        // })
-
+        fetchJSON.call(this, 'mainMenu', 'mainMenu');
     },
 }
 </script>

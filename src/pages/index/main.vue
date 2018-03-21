@@ -1,7 +1,7 @@
 <template>
     <div id="wrapper">
         <common-header></common-header>
-        <!-- <section id="content">
+        <section id="content">
             <section id="blockWrapper">
                 <carousel-box :carousel-data="carouselData"></carousel-box>
                 <div id="exhibition-tab">
@@ -49,29 +49,31 @@
                 <a href="service_center.html#下载专区" target="_blank">下载专区</a>
             </div>
             <i></i>
-        </footer> -->
+        </footer>
     </div>
 </template>
 
 <script>
 
-import commonHeader from '../../public/common-header.vue';
+import {fetchJSON} from '../../public/myUtil.js';
 
-// import commonHeader from '../../public/carousel-box.vue';
+import commonHeader from '../../public/common-header.vue';
+import carouselBox from '../../public/carousel-box.vue';
 
 export default {
     data () {
         return {
-
+            carouselData,
         }
     },
     components: {
         // 'common-header':
         commonHeader,
-        // 'carousel-box':
+        carouselBox,
         // carouselBox,
     },
     mouted(){
+        fetchJSON.call(this, 'carousel', 'carouselData');
         window.onload = function(){
             // 预加载轮播图连接的资源
             let cssPreloader = new Image();

@@ -1,0 +1,20 @@
+[
+    {
+        "title": "轮播图一",
+        "img": "http://czkam.com/uploads/carousel/201709250209235799625.jpg",
+        "link": "https://github.com/koajs/koa/blob/master/lib/request.js",
+        "tag": "request"
+    },
+    {
+        "title": "轮播图二",
+        "img": "http://czkam.com/uploads/carousel/201711080111532402481.jpg",
+        "link": "https://github.com/koajs/koa/blob/master/lib/response.js",
+        "tag": "response"
+    },
+    {
+        "title": "轮播图三",
+        "img": "http://czkam.com/uploads/carousel/201711080111579841194.jpg",
+        "link": "https://github.com/koajs/koa/blob/master/lib/context.js",
+        "tag": "context"
+    }
+]

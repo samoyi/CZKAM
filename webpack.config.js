@@ -25,9 +25,7 @@ function generateLinkNodes(sPageName){
                     + cur + '">';
         }, '');
     }
-    else{
-        return '';
-    }
+    return '';
 }
 function generateScriptNodes(sPageName){
     const aJS = oPageConfig[sPageName].js;
@@ -36,9 +34,7 @@ function generateScriptNodes(sPageName){
             return acc + '<script src="' + cur + '"></script>';
         }, '');
     }
-    else{
-        return '';
-    }
+    return '';
 }
 
 // 遍历sPagesDir生成的多入口对象
@@ -49,10 +45,9 @@ const oEntries = ((sPagesDir)=>{
     contents.forEach(item=>{
         if(fs.statSync(sPagesDir+item).isDirectory()){
             // 每个页面目录下的main.js文件作为该页面的entry文件
-            oEntries[item] = sPagesDir+item + '/main.js';
+            // 这里数组语法是使用了multi-main entry的功能，为每个页面注入依赖
+            oEntries[item] = ['babel-polyfill', sPagesDir+item + '/main.js'];
             // 为每个页面配置要生成的html入口文件
-            // console.log(oPageConfig[item]);
-            // console.log(item);
             aHWP.push(new HtmlWebpackPlugin({
                 template: 'template.html', // 使用同一个模板
                 // 所有html统一放在 /dist/html 目录下
