@@ -1,18 +1,14 @@
-# czkam-vuecli
+# 崔振宽美术馆PC网站前端重构
+* **该重构版现在并未上线。**具体原因见下面【数据模拟】部分  
+* 目前正在使用旧版前端的网站地址：[czkam.com](http://czkam.com)
 
-> A Vue.js project
+## 重构背景
+1. 现有的网站是刚开始学习使用Vue不久时编写的，结构不清晰，模块化不明确，不利于后期维护。  
+2. 该重构版在使用Vue-cli的基础上修改为多页面配置，模块化比较清晰，便于维护。
+3. Vue-cli的多页面配置参考[这个Demo](https://github.com/samoyi/VuecliMultiPageDemo)。
 
-## Build Setup
 
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-```
-
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## 数据模拟
+* 前端重构时，数据库无法访问，因此使用`/data`目录下的json文件模拟数据库
+* 对数据接口格式做了调整，但重构时公司没有负责后端的人，又加上无法取得数据，因此该版并
+未上线。上线时需要对后端相应的数据接口格式做出调整。

@@ -6,10 +6,11 @@
     <div id="blockSelector">
         <div class="left_arrow"></div>
         <ul>
-            <li>展览<br /><i></i><br /><span>EXHIBITION</span></li>
-            <li>公共教育<br /><i></i><br /><span>PUBLIC EDUCATION</span></li>
-            <li>公告<br /><i></i><br /><span>BULLETIN</span></li>
-            <li>美术馆<br /><i></i><br /><span>ART MUSEUM</span></li>
+            <li v-for="name in tabNames">
+                {{name[0]}}<br />
+                <i></i><br />
+                <span>{{name[1]}}</span>
+            </li>
         </ul>
         <div class="right_arrow"></div>
     </div>
@@ -21,11 +22,15 @@
 export default {
     data () {
         return {
-
+            tabNames: [ // 目前的样式和交互都要求必须是4项
+                ['展览', 'EXHIBITION'],
+                ['公共教育', 'PUBLIC EDUCATION'],
+                ['公告', 'BULLETIN'],
+                ['美术馆', 'ART MUSEUM'],
+            ]
         }
     },
     mounted(){
-        // 1920版块滑动
         let oBlockWrapper = document.querySelector("#blockWrapper"),
             oBlockSelector = document.querySelector("#blockSelector"),
             aSelectorList = oBlockSelector.querySelectorAll("li"),
@@ -77,7 +82,7 @@ export default {
 
 @import "../../public/basic.scss";
 @import "../../public/common.scss";
-@import "../../public/index.scss";
+@import "./index.scss";
 
 
 #blockSelector{

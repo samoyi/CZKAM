@@ -31,7 +31,7 @@ export default {
 
 @import "../../../public/basic.scss";
 @import "../../../public/common.scss";
-@import "../../../public/index.scss";
+@import "../index.scss";
 
 
 #base-info-tab{

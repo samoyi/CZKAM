@@ -86,12 +86,9 @@ $carousel_width: 813px;
                 font:{
                     size: 18px;
                     weight: bold;
-
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
                     width: 760px;
                 }
+                color: black;
                 position: absolute;
                 bottom: 22px; left: 22px;
                 span{

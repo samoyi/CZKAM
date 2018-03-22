@@ -1,5 +1,5 @@
 <!--
-    首页美术馆信息tab
+    包含轮播图、展览tab、公共教育tab、公告tab和美术馆信息tab
 -->
 
 <template>
@@ -43,7 +43,7 @@ export default {
 
 @import "../../public/basic.scss";
 @import "../../public/common.scss";
-@import "../../public/index.scss";
+@import "./index.scss";
 
 $carousel_width: 813px;
 $tab_width: 400px;
