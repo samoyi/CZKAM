@@ -1,0 +1,72 @@
+{
+    "carousel": [
+        {
+            "title": "轮播图标题一",
+            "img": "http://czkam.com/uploads/carousel/201709250209235799625.jpg",
+            "link": "https://github.com/koajs/koa/blob/master/lib/request.js",
+            "tag": "展览"
+        },
+        {
+            "title": "轮播图标题二",
+            "img": "http://czkam.com/uploads/carousel/201802020402376181057.jpg",
+            "link": "https://github.com/koajs/koa/blob/master/lib/response.js",
+            "tag": "公益"
+        },
+        {
+            "title": "轮播图标题三",
+            "img": "http://czkam.com/uploads/carousel/201708020408284683528.jpg",
+            "link": "https://github.com/koajs/koa/blob/master/lib/context.js",
+            "tag": "讲座"
+        }
+    ],
+    "news": [
+        {
+            "tag": "展览预告",
+            "name": "展览新闻1",
+            "link": "https://github.com/koajs/koa/blob/master/lib/request.js",
+            "des": "展览新闻1的描述"
+        },
+        {
+            "tag": "展览回顾",
+            "name": "展览新闻2",
+            "link": "https://github.com/koajs/koa/blob/master/lib/response.js",
+            "des": "展览新闻2的描述 展览新闻2的描述 展览新闻2的描述 展览新闻2的描述 展览新闻2的描述 展览新闻2的描述 展览新闻2的描述 展览新闻2的描述 展览新闻2的描述 展览新闻2的描述 展览新闻2的描述"
+        },
+        {
+            "tag": "展览回顾",
+            "name": "展览新闻3",
+            "link": "https://github.com/koajs/koa/blob/master/lib/context.js",
+            "des": "展览新闻3的描述"
+        }
+    ],
+    "public": [
+        {
+            "tag": "教育实践",
+            "name": "公教新闻1",
+            "link": "https://github.com/koajs/koa/blob/master/lib/request.js",
+            "des": "公教新闻1的描述"
+        },
+        {
+            "tag": "书法班",
+            "name": "公教新闻2",
+            "link": "https://github.com/koajs/koa/blob/master/lib/response.js",
+            "des": "公教新闻2的描述"
+        },
+        {
+            "tag": "山水高研班",
+            "name": "公教新闻3",
+            "link": "https://github.com/koajs/koa/blob/master/lib/context.js",
+            "des": "公教新闻3的描述"
+        }
+    ],
+    "bulletin": [
+        {
+            "link": "https://github.com/koajs/koa/blob/master/lib/request.js",
+            "title": "公告1标题"
+        },
+        {
+            "link": "https://github.com/koajs/koa/blob/master/lib/response.js",
+            "title": "公告2标题公告2标题公告2标题公告2标题公告2标题公告2标题公告2标题公告2标题公告2标题"
+        }
+    ]
+}

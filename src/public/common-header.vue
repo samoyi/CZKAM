@@ -32,12 +32,15 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 
 @import './basic.scss';
 
+
+
 #common-header{
     width: 100%; height: $HEADER_HEIGHT;
+    font-family: "Microsoft YaHei";
     @media (min-width: 1920px){
         height: 120px;
     }
@@ -74,9 +77,11 @@ export default {
                 width: $HEADER_MENU__WIDTH/7;
                 float: left;
                 position:absolute;
-                color: $BASIC_BLACK;
                 font-size: 14px;
                 font-weight: bold;
+                a{
+                    color: $BASIC_BLACK;
+                }
                 p{
                     color: $STANDARD_COLOR;
                     margin-top: 4px;
