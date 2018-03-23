@@ -1,24 +1,20 @@
-<!--
-    首页footer
--->
-
 <template>
-    <footer id="footer">
-        <p>{{sICP}}  Copyright © {{nYear}} czkam.com Inc. All Rights Reserved. 崔振宽美术馆 版权所有  Designed by 凡卡互动</p>
+    <div class="footer_down">
+        <p>
+            陕ICP备15004289号-1  Copyright © {{nYear}} czkam.net Inc. All Rights Reserved. 崔振宽美术馆 版权所有
+            <a href="http://www.funca.com.cn" title="凡卡互动" target="_blank">Designed by</a>
+            <a href="http://www.funca.com.cn" title="最具价值的互联网品牌设计" target="_blank">凡卡互动</a>
+        </p>
         <div class="links" v-html="links"></div>
         <i></i>
-    </footer>
+    </div>
 </template>
 
 <script>
 
-import {fetchJSON} from '../../public/myUtil.js';
-
 export default {
     data () {
         return {
-            sICP: '陕ICP备07030830号-5',
-            nYear: 2015,
             aLink: [
                 {
                     href: 'service_center.html#会员',
@@ -36,6 +32,9 @@ export default {
         }
     },
     computed: {
+        nYear(){
+            return (new Date()).getFullYear();
+        },
         links(){
             let str = '';
             this.aLink.forEach((link,index)=>{
@@ -51,18 +50,16 @@ export default {
 }
 </script>
 
-
 <style scoped lang="scss">
 
-@import "../../public/basic.scss";
+@import './basic.scss';
 
-#footer{
+.footer_down{
     width: $FOOTER_WIDTH_1366;
     height: $FOOTER_DOWN_HEIGHT;
     box-sizing: border-box;
     color: $BASIC_GRAY;
     border-top: 1px solid $LINE_GRAY;
-    margin: 150px auto auto auto;
     @media (min-width: 1920px){
         width: $FOOTER_WIDTH_1920;
         position: absolute; bottom: 0;
@@ -80,9 +77,6 @@ export default {
         position: absolute;;
         left: 780px;
         line-height: $FOOTER_DOWN_HEIGHT;
-        a{
-            color: $BASIC_GRAY;
-        }
     }
     i{ // logo
         width: 149px; height: 30px;
@@ -97,6 +91,4 @@ export default {
         }
     }
 }
-
-
 </style>

@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // 设置执行`npm run dev`时打开哪一页
-const cur_page = 'index';
+const cur_page = 'CuiZhenkuan';
 
 
  // 放置所有页面的路径
