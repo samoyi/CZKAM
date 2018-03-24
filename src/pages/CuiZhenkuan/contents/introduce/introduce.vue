@@ -1,10 +1,15 @@
 <template>
-    <section class="article cuizhenkuan" v-html="contentHTML"></section>
+    <!-- <section class="cuizhenkuan" v-html="contentHTML"></section> -->
+    <article-page :html="contentHTML"></article-page>
 </template>
 
 <script>
 
+import articlePage from '../../../../public/article.vue';
 export default {
+    components:{
+        articlePage,
+    },
     data () {
         return {
             contentHTML: `
@@ -25,8 +30,31 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import "../../../../public/basic.scss";
 @import "../../../../public/common.scss";
 
+// .cuizhenkuan{
+//     h2{
+//         font-size: 16px;
+//         color: $BASIC_BLACK;
+//         span{
+//             display: none;
+//             font-size: 14px;
+//             color: $BASIC_GRAY;
+//             font-weight: bold;
+//         }
+//     }
+//     font-size: 12px;
+//     color: $BASIC_BLACK;
+//     p{
+//         margin-top: 24px;
+//     }
+//     .articalImgP{
+//         text-align: center;
+//         .articalImg{
+//             width:530px;
+//         }
+//     }
+// }
 </style>

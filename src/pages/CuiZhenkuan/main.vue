@@ -2,7 +2,8 @@
     <div id="wrapper">
         <common-header></common-header>
         <section id="CuiZhenkuan-middle" class="common-middle">
-            <common-cata @clickTitle="displayContent"></common-cata>
+            <common-cata :title="cataData.title"
+                    :catas="cataData.catas"></common-cata>
             <section class="content">
                 <section>
                     <router-view></router-view>
@@ -121,7 +122,10 @@ export default {
                 public: [],
                 bulletin: [],
             },
-
+            cataData: { // 目录的标题和列表
+                title: [],
+                catas: [],
+            },
         }
     },
     components: {
@@ -130,60 +134,60 @@ export default {
         commonFooter,
     },
     methods: {
-        displayContent(L1Index, L2Index){
-            let catas = document.querySelectorAll(".common-middle .content>section"), // 根据一级标题的版块分类
-            catas_len = catas.length;
-            for(let i=0; i<catas_len; i++){ // 循环所有大类
-                let items = catas[i].children, // 当前一级标题分类下的所有具体内容版块
-                    items_len = items.length;
-
-                /*
-                 * 具体的例子是，公共教育进去后，点击艺术大讲堂（01）再点击公教活动（0）
-                 * 下面的这一段的错误之处在于，先点击01（第一大标题第二个小标题），01版块正常显示，
-                 * 然后点击0（第一个大标题），i===cataIndex 为真，则显示00，但此时正在显示的01并未隐藏。
-                 * 然后进行第二轮循环，第二轮循环中，i===cataIndex 仍然为真，再次显示00,
-                 * 01仍然没有隐藏。于是两个子版块的内容就同时出现了。
-                 */
-                // for(let j=0; j<items_len; j++ ){
-                //     if( i===cataIndex ){ // 点击的是当前大类的一级标题或二级标题
-                //         if(j===index ){ // 点击二级标题
-                //             items[j].style.display = "block";
-                //             console.log("222");
-                //         }else if(index===undefined){ // 点击一级标题
-                //             items[0].style.display = "block";
-                //             console.log("111");
-                //         }else{
-                //             items[j].style.display = "none";
-                //         }
-                //     }
-                //     else{
-                //         items[j].style.display = "none";
-                //     }
-                // }
-                /*
-                 * 改成这个之后，在01显示的状态下点击0，会首先隐藏00，虽然此时00本来就是隐藏的。
-                 * 然后在进行判断，00会显示出来。进行下一轮循环，仍然是首先隐藏01，此前正在显示
-                 * 的01就被隐藏了，之后再进行判断，会再次显示已经显示的00。
-                 */
-
-                for(let j=0; j<items_len; j++ ){ // 循环一个大类中的所有小类
-                    items[j].style.display = "none"; // 先把所有的小类版块都隐藏
-                    if( i===nLevel1Index ){ // 点击的是当前大类的一级标题或二级标题
-
-                        if(j===nLevel2Index ){ // 点击二级标题
-                            items[j].style.display = "block";
-                        }
-                        else if(nLevel2Index===null){ // 点击一级标题
-                            items[0].style.display = "block";
-                        }
-                    }
-                }
-            }
-        },
+        // displayContent(L1Index, L2Index){
+        //     let catas = document.querySelectorAll(".common-middle .content>section"), // 根据一级标题的版块分类
+        //     catas_len = catas.length;
+        //     for(let i=0; i<catas_len; i++){ // 循环所有大类
+        //         let items = catas[i].children, // 当前一级标题分类下的所有具体内容版块
+        //             items_len = items.length;
+        //
+        //         /*
+        //          * 具体的例子是，公共教育进去后，点击艺术大讲堂（01）再点击公教活动（0）
+        //          * 下面的这一段的错误之处在于，先点击01（第一大标题第二个小标题），01版块正常显示，
+        //          * 然后点击0（第一个大标题），i===cataIndex 为真，则显示00，但此时正在显示的01并未隐藏。
+        //          * 然后进行第二轮循环，第二轮循环中，i===cataIndex 仍然为真，再次显示00,
+        //          * 01仍然没有隐藏。于是两个子版块的内容就同时出现了。
+        //          */
+        //         // for(let j=0; j<items_len; j++ ){
+        //         //     if( i===cataIndex ){ // 点击的是当前大类的一级标题或二级标题
+        //         //         if(j===index ){ // 点击二级标题
+        //         //             items[j].style.display = "block";
+        //         //             console.log("222");
+        //         //         }else if(index===undefined){ // 点击一级标题
+        //         //             items[0].style.display = "block";
+        //         //             console.log("111");
+        //         //         }else{
+        //         //             items[j].style.display = "none";
+        //         //         }
+        //         //     }
+        //         //     else{
+        //         //         items[j].style.display = "none";
+        //         //     }
+        //         // }
+        //         /*
+        //          * 改成这个之后，在01显示的状态下点击0，会首先隐藏00，虽然此时00本来就是隐藏的。
+        //          * 然后在进行判断，00会显示出来。进行下一轮循环，仍然是首先隐藏01，此前正在显示
+        //          * 的01就被隐藏了，之后再进行判断，会再次显示已经显示的00。
+        //          */
+        //
+        //         for(let j=0; j<items_len; j++ ){ // 循环一个大类中的所有小类
+        //             items[j].style.display = "none"; // 先把所有的小类版块都隐藏
+        //             if( i===nLevel1Index ){ // 点击的是当前大类的一级标题或二级标题
+        //
+        //                 if(j===nLevel2Index ){ // 点击二级标题
+        //                     items[j].style.display = "block";
+        //                 }
+        //                 else if(nLevel2Index===null){ // 点击一级标题
+        //                     items[0].style.display = "block";
+        //                 }
+        //             }
+        //         }
+        //     }
+        // },
     },
     mounted(){
-        // 获取首页数据
-        // fetchJSON.call(this, 'indexData', 'indexData');
+        // 获取左侧目录数据
+        fetchJSON.call(this, 'cata_cuizhenkuan', 'cataData');
     }
 }
 </script>

@@ -1,0 +1,24 @@
+{
+    "title": [
+        "关于我们",
+        "ABOUT US"
+    ],
+    "catas": [
+        {
+            "title_c": "美术馆",
+            "title_e": "ART-GALLERY",
+            "cata_c": ["简介", "大事记", "开放时间", "地理交通", "联系我们"],
+            "cata_e": ["INTRODUCE", "EVENTS", "OPENING-HOURS", "TRANSPORTATION", "CONTACT-US"],
+            "index": 0,
+            "display": true
+        },
+        {
+            "title_c": "配套设施",
+            "title_e": "FACILITIES",
+            "cata_c": ["艺术酒店", "咖啡厅"],
+            "cata_e": ["ART-HOTEL", "MO-COFFEE"],
+            "index": 1,
+            "display": true
+        }
+    ]
+}

@@ -1,0 +1,56 @@
+{
+    "title": [
+        "崔振宽艺术",
+        "CUI ZHENKUAN ART"
+    ],
+    "catas": [
+        {
+            "title_c": "崔振宽简介",
+            "title_e": "CUI-ZHENKUAN",
+            "cata_c": [],
+            "cata_e": [],
+            "index": 0,
+            "display": true
+        },
+        {
+            "title_c": "艺术年表",
+            "title_e": "ART-CHRONOLOGY",
+            "cata_c": [],
+            "cata_e": [],
+            "index": 1,
+            "display": true
+        },
+        {
+            "title_c": "作品",
+            "title_e": "WORKS",
+            "cata_c": [],
+            "cata_e": [],
+            "index": 2,
+            "display": true
+        },
+        {
+            "title_c": "艺术论著",
+            "title_e": "TREATISE",
+            "cata_c": [],
+            "cata_e": [],
+            "index": 3,
+            "display": false
+        },
+        {
+            "title_c": "艺术活动",
+            "title_e": "ACTIVITY",
+            "cata_c": [],
+            "cata_e": [],
+            "index": 4,
+            "display": false
+        },
+        {
+            "title_c": "艺术影像",
+            "title_e": "VIDEO",
+            "cata_c": [],
+            "cata_e": [],
+            "index": 5,
+            "display": true
+        }
+    ]
+}

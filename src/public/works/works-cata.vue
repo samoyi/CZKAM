@@ -1,22 +1,27 @@
 <template>
-    <div>
-    <li :class="{active_cata: thisIndex===cataIndex}"
-            @click="clickCata(cata_c)">{{cata_c}}</li>
-        </div>
+    <ul class="works_cata" v-if="catas_c.length">
+        <li :class="{active_cata: index===cataIndex}"
+                 v-for="(item,index) in catas_c"
+                @click="clickCata(index)">{{item}}</li>
+    </ul>
 </template>
 
 <script>
 
 export default {
-    props: ["cata_c", "thisIndex", "cataIndex"],
+    // catas_c 是作品分类的中文名数组。如果作品没有分类，传空数组
+    // cataIndex 是当前要显示的某一类的index
+    props: ["catas_c", "cataIndex"],
+    // props: ["cata_c", "thisIndex", "cataIndex"],
     data () {
         return {
 
         }
     },
     methods: {
-        clickCata(cata){
-            this.$emit("switchcata", this.$parent.catas_c.indexOf(cata));
+        clickCata(index){ // 点击作品分类菜单，发送该分类的index
+            this.$emit("switchcata", index);
+            // this.$emit("switchcata", this.$parent.catas_c.indexOf(cata));
         },
     },
 }
@@ -26,5 +31,19 @@ export default {
 
 @import '../basic.scss';
 @import '../common.scss';
+
+.works_cata{
+    height: 22px;
+    margin-top: 16px;
+    .active_cata{
+        color: $STANDARD_COLOR;
+    }
+    li{
+        height: 22px;
+        float: left;
+        margin-right: 30px;
+        cursor: pointer;
+    }
+}
 
 </style>

@@ -1,35 +1,13 @@
 <template>
     <section class="works">
-        <h2>作品  <span>WORKS</span></h2>
-        <!-- <ul class="works_cata">
-            <works-cata v-for="(item,index) in catas_c" :cata_c="item"
-                    :this-index="index" :cata-index="nCataIndex"
-                    @switchcata="switchworks">
-            </works-cata>
-        </ul> -->
+        <h2>画廊  <span>WORKS</span></h2>
         <works-cata :cata-index="nCataIndex" :catas_c="catas_c"
                     @switchcata="switchworks"></works-cata>
         <works-list :displayed-items="displayedItems"></works-list>
-        <!-- <div class="pagination_wrapper">
-            <ul v-if="list.length>nPerPage" class="pagination">
-                <list-pagination v-for="n in pageNum" :page-index="n-1"
-                        :class="{ currentLi:nPageIndex===n-1}"
-                        @switchpagination="switchpage">
-                </list-pagination>
-            </ul>
-        </div> -->
         <list-pagination :page-num="pageNum" :per-page="nPerPage"
                 :list="lists[catas[nCataIndex]]"
                 :pageIndex="nPageIndex" @switchpagination="switchpage">
         </list-pagination>
-        <!-- <div class="pagination_wrapper">
-            <ul v-if="list.length>nPerPage" class="pagination">
-                <list-pagination v-for="n in pageNum" :page-index="n-1"
-                        :class="{ currentLi:nPageIndex===n-1}"
-                        @switchpagination="switchpage">
-                </list-pagination>
-            </ul>
-        </div> -->
     </section>
 </template>
 

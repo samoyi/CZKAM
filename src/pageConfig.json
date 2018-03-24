@@ -3,7 +3,8 @@
         "title": "崔振宽美术馆"
     },
     "about_us": {
-        "title": "崔振宽美术馆 关于我们"
+        "title": "崔振宽美术馆 关于我们",
+        "js": ["http://api.map.baidu.com/api?v=2.0&ak=2fb7288457fc020326f0ffe5c35f1d55"]
     },
     "CuiZhenkuan": {
         "title": "崔振宽美术馆 崔振宽艺术"

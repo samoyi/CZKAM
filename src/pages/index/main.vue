@@ -41,10 +41,13 @@ export default {
 }
 </script>
 
-<!-- basic.scss设置的body样式因为要作用到组件外部的body，所以不能scoped -->
+<!-- 这里的body背景图因为要作用到外部，所以不能scoped -->
 <style lang="scss">
 @import "../../public/basic.scss";
 
+body{
+    background-image: url(http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/bg.jpg);
+}
 .index-footer-down{
     margin: 150px auto auto auto;
 }
