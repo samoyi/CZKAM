@@ -1,7 +1,7 @@
 <template>
-    <ul class="works_cata" v-if="catas_c.length">
+    <ul class="works_cata" v-if="catas_ch">
         <li :class="{active_cata: index===cataIndex}"
-                 v-for="(item,index) in catas_c"
+                 v-for="(item,index) in catas_ch"
                 @click="clickCata(index)">{{item}}</li>
     </ul>
 </template>
@@ -11,7 +11,7 @@
 export default {
     // catas_c 是作品分类的中文名数组。如果作品没有分类，传空数组
     // cataIndex 是当前要显示的某一类的index
-    props: ["catas_c", "cataIndex"],
+    props: ["catas_ch", "cataIndex"],
     // props: ["cata_c", "thisIndex", "cataIndex"],
     data () {
         return {

@@ -20,4 +20,11 @@ function fetchJSON(sJSONName, sReceptor){
     });
 }
 
-export {fetchJSON};
+
+function stripHTMLTag(str){
+    let tmpDiv = document.createElement("DIV");
+    tmpDiv.innerHTML = str;
+    return tmpDiv.innerText;
+}
+
+export {fetchJSON, stripHTMLTag};

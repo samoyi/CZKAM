@@ -1,8 +1,8 @@
 <template>
     <!-- <li @click="clickPagination(pageIndex)">{{pageIndex+1}}</li> -->
-    <!-- 作品数据还没加载好的时候list是undefined -->
-    <div class="pagination_wrapper" v-if="list">
-        <ul v-if="list.length>perPage" class="pagination">
+    <div class="pagination_wrapper" v-if="pageNum>1">
+        <!-- <ul v-if="list.length>perPage" class="pagination"> -->
+        <ul class="pagination">
             <!-- <list-pagination v-for="n in pageNum" :page-index="n-1"
                     :class="{ currentLi:nPageIndex===n-1}"
                     @switchpagination="switchpage">

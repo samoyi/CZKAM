@@ -1,0 +1,24 @@
+{
+    "title": [
+        "画廊·衍生品",
+        "GALLERY·DERIVATIVES"
+    ],
+    "catas": [
+        {
+            "title_c": "画廊",
+            "title_e": "GALLERY",
+            "cata_c": [],
+            "cata_e": [],
+            "index": 0,
+            "display": true
+        },
+        {
+            "title_c": "衍生品",
+            "title_e": "DERIVATIVES",
+            "cata_c": [],
+            "cata_e": [],
+            "index": 1,
+            "display": true
+        }
+    ]
+}

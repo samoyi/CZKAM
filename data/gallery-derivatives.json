@@ -1,19 +1,19 @@
 {
     "gallery": [
-        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/derivatives/0.jpg",
-        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/derivatives/1.jpg",
-        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/derivatives/2.jpg",
-        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/derivatives/3.jpg",
-        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/derivatives/4.jpg",
-        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/derivatives/5.jpg",
-        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/derivatives/6.jpg"
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/gallery/0.jpg","http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/gallery/0.jpg"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/gallery/1.jpg","http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/gallery/1.jpg"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/gallery/2.jpg","http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/gallery/2.jpg"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/gallery/3.jpg","http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/gallery/3.jpg"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/gallery/4.jpg","http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/gallery/4.jpg"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/gallery/5.jpg","http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/gallery/5.jpg"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/gallery/6.jpg","http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/gallery/6.jpg"]
     ],
     "derivatives": [
-        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/derivatives/0.jpg",
-        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/derivatives/1.jpg",
-        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/derivatives/2.jpg",
-        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/derivatives/3.jpg",
-        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/derivatives/4.jpg",
-        "http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/derivatives/5.jpg"
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/derivatives/0.jpg","http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/derivatives/0.jpg"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/derivatives/1.jpg","http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/derivatives/1.jpg"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/derivatives/2.jpg","http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/derivatives/2.jpg"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/derivatives/3.jpg","http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/derivatives/3.jpg"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/derivatives/4.jpg","http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/derivatives/4.jpg"],
+        ["http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/derivatives/5.jpg","http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/derivatives/5.jpg"]
     ]
 }

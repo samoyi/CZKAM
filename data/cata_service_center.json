@@ -1,0 +1,56 @@
+{
+    "title": [
+        "服务中心",
+        "SERVICE CENTER"
+    ],
+    "catas": [
+        {
+            "title_c": "公告",
+            "title_e": "BULLETIN",
+            "cata_c": [],
+            "cata_e": [],
+            "index": 0,
+            "display": true
+        },
+        {
+            "title_c": "会员",
+            "title_e": "MEMBER-SHIP",
+            "cata_c": [],
+            "cata_e": [],
+            "index": 1,
+            "display": true
+        },
+        {
+            "title_c": "下载专区",
+            "title_e": "DOWNLOAD",
+            "cata_c": [],
+            "cata_e": [],
+            "index": 2,
+            "display": true
+        },
+        {
+            "title_c": "意见留言",
+            "title_e": "COMMENTS",
+            "cata_c": [],
+            "cata_e": [],
+            "index": 3,
+            "display": false
+        },
+        {
+            "title_c": "艺术活动",
+            "title_e": "ACTIVITY",
+            "cata_c": [],
+            "cata_e": [],
+            "index": 4,
+            "display": false
+        },
+        {
+            "title_c": "艺术影像",
+            "title_e": "VIDEO",
+            "cata_c": [],
+            "cata_e": [],
+            "index": 5,
+            "display": true
+        }
+    ]
+}

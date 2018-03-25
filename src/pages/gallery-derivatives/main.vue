@@ -2,7 +2,7 @@
     <div id="wrapper">
         <common-header></common-header>
         <section class="common-middle">
-            <common-cata :title="cataData.title"
+            <common-cata :titles="cataData.title"
                     :catas="cataData.catas"></common-cata>
             <section class="content">
                 <section>
@@ -29,6 +29,10 @@ export default {
                 gallery: [],
                 derivatives: [],
             },
+            cataData: { // 目录的标题和列表
+                title: [],
+                catas: [],
+            },
         }
     },
     components: {
@@ -40,6 +44,7 @@ export default {
     },
     mounted(){
         // 获取左侧目录数据
+        fetchJSON.call(this, 'cata_gallery-derivatives', 'cataData');
         fetchJSON.call(this, 'gallery-derivatives', 'allData');
     }
 }

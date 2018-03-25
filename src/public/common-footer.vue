@@ -2,17 +2,17 @@
     <footer class="common-footer">
         <section>
             <div class="footer_up">
-                <div class="bulletin-tab" v-if="bulletin.length">
+                <div class="bulletin-tab" v-if="bulletins.length">
                     <h2>公告 BULLETIN</h2>
                     <div>
-                        <a :href="bulletin[curBulletinIndex].link">
-                        <h3>{{bulletin[curBulletinIndex].title}}</h3>
-                        <p class="bulletin_content">{{bulletin[curBulletinIndex].content}}</p>
+                        <a :href="bulletins[curBulletinIndex].link">
+                        <h3>{{bulletins[curBulletinIndex].title}}</h3>
+                        <p class="bulletin_content">{{bulletins[curBulletinIndex].content}}</p>
                         </a>
                     </div>
                     <ul>
                         <!-- 点击圆点切换公告 -->
-                        <li v-for="(item, index) in bulletin"
+                        <li v-for="(item, index) in bulletins"
                                 v-bind:class="{active_tab: index===curBulletinIndex}"
                                 @click="switchtab(index)">
                             ●
@@ -42,7 +42,7 @@ import footerDown from './footer-down.vue';
 export default {
     data () {
         return {
-            bulletin: [], // 要显示的所有的公告数据
+            bulletins: [], // 要显示的所有的公告数据
             curBulletinIndex: 0, // 当前显示的公告index，用于切换。
             sOpeningTime: '周二至周日 9:30--17:00（16:30停止入馆）<br />周一闭馆（节假日除外，特殊情况将在本网站通知）',
             sAddr: '西安市灞桥区灞桥生态湿地公园柳雪路996号',
@@ -58,7 +58,7 @@ export default {
         },
     },
     mounted(){
-        fetchJSON.call(this, 'bulletin', 'bulletin');
+        fetchJSON.call(this, 'bulletins', 'bulletins');
     },
 }
 </script>

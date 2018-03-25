@@ -2,7 +2,7 @@
     <div id="wrapper">
         <common-header></common-header>
         <section id="CuiZhenkuan-middle" class="common-middle">
-            <common-cata :title="cataData.title"
+            <common-cata :titles="cataData.title"
                     :catas="cataData.catas"></common-cata>
             <section class="content">
                 <section>

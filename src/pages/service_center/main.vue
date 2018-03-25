@@ -1,47 +1,51 @@
 <template>
     <div id="wrapper">
-        <img src="../../assets/logo.png">
-        <h1>This is {{curPage}}</h1>
-        <h1>To <a :href="linkTo">{{ linkTo }}</a></h1>
+        <common-header></common-header>
+        <section id="service_center-middle" class="common-middle">
+            <common-cata :titles="cataData.title"
+                    :catas="cataData.catas"></common-cata>
+            <section class="content">
+                <section>
+                    <router-view></router-view>
+                </section>
+            </section>
+            <div style="clear:both;"></div>
+        </section>
+        <common-footer></common-footer>
     </div>
 </template>
 
 <script>
+
+import {fetchJSON} from '../../public/myUtil.js';
+import commonHeader from '../../public/common-header.vue';
+import commonCata from '../../public/catalog.vue';
+import commonFooter from '../../public/common-footer.vue';
+
 export default {
     data () {
         return {
-            curPage: 'home.html',
-            linkTo: 'test.html'
+            cataData: { // 目录的标题和列表
+                title: [],
+                catas: [],
+            },
         }
+    },
+    components: {
+        commonHeader,
+        commonCata,
+        commonFooter,
+    },
+    methods: {
+    },
+    mounted(){
+        // 获取左侧目录数据
+        fetchJSON.call(this, 'cata_service_center', 'cataData');
     }
 }
 </script>
 
-<style lang="scss">
-#wrapper {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-}
-
-h1, h2 {
-    font-weight: normal;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    display: inline-block;
-    margin: 0 10px;
-}
-
-a {
-    color: #42b983;
-}
+<style scoped lang="scss">
+@import "../../public/basic.scss";
+@import "../../public/common.scss";
 </style>
