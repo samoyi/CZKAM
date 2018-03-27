@@ -1,5 +1,5 @@
 <template>
-    <ul class="works_cata" v-if="catas_ch">
+    <ul class="news_cata" v-if="catas_ch">
         <li :class="{active_cata: index===cataIndex}"
                  v-for="(item,index) in catas_ch"
                 @click="clickCata(index)">{{item}}</li>
@@ -29,10 +29,10 @@ export default {
 
 <style scoped lang="scss">
 
-@import '../basic.scss';
-@import '../common.scss';
+@import '../../scss/basic.scss';
+@import '../../scss/common.scss';
 
-.works_cata{
+.news_cata{
     height: 22px;
     margin-top: 16px;
     .active_cata{

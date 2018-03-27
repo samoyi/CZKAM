@@ -61,7 +61,7 @@ export default {
 
 <style scoped lang="scss">
 
-@import './basic.scss';
+@import '../scss/basic.scss';
 
 $carousel_width: 813px;
 

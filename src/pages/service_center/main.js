@@ -8,16 +8,16 @@ Vue.use(VueRouter)
 
 
 import introduce from './contents/bulletin/bulletin.vue'; // 公告
-// import chronology from './contents/member/member.vue'; // 会员
-// import works from './contents/download/download.vue'; // 下载专区
-// import works from './contents/comments/comments.vue'; // 意见留言
+import member from './contents/member/member.vue'; // 会员
+import download from './contents/download/download.vue'; // 下载专区
+import comments from './contents/comments/comments.vue'; // 意见留言
 
 const routes = [
       { path: '/bulletin', component: introduce }, // 公告
-      // { path: '/member', component: chronology }, // 会员
-      // { path: '/download', component: works }, // 下载专区
-      // { path: '/comments', component: video }, // 意见留言
-      { path: '*', redirect: '/bulletin' }
+      { path: '/member-ship', component: member }, // 会员
+      { path: '/download', component: download }, // 下载专区
+      { path: '/comments', component: comments }, // 意见留言
+      { path: '*', redirect: '/bulletin' } // 不匹配以上四个的
 ];
 
 const router = new VueRouter({

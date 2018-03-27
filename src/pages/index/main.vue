@@ -11,11 +11,11 @@
 
 <script>
 
-import {fetchJSON} from '../../public/myUtil.js';
-import commonHeader from '../../public/common-header.vue';
+import {fetchJSON} from '../../public/js/myUtil.js';
+import commonHeader from '../../public/components/common-header.vue';
 import blockWrapper from './block-wrapper.vue';
 import blockSelector from './block-selector.vue';
-import footerDown from '../../public/footer-down.vue';
+import footerDown from '../../public/components/footer-down.vue';
 
 export default {
     data () {
@@ -43,7 +43,7 @@ export default {
 
 <!-- 这里的body背景图因为要作用到外部，所以不能scoped -->
 <style lang="scss">
-@import "../../public/basic.scss";
+@import "../../public/scss/basic.scss";
 
 body{
     background-image: url(http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/bg.jpg);

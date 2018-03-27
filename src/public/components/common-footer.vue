@@ -7,12 +7,12 @@
                     <div>
                         <a :href="bulletins[curBulletinIndex].link">
                         <h3>{{bulletins[curBulletinIndex].title}}</h3>
-                        <p class="bulletin_content">{{bulletins[curBulletinIndex].content}}</p>
+                        <p class="bulletin_content">{{bulletins[curBulletinIndex].detail}}</p>
                         </a>
                     </div>
                     <ul>
                         <!-- 点击圆点切换公告 -->
-                        <li v-for="(item, index) in bulletins"
+                        <li v-for="(item, index) in bulletins.slice(0, 3)"
                                 v-bind:class="{active_tab: index===curBulletinIndex}"
                                 @click="switchtab(index)">
                             ●
@@ -36,7 +36,7 @@
 
 <script>
 
-import {fetchJSON} from './myUtil.js';
+import {fetchJSON} from '../js/myUtil.js';
 import footerDown from './footer-down.vue';
 
 export default {
@@ -65,7 +65,7 @@ export default {
 
 <style scoped lang="scss">
 
-@import './basic.scss';
+@import '../scss/basic.scss';
 
 .common-footer{
     width: $FOOTER_WIDTH_1366;

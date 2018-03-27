@@ -1,6 +1,6 @@
 <template>
     <section class="works">
-        <h2>{{title}}  <span>WORKS</span></h2>
+        <h2>{{title}}</h2>
         <works-cata :cata-index="nCataIndex" :catas_ch="catas_ch"
                                 @switchcata="switchworks"></works-cata>
         <works-list :displayed-items="displayedItems"></works-list>
@@ -14,11 +14,11 @@
 
 import worksCata from './works-cata.vue';
 import worksList from './works-list.vue';
-import listPagination from './list-pagination.vue';
+import listPagination from '../list-pagination.vue';
 
 export default {
-    // works如果是平对象，则key为分类名，还需要传入nameMap对象，是分类名英文或拼音到中
-    // 文的映射
+    // works如果是平对象，则key为分类名，还需要传入nameMap对象，是分类名英文或拼音到
+    // 中文的映射。英文是数据中的键名，中文是显示到页面上的。
     // works如果是数组，则表示只有一类
     // nameMap格式如下：
     // {
@@ -115,8 +115,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../basic.scss";
-@import "../common.scss";
+@import "../../scss/basic.scss";
+@import "../../scss/common.scss";
 
 .works{
     @include works_class;

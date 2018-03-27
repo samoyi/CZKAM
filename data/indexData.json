@@ -61,12 +61,16 @@
     ],
     "bulletin": [
         {
-            "link": "https://github.com/koajs/koa/blob/master/lib/request.js",
-            "title": "公告1标题"
+            "link": "service_center.html#/bulletin",
+            "title": "6月26日（周一）开闭馆时间安排"
         },
         {
-            "link": "https://github.com/koajs/koa/blob/master/lib/response.js",
-            "title": "公告2标题公告2标题公告2标题公告2标题公告2标题公告2标题公告2标题公告2标题公告2标题"
+            "link": "service_center.html#/bulletin",
+            "title": "测试通知内容1测试通知内容1测试通知内容1测试通知内容1测试通知内容1测试通知内容1测试通知内容1"
+        },
+        {
+            "link": "service_center.html#/bulletin",
+            "title": "测试通知内容2测试通知内容2测试通知内容2测试通知内容2测试通知内容2测试通知内容2测试通知内容2"
         }
     ]
 }

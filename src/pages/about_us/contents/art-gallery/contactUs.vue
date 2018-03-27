@@ -4,7 +4,7 @@
 
 <script>
 
-import articlePage from '../../../../public/article.vue';
+import articlePage from '../../../../public/components/article.vue';
 export default {
     components:{
         articlePage,
@@ -41,8 +41,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../../../public/basic.scss";
-@import "../../../../public/common.scss";
+@import "../../../../public/scss/basic.scss";
+@import "../../../../public/scss/common.scss";
 
  .codeArea{
      font-size: 18px;

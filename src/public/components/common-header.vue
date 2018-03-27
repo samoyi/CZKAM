@@ -18,7 +18,7 @@
 
 <script>
 
-import {fetchJSON} from './myUtil.js';
+import {fetchJSON} from '../js/myUtil.js';
 
 export default {
     data () {
@@ -34,7 +34,7 @@ export default {
 
 <style scoped lang="scss">
 
-@import './basic.scss';
+@import '../scss/basic.scss';
 
 
 

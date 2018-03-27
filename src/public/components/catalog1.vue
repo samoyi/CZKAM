@@ -319,7 +319,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "./basic.scss";
+@import "../scss/basic.scss";
 
 .catalog{
     width: $MIDDLE_CATALOG_WIDTH; float: left;

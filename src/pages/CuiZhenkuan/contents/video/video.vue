@@ -13,7 +13,7 @@
 
 <script>
 
-import {fetchJSON} from '../../../../public/myUtil.js';
+import {fetchJSON} from '../../../../public/js/myUtil.js';
 
 export default {
     data () {
@@ -28,8 +28,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../../../public/basic.scss";
-@import "../../../../public/common.scss";
+@import "../../../../public/scss/basic.scss";
+@import "../../../../public/scss/common.scss";
 
 .video{
     >div{

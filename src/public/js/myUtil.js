@@ -20,11 +20,26 @@ function fetchJSON(sJSONName, sReceptor){
     });
 }
 
+/**
+ * 模拟获取详情文章HTML
+ * @param {String}  sID       详情文章ID
+ * @param {String}  sReceptor  接收数据的data属性名
+ */
+function fetchArticle(sID, sReceptor){
+    this.$http.get('/data/detail/' +sID+ '.html').then(res => {
+        this[sReceptor] = res.body;
+    }, err => {
+        throw new Error(err);
+    });
+}
 
+/**
+ *  删除字符串中的HTML标签
+ */
 function stripHTMLTag(str){
     let tmpDiv = document.createElement("DIV");
     tmpDiv.innerHTML = str;
     return tmpDiv.innerText;
 }
 
-export {fetchJSON, stripHTMLTag};
+export {fetchJSON, fetchArticle, stripHTMLTag};

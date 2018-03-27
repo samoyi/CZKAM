@@ -3,8 +3,8 @@
 </template>
 
 <script>
-import {fetchJSON} from '../../../../public/myUtil.js';
-import worksPage from '../../../../public/works/works.vue';
+import {fetchJSON} from '../../../../public/js/myUtil.js';
+import worksPage from '../../../../public/components/works/works.vue';
 
 export default {
     data () {
@@ -26,6 +26,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../../../public/basic.scss";
-@import "../../../../public/common.scss";
+@import "../../../../public/scss/basic.scss";
+@import "../../../../public/scss/common.scss";
 </style>

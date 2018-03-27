@@ -109,10 +109,10 @@
 
 <script>
 
-import {fetchJSON} from '../../public/myUtil.js';
-import commonHeader from '../../public/common-header.vue';
-import commonCata from '../../public/catalog.vue';
-import commonFooter from '../../public/common-footer.vue';
+import {fetchJSON} from '../../public/js/myUtil.js';
+import commonHeader from '../../public/components/common-header.vue';
+import commonCata from '../../public/components/catalog.vue';
+import commonFooter from '../../public/components/common-footer.vue';
 
 export default {
     data () {
@@ -194,8 +194,8 @@ export default {
 
 <!-- basic.scss设置的body样式因为要作用到组件外部的body，所以不能scoped -->
 <style scoped lang="scss">
-@import "../../public/basic.scss";
-@import "../../public/common.scss";
+@import "../../public/scss/basic.scss";
+@import "../../public/scss/common.scss";
 
 // .common-middle{
 //     width: $MIDDLE_WIDTH;

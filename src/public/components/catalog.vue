@@ -89,20 +89,21 @@ export default {
         }
     },
     watch: {
-        catas(){
+        catas(){ // 目录响应的标题高亮
             if( location.hash ){ // 带hash进入页面
-
                 let nIDUnderline = location.hash.indexOf("_"),
-                    sHashTitle = "",
+                    sHashTitle = location.hash.slice(2),
                     catas = this.catas;
-                if(nIDUnderline===-1){ // 不带详情页ID
-                    sHashTitle = location.hash.slice(1);
-                }
-                else{
-                    sHashTitle = location.hash.slice(1, nIDUnderline);
-                }
+                // if(nIDUnderline===-1){ // 不带详情页ID
+                //     sHashTitle = location.hash.slice(1);
+                // }
+                // else{
+                //     sHashTitle = location.hash.slice(1, nIDUnderline);
+                // }
                 for(let i=0; i<catas.length; i++){
-                    if( sHashTitle.slice(1) === catas[i].title_e.toLowerCase() ){ // hash对应一级标题
+                    console.log(sHashTitle, catas[i].title_e.toLowerCase());
+                    console.log(sHashTitle === catas[i].title_e.toLowerCase());
+                    if( sHashTitle === catas[i].title_e.toLowerCase() ){ // hash对应一级标题
                         this.currentLevel1Title = catas[i].title_c;
                         this.currentLevel2Title = this.catas[i].cata_c[0];
 
@@ -115,10 +116,10 @@ export default {
                     else{ // hash对应二级标题或什么也不对应
                         let aLevel2TitleE = catas[i].cata_e;
                         for(let j=0; j<aLevel2TitleE.length; j++){
-                            if( sHashTitle.slice(1) === aLevel2TitleE[j].toLowerCase() ){ // hash对应二级标题
+                            let nSlashIndex = sHashTitle.indexOf('/'); // 还有slash说明是二级标题
+                            if( (nSlashIndex!==-1) && (sHashTitle.slice(nSlashIndex+1)=== aLevel2TitleE[j].toLowerCase()) ){ // hash对应二级标题
                                 this.currentLevel1Title = this.catas[i].title_c;
                                 this.currentLevel2Title = this.catas[i].cata_c[j];
-
                                 this.currentLevel1Index = i;
                                 this.currentLevel2Index = j;
                                 // Bus.$emit("catasChange", [this.currentLevel1Index, this.currentLevel2Index]);
@@ -151,7 +152,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "./basic.scss";
+@import "../scss/basic.scss";
 
 .catalog{
     width: $MIDDLE_CATALOG_WIDTH; float: left;

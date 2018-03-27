@@ -1,3 +1,5 @@
+<!-- 分页器组件。在出现列表的模块中可以引用该组件 -->
+
 <template>
     <!-- <li @click="clickPagination(pageIndex)">{{pageIndex+1}}</li> -->
     <div class="pagination_wrapper" v-if="pageNum>1">
@@ -15,7 +17,7 @@
 
 <script>
 
-// import {fetchJSON} from '../myUtil.js';
+// import {fetchJSON} from '../js/myUtil.js';
 
 export default {
     props: ["pageNum", "perPage", "list", "pageIndex"],
@@ -38,8 +40,8 @@ export default {
 
 <style scoped lang="scss">
 
-@import '../basic.scss';
-@import '../common.scss';
+@import '../scss/basic.scss';
+@import '../scss/common.scss';
 
 .pagination_wrapper{
     text-align: center;

@@ -7,7 +7,7 @@
             </a>
             <!-- 图片信息都是可有可无的 -->
             <div class="info">
-                <p v-if="item[2]"><span>作品名称：</span>{{item[2]}}</p>
+                <p v-if="item[2]" :title="item[2]"><span>作品名称：</span>{{item[2]}}</p>
                 <p v-if="item[3]"><span>尺寸：</span>{{item[3]}}</p>
                 <p v-if="item[4]"><span>时间：</span>{{item[4]}}</p>
                 <p v-if="item[5]"><span>作者：</span>{{item[5]}}</p>
@@ -38,8 +38,8 @@ export default {
 
 <style scoped lang="scss">
 
-@import '../basic.scss';
-@import '../common.scss';
+@import '../../scss/basic.scss';
+@import '../../scss/common.scss';
 
 .works_list{
     >li{
@@ -59,8 +59,13 @@ export default {
             float: left;
             margin-left: 34px;
             width: 355px; overflow: hidden;
-            span{
-                color: $BASIC_GRAY;
+            p{
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                span{
+                    color: $BASIC_GRAY;
+                }
             }
         }
     }

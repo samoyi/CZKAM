@@ -14,8 +14,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./basic.scss";
-@import "./common.scss";
+@import "../scss/basic.scss";
+@import "../scss/common.scss";
 
 .article{
     h2{

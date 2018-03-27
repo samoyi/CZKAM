@@ -1,0 +1,40 @@
+{
+    "title": [
+        "展览",
+        "EXHIBTION"
+    ],
+    "catas": [
+        {
+            "title_c": "常设展览",
+            "title_e": "PERMANENT-EXHIBITION",
+            "cata_c": [],
+            "cata_e": [],
+            "index": 0,
+            "display": true
+        },
+        {
+            "title_c": "在线展览",
+            "title_e": "ON-LINE",
+            "cata_c": [],
+            "cata_e": [],
+            "index": 1,
+            "display": true
+        },
+        {
+            "title_c": "常规展览",
+            "title_e": "COMMON",
+            "cata_c": [],
+            "cata_e": [],
+            "index": 2,
+            "display": true
+        },
+        {
+            "title_c": "展品欣赏（测试）",
+            "title_e": "APPRECIATION",
+            "cata_c": [],
+            "cata_e": [],
+            "index": 3,
+            "display": true
+        }
+    ]
+}

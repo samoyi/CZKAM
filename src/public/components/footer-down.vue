@@ -52,7 +52,7 @@ export default {
 
 <style scoped lang="scss">
 
-@import './basic.scss';
+@import '../scss/basic.scss';
 
 .footer_down{
     width: $FOOTER_WIDTH_1366;

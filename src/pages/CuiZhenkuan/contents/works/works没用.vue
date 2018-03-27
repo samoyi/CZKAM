@@ -35,10 +35,10 @@
 
 <script>
 
-import {fetchJSON} from '../../../../public/myUtil.js';
-import worksCata from '../../../../public/works/works-cata.vue';
-import worksList from '../../../../public/works/works-list.vue';
-import listPagination from '../../../../public/works/list-pagination.vue';
+import {fetchJSON} from '../../../../public/js/myUtil.js';
+import worksCata from '../../../../public/components/works/works-cata.vue';
+import worksList from '../../../../public/components/works/works-list.vue';
+import listPagination from '../../../../public/components/list-pagination.vue';
 
 export default {
     data () {
@@ -97,8 +97,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../../../public/basic.scss";
-@import "../../../../public/common.scss";
+@import "../../../../public/scss/basic.scss";
+@import "../../../../public/scss/common.scss";
 
 .works{
     @include works_class;

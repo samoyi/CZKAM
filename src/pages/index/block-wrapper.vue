@@ -15,7 +15,7 @@
 
 <script>
 
-import carouselBox from '../../public/carousel-box.vue';
+import carouselBox from '../../public/components/carousel-box.vue';
 import exhibitionTab from './blocks/exhibition-tab.vue';
 import publicTab from './blocks/public-tab.vue';
 import bulletinTab from './blocks/bulletin-tab.vue';
@@ -41,8 +41,8 @@ export default {
 
 <style scoped lang="scss">
 
-@import "../../public/basic.scss";
-@import "../../public/common.scss";
+@import "../../public/scss/basic.scss";
+@import "../../public/scss/common.scss";
 @import "./index.scss";
 
 $carousel_width: 813px;
