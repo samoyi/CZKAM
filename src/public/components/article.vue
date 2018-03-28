@@ -20,7 +20,7 @@ export default {
 
 <!-- 因为要插入html，所以不能scoped -->
 <style lang="scss">
-// @import "../scss/basic.scss";
+
 @import "../scss/common.scss";
 
 .article{

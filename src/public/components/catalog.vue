@@ -40,7 +40,11 @@
                 </li>
             </ul>
         </div>
-        <p class="breadcrumb"><a href="index.html">🏠</a> ＞ <span v-text="titles[0]"></span><span v-cloak> ＞ {{currentLevel1Title}}</span><span v-cloak> ＞ {{currentLevel2Title}}</span></p>
+        <p class="breadcrumb">
+            <a href="index.html">🏠</a>
+             <span v-cloak> ＞ {{currentLevel1Title}}</span>
+             <span v-show="currentLevel2Title"> ＞ {{currentLevel2Title}}</span>
+         </p>
     </div>
 </template>
 
@@ -183,7 +187,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-// @import "../scss/basic.scss";
+
+@import '../scss/common.scss';
 
 .catalog{
     width: $MIDDLE_CATALOG_WIDTH; float: left;

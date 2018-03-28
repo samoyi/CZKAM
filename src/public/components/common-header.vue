@@ -35,7 +35,8 @@ export default {
 
 <style scoped lang="scss">
 
-// @import '../scss/basic.scss';
+// @import '../scss/constants.scss';
+@import '../scss/common.scss';
 
 #common-header{
     width: 100%; height: $HEADER_HEIGHT;

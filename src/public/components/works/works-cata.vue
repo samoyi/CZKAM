@@ -29,7 +29,7 @@ export default {
 
 <style scoped lang="scss">
 
-// @import '../../scss/basic.scss';
+// @import '../../scss/constants.scss';
 @import '../../scss/common.scss';
 
 .works_cata{

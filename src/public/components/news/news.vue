@@ -105,7 +105,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-// @import "../../scss/basic.scss";
+
 @import "../../scss/common.scss";
 
 .works{

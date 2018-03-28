@@ -55,9 +55,9 @@ export default {
 }
 </script>
 
-<!-- basic.scss设置的body样式因为要作用到组件外部的body，所以不能scoped -->
+<!-- constants.scss设置的body样式因为要作用到组件外部的body，所以不能scoped -->
 <style scoped lang="scss">
-// @import "../../public/scss/basic.scss";
+
 @import "../../public/scss/common.scss";
 
 // .common-middle{
