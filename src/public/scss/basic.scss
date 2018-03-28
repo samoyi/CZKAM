@@ -2,21 +2,6 @@
 
 @charset "utf-8";
 
-//reset ------------------------------------------------------------------------
-// /* http://meyerweb.com/eric/tools/css/reset/
-//    v2.0 | 20110126
-//    License: none (public domain)
-// */
-// html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, hr, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video{margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline;}
-// /* HTML5 display-role reset for older browsers */
-// article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display: block;}
-// body {line-height: 1;}
-// ol, ul {list-style: none;}
-// blockquote, q {quotes: none;}
-// blockquote:before, blockquote:after, q:before, q:after {content: ''; content: none; }
-// table { border-collapse: collapse; border-spacing: 0; }
-// a {text-decoration: none;}
-
 
 // 常量和mixin -----------------------------------------------------------------
 // size
@@ -39,102 +24,102 @@ $LINE_GRAY: #eaeaea;
 // mixin
 // 所有和展览一样的办款的样式
 // 参数为版块类名
-@mixin exhibition_class($class){
-    font-size: 12px;
-    .#{$class}_cata{
-        height: 22px;
-        margin-top: 16px;
-        .active_cata{
-            color: $STANDARD_COLOR;
-        }
-        li{
-            height: 22px;
-            float: left;
-            margin-right: 30px;
-            cursor: pointer;
-        }
-    }
-    .#{$class}_list{
-        >li{
-            margin-top: 24px;
-            .cover{
-                float: left;
-                width: 355px; height: 200px;
-                cursor: pointer;
-            }
-            .info{
-                width: 355px;
-                overflow: hidden;
-                float: left;
-                margin-left: 34px;
-                h3{
-                    font-size: 14px;
-                    font-weight: bold;
-                    span{
-                        color: $STANDARD_COLOR;
-                    }
-                }
-                p{
-                    font-size: 12px;
-                    color: $BASIC_GRAY;
-                }
-                .date{
-                    font-weight: bold;
-                }
-                .summary{
-                    margin-top: 16px;
-                }
-                .more{
-                    color: $STANDARD_COLOR;
-                    font-size: 10px;
-                    display: inline-block; margin-top: 16px;
-                }
-            }
-        }
-    }
-}
+// @mixin exhibition_class($class){
+//     font-size: 12px;
+//     .#{$class}_cata{
+//         height: 22px;
+//         margin-top: 16px;
+//         .active_cata{
+//             color: $STANDARD_COLOR;
+//         }
+//         li{
+//             height: 22px;
+//             float: left;
+//             margin-right: 30px;
+//             cursor: pointer;
+//         }
+//     }
+//     .#{$class}_list{
+//         >li{
+//             margin-top: 24px;
+//             .cover{
+//                 float: left;
+//                 width: 355px; height: 200px;
+//                 cursor: pointer;
+//             }
+//             .info{
+//                 width: 355px;
+//                 overflow: hidden;
+//                 float: left;
+//                 margin-left: 34px;
+//                 h3{
+//                     font-size: 14px;
+//                     font-weight: bold;
+//                     span{
+//                         color: $STANDARD_COLOR;
+//                     }
+//                 }
+//                 p{
+//                     font-size: 12px;
+//                     color: $BASIC_GRAY;
+//                 }
+//                 .date{
+//                     font-weight: bold;
+//                 }
+//                 .summary{
+//                     margin-top: 16px;
+//                 }
+//                 .more{
+//                     color: $STANDARD_COLOR;
+//                     font-size: 10px;
+//                     display: inline-block; margin-top: 16px;
+//                 }
+//             }
+//         }
+//     }
+// }
 // 作品展示的样式
-@mixin works_class
-{
-    font-size: 12px;
-    // .works_cata{
-    //     height: 22px;
-    //     margin-top: 16px;
-    //     .active_cata{
-    //         color: $STANDARD_COLOR;
-    //     }
-    //     li{
-    //         height: 22px;
-    //         float: left;
-    //         margin-right: 30px;
-    //         cursor: pointer;
-    //     }
-    // }
-    // .works_list{
-    //     >li{
-    //         margin-top: 24px;
-    //         .thumbnail{
-    //             float: left;
-    //             width: 355px; height: 200px;
-    //             background:{
-    //                 color: $BACKGROUND_GRAY;
-    //                 repeat: no-repeat;
-    //                 size: contain;
-    //                 position: center;
-    //             }
-    //             cursor: pointer;
-    //         }
-    //         .info{
-    //             float: left;
-    //             margin-left: 34px;
-    //             width: 355px; overflow: hidden;
-    //             span{
-    //                 color: $BASIC_GRAY;
-    //             }
-    //         }
-    //     }
-    // }
-}
+// @mixin works_class
+// {
+//     font-size: 12px;
+//     // .works_cata{
+//     //     height: 22px;
+//     //     margin-top: 16px;
+//     //     .active_cata{
+//     //         color: $STANDARD_COLOR;
+//     //     }
+//     //     li{
+//     //         height: 22px;
+//     //         float: left;
+//     //         margin-right: 30px;
+//     //         cursor: pointer;
+//     //     }
+//     // }
+//     // .works_list{
+//     //     >li{
+//     //         margin-top: 24px;
+//     //         .thumbnail{
+//     //             float: left;
+//     //             width: 355px; height: 200px;
+//     //             background:{
+//     //                 color: $BACKGROUND_GRAY;
+//     //                 repeat: no-repeat;
+//     //                 size: contain;
+//     //                 position: center;
+//     //             }
+//     //             cursor: pointer;
+//     //         }
+//     //         .info{
+//     //             float: left;
+//     //             margin-left: 34px;
+//     //             width: 355px; overflow: hidden;
+//     //             span{
+//     //                 color: $BASIC_GRAY;
+//     //             }
+//     //         }
+//     //     }
+//     // }
+// }
 
 
 // 所有页面通用的样式 -----------------------------------------------------------

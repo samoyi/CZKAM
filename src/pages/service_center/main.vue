@@ -2,7 +2,7 @@
     <div id="wrapper">
         <common-header></common-header>
         <section id="service_center-middle" class="common-middle">
-            <common-cata :titles="cataData.title"
+            <common-cata :titles="cataData.titles"
                     :catas="cataData.catas"></common-cata>
             <section class="content">
                 <section>
@@ -26,7 +26,10 @@ export default {
     data () {
         return {
             cataData: { // 目录的标题和列表
-                title: [],
+                titles: {
+                    ch:'',
+                    en: '',
+                },
                 catas: [],
             },
         }
@@ -46,6 +49,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../public/scss/basic.scss";
+// @import "../../public/scss/basic.scss";
 @import "../../public/scss/common.scss";
 </style>

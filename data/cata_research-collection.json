@@ -1,8 +1,8 @@
 {
-    "title": [
-        "学术研究·馆藏",
-        "RESEARCH·COLLECTION"
-    ],
+    "titles": {
+        "ch": "学术研究·馆藏",
+        "en": "RESEARCH·COLLECTION"
+    },
     "catas": [
         {
             "title_c": "学术研究",

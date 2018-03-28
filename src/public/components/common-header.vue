@@ -1,3 +1,4 @@
+<!-- 所有页面通用的头部 -->
 <template>
     <header id="common-header">
         <div>
@@ -34,9 +35,7 @@ export default {
 
 <style scoped lang="scss">
 
-@import '../scss/basic.scss';
-
-
+// @import '../scss/basic.scss';
 
 #common-header{
     width: 100%; height: $HEADER_HEIGHT;
@@ -111,5 +110,4 @@ export default {
         }
     }
 }
-
 </style>

@@ -1,3 +1,5 @@
+<!-- 首页以外其他页面的通用底部
+首页的底部是该通用底部的一部分，即其组件footer-down -->
 <template>
     <footer class="common-footer">
         <section>
@@ -35,7 +37,6 @@
 </template>
 
 <script>
-
 import {fetchJSON} from '../js/myUtil.js';
 import footerDown from './footer-down.vue';
 
@@ -65,7 +66,7 @@ export default {
 
 <style scoped lang="scss">
 
-@import '../scss/basic.scss';
+// @import '../scss/basic.scss';
 
 .common-footer{
     width: $FOOTER_WIDTH_1366;
@@ -158,113 +159,7 @@ export default {
         }
         .footer_down{
             position: relative;
-            // height: $FOOTER_DOWN_HEIGHT;
-            // color: $BASIC_GRAY;
-            // >p, >div{
-            //     float: left;
-            //     line-height: $FOOTER_DOWN_HEIGHT;
-            // }
-            // >div{
-            //     position: absolute;;
-            //     left: 780px;
-            //     line-height: $FOOTER_DOWN_HEIGHT;
-            // }
-            // >i{
-            //     width: 149px; height: 30px;
-            //     float: right;
-            //     $__height:30px;
-            //     width: 149px; height:$__height;
-            //     position: relative;
-            //     top: ($FOOTER_DOWN_HEIGHT - $__height)/2;
-            //     background:{
-            //         image: url("http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/sprite.png");
-            //         position: -1590px -51px;
-            //     }
-            // }
         }
     }
 }
-
-// #footer_up{
-//     height: 230px; padding: 38px 0 38px 0;
-//     box-sizing: border-box;
-//     border-top: 1px solid $LINE_GRAY;
-//     border-bottom: 1px solid $LINE_GRAY;
-//     #bulletin-tab, #gallery_base_info{
-//         float: left;
-//         position: relative;
-//         h2{
-//             font-size: 14px;
-//             font-weight: bold;
-//             color: $STANDARD_COLOR;
-//         }
-//         >div{
-//             font-size: 12px;
-//             p{
-//                 color: $BASIC_GRAY;
-//             }
-//         }
-//     }
-//     #bulletin-tab{
-//         width: 335px; height:158px;
-//         @media (min-width: 1920px){
-//             margin-left: 277px;
-//         }
-//         >div{
-//             font-size: 12px;
-//             position: relative;
-//             top: 20px;
-//             h3{
-//                 color: $BASIC_BLACK;
-//                 margin-bottom: 12px;
-//             }
-//             .bulletin_content{
-//                 line-height: 22px;
-//                 margin-bottom: 24px;
-//             }
-//         }
-//         ul{
-//             position: absolute;
-//             bottom: 0px; right: 0;
-//             .active_tab{
-//                 color: $STANDARD_COLOR;
-//             }
-//             li{
-//                 float: left;
-//                 margin-left: 6px;
-//                 cursor: pointer;
-//             }
-//         }
-//         .more{
-//             position: absolute;
-//             top: 0;
-//             right: 0;
-//         }
-//     }
-//     #gallery_base_info{
-//         width: 365px; height:158px;
-//         margin-left: 100px;
-//         font-size: 12px;
-//         p{
-//             color: $BASIC_GRAY;
-//             line-height: 22px;
-//             margin-top: 16px;
-//             span:first-child{
-//                 color: $BASIC_BLACK;
-//             }
-//         }
-//     }
-//     >i{
-//         width: 109px; height:109px;
-//         background:{
-//             image: url("http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/sprite.png");
-//             position: -1629px -81px;
-//         }
-//         float: right; margin-right: 20px;
-//         @media (min-width: 1920px){
-//             margin-right: 270px;
-//         }
-//     }
-// }
-
 </style>

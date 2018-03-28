@@ -1,8 +1,8 @@
 {
-    "title": [
-        "服务中心",
-        "SERVICE CENTER"
-    ],
+    "titles": {
+        "ch": "服务中心",
+        "en": "SERVICE CENTER"
+    },
     "catas": [
         {
             "title_c": "公告",

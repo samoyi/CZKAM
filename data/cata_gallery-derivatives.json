@@ -1,8 +1,8 @@
 {
-    "title": [
-        "画廊·衍生品",
-        "GALLERY·DERIVATIVES"
-    ],
+    "titles": {
+        "ch": "画廊·衍生品",
+        "en": "GALLERY·DERIVATIVES"
+    },
     "catas": [
         {
             "title_c": "画廊",

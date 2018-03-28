@@ -1,8 +1,8 @@
 {
-    "title": [
-        "关于我们",
-        "ABOUT US"
-    ],
+    "titles": {
+        "ch": "关于我们",
+        "en": "ABOUT US"
+    },
     "catas": [
         {
             "title_c": "美术馆",

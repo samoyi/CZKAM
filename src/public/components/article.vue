@@ -1,11 +1,16 @@
+<!-- 图文文章组件 例如【关于我们——美术馆——简介】 -->
 <template>
     <section class="article" v-html="html"></section>
 </template>
 
 <script>
-
 export default {
-    props: ['html'],
+    props: {
+        html: { // 文章内容HTML
+            type: String,
+            default: '<h2>加载中……</h2>'
+        },
+    },
     data () {
         return {
         }
@@ -13,8 +18,9 @@ export default {
 }
 </script>
 
+<!-- 因为要插入html，所以不能scoped -->
 <style lang="scss">
-@import "../scss/basic.scss";
+// @import "../scss/basic.scss";
 @import "../scss/common.scss";
 
 .article{

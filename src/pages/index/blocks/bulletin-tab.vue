@@ -8,7 +8,7 @@
         <img src="http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/bulletin/head.jpg" />
         <div v-for="bulletin in bulletins">
             <h3>
-                <a :href="bulletin.link" target="_blank">{{bulletin.title}}</a>
+                <a :href="bulletin.link" target="_blank" :title="bulletin.title">{{bulletin.title}}</a>
             </h3>
         </div>
         <a href="service_center.html#公告" target="_blank" class="more">MORE</a>
@@ -31,7 +31,7 @@ export default {
 
 <style scoped lang="scss">
 
-@import "../../../public/scss/basic.scss";
+// @import "../../../public/scss/basic.scss";
 @import "../../../public/scss/common.scss";
 @import "../index.scss";
 

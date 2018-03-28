@@ -105,11 +105,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../scss/basic.scss";
+// @import "../../scss/basic.scss";
 @import "../../scss/common.scss";
 
 .works{
-    @include works_class;
+    // @include works_class;
+    // font-size: 12px;
 }
 
 </style>

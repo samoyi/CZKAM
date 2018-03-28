@@ -10,7 +10,7 @@
             <h3>
                 <span>{{news.tag}}</span>
                 <span v-if="news.tag"> | </span>
-                <a :href="news.link" target="_blank">{{news.name}}</a>
+                <a :href="news.link" target="_blank" :title="news.name">{{news.name}}</a>
             </h3>
             <p>{{news.des}}</p>
         </div>
@@ -34,7 +34,7 @@ export default {
 
 <style scoped lang="scss">
 
-@import "../../../public/scss/basic.scss";
+// @import "../../../public/scss/basic.scss";
 @import "../../../public/scss/common.scss";
 @import "../index.scss";
 

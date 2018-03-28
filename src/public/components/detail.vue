@@ -1,3 +1,4 @@
+<!-- 该组件为点击news组件列表项后进入的文章详情 -->
 <template>
     <section class="detail">
         <article v-html="html"></article>
@@ -30,7 +31,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../scss/basic.scss";
+// @import "../scss/basic.scss";
 @import "../scss/common.scss";
 
 .detail{

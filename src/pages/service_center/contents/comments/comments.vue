@@ -3,22 +3,20 @@
         <h2>意见留言  <span>COMMENTS</span></h2>
         <div>
             <div class="form">
-                <p class="name">姓名：<input v-model="name" type="text" maxlength="7" placeholder="（必填）" /></p>
-                <p class="contact">联系方式：<input v-model="contact" type="text" maxlength="50" placeholder="（选填）" /></p>
+                <p class="name">姓名：<input v-model.trim="name" type="text" maxlength="7" placeholder="（必填）" /></p>
+                <p class="contact">联系方式：<input v-model.trim="contact" type="text" maxlength="50" placeholder="（选填）" /></p>
                 <div class="msgContent">
-                    留言内容：<textarea v-model="content" required></textarea>
+                    留言内容：<textarea v-model.trim="content" required></textarea>
                     <p class="wordsNumTip">{{sTextNumberReminder}}</p>
-                    <p class="errTip">{{sContentError}}</p>
+                    <p class="errTip">{{sContentTooLongTip}}</p>
                 </div>
                 <div class="codeArea">
-                    验证码：<input v-model="code" type="text" name="code" size="4" />
-                    <!-- <img src="http://www.czkam.com/ajax/test.php" onclick="this.src='test.php?Math.random()'"/> -->
+                    验证码：<input v-model.trim="code" type="text" name="code" size="4" />
                     <img :src="sCodeImgSrc" @click="refreshCode"/>
                     <input @click="submit" type="button" value="提交" />
                 </div>
             </div>
             <ul>
-                <!-- <comment-item v-for="item in displayedItem" :li-data="item"></comment-item> -->
                 <li v-for="item in displayedItem">
                     <span class="name">{{stripHTMLTag(item.name)}}</span>：
                     <p class="comment">{{stripHTMLTag(item.content)}}</p>
@@ -46,16 +44,16 @@ import listPagination from '../../../../public/components/list-pagination.vue';
 export default {
     data () {
         return {
-            list: [],
+            list: [], // 留言列表
             nPerPage: 8,
             nPageIndex : 0,
             name: "", // 填写的姓名
             contact: "", // 填写的联系方式
             content: "", // 填写的留言内容
-            sCodeImgSrc: "http://www.czkam.com/ajax/test.php",
-            code: "",
-            sTextNumberReminder: "还能输入140个字符",
-            sContentError: "",
+            sCodeImgSrc: "http://www.czkam.com/ajax/test.php", // 请求验证码图片的地址
+            code: "", // 用户输入的验证码
+            sTextNumberReminder: "还能输入140个字符", // 字数限制提示文字
+            sContentTooLongTip: "", // 留言内容文字过长时的提示文字
         }
     },
     components: {
@@ -76,30 +74,33 @@ export default {
         stripHTMLTag(str){
             return stripHTMLTag(str);
         },
-        refreshCode(){
+        refreshCode(){ // 请求验证码图片
             this.sCodeImgSrc = "http://www.czkam.com/ajax/test.php?" +　Math.random();
         },
         submit(){
-            if( this.name.trim().length === 0){
+            if( this.name.length === 0){
                 alert("请填写姓名");
                 return;
             }
-            if( this.content.trim().length < 4){
+            if( this.content.length < 4){
                 alert("请详细填写留言内容");
                 return;
             }
-            if( this.code.trim().length !== 4){
+            if( this.code.length !== 4){
                 alert("验证码输入错误");
                 return;
             }
-            if( !this.sContentError ){
-                let sURL = "http://www.czkam.com/ajax/service.php",
-                    data = "name=" + encodeURIComponent(this.stripHTMLTag(this.name))
-                    + "&contact="　+ encodeURIComponent(this.stripHTMLTag(this.contact))
-                    + "&content="　+　encodeURIComponent(this.stripHTMLTag(this.content))
-                    + "&vcode=" + encodeURIComponent(this.stripHTMLTag(this.code)),
-                    fnSuccessCallback = (res)=>{
-                        if( res.trim() === "FALSE" ){
+            if( !this.sContentTooLongTip ){ // 留言内容长度没有超出
+                const sURL = "http://www.czkam.com/ajax/service.php";
+                const oPostBody = {
+                    name: this.stripHTMLTag(this.name),
+                    contact: this.stripHTMLTag(this.contact),
+                    content: this.stripHTMLTag(this.content),
+                    vcode: this.stripHTMLTag(this.code),
+                };
+                this.$http.post(sURL, oPostBody)
+                    .then(res=>{
+                        if( res.body.trim() === "FALSE" ){
                             alert("验证码错误");
                             this.refreshCode();
                         }
@@ -110,23 +111,26 @@ export default {
                                 year = date.getFullYear(),
                                 month = date.getMonth()+1,
                                 day = date.getDay();
+
+                            // 在前端页面上显示提交的留言，刷新后消失
+                            // 后台客服回复之后才会真正显示
                             this.list.unshift({
                                 "name": this.name,
                                 "content": this.content,
                                 "time": year+"-"+month+"-"+day,
                             });
+
+                            // 初始化表单
                             this.name = "";
                             this.contact = "";
                             this.content = "";
                             this.code = "";
-
                             this.refreshCode();
                         }
-                    },
-                    fnFailCallback = function(status){
-                        alert(status + " 提交失败，请稍后重试");
-                    };
-                    AJAX_POST(sURL, data, fnSuccessCallback, fnFailCallback);
+                    })
+                    .catch(err=>{
+                        throw new Error(err);
+                    });
             }
         },
     },
@@ -134,11 +138,11 @@ export default {
         content(){
             let len = [...this.content.trim()].length;
             if( len>140 ){
-                this.sContentError = "留言内容超过140个字符";
+                this.sContentTooLongTip = "留言内容超过140个字符";
                 this.sTextNumberReminder = "超出" + (len-140) + "个字符";
             }
             else{
-                this.sContentError = "";
+                this.sContentTooLongTip = "";
                 this.sTextNumberReminder = "还能输入" + (140-len) + "个字符";
             }
         },
@@ -150,7 +154,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../../../public/scss/basic.scss";
+// @import "../../../../public/scss/basic.scss";
 @import "../../../../public/scss/common.scss";
 
 .comments{

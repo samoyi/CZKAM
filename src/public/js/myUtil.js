@@ -1,9 +1,9 @@
 
-
 /**
  * 因为数据库出问题，这里模拟从数据库读取数据
  * 读取/data目录下的JSON文件
- * 调用该方法是需要使用call方法把this值设为vue实例
+ * 因为vue-resource需要使用vue实例的$http属性，所以调用该方法是需要使用call方法把
+ * this值设为vue实例
  * @param {String}  sJSONName    JSON文件文件名，不含“.json”
  * @param {String}  sReceptor    接收数据的data属性名
  *
@@ -22,6 +22,8 @@ function fetchJSON(sJSONName, sReceptor){
 
 /**
  * 模拟获取详情文章HTML
+ * 因为vue-resource需要使用vue实例的$http属性，所以调用该方法是需要使用call方法把
+ * this值设为vue实例
  * @param {String}  sID       详情文章ID
  * @param {String}  sReceptor  接收数据的data属性名
  */

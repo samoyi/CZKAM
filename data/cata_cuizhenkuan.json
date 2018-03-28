@@ -1,8 +1,8 @@
 {
-    "title": [
-        "崔振宽艺术",
-        "CUI ZHENKUAN ART"
-    ],
+    "titles": {
+        "ch": "崔振宽艺术",
+        "en": "CUI ZHENKUAN ART"
+    },
     "catas": [
         {
             "title_c": "崔振宽简介",

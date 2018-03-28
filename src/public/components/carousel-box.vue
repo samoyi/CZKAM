@@ -10,7 +10,7 @@
                 <img width="815" height="455" :src="tab.img" />
             </a>
             <a :href="tab.link" target="_blank">
-                <h3>
+                <h3 :title="tab.title">
                     <span v-if="tab.tag">{{tab.tag}} | </span>
                     {{tab.title}}
                 </h3>
@@ -61,7 +61,7 @@ export default {
 
 <style scoped lang="scss">
 
-@import '../scss/basic.scss';
+// @import '../scss/basic.scss';
 
 $carousel_width: 813px;
 
@@ -94,6 +94,10 @@ $carousel_width: 813px;
                 span{
                     color: $STANDARD_COLOR;
                 }
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                width: 95%;
             }
         }
     }

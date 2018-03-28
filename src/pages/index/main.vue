@@ -43,7 +43,7 @@ export default {
 
 <!-- 这里的body背景图因为要作用到外部，所以不能scoped -->
 <style lang="scss">
-@import "../../public/scss/basic.scss";
+// @import "../../public/scss/basic.scss";
 
 body{
     background-image: url(http://funca.oss-cn-hangzhou.aliyuncs.com/CuiZhenkuanArtMuseum/index/bg.jpg);

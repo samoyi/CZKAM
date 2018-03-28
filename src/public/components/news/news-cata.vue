@@ -29,11 +29,12 @@ export default {
 
 <style scoped lang="scss">
 
-@import '../../scss/basic.scss';
+// @import '../../scss/basic.scss';
 @import '../../scss/common.scss';
 
 .news_cata{
     height: 22px;
+    font-size: 12px;
     margin-top: 16px;
     .active_cata{
         color: $STANDARD_COLOR;

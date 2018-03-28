@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../../../public/scss/basic.scss";
+// @import "../../../../public/scss/basic.scss";
 @import "../../../../public/scss/common.scss";
 
  .codeArea{

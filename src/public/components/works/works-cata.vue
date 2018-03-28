@@ -29,10 +29,11 @@ export default {
 
 <style scoped lang="scss">
 
-@import '../../scss/basic.scss';
+// @import '../../scss/basic.scss';
 @import '../../scss/common.scss';
 
 .works_cata{
+    font-size: 12px;
     height: 22px;
     margin-top: 16px;
     .active_cata{

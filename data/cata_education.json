@@ -1,8 +1,8 @@
 {
-    "title": [
-        "公共教育",
-        "PUBLIC EDUCATION"
-    ],
+    "titles": {
+        "ch": "公共教育",
+        "en": "PUBLIC EDUCATION"
+    },
     "catas": [
         {
             "title_c": "公教活动",

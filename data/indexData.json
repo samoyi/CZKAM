@@ -7,7 +7,7 @@
             "tag": "展览"
         },
         {
-            "title": "轮播图标题二",
+            "title": "名字特别长的轮播图标题二名字特别长的轮播图标题二名字特别长的轮播图标题二名字特别长的轮播图标题二",
             "img": "http://czkam.com/uploads/carousel/201802020402376181057.jpg",
             "link": "https://github.com/koajs/koa/blob/master/lib/response.js",
             "tag": "公益"
@@ -22,7 +22,7 @@
     "news": [
         {
             "tag": "展览预告",
-            "name": "展览新闻1",
+            "name": "名字特别长的展览新闻1名字特别长的展览新闻1名字特别长的展览新闻1名字特别长的展览新闻1名字特别长的展览新闻1",
             "link": "https://github.com/koajs/koa/blob/master/lib/request.js",
             "des": "展览新闻1的描述"
         },
@@ -70,7 +70,7 @@
         },
         {
             "link": "service_center.html#/bulletin",
-            "title": "测试通知内容2测试通知内容2测试通知内容2测试通知内容2测试通知内容2测试通知内容2测试通知内容2"
+            "title": "测试通知内容2"
         }
     ]
 }

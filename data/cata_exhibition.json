@@ -1,8 +1,8 @@
 {
-    "title": [
-        "展览",
-        "EXHIBTION"
-    ],
+    "titles": {
+        "ch": "展览",
+        "en": "EXHIBTION"
+    },
     "catas": [
         {
             "title_c": "常设展览",

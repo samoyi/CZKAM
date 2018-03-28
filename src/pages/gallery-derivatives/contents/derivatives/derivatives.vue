@@ -18,6 +18,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../../../public/scss/basic.scss";
+// @import "../../../../public/scss/basic.scss";
 @import "../../../../public/scss/common.scss";
 </style>

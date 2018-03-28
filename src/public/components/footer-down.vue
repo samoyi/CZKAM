@@ -1,3 +1,5 @@
+<!-- common-footer其中的下半部分
+首页的底部只有该组件 -->
 <template>
     <div class="footer_down">
         <p>
@@ -52,7 +54,7 @@ export default {
 
 <style scoped lang="scss">
 
-@import '../scss/basic.scss';
+// @import '../scss/basic.scss';
 
 .footer_down{
     width: $FOOTER_WIDTH_1366;

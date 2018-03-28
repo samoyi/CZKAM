@@ -3,7 +3,7 @@
         <h2>下载专区  <span>DOWNLOAD</span></h2>
         <ul>
             <li v-for="item in displayedItem">
-                <span class="title" slot="title">{{item.name}}</span>
+                <span class="title" slot="title" :title="item.name">{{item.name}}</span>
                 <a class="dl_icon" :href="item.url" target="_self">下载<i></i></a>
             </li>
         </ul>
@@ -14,7 +14,6 @@
 </template>
 
 <script>
-
 import {fetchJSON} from '../../../../public/js/myUtil.js';
 import listPagination from '../../../../public/components/list-pagination.vue';
 
@@ -49,7 +48,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../../../public/scss/basic.scss";
+// @import "../../../../public/scss/basic.scss";
 @import "../../../../public/scss/common.scss";
 
 .download{
