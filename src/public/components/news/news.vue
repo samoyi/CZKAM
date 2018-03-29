@@ -1,3 +1,6 @@
+<!-- 该模块形式参考【展览】页面
+列表项有图片、标题和描述等，点击进入详情文章
+该组件和works组件类似 -->
 <template>
     <section class="works">
         <h2>{{title}}</h2>
@@ -21,8 +24,8 @@ export default {
     // news如果是数组，则表示只有一类
     // nameMap格式如下：
     // {
-    //     "en": ["jiaomo" , "shuimo", "xiaopin", "xiesheng"],
-    //     "ch": ["焦墨", "水墨", "小品", "写生"]
+    //     "en": ["all" , "2018", "2017", "2016"],
+    //     "ch": ["全部", "2018", "2017", "2016"]
     // }
     // 拼音或英文要和下面的中文一一对应。显示的顺序按照数组中的顺序
     // nPerPage是每页显示的数量。某类别作品超过该数量会自动分页
@@ -43,10 +46,9 @@ export default {
     },
     data () {
         return {
-            list: [],
+            // 当前分类的序号。例如上例中，如果nCataIndex为1，则显示2018分类的列表
             nCataIndex: 0,
             nPageIndex : 0, // 当前页码
-            detailArticleHTML: '',
         };
     },
     components: {
@@ -105,12 +107,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
 @import "../../scss/common.scss";
-
-.works{
-    // @include works_class;
-    // font-size: 12px;
-}
-
 </style>

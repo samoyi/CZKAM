@@ -40,6 +40,7 @@ export default {
 }
 </script>
 
+<!-- 因为样式要作用到动态生成的HTML中，所以不能scoped，因为动态生成的不属于该组件 -->
 <style lang="scss">
 
 @import "../../../../public/scss/common.scss";

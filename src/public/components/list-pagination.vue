@@ -41,7 +41,6 @@ export default {
 
 <style scoped lang="scss">
 
-// @import '../scss/constants.scss';
 @import '../scss/common.scss';
 
 .pagination_wrapper{

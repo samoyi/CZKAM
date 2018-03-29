@@ -1,3 +1,5 @@
+<!-- news模块的条目列表
+该模块和works-list模块类似 -->
 <template>
     <ul class="news_list">
         <li v-for="item in displayedItems" >
@@ -21,33 +23,16 @@
 <script>
 
 export default {
-    props: ["displayedItems"],
-    data () {
-        return {
-
-        }
-    },
-    methods: {
-        displayDetailArticle(articleID){
-            // main.vue中bDisplayDetailArticle的值
-            if(articleID){ // 列表项图片绑定了详情文章ID才显示文章
-                // console.log(this.$root.$children[0].$data.bDisplayDetailArticle);
-                // this.$root.$children[0].$data.bDisplayDetailArticle = true;
-                // console.log(this.$root.$children[0].$data.bDisplayDetailArticle);
-                // parent.bDisplayDetailArticle = true;
-                let parent = this.$parent; // news.vue
-                let detailArticleHTML = parent.detailArticleHTML;
-                // 如果没有文章数据数据。正常都是没有的，因为不会预加载，且上一篇详情隐藏后也会清除数据
-                // console.log(detailArticleHTML);
-                if(!detailArticleHTML){
-                    parent.detailArticleHTML = "<p>正在加载……</p>"
-                    fetchArticle.call(this, articleID, parent);
-                    // location.hash = location.hash + "_" + articleID;
-                    let sNewHash = location.hash + "_" + articleID;
-                    location.hash = sNewHash;
-                }
-            }
+    props: {
+        displayedItems: {
+            type: Array,
+            default: function (){
+                return [];
+            },
         },
+    },
+    data () {
+        return {};
     },
 }
 </script>
@@ -91,9 +76,6 @@ export default {
                 max-height: 100px;
                 overflow: hidden;
             }
-            // .more{
-            //     display: inline-block; margin-top: 16px;
-            // }
         }
     }
 }

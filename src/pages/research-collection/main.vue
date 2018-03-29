@@ -11,7 +11,6 @@
             </section>
             <div style="clear:both;"></div>
         </section>
-
         <common-footer></common-footer>
     </div>
 </template>
@@ -33,7 +32,6 @@ export default {
                 },
                 catas: [],
             },
-            bDisplayDetailArticle: false,
         }
     },
     components: {

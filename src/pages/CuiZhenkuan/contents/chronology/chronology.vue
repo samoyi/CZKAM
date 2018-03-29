@@ -19,7 +19,6 @@
             <div>2010-2012<i></i></div>
             <div>2013-2014<i></i></div>
         </div>
-        <!-- <chronology-pic v-for="item in srcs" :src="item"></chronology-pic> -->
         <a :href="src" target="_blank"  v-for="src in srcs">
             <img :src="src" alt="崔振宽艺术年表"/>
         </a>

@@ -19,9 +19,7 @@
 
 export default {
     data () {
-        return {
-
-        }
+        return {}
     },
 }
 </script>
@@ -32,7 +30,6 @@ export default {
 
 @import "../../../public/scss/common.scss";
 @import "../index.scss";
-
 
 #base-info-tab{
     margin-left: $INDEX_TAB_MARGINLEFT;

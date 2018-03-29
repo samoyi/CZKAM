@@ -1,7 +1,7 @@
 <template>
     <div id="wrapper">
         <common-header></common-header>
-        <section id="CuiZhenkuan-middle" class="common-middle">
+        <section class="common-middle">
             <common-cata :titles="cataData.titles"
                     :catas="cataData.catas"></common-cata>
             <section class="content">
@@ -38,8 +38,6 @@ export default {
         commonHeader,
         commonCata,
         commonFooter,
-    },
-    methods: {
     },
     mounted(){
         // 获取左侧目录数据

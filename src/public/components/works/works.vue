@@ -1,3 +1,6 @@
+<!-- 该模块形式参考【崔振宽艺术——作品】页面
+列表项有缩略图和可选的作品描述，点击缩略图打开大图
+该组件和news组件类似 -->
 <template>
     <section class="works">
         <h2>{{title}}</h2>
@@ -9,7 +12,6 @@
         </list-pagination>
     </section>
 </template>
-<!-- :list="works[catas_en[nCataIndex]]" -->
 <script>
 
 import worksCata from './works-cata.vue';
@@ -44,14 +46,8 @@ export default {
     },
     data () {
         return {
-            list: [
-            ],
-            // catas_en: null,
-            // catas_ch: null,
-            // catas: ["jiaomo" , "shuimo", "xiaopin", "xiesheng"],
-            // catas_c: ["焦墨", "水墨", "小品", "写生"],
+            // 当前分类的序号。例如上例中，如果nCataIndex为1，则显示水墨分类的列表
             nCataIndex: 0,
-            // nPerPage: 6, // 每页显示6个
             nPageIndex : 0, // 当前页码
         };
     },
@@ -91,7 +87,6 @@ export default {
                 else{
                     list = this.works;
                 }
-                console.log(list.length)
                 return Math.ceil((list.length)/this.nPerPage);
             }
         },
@@ -108,19 +103,11 @@ export default {
             this.nPageIndex = 0;
         },
     },
-    mounted(){
-        // fetchJSON.call(this, 'CZKworks', 'works');
-    },
 }
 </script>
 
 <style scoped lang="scss">
 
 @import "../../scss/common.scss";
-
-.works{
-    // @include works_class;
-    // font-size: 12px;
-}
 
 </style>

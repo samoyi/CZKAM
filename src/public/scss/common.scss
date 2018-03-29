@@ -1,7 +1,8 @@
+@charset "utf-8";
+
 // 通用的样式
 // 所有模块都要引用该文件
 
-@charset "utf-8";
 @import "constants.scss";
 
 
@@ -17,7 +18,7 @@ a{
     color: inherit;
 }
 
-[v-cloak] {
+[v-cloak] { // https://vuejs.org/v2/api/#v-cloak
     display: none;
 }
 

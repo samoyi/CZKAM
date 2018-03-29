@@ -1,9 +1,10 @@
+# 性能优化
+
 ## 优化策略
 * 静态资源托管：图片、脚本、视频
-* 外部脚本等（如Vue.js）使用国内公共CDN
 * 分步加载
 * 预判加载
-* 一次请求加载完所有的数据
+* 一次请求加载完所有可能用到的小数据
 * 缓存耗时操作
 * 脚本合并压缩
 
@@ -27,8 +28,6 @@
 * 图标sprite
 * 合并CSS
 
-## Use a CDN
-Vue.js使用BootCDN上的
 
 ## Cache
 https://stackoverflow.com/questions/6794033/google-speed-leverage-browser-caching
@@ -43,7 +42,6 @@ http://dev.mobify.com/blog/beginners-guide-to-http-cache-headers/
     * 作品：31536000 一年
     * 艺术影像
         * 视频：31536000 一年
-* `ajax.php`： 3600 一小时
 * sprite : 604800 一周
 
 

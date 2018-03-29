@@ -19,11 +19,16 @@
 
 
 export default {
-    props: ["bulletins"],
+    props: {
+        bulletins: {
+            type: Array,
+            default: function(){
+                return [];
+            },
+        },
+    },
     data () {
-        return {
-
-        }
+        return {}
     },
 }
 </script>

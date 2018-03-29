@@ -1,5 +1,4 @@
 <template>
-    <!-- <section class="cuizhenkuan" v-html="contentHTML"></section> -->
     <article-page :html="contentHTML"></article-page>
 </template>
 
@@ -34,27 +33,4 @@ export default {
 
 @import "../../../../public/scss/common.scss";
 
-// .cuizhenkuan{
-//     h2{
-//         font-size: 16px;
-//         color: $BASIC_BLACK;
-//         span{
-//             display: none;
-//             font-size: 14px;
-//             color: $BASIC_GRAY;
-//             font-weight: bold;
-//         }
-//     }
-//     font-size: 12px;
-//     color: $BASIC_BLACK;
-//     p{
-//         margin-top: 24px;
-//     }
-//     .articalImgP{
-//         text-align: center;
-//         .articalImg{
-//             width:530px;
-//         }
-//     }
-// }
 </style>

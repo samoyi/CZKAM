@@ -10,8 +10,8 @@ import gallery from './contents/gallery/gallery.vue'; // 画廊
 import derivatives from './contents/derivatives/derivatives.vue'; // 衍生品
 
 const routes = [
-    { path: '/gallery', component: gallery }, // 画廊
-    { path: '/derivatives', component: derivatives }, // 衍生品
+    { path: '/gallery', component: gallery },
+    { path: '/derivatives', component: derivatives },
     { path: '*', redirect: '/gallery' }
 ]
 

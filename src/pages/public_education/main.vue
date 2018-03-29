@@ -33,7 +33,6 @@ export default {
                 },
                 catas: [],
             },
-            bDisplayDetailArticle: false,
         }
     },
     components: {

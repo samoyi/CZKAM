@@ -22,7 +22,14 @@
 
 
 export default {
-    props: ['publicNews'],
+    props: {
+        publicNews: {
+            type: Array,
+            default: function(){
+                return [];
+            },
+        },
+    },
     data () {
         return {
 

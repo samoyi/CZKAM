@@ -3,7 +3,7 @@
 -->
 
 <template>
-    <div id="blockWrapper">
+    <div id="blockWrapper" v-if="indexData">
         <carousel-box :carousel-data="indexData.carousel"></carousel-box>
         <exhibition-tab :exhibition-news="indexData.news.slice(0,3)"></exhibition-tab>
         <public-tab :public-news="indexData.public.slice(0,3)"></public-tab>
@@ -22,11 +22,13 @@ import bulletinTab from './blocks/bulletin-tab.vue';
 import baseInfoTab from './blocks/base-info-tab.vue';
 
 export default {
-    props: ['indexData'],
+    props: {
+        indexData: {
+            type: Object,
+        },
+    },
     data () {
-        return {
-
-        }
+        return {}
     },
     components: {
         carouselBox,

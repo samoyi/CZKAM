@@ -22,11 +22,16 @@
 
 
 export default {
-    props: ['exhibitionNews'],
+    props: {
+        exhibitionNews: {
+            type: Array,
+            default: function(){
+                return [];
+            },
+        },
+    },
     data () {
-        return {
-
-        }
+        return {}
     },
 }
 </script>

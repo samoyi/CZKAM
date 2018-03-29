@@ -13,11 +13,11 @@ import download from './contents/download/download.vue'; // 下载专区
 import comments from './contents/comments/comments.vue'; // 意见留言
 
 const routes = [
-      { path: '/bulletin', component: introduce }, // 公告
-      { path: '/member-ship', component: member }, // 会员
-      { path: '/download', component: download }, // 下载专区
-      { path: '/comments', component: comments }, // 意见留言
-      { path: '*', redirect: '/bulletin' } // 不匹配以上四个的
+      { path: '/bulletin', component: introduce },
+      { path: '/member-ship', component: member },
+      { path: '/download', component: download },
+      { path: '/comments', component: comments },
+      { path: '*', redirect: '/bulletin' }
 ];
 
 const router = new VueRouter({

@@ -1,3 +1,5 @@
+<!-- news模块的分类按钮
+该模块和workss-cata模块类似 -->
 <template>
     <ul class="news_cata" v-if="catas_ch">
         <li :class="{active_cata: index===cataIndex}"
@@ -9,19 +11,15 @@
 <script>
 
 export default {
-    // catas_c 是作品分类的中文名数组。如果作品没有分类，传空数组
+    // catas_ch 是news分类的中文名数组。如果news没有分类，传空数组
     // cataIndex 是当前要显示的某一类的index
     props: ["catas_ch", "cataIndex"],
-    // props: ["cata_c", "thisIndex", "cataIndex"],
     data () {
-        return {
-
-        }
+        return {};
     },
     methods: {
-        clickCata(index){ // 点击作品分类菜单，发送该分类的index
+        clickCata(index){ // 点击news分类菜单，发送该分类的index
             this.$emit("switchcata", index);
-            // this.$emit("switchcata", this.$parent.catas_c.indexOf(cata));
         },
     },
 }
@@ -29,7 +27,6 @@ export default {
 
 <style scoped lang="scss">
 
-// @import '../../scss/constants.scss';
 @import '../../scss/common.scss';
 
 .news_cata{
