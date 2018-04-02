@@ -28,3 +28,15 @@
     * `/src/public`：公用内容。包括vue组件、scss文件和js文件
     * `/src/pageConfig.json`：多页面配置文件
 * `/template.html`：生成多页面的模板
+
+
+## 文档说明
+所有文档都在`/doc`目录下
+* `/doc/lifecycle` 目录
+该目录下的文档是在项目的整个生命周期内都要用到的，而其他的文档都只是在开发是使用。
+* `/doc/perfomance` 目录
+与性能相关的文档。目前包括效率和稳定性的内容。
+* `/doc/component.md`
+对主要组件的说明。
+* `/doc/data_format.md`
+对主要数据格式的说明。
