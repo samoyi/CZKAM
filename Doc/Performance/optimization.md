@@ -1,60 +1,52 @@
 # 性能优化
 
 ## 优化策略
-### 目前可实现的优化策略
-* 静态资源CND存储：图片、脚本、视频
+### 目前已经实现的优化策略
+* 静态资源CND存储
 * 静态资源设置超长时间缓存
-* 分步加载
-* 预判加载
-* 一次请求加载完所有可能用到的小数据
-* 缓存耗时操作
-* 脚本合并压缩
-
+* Preloading
+* Lazy Loading
+* 合并请求
+* 耗时操作使用WebWorker并缓存结果
+* 脚本合并压缩、服务器压缩
+* 加速渲染
 
 ### 目前没有实现的优化策略
-* 用户上传图片的压缩  
+* 用户上传图片的自动无损压缩  
+    前期的图片已经统一压缩，之后客户上传图片时，需要自己先压缩再上传。
+* 用户上传图片的自动有损压缩  
     虽然作品组件提供了缩略图和大图两种图片规格，但目前并没有实现用户上传图片压缩的功能，
-    所以作品组件的缩略图和大图都是同一个图片。
+    所以作品组件的缩略图和大图都是同一个图片。需要通过有损压缩生成缩略图。
 * 静态资源多域名部署突破单域名并发数限制  
     不过目前是两个域名，且一次加载时同一域名的请求数不超过10个，应该也不需要再增加DNS查
     询成本来添加新域名。
 
 
 ## 使用工具
+### Chrome Developer Tools
 * Chrome Audits
-* Google PageSpeed Insights
+    * 该工具之前不用翻墙就能使用，现在（60版本开始）应该是因为集成了lighthouse导致必须翻墙。
+    * 该工具现在只有移动端审查模式，而且是以3G的网速。
+* Memory
+* Performance
+* Network
 
-## Preloading
-* 作品缩略图加载完成后开始加载对应的大图
-
-## Lazy Loading
-* 只有当前需要显示的作品才加载缩略图
-
-## 加速渲染
-* 给没有通过样式指定尺寸的`image`指定`width`和`height`属性
-
-## Minimize HTTP Requests
-* 图标sprite
-* 每个页面的数据库数据（目前是使用json文件）一次性请求
+### Google PageSpeed Insights
 
 
-## Cache
-https://stackoverflow.com/questions/6794033/google-speed-leverage-browser-caching
-https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control
-https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching
-https://stackoverflow.com/questions/4480304/how-to-set-http-headers-for-cache-control
-http://dev.mobify.com/blog/beginners-guide-to-http-cache-headers/
+## 静态资源CND存储
+图片、脚本和视频使用阿里云对象存储（OSS）。
 
+
+## 静态资源设置超长时间缓存
 ### max-age 设置
-1. 该网站的静态资源目前都存储在阿里云对象存储（OSS），可以通过其客户端设定资源的max-age。
-2. 静态资源统一设定为10年（315360000）的`max-age`。包括以下资源：
+1. 静态资源统一设定为10年（315360000）的`max-age`。包括以下资源：
     * 由用户上传的图片和视频
     * build后的js文件
     * sprite图片
-3. 上述三类资源中的后两类需要通过文件名的版本号改变来实现更新。详见下面的【更新策略】
-
-**之前的同事在编写网站后台上传图片至OSS时并未设置`Cache-Control`，所以用户上传的内容
-没有`max-age`**
+2. 上述三类资源中的后两类需要通过文件名的版本号改变来实现更新。详见下面的【更新策略】
+3. 之前的同事在编写网站后台上传图片至OSS时并未设置`Cache-Control`，所以用户上传的内容
+没有`max-age`
 
 ### 更新策略
 1. 例如当修改了一个js文件后，将该文件上传到服务器，不覆盖之前版本的js文件，而是根据约
@@ -73,10 +65,31 @@ http://dev.mobify.com/blog/beginners-guide-to-http-cache-headers/
     * [深圳长城宽带静态文件缓存代理，3个字-伤不起！](https://blog.csdn.net/huanghr_1/article/details/7680786)
 
 
+## Preloading
+* 暂时没有需要预加载的资源（作品大图每次只有用户点击后才会单独加载一张，不需要提前加载）
 
-http://www.websiteoptimization.com/secrets/performance/
-https://github.com/davidsonfellipe/awesome-wpo
-http://web.jobbole.com/82297/
-http://www.cnblogs.com/lei2007/archive/2013/08/16/3262897.html
-https://www.zhihu.com/question/40505685
-https://www.zhihu.com/question/33032042
+
+## Lazy Loading
+* 只有当前需要显示的作品才加载缩略图
+
+
+## 合并请求
+* 图标sprite
+* 虽然可以可以实现每个页面所有的数据库数据（目前是使用json文件）由相应的`main.vue`一次
+性请求，然后分发给不同的组件。但并没有这样实现，因为该网站是纯PC端，网络情况比较好，进入
+一个组件后多一次本地服务器的请求耗时很少，而为了实现合并请求的话，需要后端把相关性不强的
+数据进行拼接，前端再拆分然后分发，代码逻辑变得复杂，不利于维护，得不偿失。
+
+
+## 耗时操作使用WebWorker并缓存结果
+暂时没有耗时操作
+
+
+## 脚本合并压缩、服务器压缩
+1. webpack打包并压缩
+2. 阿里云OSS设置GZIP压缩  
+    OSS上传JS文件默认的Content-Type不会启用GZIP，启用方法参考[文档](https://help.aliyun.com/knowledge_detail/39645.html)
+
+
+## 加速渲染
+* 给没有通过样式指定尺寸的`image`指定`width`和`height`属性
